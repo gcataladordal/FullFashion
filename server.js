@@ -1,10 +1,10 @@
 const express = require("express");
 const path = require("path")
 const router = require("./routes/routes")
-const connect = require("./database/connection")
+const connect = require("./database/mongo")
 const app = express();
 
-connect()
+
 
 app.use(express.json())
 

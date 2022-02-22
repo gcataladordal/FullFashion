@@ -19,6 +19,7 @@ class NavBar extends Component {
                         <Nav className="mx-auto">
                             <Nav.Link href="/Register">Registro</Nav.Link>
                             <Nav.Link href="/Login">Iniciar sesión</Nav.Link>
+                            <Nav.Link href="/Mapa">Mapa</Nav.Link>
                         </Nav>
                     </Container>
                 </Navbar>

@@ -1,5 +1,5 @@
 
-
+npm install react-router-dom react-bootstrap framer-motion leaflet react-leaflet axios antd
 
 
 
