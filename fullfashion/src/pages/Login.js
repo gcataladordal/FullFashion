@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Routes, Route } from "react-router-dom";
-
 
 class Login extends Component {
     constructor(props) {

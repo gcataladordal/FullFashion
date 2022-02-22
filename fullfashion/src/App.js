@@ -4,7 +4,9 @@ import Main from "./components/Main";
 import "./App.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from "./components/NavBar";
-import Footer from "./pages/Footer";
+// import Footer from "./pages/Footer";
+
+
 class App extends Component {
 
 constructor(props) {
@@ -21,6 +23,7 @@ render() {
                 <br />
                 <Main />              
             </div>
+           
         </BrowserRouter>
     );
 }

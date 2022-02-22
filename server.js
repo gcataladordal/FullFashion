@@ -4,6 +4,7 @@ const router = require("./routes/routes")
 const connect = require("./database/connection")
 const app = express();
 
+
 connect()
 
 app.use(express.json())
@@ -19,3 +20,6 @@ app.get('*', (req, res) => {
 const port = 5000;
 
 app.listen(port, () => console.log(`La aplicación funciona por el puerto ${port}`));
+
+
+

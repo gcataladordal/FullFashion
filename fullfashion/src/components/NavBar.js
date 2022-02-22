@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { Routes, Route } from "react-router-dom";
+// import { Routes, Route } from "react-router-dom";
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap';
-
 
 class NavBar extends Component {
     constructor(props) {
