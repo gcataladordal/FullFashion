@@ -3203,7 +3203,7 @@
     "_id": {
       "$oid": "62139da6316a08d941a8962b"
     },
-    "nombre": "Cuccoo Bailarinas de mujer Liso Elegante",
+    "nombre": "Cuccoo Bailarinas de mujer Liso classic",
     "target": "mujer",
     "tipo_prenda": "zapatos",
     "estilo": "casual",
@@ -3225,7 +3225,7 @@
     "_id": {
       "$oid": "62139da6316a08d941a8962e"
     },
-    "nombre": "Cuccoo Bailarinas de mujer Cadena Liso Elegante",
+    "nombre": "Cuccoo Bailarinas de mujer Cadena Liso classic",
     "target": "mujer",
     "tipo_prenda": "zapatos",
     "estilo": "casual",
@@ -3852,7 +3852,7 @@
     "_id": {
       "$oid": "62139ef972062ef6caf176a9"
     },
-    "nombre": "Planos Acolchado Elegante",
+    "nombre": "Planos Acolchado classic",
     "target": "mujer",
     "tipo_prenda": "zapatos",
     "estilo": "casual",
@@ -4017,7 +4017,7 @@
     "_id": {
       "$oid": "62139f4eb1dfd23f071db615"
     },
-    "nombre": "Tacones Liso Tira Tobillera Elegante",
+    "nombre": "Tacones Liso Tira Tobillera classic",
     "target": "mujer",
     "tipo_prenda": "zapatos",
     "estilo": "classic",
@@ -4083,7 +4083,7 @@
     "_id": {
       "$oid": "62139f4eb1dfd23f071db61c"
     },
-    "nombre": "Zapatos de tacón de mujer Liso Tira Tobillera Elegante",
+    "nombre": "Zapatos de tacón de mujer Liso Tira Tobillera classic",
     "target": "mujer",
     "tipo_prenda": "zapatos",
     "estilo": "classic",
@@ -4270,7 +4270,7 @@
     "_id": {
       "$oid": "6213a0022a6fcc94f579c369"
     },
-    "nombre": "Tacones Cocodrilo Zapatillas abiertas Elegante",
+    "nombre": "Tacones Cocodrilo Zapatillas abiertas classic",
     "target": "mujer",
     "tipo_prenda": "zapatos",
     "estilo": "classic",
@@ -4336,7 +4336,7 @@
     "_id": {
       "$oid": "6213a0022a6fcc94f579c36e"
     },
-    "nombre": "Tacones Liso Elegante",
+    "nombre": "Tacones Liso classic",
     "target": "mujer",
     "tipo_prenda": "zapatos",
     "estilo": "classic",
@@ -4391,7 +4391,7 @@
     "_id": {
       "$oid": "6213a0022a6fcc94f579c373"
     },
-    "nombre": "Tacones Cut-out Liso Elegante",
+    "nombre": "Tacones Cut-out Liso classic",
     "target": "mujer",
     "tipo_prenda": "zapatos",
     "estilo": "classic",
@@ -8398,7 +8398,7 @@
     "nombre": "Y CHILKAT LACE II - Botas para la nieve",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "marron",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/a451e4c010ac3640a43fcdb998fb439e/134035d9be484a87979e517fa90456da.jpg?imwidth=156&filter=packshot",
     "id_producto": 1827
@@ -8409,7 +8409,7 @@
     "nombre": "GREYLOCK WTRPF - Zapatillas de senderismo",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "marron",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/f906ebdbab904b14b6a876a45dc0a4d1/a6972277eb824f4284843895cdc37644.jpg?imwidth=156&filter=packshot",
     "id_producto": 1828
@@ -8420,7 +8420,7 @@
     "nombre": "GREYLOCK WTRPF - Zapatillas de senderismo",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "marron",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/784b19bb17a246ea8216c5322148b058/0b0c059be9f24bd387ae0982e027cb11.jpg?imwidth=156&filter=packshot",
     "id_producto": 1830
@@ -8431,7 +8431,7 @@
     "nombre": "MID WP UNISEX - Zapatillas de senderismo",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "marron",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/899b54d382813f11a9701315298c7411/f804b0bcc6a146e8bb4bbeb65e9e4c19.jpg?imwidth=156&filter=packshot",
     "id_producto": 1829
@@ -8442,7 +8442,7 @@
     "nombre": "BOOTS WP UNISEX - Botas para la nieve",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "marron",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/0c7a137688c14b5386b078b9210e3a1b/33e5168284d749af9f931d6500bbacf9.jpg?imwidth=156&filter=packshot",
     "id_producto": 1831
@@ -8453,7 +8453,7 @@
     "nombre": "800 UNISEX - Zapatillas de senderismo",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "marron",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/d8d72f475c3747d5a273d9a250614a20/fc379d534c6144ad911ed7060d8e2096.jpg?imwidth=156&filter=packshot",
     "id_producto": 1835
@@ -8464,7 +8464,7 @@
     "nombre": "TONI TEX HIKER UNISEX - Botas para la nieve",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "marron",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/6fd1cd35c0be482e9f4f9c68be07f946/90a1677627c64e2ea441ac90474fa59e.jpg?imwidth=156&filter=packshot",
     "id_producto": 1832
@@ -8475,7 +8475,7 @@
     "nombre": "STEWIE TEX BOOT UNISEX - Botas para la nieve",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "marron",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/fcded511d3c24d32911aae60b3b068d9/1513bcaadfc14671b2c987f00517317c.jpg?imwidth=156&filter=packshot",
     "id_producto": 1833
@@ -8486,7 +8486,7 @@
     "nombre": "VANJA TEX ZIP BOOT UNISEX - Botas para la nieve",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "marron",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/24a9aded4b074d5f8b9bd25709611368/2ea4d4dbd8394e9e85aa9706438f0ead.jpg?imwidth=156&filter=packshot",
     "id_producto": 1834
@@ -8497,7 +8497,7 @@
     "nombre": "GERD BOOTIE UNISEX - Zapatillas de senderismo",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "marron",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/bde3d13832aa43dcbe3b272387b0f55c/cf489e1734e14840abd735a2b24b42aa.jpg?imwidth=156&filter=packshot",
     "id_producto": 1836
@@ -8508,7 +8508,7 @@
     "nombre": "TERREX HYPERHIKER TRAXION HIKING SHOES UNISEX - Zapatillas de senderismo",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "marron",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/032eb36e3c9343508cbc8daba9d11764/6695a437bfce4393bfcfb9e11f1a4d49.jpg?imwidth=156&filter=packshot",
     "id_producto": 1837
@@ -8519,7 +8519,7 @@
     "nombre": "THERMO RUBBERBOOT UNISEX - Botas para la nieve",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "marron",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/13645f2d5f1249659fb6e8598c6e1a85/9fd73be850bc42dcb1eea15ffbf96f62.jpg?imwidth=156&filter=packshot",
     "id_producto": 1838
@@ -8530,7 +8530,7 @@
     "nombre": "INDOOR SHOE UNISEX - Zapatillas de senderismo",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "marron",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/3eced9219ca044df852fc920a62c945c/b941e5a99d50402a8bd1d39c032837c2.jpg?imwidth=156&filter=packshot",
     "id_producto": 1839
@@ -8541,7 +8541,7 @@
     "nombre": "DAKOTA SHOE UNISEX - Zapatillas de senderismo",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "marron",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/a24073fa91bc4f2896ce644b5267d331/4b1cf4befeb04af492e9d99d956a30d7.jpg?imwidth=156&filter=packshot",
     "id_producto": 1840
@@ -8552,7 +8552,7 @@
     "nombre": "MOAB SPEED LOW A/C WTRPF UNISEX - Zapatillas de senderismo",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "marron",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/90cf4e4eb93248f880d977dcf400d597/fecb3fd2aa404977947dafad1c293c09.jpg?imwidth=156&filter=packshot",
     "id_producto": 1841
@@ -9553,7 +9553,7 @@
     "nombre": "Zapatillas",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "blanco",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/613aeca54dbc4020b72053a421f4cc52/e1f879538c75405aa5ee85a11b9382fb.jpg?imwidth=156&filter=packshot",
     "id_producto": 1962
@@ -9564,7 +9564,7 @@
     "nombre": "Zapatillas",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "blanco",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/1a5dfad5785a43bb8ec651fb5b723d48/68323ed7eece43f78689d241934cd0ab.jpg?imwidth=156&filter=packshot",
     "id_producto": 1963
@@ -9575,7 +9575,7 @@
     "nombre": "CHUCK TAYLOR ALL STAR CORE - Zapatillas",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "blanco",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/f1d92f4de7d03e5da4e730eb45b8fa5e/4dab2ea8075e4d1e8262d9382ae08476.jpg?imwidth=156&filter=packshot",
     "id_producto": 1964
@@ -9586,7 +9586,7 @@
     "nombre": "Zapatillas",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "blanco",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/28a5d294f3e14149b7935997900601e7/4c47a664756140ffbb04967039d5ba9e.jpg?imwidth=156&filter=packshot",
     "id_producto": 1965
@@ -9597,7 +9597,7 @@
     "nombre": "NIKE COURT BOROUGH LOW 2 SCHUH FÜR BABYS UND KLEINKINDER - Zapatillas",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "blanco",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/100722cc374a36f8bbf5d3975845838f/6fc0e91d0ad64ec390820ff46e14efc5.jpg?imwidth=156",
     "id_producto": 1966
@@ -9608,7 +9608,7 @@
     "nombre": "CONTINENTAL 80 - Zapatillas",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "blanco",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/02015f8ce636360686a1f3591c1d886e/aa48ec2fc78c40cca6cc19afd1484aa5.jpg?imwidth=156",
     "id_producto": 1968
@@ -9619,7 +9619,7 @@
     "nombre": "SUPERSTAR - Zapatillas",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "blanco",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/1381d9aeaf5a3656a4a331875995924b/2cda80dfefb44a629afead84ce10446c.jpg?imwidth=156",
     "id_producto": 1967
@@ -9630,7 +9630,7 @@
     "nombre": "STAN SMITH UNISEX - Zapatillas",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "blanco",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/6e07b5d4e451426bb461550379986bcf/96da82d49e07431592006fea1aa22ec7.jpg?imwidth=156&filter=packshot",
     "id_producto": 1969
@@ -9641,7 +9641,7 @@
     "nombre": "CONTINENTAL 80 - Zapatillas - footwear white/scarlet",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "blanco",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/08dcbfd00ccc3592890a4310b638f9f2/e12e11e9519543978d24757b5e9d54be.jpg?imwidth=156",
     "id_producto": 1970
@@ -9652,7 +9652,7 @@
     "nombre": "SUPERSTAR - Zapatillas",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "blanco",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/31ac62e7e9163571a977aa9fe2db56d0/a16bcab86c4b457fa2b5a3ae0747729f.jpg?imwidth=156",
     "id_producto": 1971
@@ -9663,7 +9663,7 @@
     "nombre": "Zapatillas",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "blanco",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/874ac1d1d5923ea7b067417900d36a31/de9a9470c21f4d3587f57bd84815e02c.jpg?imwidth=156&filter=packshot",
     "id_producto": 1972
@@ -9674,7 +9674,7 @@
     "nombre": "BLANCO SAUVAGE - Zapatillas",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "blanco",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/a2b0389436bd3e3e89423c6d60931e4e/9036f38c3757493796db0b33aa047e9d.jpg?imwidth=156&filter=packshot",
     "id_producto": 1973
@@ -9685,7 +9685,7 @@
     "nombre": "GAZELLE UNISEX - Zapatillas",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "blanco",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/a11f86d460373518bb5729b3163c9cae/c26e5c4785c64f159d03374f2bf583d9.jpg?imwidth=156&filter=packshot",
     "id_producto": 1974
@@ -9696,7 +9696,7 @@
     "nombre": "COURT LEGACY - Zapatillas",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "blanco",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/f12296014c5c4746ad6691d44d9f4798/ea65fc06ef9b4674b816a5d13492af80.jpg?imwidth=156&filter=packshot",
     "id_producto": 1975
@@ -9707,7 +9707,7 @@
     "nombre": "MINI GOAL - Zapatillas",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "blanco",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/7e3cbf9b62954ce68adfae197757d871/69a44565152f4e31a97fac6089d69c79.jpg?imwidth=156&filter=packshot",
     "id_producto": 1976
@@ -10048,7 +10048,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "azul",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/81b924b1e4d745beb812eeb729c7651f/995896c11e8d469189fbf71b60289f6e.jpg?imwidth=156&filter=packshot",
     "id_producto": 20022
@@ -10059,7 +10059,7 @@
     "nombre": "REFORZADO - Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "azul",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/d99f8c7f6b5535cda99213ba8703069a/e4f8565f3b4749c0aa7518d43544b8ba.jpg?imwidth=156&filter=packshot",
     "id_producto": 20023
@@ -10070,7 +10070,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "azul",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/449ba8e8230730c6970b45248291693d/af17a8d530d94671894cc72dca48c9e8.jpg?imwidth=156&filter=packshot",
     "id_producto": 20024
@@ -10081,7 +10081,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "azul",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/9c5490c930b74370872d11c3e86bb245/a7a112cd0f654f6b97f7c55fce48d6c2.jpg?imwidth=156&filter=packshot",
     "id_producto": 20025
@@ -10092,7 +10092,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "azul",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/173cd9236e994e07a0dfa83d21f01b78/a8448f5036dd4ce3a8f245cfc4a86db4.jpg?imwidth=156&filter=packshot",
     "id_producto": 20026
@@ -10103,7 +10103,7 @@
     "nombre": "MAUI - Zapatos de vestir - soho blue",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "azul",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/ad26428251bf462f919e0e3bb40a8f93/6f0af258d88f4071933cba34e0470544.jpg?imwidth=156&filter=packshot",
     "id_producto": 20027
@@ -10114,7 +10114,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "azul",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/70323909ce6d43fcbf67da896926ae1f/45453eaaaf9f4b21a90be3972c134cce.jpg?imwidth=156&filter=packshot",
     "id_producto": 20028
@@ -10125,7 +10125,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "azul",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/c91507eea576408dac7854e60070d799/95abf9c2ec1e41d0bfe0763533212c5c.jpg?imwidth=156&filter=packshot",
     "id_producto": 20029
@@ -10136,7 +10136,7 @@
     "nombre": "NÁUTICO - Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "azul",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/1f62b51220703232867250fe6ec663ba/3fe16304fe40412780cd609e9ee18013.jpg?imwidth=156&filter=packshot",
     "id_producto": 20030
@@ -10147,7 +10147,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "azul",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/2e42977a7fd84673a2408b9387e0af3a/653ccf2950ca473bb6230f4c79e75e47.jpg?imwidth=156&filter=packshot",
     "id_producto": 20031
@@ -10158,7 +10158,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "azul",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/1d6c0463457330188819ce8191c01c79/d70a7a402af34f96986bbb4705015a21.jpg?imwidth=156&filter=packshot",
     "id_producto": 20032
@@ -10169,7 +10169,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "azul",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/5b0ec06357ca40209636a07039ce9ec3/a0d16685b671404c86a7f52adb747154.jpg?imwidth=156&filter=packshot",
     "id_producto": 20033
@@ -10180,7 +10180,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "azul",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/2d8b7e0ec2e645818cff0ea29c64f260/7e774f776a044ff59757fb791c92d379.jpg?imwidth=156&filter=packshot",
     "id_producto": 20035
@@ -10191,7 +10191,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "azul",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/f82243a70ea64fbb8ba35b7e7627a872/21ccfa685774487b9618cf7860f4ffe8.jpg?imwidth=156&filter=packshot",
     "id_producto": 20034
@@ -10202,7 +10202,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "azul",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/93a0b99f83013d8597c31431d02d8577/3dbe5e71986844eeae981c2d9e1ae7b6.jpg?imwidth=156&filter=packshot",
     "id_producto": 20036
@@ -10378,7 +10378,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "negro",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/8c257aa6fb9145d088cf26b964978017/571ebe1a7ffe494a9593dd714f78d8fc.jpg?imwidth=156&filter=packshot",
     "id_producto": 20052
@@ -10389,7 +10389,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "negro",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/ce3907972c584cf09abab881c7140551/976d14f435f44ac694cb446c5ad02355.jpg?imwidth=156&filter=packshot",
     "id_producto": 20053
@@ -10400,7 +10400,7 @@
     "nombre": "REFORZADO - Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "negro",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/00e5398c154739848e63a92b3dde1981/b24f8e0bad9f47ccaee7554dc35ac542.jpg?imwidth=156&filter=packshot",
     "id_producto": 20054
@@ -10411,7 +10411,7 @@
     "nombre": "ESCOLAR - Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "negro",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/e9a5037ae93d4eaeb9b3cc0f06ea5e20/1ba1dac34ca5447b8df87c2fe0530cdb.jpg?imwidth=156&filter=packshot",
     "id_producto": 20055
@@ -10422,7 +10422,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "negro",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/4a6a97ec84c64fcba77bcf0995f270c4/7379483a3cca45bea57a53c58ddce755.jpg?imwidth=156&filter=packshot",
     "id_producto": 20056
@@ -10433,7 +10433,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "negro",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/6e4b00e766524a5bb8a15cdb1e09a6f4/daa5da7d0ce441da91465037ec458efe.jpg?imwidth=156&filter=packshot",
     "id_producto": 20057
@@ -10444,7 +10444,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "negro",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/965626ec59c24f668126a6b33da64db2/550d2920c3a84e18b66b945ad8b52e39.jpg?imwidth=156&filter=packshot",
     "id_producto": 20058
@@ -10455,7 +10455,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "negro",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/4c4cd7426dc3402ebe10c238e75d4259/a76b829c1bbe41e484f628afc244afe3.jpg?imwidth=156&filter=packshot",
     "id_producto": 20059
@@ -10466,7 +10466,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "negro",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/50b2daed171c4e31acaa9fedf4f28589/3e498201af1745ff9c2065221914a709.jpg?imwidth=156&filter=packshot",
     "id_producto": 20060
@@ -10477,7 +10477,7 @@
     "nombre": "KUNG-FU CAMPING - Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "negro",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/41a8ba6815d948fe919475dc130f2f27/6ad3630a5a1a4388a6620133a223b3fc.jpg?imwidth=156&filter=packshot",
     "id_producto": 20061
@@ -10488,7 +10488,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "negro",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/9323d4026fb847a383046f01c00367cf/0461196fc3bb494a84a86be11f33da8f.jpg?imwidth=156&filter=packshot",
     "id_producto": 20062
@@ -10499,7 +10499,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "negro",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/9ad2ebbb50543c7f9ec7f779cde983e8/94d6c27a99564ac7ac53145575e7de06.jpg?imwidth=156&filter=packshot",
     "id_producto": 20063
@@ -10510,7 +10510,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "negro",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/90f1575a01d2455fa5b423000caf1244/8c05ad34c64047f39b15a0e197a7898f.jpg?imwidth=156&filter=packshot",
     "id_producto": 20064
@@ -10521,7 +10521,7 @@
     "nombre": "Mocasines",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "negro",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/9cffe0787c7442c492fc3bb67204536c/e66707aa959443d3a51f8f79f2bc0a1d.jpg?imwidth=156",
     "id_producto": 20065
@@ -10532,7 +10532,7 @@
     "nombre": "MANUAL - Zapatillas",
     "target": "niño",
     "tipo_prenda": "zapatos",
-    "estilo": "elegante",
+    "estilo": "classic",
     "color": "negro",
     "imgUrl": "https://img01.ztat.net/article/spp-media-p1/3dfb9a608e844fe4afc913e030f12788/70688d111be64209a7afeb573bec7c64.jpg?imwidth=156&filter=packshot",
     "id_producto": 20066
@@ -15006,7 +15006,7 @@
     "_id": {
       "$oid": "6213ce93f65d5d5b942b65e5"
     },
-    "nombre": "SHEIN Blazers de hombres Botón Liso Elegante",
+    "nombre": "SHEIN Blazers de hombres Botón Liso classic",
     "target": "hombre",
     "tipo_prenda": "arriba",
     "estilo": "classic",
@@ -27360,7 +27360,7 @@
     "target": "mujer",
     "tipo_prenda": "arriba",
     "estilo": "sport",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2021/12/01/16383536902e4d9ae2f22daa4218d2ae477df99357_thumbnail_900x.webp",
     "id_producto": 2226
   },{
@@ -27371,7 +27371,7 @@
     "target": "mujer",
     "tipo_prenda": "arriba",
     "estilo": "sport",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2021/10/04/1633339037707f2b9f34347b489148232a0567c2aa_thumbnail_900x.webp",
     "id_producto": 2227
   },{
@@ -27382,7 +27382,7 @@
     "target": "mujer",
     "tipo_prenda": "arriba",
     "estilo": "sport",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2021/12/13/1639365013a456fd6f01be380e15234656bdf1d720_thumbnail_900x.webp",
     "id_producto": 2228
   },{
@@ -27393,7 +27393,7 @@
     "target": "mujer",
     "tipo_prenda": "arriba",
     "estilo": "sport",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2021/06/09/1623223563843381b9238949ebe691170fbc036da3_thumbnail_900x.webp",
     "id_producto": 2229
   },{
@@ -27404,7 +27404,7 @@
     "target": "mujer",
     "tipo_prenda": "arriba",
     "estilo": "sport",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2021/10/12/16340274814ba772cb25fe6fd5417007c65cce3f3c_thumbnail_900x.webp",
     "id_producto": 2230
   },{
@@ -27415,7 +27415,7 @@
     "target": "mujer",
     "tipo_prenda": "arriba",
     "estilo": "sport",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2022/01/11/164188317347b8588903090acf6800a3d4e06f8152_thumbnail_900x.webp",
     "id_producto": 2231
   },{
@@ -27426,7 +27426,7 @@
     "target": "mujer",
     "tipo_prenda": "arriba",
     "estilo": "sport",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2021/09/27/16327330002059d290adcdb036a4b222d13ada02eb_thumbnail_900x.webp",
     "id_producto": 2232
   },{
@@ -27437,7 +27437,7 @@
     "target": "mujer",
     "tipo_prenda": "arriba",
     "estilo": "sport",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2022/01/04/1641267868ce046cf1957d0c04dc39b56640b1237c_thumbnail_900x.webp",
     "id_producto": 2233
   },{
@@ -27448,7 +27448,7 @@
     "target": "mujer",
     "tipo_prenda": "arriba",
     "estilo": "sport",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2021/12/02/1638438929d9ed0a487f226a5a9aadde60f810309e_thumbnail_900x.webp",
     "id_producto": 2234
   },{
@@ -27459,7 +27459,7 @@
     "target": "mujer",
     "tipo_prenda": "arriba",
     "estilo": "sport",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//sheinsz.ltwebstatic.com/she_dist/images/bg-grey-ba96515e9b.png",
     "id_producto": 2235
   },{
@@ -27470,7 +27470,7 @@
     "target": "mujer",
     "tipo_prenda": "arriba",
     "estilo": "sport",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2022/01/20/1642677975a1517402db28d523c8b24d6e920f56ac_thumbnail_900x.webp",
     "id_producto": 2236
   },{
@@ -27481,7 +27481,7 @@
     "target": "mujer",
     "tipo_prenda": "arriba",
     "estilo": "sport",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2021/08/02/1627903760ded953ad97e921e7257cce36959bd01a_thumbnail_900x.webp",
     "id_producto": 2237
   },{
@@ -27492,7 +27492,7 @@
     "target": "mujer",
     "tipo_prenda": "arriba",
     "estilo": "sport",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//sheinsz.ltwebstatic.com/she_dist/images/bg-grey-ba96515e9b.png",
     "id_producto": 2238
   },{
@@ -27503,7 +27503,7 @@
     "target": "mujer",
     "tipo_prenda": "arriba",
     "estilo": "sport",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//sheinsz.ltwebstatic.com/she_dist/images/bg-grey-ba96515e9b.png",
     "id_producto": 2239
   },{
@@ -27514,7 +27514,7 @@
     "target": "mujer",
     "tipo_prenda": "arriba",
     "estilo": "sport",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2021/09/13/1631466939630058696d147b98cb1ddcc69d814a23_thumbnail_900x.webp",
     "id_producto": 2240
   },{
@@ -29935,7 +29935,7 @@
     "_id": {
       "$oid": "6213b47a2d20039bd2e81e67"
     },
-    "nombre": "SHEIN Blusas Botón Liso Elegante",
+    "nombre": "SHEIN Blusas Botón Liso classic",
     "target": "mujer",
     "tipo_prenda": "arriba",
     "estilo": "classic",
@@ -30067,7 +30067,7 @@
     "_id": {
       "$oid": "6213b513dbe59bc99edc48ac"
     },
-    "nombre": "Blusas Botón Liso Elegante",
+    "nombre": "Blusas Botón Liso classic",
     "target": "mujer",
     "tipo_prenda": "arriba",
     "estilo": "classic",
@@ -30270,7 +30270,7 @@
     "_id": {
       "$oid": "6213b589f1e5cc46e789ca77"
     },
-    "nombre": "MOTF PREMIUM Blusas de Mujer Botón Nudo Liso Elegante",
+    "nombre": "MOTF PREMIUM Blusas de Mujer Botón Nudo Liso classic",
     "target": "mujer",
     "tipo_prenda": "arriba",
     "estilo": "classic",
@@ -30622,7 +30622,7 @@
     "_id": {
       "$oid": "6213b6f0d204ffb936a74d05"
     },
-    "nombre": "SHEIN Pantalones Doble botonadura Liso Elegante",
+    "nombre": "SHEIN Pantalones Doble botonadura Liso classic",
     "target": "mujer",
     "tipo_prenda": "abajo",
     "estilo": "classic",
@@ -30787,7 +30787,7 @@
     "_id": {
       "$oid": "6213b7c5005d55640a3716f1"
     },
-    "nombre": "SHEIN Pantalones Doble botonadura Liso Elegante",
+    "nombre": "SHEIN Pantalones Doble botonadura Liso classic",
     "target": "mujer",
     "tipo_prenda": "abajo",
     "estilo": "classic",
@@ -31150,7 +31150,7 @@
     "_id": {
       "$oid": "6213bafe2a3cbc9f69ce7609"
     },
-    "nombre": "Glamaker Pantalones Botón Elegante",
+    "nombre": "Glamaker Pantalones Botón classic",
     "target": "mujer",
     "tipo_prenda": "abajo",
     "estilo": "classic",
@@ -31209,7 +31209,7 @@
     "target": "mujer",
     "tipo_prenda": "abajo",
     "estilo": "classic",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2021/08/16/16290937294fda7522c6e554147161fa2bf6f06b58_thumbnail_900x.webp",
     "id_producto": 2586
   },{
@@ -31220,7 +31220,7 @@
     "target": "mujer",
     "tipo_prenda": "abajo",
     "estilo": "classic",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2021/11/26/1637920189e454a2a78188ca708418c90648e8116d_thumbnail_900x.webp",
     "id_producto": 2587
   },{
@@ -31231,7 +31231,7 @@
     "target": "mujer",
     "tipo_prenda": "abajo",
     "estilo": "classic",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2022/02/11/1644545411d150df1d0a526450304ebfee494bae3e_thumbnail_900x.webp",
     "id_producto": 2588
   },{
@@ -31242,7 +31242,7 @@
     "target": "mujer",
     "tipo_prenda": "abajo",
     "estilo": "classic",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2021/07/29/16275263961abdaa7340546c240e6ddd3a840eb075_thumbnail_900x.webp",
     "id_producto": 2589
   },{
@@ -31253,7 +31253,7 @@
     "target": "mujer",
     "tipo_prenda": "abajo",
     "estilo": "classic",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2021/07/16/16264044763d6401358a50e01b7a70ccf90cf53709_thumbnail_900x.webp",
     "id_producto": 2590
   },{
@@ -31264,7 +31264,7 @@
     "target": "mujer",
     "tipo_prenda": "abajo",
     "estilo": "classic",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2022/01/19/164256266055328c02dc0a5280337da640f8c65f35_thumbnail_900x.webp",
     "id_producto": 2591
   },{
@@ -31275,7 +31275,7 @@
     "target": "mujer",
     "tipo_prenda": "abajo",
     "estilo": "classic",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2021/09/30/1632986051ca6e428c37bb0ca687e5d72e494b1801_thumbnail_900x.webp",
     "id_producto": 2592
   },{
@@ -31286,18 +31286,18 @@
     "target": "mujer",
     "tipo_prenda": "abajo",
     "estilo": "classic",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2021/12/16/163962282368d8a293ab0653bad1aec87371aa2390_thumbnail_900x.webp",
     "id_producto": 2593
   },{
     "_id": {
       "$oid": "6213bbc0c90ccaa9871e3a43"
     },
-    "nombre": "Pantalones Botón Liso Elegante",
+    "nombre": "Pantalones Botón Liso classic",
     "target": "mujer",
     "tipo_prenda": "abajo",
     "estilo": "classic",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2020/11/18/16056779035be69e2466431735ffabfbde7e0e28e1_thumbnail_900x.webp",
     "id_producto": 2594
   },{
@@ -31308,7 +31308,7 @@
     "target": "mujer",
     "tipo_prenda": "abajo",
     "estilo": "classic",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2021/08/04/1628045252c9a2aa48d1b6228119ca9876d9c2b8ef_thumbnail_900x.webp",
     "id_producto": 2595
   },{
@@ -31319,7 +31319,7 @@
     "target": "mujer",
     "tipo_prenda": "abajo",
     "estilo": "classic",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2022/02/14/1644809564ddb660db2ee19a6105a3d7ef5ba1a93a_thumbnail_900x.webp",
     "id_producto": 2596
   },{
@@ -31330,7 +31330,7 @@
     "target": "mujer",
     "tipo_prenda": "abajo",
     "estilo": "classic",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2022/01/17/1642411436941356360dccd5d0f5619fe3dc82536c_thumbnail_900x.webp",
     "id_producto": 2597
   },{
@@ -31341,7 +31341,7 @@
     "target": "mujer",
     "tipo_prenda": "abajo",
     "estilo": "classic",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2021/11/10/1636506897d53decd824398978b532e52b4552f18c_thumbnail_900x.webp",
     "id_producto": 2598
   },{
@@ -31352,7 +31352,7 @@
     "target": "mujer",
     "tipo_prenda": "abajo",
     "estilo": "classic",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2021/11/11/1636611590267b0a6346db2644cb8de6798e3978c9_thumbnail_900x.webp",
     "id_producto": 2599
   },{
@@ -31363,7 +31363,7 @@
     "target": "mujer",
     "tipo_prenda": "abajo",
     "estilo": "classic",
-    "color": "marrón",
+    "color": "marron",
     "imgUrl": "//img.ltwebstatic.com/images3_pi/2020/10/15/1602734730026fdf5fc98383c7d98a4315baafb833_thumbnail_900x.webp",
     "id_producto": 2600
   },{
@@ -31436,7 +31436,7 @@
     "_id": {
       "$oid": "6213bc301b6cb705e9a0b356"
     },
-    "nombre": "SBetro Pantalones Liso Elegante",
+    "nombre": "SBetro Pantalones Liso classic",
     "target": "mujer",
     "tipo_prenda": "abajo",
     "estilo": "classic",
@@ -33400,7 +33400,7 @@
     "_id": {
       "$oid": "6213e7895437cebd6eb9cbdd"
     },
-    "nombre": "SHEIN Blazers de hombres Botón Liso Elegante",
+    "nombre": "SHEIN Blazers de hombres Botón Liso classic",
     "target": "hombre",
     "tipo_prenda": "arriba",
     "estilo": "fashion",
