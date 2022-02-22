@@ -12,7 +12,10 @@ const objetoUserSchema = {
     poblacion: String,
     talla: String,
     target: String,
+    color: String,
+    estilo: String,
     compras: Array,
+    baneado: Boolean,
     admin: Boolean
 };
 
