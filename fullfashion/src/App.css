@@ -1,6 +1,10 @@
 .App {
   text-align: center;
+  font-family: Garamond;
 }
+
+.navbar-nav a { color: white;}
+
 
 .App-logo {
   height: 40vmin;
@@ -24,6 +28,10 @@
   color: white;
 }
 
+.navbar-expand a {
+color: white;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -37,11 +45,44 @@
   }
 }
 
-
-.leaflet-container {
-  height: 600px;
-  width: 800px;
-  border: 1px solid black;
+.Nav-bar {
+  background-color: #EDCB9F;
 }
 
- 
+.navbar-light .navbar-nav .nav-link {
+  color: white;
+  font-weight: bold;}
+
+.Mainhead {
+font-size: 30px;
+}
+.Mainhead h1{
+  font-size: 80px;
+}
+
+.nuevoestilo{
+  font-size: 50px;
+}
+
+.ButtonHome {
+  background-color: #E398B7;
+}
+
+.Homerecibir{
+  background-color: #EDCB9F;
+}
+
+.centertext {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.leaflet-container {
+  width: 700px; 
+  height: 800px;
+}
+
+
+
