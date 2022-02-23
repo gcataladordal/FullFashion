@@ -6,11 +6,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from "./components/NavBar";
 // import Footer from "./components/Footer";
 
+
+
 class App extends Component {
 
-constructor(props) {
-    super(props);
-}
+// constructor(props) {
+//     super(props);
+// }
 
 render() {
     return (

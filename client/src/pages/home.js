@@ -3,7 +3,7 @@ import { Button, Row, Container, Col  } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-class Mainhome extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
     }
@@ -75,4 +75,4 @@ class Mainhome extends Component {
         );
     }
 }
-export default Mainhome;
+export default Home; //antes se llamaba mainHome

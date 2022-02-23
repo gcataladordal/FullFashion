@@ -4,18 +4,15 @@ const path = require("path")
 const router = require("./routes/routes")
 const connect = require("./database/mongo")
 
-const app = express();
-
-
 app.use(express.json())
 
-// app.use(express.static(path.join(__dirname, 'fullfashion/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use("/", router)
 
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname + '/fullfashion/build/index.html'));
-// });
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + "client", "build","index.html"));
+});
 
 const port = 5500;
 
