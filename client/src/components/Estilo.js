@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {motion} from "framer-motion"
 
 class Estilo extends Component {
   constructor(props) {
@@ -15,31 +16,35 @@ class Estilo extends Component {
 render() {
       console.log(this.state.estiloRopa);
     return (
-      <div>
+      <motion.div
+      initial={{y:"-80vw", x: 0}}
+      animate={{fontSize: 60, x:0,y:0}}
+      transition={{type: "spring", stiffness: 155, delay: 0.5}}
+      >
         <input
           type="button"
-          value="classic"
+          value="Classic"
           onClick={()=>{this.estiloRopa("classic")}}
         />
-
+        &nbsp;&nbsp; &nbsp;&nbsp;
         <input
           type="button"
-          value="sport"
+          value="Sport"
           onClick={()=>{this.estiloRopa("sport")}}
         />
-
+ &nbsp;&nbsp; &nbsp;&nbsp;
         <input
           type="button"
-          value="fashion"
+          value="Fashion"
           onClick={()=>{this.estiloRopa("fashion")}}
         />
-
+ &nbsp;&nbsp; &nbsp;&nbsp;
         <input
           type="button"
-          value="casual"
+          value="Casual"
           onClick={()=>{this.estiloRopa("casual")}}
         />
-      </div>
+      </motion.div>
     );
   }
 }

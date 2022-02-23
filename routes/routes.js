@@ -7,5 +7,6 @@ router.post("/register", (req,res)=>{
     // console.log("entra en el endpoint");
 });
 
+router.post("/busquedalook", products.buscarProductos);
 
 module.exports = router

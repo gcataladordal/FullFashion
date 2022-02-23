@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {motion} from "framer-motion"
 
 class Tallas extends Component {
   constructor(props) {
@@ -17,7 +18,12 @@ class Tallas extends Component {
     return (
       <div>
         <br/>
-        <input
+        <motion.input
+        initial={{x: "-100vw"}}
+        animate={{fontSize: 60, x:-75,y:0}}
+        transition={{type: "spring", stiffness: 200}}
+        whileHover={{scale: 1.1}}
+        class="buttonFormLook"
           type="button"
           value="S"
           onClick={() => {
@@ -25,7 +31,12 @@ class Tallas extends Component {
           }}
         />
 
-        <input
+        <motion.input
+        initial={{x: "-100vw"}}
+        animate={{fontSize: 60, x:-25,y:0}}
+        transition={{type: "spring", stiffness: 200}}
+        whileHover={{scale:1.1}} 
+        class="buttonFormLook"
           type="button"
           value="M"
           onClick={() => {
@@ -33,7 +44,12 @@ class Tallas extends Component {
           }}
         />
 
-        <input
+        <motion.input
+        initial={{x: "-100vw"}}
+        animate={{fontSize: 60, x:25,y:0}}
+        transition={{type: "spring", stiffness: 200}}
+        whileHover={{scale:1.1}} 
+        class="buttonFormLook"
           type="button"
           value="L"
           onClick={() => {
@@ -41,7 +57,12 @@ class Tallas extends Component {
           }}
         />
 
-        <input
+        <motion.input
+        initial={{x: "-100vw"}}
+        animate={{fontSize: 60, x:75,y:0}}
+        transition={{type: "spring", stiffness: 200}}
+        whileHover={{scale:1.1}} 
+        class="buttonFormLook"
           type="button"
           value="XL"
           onClick={() => {

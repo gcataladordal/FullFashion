@@ -64,6 +64,21 @@ font-size: 30px;
   background-color: #E398B7;
 }
 
+.botonTipoPersona{
+  font-size: 1.75em;
+}
+
+.buttonFormLook {
+  font-size: 1.75em;
+  background-color: #edcb9f;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.textAlturaPeso {
+  font-size: 1.5em;
+}
+
 .Homerecibir{
   background-color: #EDCB9F;
   font-size: 20px;

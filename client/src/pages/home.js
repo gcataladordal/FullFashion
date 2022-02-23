@@ -2,12 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button, Row, Container, Col  } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import TipoPersona from "../components/TipoPersona";
-import AlturaPeso from "../components/AlturaPeso";
-import Tallas from "../components/Tallas";
-import Color from "../components/Color";
-import Estilo from "../components/Estilo";
-
+import {Link} from "react-router-dom"
+import {motion } from "framer-motion"
 
 class Mainhome extends Component {
     constructor(props) {
@@ -28,7 +24,9 @@ class Mainhome extends Component {
                     <li>Realiza hasta 10 cambios antes de confirmar tu nuevo look.</li>
                     <li>Envío y devolución gratuita.</li>
                     <br/>
-                    <Link to="/Form"><Button className="ButtonHome btn btn-primary btn-lg" variant="primary" type="submit">Consigue tu look</Button></Link>
+                    <Link to="/Form"><motion.button 
+                    whileHover={{scale:1.1}} className="ButtonHome btn btn-primary btn-lg" variant="primary" type="submit">Comienza tu look</motion.button></Link>
+
                 </ul>
                 </Col>
             </Row>

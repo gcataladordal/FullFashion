@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Checkbox, Row } from "antd";
+import {motion} from "framer-motion"
 
 class Color extends Component {
   constructor(props) {
@@ -24,29 +25,35 @@ class Color extends Component {
   render() {
     console.log(this.state.color);
     return (
+      <motion.div
+      initial={{y:"75vw", x: 0}}
+      animate={{fontSize: 60, x:0,y:0}}
+      transition={{type: "spring", stiffness: 155, delay: 0.5}}
+      >
       <Checkbox.Group style={{ width: "100%" }} onChange={this.onChange}>
         <Row>
           <Checkbox value="Negro" disabled={this.isDisabled("Negro")}>
-            NEGRO
+          &nbsp;NEGRO
           </Checkbox>
-
+        &nbsp;&nbsp;&nbsp;
           <Checkbox value="Azul" disabled={this.isDisabled("Azul")}>
-            AZUL
+          &nbsp;AZUL
           </Checkbox>
-
+          &nbsp;&nbsp;&nbsp;
           <Checkbox value="Verde" disabled={this.isDisabled("Verde")}>
-            VERDE
+          &nbsp; VERDE
           </Checkbox>
-
+          &nbsp;&nbsp;&nbsp;
           <Checkbox value="Blanco" disabled={this.isDisabled("Blanco")}>
-            BLANCO
+          &nbsp;BLANCO
           </Checkbox>
-
+          &nbsp;&nbsp;&nbsp;
           <Checkbox value="Marron" disabled={this.isDisabled("Marron")}>
-            MARRÓN
+          &nbsp; MARRÓN
           </Checkbox>
         </Row>
       </Checkbox.Group>
+      </motion.div>
     );
   }
 }
