@@ -18,9 +18,6 @@ render() {
         <BrowserRouter>
             <NavBar />
             <div className="App">
-                <br />
-                <h2>Bienvenido a FullFashion</h2>
-                <br />
                 <Main />              
             </div>
         </BrowserRouter>
