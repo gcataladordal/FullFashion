@@ -7,7 +7,7 @@ import Mapa from "./Mapa";
 import Mainhome from "../pages/home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {motion} from "framer-motion"
-
+import RecogidaLook from "./RecogidaLook";
 
 class Main extends Component {
   constructor(props) {
@@ -23,6 +23,7 @@ class Main extends Component {
           <Route path="/Register" element={<Register />} />
           <Route path="/Mapa" element={<Mapa />} />
           <Route path="/Form" element={<Form />} />
+          <Route path="/RecogidaLook" element={<RecogidaLook />} />
         </Routes>
       </div>
     );

@@ -4,7 +4,6 @@ const path = require("path")
 const router = require("./routes/routes")
 const connect = require("./database/mongo")
 
-const app = express();
 
 
 app.use(express.json())
