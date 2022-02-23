@@ -4,6 +4,7 @@ const Producto = require("../models/productModel")
 // función que busca todos los productos
 const products = {
     buscarProductos: async (req, res) => {
+        console.log("pasa por funcion buscar productos")
         let resulBusqArriba = await busquedaArriba(req)
         let resulBusqAbajo = await busquedaAbajo(req)
         let resulBusqZapatos = await busquedaZapatos(req)
@@ -26,6 +27,7 @@ async function busquedaArriba(req) {
     }
     console.log(resultadoArriba3);
     return resultadoArriba3;
+    
 }
 
 // busca las partes de arriba según recoge del body

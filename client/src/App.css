@@ -60,16 +60,31 @@ font-size: 30px;
   font-size: 80px;
 }
 
-.nuevoestilo{
-  font-size: 50px;
-}
-
 .ButtonHome {
   background-color: #E398B7;
 }
 
+.botonTipoPersona{
+  font-size: 1.75em;
+}
+
+.buttonFormLook {
+  font-size: 1.75em;
+  background-color: #edcb9f;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.textAlturaPeso {
+  font-size: 1.5em;
+}
+
 .Homerecibir{
   background-color: #EDCB9F;
+  font-size: 20px;
+}
+.Homerecibir h2 {
+  font-size: 60px;
 }
 
 .centertext {
@@ -84,5 +99,18 @@ font-size: 30px;
   height: 800px;
 }
 
+.coste {
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+h3 {
+  font-weight: bold;
+}
 
+.coste p {
+  font-size: 20px;
+}
 
+.nuevoestilo p {
+  font-size: 20px;
+}
