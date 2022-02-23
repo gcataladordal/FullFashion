@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {motion} from "framer-motion"
 
 class TipoPersona extends Component {
   constructor(props) {
@@ -16,25 +17,45 @@ render() {
       console.log(this.state.tipoPersona);
     return (
       <div>
-        <input
+        <motion.input 
+        initial={{y:-250, x: -75}}
+        animate={{fontSize: 60, x:-75,y:0}}
+        transition={{type: "spring", stiffness: 200}}
+        whileHover={{scale:1.1}} 
+        class="buttonFormLook"
           type="button"
           value="Mujer"
           onClick={()=>{this.recogerDatoPersona("mujer")}}
         />
 
-        <input
+        <motion.input
+        initial={{y:-250, x: -25}}
+        transition={{type: "spring", stiffness: 200}}
+        animate={{fontSize: 60, x:-25,y:0}}
+        whileHover={{scale:1.1}} 
+        class="buttonFormLook"
           type="button"
           value="Hombre"
           onClick={()=>{this.recogerDatoPersona("hombre")}}
         />
 
-        <input
+        <motion.input
+          initial={{y:-250, x: 25}}
+          transition={{type: "spring", stiffness: 200}}
+          animate={{fontSize: 60, x:25,y:0}}
+          whileHover={{scale:1.1}} 
+         class="buttonFormLook"
           type="button"
           value="Niña"
           onClick={()=>{this.recogerDatoPersona("niña")}}
         />
 
-        <input
+        <motion.input
+         initial={{y:-250, x: 75}}
+         transition={{type: "spring", stiffness: 200}}
+         animate={{fontSize: 60, x:75,y:0}}
+         whileHover={{scale:1.1}} 
+        class="buttonFormLook"
           type="button"
           value="Niño"
           onClick={()=>{this.recogerDatoPersona("niño")}}
