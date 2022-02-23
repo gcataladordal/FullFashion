@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import {motion} from "framer-motion"
 
 class NavBar extends Component {
     constructor(props) {
@@ -12,7 +12,7 @@ class NavBar extends Component {
         return (
             <div class="Nav-bar container-fluid">
                 <Navbar>
-                    <Container fluid >
+                    <Container fluid>
                     <Navbar.Brand href="/"><img width="100" height="50" class="img-fluid mx-auto rounded float-start" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesHome/Logo2.png"/></Navbar.Brand>
                         <Nav className="mx-auto">
                             <Nav.Link href="/Register">Registro</Nav.Link>
