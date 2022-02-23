@@ -4,7 +4,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Form from "../pages/Form";
 import Mapa from "./Mapa";
-import Mainhome from "../pages/home";
+import Mainhome from "../pages/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {motion} from "framer-motion"
 import RecogidaLook from "./RecogidaLook";
@@ -13,7 +13,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
   }
-
+  
   render() {
     return (
       <div>

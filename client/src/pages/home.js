@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link} from "react-router-dom"
 import {motion } from "framer-motion"
 
-class Mainhome extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
     }
@@ -84,4 +84,4 @@ class Mainhome extends Component {
         );
     }
 }
-export default Mainhome;
+export default Home; //antes se llamaba mainHome

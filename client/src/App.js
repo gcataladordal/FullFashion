@@ -7,11 +7,13 @@ import NavBar from "./components/NavBar";
 import {motion} from "framer-motion"
 // import Footer from "./components/Footer";
 
+
+
 class App extends Component {
 
-constructor(props) {
-    super(props);
-}
+// constructor(props) {
+//     super(props);
+// }
 
 render() {
     return (
