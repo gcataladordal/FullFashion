@@ -318,3 +318,25 @@ h3 {
 .hide {
   opacity: 0 !important;
 }
+
+
+.color {
+  display: inline;
+} 
+
+
+.persona:hover{
+border-radius:50%;
+-webkit-border-radius:50%;
+scale:1.1;
+text-shadow: 0px 0px 40px rgb(227, 152, 183);
+box-shadow: 0px 0px 40px rgb(227, 152, 183)}
+
+
+input[type="checkbox"] {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+}
+
+

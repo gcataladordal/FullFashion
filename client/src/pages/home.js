@@ -4,6 +4,7 @@ import { Button, Row, Container, Col  } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {motion } from "framer-motion";
 
+
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -83,4 +84,4 @@ class Home extends Component {
         );
     }
 }
-export default Home; //antes se llamaba mainHome
+export default Home;
