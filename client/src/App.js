@@ -13,32 +13,32 @@ import { motion } from "framer-motion";
 // import { useState } from "react";
 
 
-const socket = io.connect("http//localhost:5500");
+// const socket = io.connect("http//localhost:5500");
 
 function App() {
 
-    const [userName, setUsername] = useState("")
-    const [showChat, setShowChat] = useState(false)
-    var sala = "123456"
+    // const [userName, setUsername] = useState("")
+    // const [showChat, setShowChat] = useState(false)
+    // var sala = "123456"
 
-    const unirseSala = () => {
-        if (userName !== "") {
-            socket.emit("entrarSala", sala);
-            setShowChat(true)
-        }
-    }
+    // const unirseSala = () => {
+    //     if (userName !== "") {
+    //         socket.emit("entrarSala", sala);
+    //         setShowChat(true)
+    //     }
+    // }
 
     return (
         <BrowserRouter>
                 <NavBar />
                 <div className="App">
                     <Main />
-                {!showChat ? (
+                {/* {!showChat ? (
                     <div className="containerUnirseChat">
                         <input type="text" placeholder="Introducir nombre" onChange={(event) => { setUsername(event.target.value) }}></input>
                         <button onClick={unirseSala}>Unirse al Chat</button>
                     </div>)
-                    : (<Chat socket={socket} userName={userName} sala={sala} />)}
+                    : (<Chat socket={socket} userName={userName} sala={sala} />)} */}
             </div>
         </BrowserRouter>
     );
