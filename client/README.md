@@ -1,3 +1,8 @@
+
+
+npm i socket.io-client react-scroll-to-bottom leaflet react-bootstrap react-leaflet react-router-dom framer-motion bootstrap axios antd
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
