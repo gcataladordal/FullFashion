@@ -12,81 +12,61 @@ const RecogidaLook = () => {
   const [estilo, setEstilo] = useState("");
 
   const [data, setData] = useFetch("busquedalook");
-  // console.log(color.indexOf(""));
-  // console.log(color)
-
+ 
   const onChangeCheck = (checkedValues) => {
-   setColor([...color,checkedValues]);
-  console.log(checkedValues);
+    setColor(checkedValues);
   };
-console.log(color)
 
-  const isDisabled = (id) => {
-    return color.length > 1 && color.indexOf(id) === -1;
+const isDisabled = (id) => {
+  return color.length > 1 && color.indexOf(id) === -1;
+
   };
 
   const searchData = () => {
-   
+    
     let datos = {
       target,
       altura,
       peso,
       talla,
-      color: [],
+      color,
       estilo,
     };
-
+    console.log(datos)
     setData(datos);
   };
 
   return (
     <div>
       {/* TIPO DE PERSONA */}
-      <motion.div>
-        <motion.input
-          initial={{ y: -250, x: -75 }}
-          animate={{ fontSize: 60, x: -75, y: 0 }}
-          transition={{ type: "spring", stiffness: 200 }}
-          whileHover={{ scale: 1.1 }}
-          class="buttonFormLook"
-          type="button"
+      <motion.div
+      initial={{y:-250, x: -75}}
+      animate={{fontSize: 60, x:-75,y:0}}
+      transition={{type: "spring", stiffness: 200}}
+      >
+        <h2>Elige tu target</h2>
+        <input type="image" className="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/muher.jpg"
           value="mujer"
-          onClick={(e) => setTarget(e.target.value)}
-        />
-
-        <motion.input
-          initial={{ y: -250, x: -25 }}
-          transition={{ type: "spring", stiffness: 200 }}
-          animate={{ fontSize: 60, x: -25, y: 0 }}
-          whileHover={{ scale: 1.1 }}
-          class="buttonFormLook"
-          type="button"
-          value="hombre"
-          onClick={(e) => setTarget(e.target.value)}
-        />
-
-        <motion.input
-          initial={{ y: -250, x: 25 }}
-          transition={{ type: "spring", stiffness: 200 }}
-          animate={{ fontSize: 60, x: 25, y: 0 }}
-          whileHover={{ scale: 1.1 }}
-          class="buttonFormLook"
-          type="button"
-          value="niña"
-          onClick={(e) => setTarget(e.target.value)}
-        />
-
-        <motion.input
-          initial={{ y: -250, x: 75 }}
-          transition={{ type: "spring", stiffness: 200 }}
-          animate={{ fontSize: 60, x: 75, y: 0 }}
-          whileHover={{ scale: 1.1 }}
-          class="buttonFormLook"
-          type="button"
+          onClick={(e) => setTarget(e.target.value)}>
+       </input>
+         &nbsp;&nbsp; &nbsp;&nbsp;
+        <input type="image" className="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/niño.jpg"
           value="niño"
           onClick={(e) => setTarget(e.target.value)}
         />
+         &nbsp;&nbsp; &nbsp;&nbsp;
+        <input type="image" className="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/niña.jpg"
+          value="niña"
+          onClick={(e) => setTarget(e.target.value)}
+        />
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        <input type="image" className="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/hombre.jpg"
+          value="hombre"
+          onClick={(e) => console.log(e.target.value)}
+        />
       </motion.div>
+
+
       {/* ALTURA Y PESO */}
 
       <motion.div
@@ -96,19 +76,19 @@ console.log(color)
       >
         <br />
         <br />
-        <label class="textAlturaPeso">Peso: &nbsp;</label>
+        <label className="textAlturaPeso">Peso: &nbsp;</label>
         <motion.input
-          class="textAlturaPeso"
+          className="textAlturaPeso"
           type="text"
           placeholder="Ej: 70kg"
           onChange={(e) => setAltura(e.target.value)}
         />
         <br />
         <br />
-        <label class="textAlturaPeso">Altura: &nbsp;</label>
+        <label className="textAlturaPeso">Altura: &nbsp;</label>
         <motion.input
           type="text"
-          class="textAlturaPeso"
+          className="textAlturaPeso"
           placeholder="175 cm"
           onChange={(e) => setPeso(e.target.value)}
         />
@@ -122,7 +102,7 @@ console.log(color)
           animate={{ fontSize: 60, x: -75, y: 0 }}
           transition={{ type: "spring", stiffness: 200 }}
           whileHover={{ scale: 1.1 }}
-          class="buttonFormLook"
+          className="buttonFormLook"
           type="button"
           value="S"
           onClick={(e) => setTalla(e.target.value)}
@@ -133,7 +113,7 @@ console.log(color)
           animate={{ fontSize: 60, x: -25, y: 0 }}
           transition={{ type: "spring", stiffness: 200 }}
           whileHover={{ scale: 1.1 }}
-          class="buttonFormLook"
+          className="buttonFormLook"
           type="button"
           value="M"
           onClick={(e) => setTalla(e.target.value)}
@@ -144,7 +124,7 @@ console.log(color)
           animate={{ fontSize: 60, x: 25, y: 0 }}
           transition={{ type: "spring", stiffness: 200 }}
           whileHover={{ scale: 1.1 }}
-          class="buttonFormLook"
+          className="buttonFormLook"
           type="button"
           value="L"
           onClick={(e) => setTalla(e.target.value)}
@@ -155,7 +135,7 @@ console.log(color)
           animate={{ fontSize: 60, x: 75, y: 0 }}
           transition={{ type: "spring", stiffness: 200 }}
           whileHover={{ scale: 1.1 }}
-          class="buttonFormLook"
+          className="buttonFormLook"
           type="button"
           value="XL"
           onClick={(e) => setTalla(e.target.value)}
@@ -164,121 +144,62 @@ console.log(color)
 
       {/* COLORES */}
       <motion.div
-        initial={{ y: "75vw", x: 0 }}
-        animate={{ fontSize: 60, x: 0, y: 0 }}
-        transition={{ type: "spring", stiffness: 155, delay: 0.5 }}
+      initial={{y:"75vw", x: 0}}
+      animate={{fontSize: 60, x:0,y:0}}
+      transition={{type: "spring", stiffness: 155, delay: 0.5}}
       >
-        <Checkbox.Group style={{ width: "100%" }} onChange={(e)=>onChangeCheck(e)}>
-          <Row>
-            <Checkbox value="negro" disabled={isDisabled(target.value)}>
-              &nbsp;NEGRO
-            </Checkbox>
-            &nbsp;&nbsp;&nbsp;
-            <Checkbox value="azul" disabled={isDisabled(target.value)}>
-              &nbsp;AZUL
-            </Checkbox>
-            &nbsp;&nbsp;&nbsp;
-            <Checkbox value="verde" disabled={isDisabled(target.value)}>
-              &nbsp; VERDE
-            </Checkbox>
-            &nbsp;&nbsp;&nbsp;
-            <Checkbox value="blanco" disabled={isDisabled(target.value)}>
-              &nbsp;BLANCO
-            </Checkbox>
-            &nbsp;&nbsp;&nbsp;
-            <Checkbox value="marron"  disabled={isDisabled(target.value)}>
-              &nbsp; MARRÓN
-            </Checkbox>
-          </Row>
-        </Checkbox.Group>
+        <h2>Elige uno o dos colores</h2>
+      <Checkbox.Group onChange={(e)=>onChangeCheck(e)}  >
+    
+
+
+          <Checkbox className="color" value="negro" id="negro" disabled={isDisabled("negro")}>
+          <img width="10%" height="5%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/black.jpg"></img>
+          </Checkbox>
+          &nbsp;&nbsp; &nbsp;&nbsp;
+          <Checkbox className="color" value="azul" id="azul" disabled={isDisabled("azul")}>
+          <img width="10%" height="5%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/bluelight.jpg"></img>
+          </Checkbox>
+          &nbsp;&nbsp; &nbsp;&nbsp;
+          <Checkbox className="color" value="verde" id="verde" disabled={isDisabled("verde")}>
+          <img width="10%" height="5%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/green.jpg"></img>
+          </Checkbox>
+          &nbsp;&nbsp; &nbsp;&nbsp;
+          <Checkbox className="color" value="blanco" id="blanco" disabled={isDisabled("blanco")}>
+          <img width="10%" height="5%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/white.jpg"></img>
+          </Checkbox>
+          &nbsp;&nbsp; &nbsp;&nbsp;
+          <Checkbox className="color" value="marron" id="marron" disabled={isDisabled("marron")}>
+          <img width="10%" height="5%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/brown.jpg"></img>
+          </Checkbox>
+        
+      </Checkbox.Group>
       </motion.div>
-
-      {/* <label htmlFor="">Añadir color</label>
-      <input type="text" onChange={(e) => setColor(e.target.value)} />
-      <br /> */}
-
-      {/* <checkbox onChange={(e) => setColor(e.target.value)}>
-        <label>NEGRO</label>
-        <input
-          type="checkbox"
-          value="negro"
-          // disabled={(e) => isDisabled(e.target.value)}
-        />
-
-        <label>AZUL</label>
-        <input
-          type="checkbox"
-          value="azul"
-          // disabled={(e) => isDisabled(e.target.value)}
-        />
-
-        <label>VERDE</label>
-        <input
-          type="checkbox"
-          value="verde"
-          // disabled={(e) => isDisabled(e.target.value)}
-        />
-
-        <label>BLANCO</label>
-        <input
-          type="checkbox"
-          value="blanco"
-          // disabled={(e) => isDisabled(e.target.value)}
-        />
-
-        <label>MARRON</label>
-        <input
-          type="checkbox"
-          value="marron"
-          // disabled={(e) => isDisabled(e.target.value)}
-        />
-      </checkbox> */}
-
      
 
       {/* ESTILOS  */}
-
-      <motion.div>
-        <motion.input
-          initial={{ x: "-100vw" }}
-          animate={{ fontSize: 60, x: -25, y: 0 }}
-          transition={{ type: "spring", stiffness: 200 }}
-          whileHover={{ scale: 1.1 }}
-          class="buttonFormLook"
-          type="button"
+      <motion.div
+        initial={{ y: "-80vw", x: 0 }}
+        animate={{ fontSize: 60, x: 0, y: 0 }}
+        transition={{ type: "spring", stiffness: 155, delay: 0.5 }}
+      >
+        <h2>Qué imagen define mejor tu estilo</h2>
+        <input type="image"  className="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/classic.jpg"
           value="classic"
           onClick={(e) => setEstilo(e.target.value)}
         />
-
-        <motion.input
-          initial={{ x: "-100vw" }}
-          animate={{ fontSize: 60, x: -25, y: 0 }}
-          transition={{ type: "spring", stiffness: 200 }}
-          whileHover={{ scale: 1.1 }}
-          class="buttonFormLook"
-          type="button"
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        <input type="image"  className="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/sport.jpg"
           value="sport"
           onClick={(e) => setEstilo(e.target.value)}
         />
-
-        <motion.input
-          initial={{ x: "-100vw" }}
-          animate={{ fontSize: 60, x: -25, y: 0 }}
-          transition={{ type: "spring", stiffness: 200 }}
-          whileHover={{ scale: 1.1 }}
-          class="buttonFormLook"
-          type="button"
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        <input type="image" className="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/fashion.jpg"
           value="fashion"
           onClick={(e) => setEstilo(e.target.value)}
         />
-
-        <motion.input
-          initial={{ x: "-100vw" }}
-          animate={{ fontSize: 60, x: -25, y: 0 }}
-          transition={{ type: "spring", stiffness: 200 }}
-          whileHover={{ scale: 1.1 }}
-          class="buttonFormLook"
-          type="button"
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        <input type="image" className="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/casual2.jpg"
           value="casual"
           onClick={(e) => setEstilo(e.target.value)}
         />
