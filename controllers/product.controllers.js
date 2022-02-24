@@ -8,7 +8,14 @@ const products = {
         let resulBusqArriba = await busquedaArriba(req)
         let resulBusqAbajo = await busquedaAbajo(req)
         let resulBusqZapatos = await busquedaZapatos(req)
-        res.send(resulBusqArriba + resulBusqAbajo + resulBusqZapatos)
+        let resultado = {
+            partesDeArriba : resulBusqArriba,
+            partesDeAbajo : resulBusqAbajo,
+            zapatos : resulBusqZapatos
+        }
+        console.log("*****************************************************************************")
+        console.log(resultado)
+        res.json(resultado)
     }
 }
 

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import useFetch from "../hooks/useFetch";
+import ResultadoLook from "../pages/ResultadoLook";
 import { motion } from "framer-motion";
 import { Checkbox, Row } from "antd";
+
 
 const RecogidaLook = () => {
   const [target, setTarget] = useState("");
