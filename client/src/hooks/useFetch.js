@@ -13,7 +13,7 @@ const useFetch = (props) => {
 
   const searchData = (props) => {
     console.log("Pulsa el boton buscar");
-    console.log(data);
+    // console.log(data);
     axios.post(`${props}`, data).then((res) => console.log(res.data));
   };
 
