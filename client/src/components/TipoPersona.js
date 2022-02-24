@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import {motion} from "framer-motion"
+import { motion } from "framer-motion"
+import { Container } from "react-bootstrap";
 
 class TipoPersona extends Component {
   constructor(props) {
@@ -10,57 +11,38 @@ class TipoPersona extends Component {
 
   recogerDatoPersona(tipo) {
     this.setState({ tipoPersona: tipo });
-}
+  }
 
 
-render() {
-      console.log(this.state.tipoPersona);
+  render() {
+    console.log(this.state.tipoPersona);
     return (
-      <div>
-        <motion.input 
-        initial={{y:-250, x: -75}}
-        animate={{fontSize: 60, x:-75,y:0}}
-        transition={{type: "spring", stiffness: 200}}
-        whileHover={{scale:1.1}} 
-        class="buttonFormLook"
-          type="button"
+      <motion.div
+      initial={{y:-250, x: -75}}
+      animate={{fontSize: 60, x:-75,y:0}}
+      transition={{type: "spring", stiffness: 200}}
+      >
+        <h2>Elige tu target</h2>
+        <img class="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/muher.jpg"
           value="Mujer"
-          onClick={()=>{this.recogerDatoPersona("mujer")}}
+          onClick={() => { this.recogerDatoPersona("mujer") }}
         />
-
-        <motion.input
-        initial={{y:-250, x: -25}}
-        transition={{type: "spring", stiffness: 200}}
-        animate={{fontSize: 60, x:-25,y:0}}
-        whileHover={{scale:1.1}} 
-        class="buttonFormLook"
-          type="button"
-          value="Hombre"
-          onClick={()=>{this.recogerDatoPersona("hombre")}}
-        />
-
-        <motion.input
-          initial={{y:-250, x: 25}}
-          transition={{type: "spring", stiffness: 200}}
-          animate={{fontSize: 60, x:25,y:0}}
-          whileHover={{scale:1.1}} 
-         class="buttonFormLook"
-          type="button"
-          value="Niña"
-          onClick={()=>{this.recogerDatoPersona("niña")}}
-        />
-
-        <motion.input
-         initial={{y:-250, x: 75}}
-         transition={{type: "spring", stiffness: 200}}
-         animate={{fontSize: 60, x:75,y:0}}
-         whileHover={{scale:1.1}} 
-        class="buttonFormLook"
-          type="button"
+         &nbsp;&nbsp; &nbsp;&nbsp;
+        <img class="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/niño.jpg"
           value="Niño"
-          onClick={()=>{this.recogerDatoPersona("niño")}}
+          onClick={() => { this.recogerDatoPersona("niño") }}
         />
-      </div>
+         &nbsp;&nbsp; &nbsp;&nbsp;
+        <img class="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/niña.jpg"
+          value="Niña"
+          onClick={() => { this.recogerDatoPersona("niña") }}
+        />
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        <img class="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/hombre.jpg"
+          value="Hombre"
+          onClick={() => { this.recogerDatoPersona("hombre") }}
+        />
+      </motion.div>
     );
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Checkbox, Row } from "antd";
+import { Checkbox, Row, Col } from "antd";
 import {motion} from "framer-motion"
 
 class Color extends Component {
@@ -30,28 +30,29 @@ class Color extends Component {
       animate={{fontSize: 60, x:0,y:0}}
       transition={{type: "spring", stiffness: 155, delay: 0.5}}
       >
-      <Checkbox.Group style={{ width: "100%" }} onChange={this.onChange}>
-        <Row>
-          <Checkbox value="Negro" disabled={this.isDisabled("Negro")}>
-          &nbsp;NEGRO
+        <h2>Elige uno o dos colores</h2>
+      <Checkbox.Group onChange={this.onChange}>
+    
+          <Checkbox className="color" value="Negro" id="negro" disabled={this.isDisabled("Negro")}>
+          <img width="10%" height="5%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/black.jpg"></img>
           </Checkbox>
-        &nbsp;&nbsp;&nbsp;
-          <Checkbox value="Azul" disabled={this.isDisabled("Azul")}>
-          &nbsp;AZUL
+          &nbsp;&nbsp; &nbsp;&nbsp;
+          <Checkbox className="color" value="Azul" id="azul" disabled={this.isDisabled("Azul")}>
+          <img width="10%" height="5%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/bluelight.jpg"></img>
           </Checkbox>
-          &nbsp;&nbsp;&nbsp;
-          <Checkbox value="Verde" disabled={this.isDisabled("Verde")}>
-          &nbsp; VERDE
+          &nbsp;&nbsp; &nbsp;&nbsp;
+          <Checkbox className="color" value="Verde" id="verde" disabled={this.isDisabled("Verde")}>
+          <img width="10%" height="5%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/green.jpg"></img>
           </Checkbox>
-          &nbsp;&nbsp;&nbsp;
-          <Checkbox value="Blanco" disabled={this.isDisabled("Blanco")}>
-          &nbsp;BLANCO
+          &nbsp;&nbsp; &nbsp;&nbsp;
+          <Checkbox className="color" value="Blanco" id="blanco" disabled={this.isDisabled("Blanco")}>
+          <img width="10%" height="5%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/white.jpg"></img>
           </Checkbox>
-          &nbsp;&nbsp;&nbsp;
-          <Checkbox value="Marron" disabled={this.isDisabled("Marron")}>
-          &nbsp; MARRÓN
+          &nbsp;&nbsp; &nbsp;&nbsp;
+          <Checkbox className="color" value="Marron" id="marron" disabled={this.isDisabled("Marron")}>
+          <img width="10%" height="5%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/brown.jpg"></img>
           </Checkbox>
-        </Row>
+        
       </Checkbox.Group>
       </motion.div>
     );
