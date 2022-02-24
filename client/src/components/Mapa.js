@@ -6,10 +6,10 @@ const infoMapa = require("../leroys.json")
 
 class Mapa extends Component {
 
-    constructor(props) {
+    // constructor(props) {
 
-        super(props);
-    }
+    //     super(props);
+    // }
 
     render() {
         return (

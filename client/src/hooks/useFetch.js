@@ -6,18 +6,24 @@ const useFetch = (props) => {
 
 
   useEffect(() => {
-    if (data != "") {
+    if (data !== "") {
       searchData(props);
     }
   }, [data]);
 
   const searchData = (props) => {
     console.log("Pulsa el boton buscar");
-    // console.log(data);
-    axios.post(`${props}`, data).then((res) => console.log(res.data));
+    console.log(data);
+    axios.post(`${props}`, data).then((res) => {
+      localStorage.setItem("resultado", JSON.stringify(res.data));
+      const saved = JSON.parse(localStorage.getItem("resultado"));
+      
+      // voy por aquí
+      console.log(saved.partesDeArriba[0])
+    });
   };
 
-  return [data,setData]
+  return [data, setData]
 };
 
 export default useFetch;

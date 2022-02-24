@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import useFetch from "../hooks/useFetch";
+import ResultadoLook from "../pages/ResultadoLook";
 import { motion } from "framer-motion";
 import { Checkbox, Row } from "antd";
+
 
 const RecogidaLook = () => {
   const [target, setTarget] = useState("");
@@ -206,7 +208,9 @@ const isDisabled = (id) => {
       </motion.div>
 
       <button onClick={searchData}>Enviar</button>
+
       {data !== "" ? <div> Se ha recogido los datos de la bbdd </div> : ""}
+
     </div>
   );
 };

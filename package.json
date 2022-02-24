@@ -23,6 +23,7 @@
     "type": "git",
     "url": "git+https://github.com/gcataladordal/FullFashion.git"
   },
+  "keywords": [],
   "author": "fullstack 11.21",
   "license": "ISC",
   "bugs": {

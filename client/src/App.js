@@ -5,10 +5,13 @@ import "./App.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from "./components/NavBar";
 import { motion } from "framer-motion";
-import Footer from "./components/Footer";
-import Chat from "./components/Chat";
-import io from "socket.io-client";
-import { useState } from "react";
+
+
+// import Footer from "./components/Footer";
+// import Chat from "./components/Chat";
+// import io from "socket.io-client";
+// import { useState } from "react";
+
 
 const socket = io.connect("http//localhost:5500");
 
