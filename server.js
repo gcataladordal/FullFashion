@@ -7,43 +7,45 @@ const connect = require("./database/mongo");
 
 
 
+
 // ESTO ES LO DEL CHAT: 
 // const http = require("http");
 // const cors = require('cors');
 // const { Server } = require("socket.io");
 
-// app.use(cors());
 
-// const server = http.createServer(app)
+app.use(cors());
 
-// const io = new Server(server, {
-//     cors: {
-//         origin: "http://localhost:3000/",
-//         methods: ["GET", "POST"]
-//     }
-// })
+const server = http.createServer(app)
 
-// io.on("connect_error", (err) => {
-//         console.log(`connect_error due to ${err.message}`);
-//       });
+const io = new Server(server, {
+    cors: {
+        origin: "http://localhost:3000/",
+        methods: ["GET", "POST"]
+    }
+})
 
-// io.on("connection", (socket) => {
-//     console.log(`Usuario conectado ${socket.id}`);
+io.on("connect_error", (err) => {
+        console.log(`connect_error due to ${err.message}`);
+      });
+
+io.on("connection", (socket) => {
+    console.log(`Usuario conectado ${socket.id}`);
 
 
-//     socket.on("entrarSala", (data) => {
-//         socket.join(data)
-//         console.log(`El usuario con ID: ${socket.id} se ha unido a la sala`)
-//     })
+    socket.on("entrarSala", (data) => {
+        socket.join(data)
+        console.log(`El usuario con ID: ${socket.id} se ha unido a la sala`)
+    })
 
-//     socket.on("enviarMensaje", (info) => {
-//         socket.to(info.sala).emit("mensajeRecibido", data);
-//     })
+    socket.on("enviarMensaje", (info) => {
+        socket.to(info.sala).emit("mensajeRecibido", data);
+    })
 
-//     socket.on("disconnected", () => {
-//         console.log("User Disconnected", socket.id);
-//     })
-// })
+    socket.on("disconnected", () => {
+        console.log("User Disconnected", socket.id);
+    })
+})
 
 
 //ESTO ES LO DE STATIC
@@ -55,12 +57,13 @@ const connect = require("./database/mongo");
 // app.use(express.static(path.join(__dirname, 'client/build')));
 
 
+
 // para que funcione bien el body parsed
 app.use(express.json())
 
+
 // para vincular las rutas con server.js, se pone directamenten el archivo donde van a estar esas carpetas
 app.use("/", router)
-
 
 // aquí metemos el puerto en una variable y le decimos que nos escuche
 const port = 5500
