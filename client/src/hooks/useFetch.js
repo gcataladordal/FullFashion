@@ -14,10 +14,16 @@ const useFetch = (props) => {
   const searchData = (props) => {
     console.log("Pulsa el boton buscar");
     console.log(data);
-    axios.post(`${props}`, data).then((res) => console.log(res.data));
+    axios.post(`${props}`, data).then((res) => {
+      localStorage.setItem("resultado", JSON.stringify(res.data));
+      const saved = JSON.parse(localStorage.getItem("resultado"));
+      
+      // voy por aquí
+      console.log(saved.partesDeArriba[0])
+    });
   };
 
-  return [data,setData]
+  return [data, setData]
 };
 
 export default useFetch;

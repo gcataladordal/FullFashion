@@ -12,5 +12,13 @@ router.post("/register", user.addUser)
 
 
 router.post("/busquedalook", products.buscarProductos);
+// router.get("/resultadolook/:altura/:color/:estilo/:peso/:talla/:target", function (req,res) {
+
+
+router.get("/resultadolook/", (req,res) => {
+    res.json(req.params)
+
+})
+
 
 module.exports = router
