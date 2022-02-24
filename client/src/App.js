@@ -4,7 +4,8 @@ import Main from "./components/Main";
 import "./App.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from "./components/NavBar";
-// import { motion } from "framer-motion";
+import { motion } from "framer-motion";
+
 // import Footer from "./components/Footer";
 // import Chat from "./components/Chat";
 // import io from "socket.io-client";

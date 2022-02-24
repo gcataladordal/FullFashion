@@ -208,7 +208,9 @@ const isDisabled = (id) => {
       </motion.div>
 
       <button onClick={searchData}>Enviar</button>
+
       {data !== "" ? <div> Se ha recogido los datos de la bbdd </div> : ""}
+
     </div>
   );
 };
