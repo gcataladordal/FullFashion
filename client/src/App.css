@@ -5,6 +5,7 @@
 
 .navbar-nav a { color: white;}
 
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
 
 .App-logo {
   height: 40vmin;
@@ -114,3 +115,228 @@ h3 {
 .nuevoestilo p {
   font-size: 20px;
 }
+
+
+ /* ESTILOS CHAT */
+
+ .containerUnirseChat {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+}
+
+.containerUnirseChat h3 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-family: "Open Sans", sans-serif;
+}
+.containerUnirseChat input {
+  width: 210px;
+  height: 40px;
+  margin: 7px;
+  border: 2px solid #43a047;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.containerUnirseChat button {
+  width: 225px;
+  height: 50px;
+  margin: 7px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  background: #43a047;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+}
+
+.containerUnirseChat button:hover {
+  background: #2e7d32;
+  font-family: "Open Sans", sans-serif;
+}
+
+.ventanaChat {
+  width: 300px;
+  height: 420px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.ventanaChat p {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+}
+.ventanaChat .headerChat {
+  height: 45px;
+  border-radius: 6px;
+  background: #263238;
+  position: relative;
+  cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+}
+.ventanaChat .headerChat p {
+  display: block;
+  padding: 0 1em 0 2em;
+  color: #fff;
+  font-weight: 700;
+  line-height: 45px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.ventanaChat .bodyChat {
+  height: calc(450px - (45px + 70px));
+  border: 1px solid #263238;
+  background: #fff;
+  font-family: "Open Sans", sans-serif;
+  position: relative;
+}
+.ventanaChat .bodyChat .containerMensaje {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-family: "Open Sans", sans-serif;
+}
+
+.ventanaChat .bodyChat .containerMensaje::-webkit-scrollbar {
+  display: none;
+  font-family: "Open Sans", sans-serif;
+}
+.ventanaChat .bodyChat .mensaje {
+  height: auto;
+  padding: 10px;
+  display: flex;
+  font-family: "Open Sans", sans-serif;
+}
+
+.ventanaChat .bodyChat .mensaje .contenidoMensaje {
+  width: auto;
+  height: auto;
+  min-height: 40px;
+  max-width: 120px;
+  background-color: #43a047;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  font-family: "Open Sans", sans-serif;
+}
+
+#tu {
+  justify-content: flex-end;
+  font-family: "Open Sans", sans-serif;
+}
+
+#tu .contenidoMensaje {
+  justify-content: flex-end;
+  font-family: "Open Sans", sans-serif;
+}
+
+#tu .metaMensaje {
+  justify-content: flex-end;
+  font-family: "Open Sans", sans-serif;
+  margin-left: 5px;
+}
+
+#otro {
+  justify-content: flex-start;
+  font-family: "Open Sans", sans-serif;
+}
+
+#otro .contenidoMensaje {
+  justify-content: flex-start;
+  background-color: cornflowerblue;
+  font-family: "Open Sans", sans-serif;
+}
+
+#otro .metaMensaje {
+  justify-content: flex-start;
+  font-family: "Open Sans", sans-serif;
+  margin-right: 5px;
+}
+
+.metaMensaje #autor {
+  margin-left: 10px;
+  font-weight: bold;
+  font-family: "Open Sans", sans-serif;
+}
+
+.ventanaChat .bodyChat .mensaje .metaMensaje {
+  display: flex;
+  font-size: 12px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.ventanaChat .footerChat {
+  height: 40px;
+  border: 1px solid #263238;
+  font-family: "Open Sans", sans-serif;
+  border-top: none;
+  display: flex;
+}
+
+.ventanaChat .footerChat input {
+  height: 100%;
+  flex: 85%;
+  border: 0;
+  padding: 0 0.7em;
+  font-size: 1em;
+  font-family: "Open Sans", sans-serif;
+  border-right: 1px dotted #607d8b;
+  outline: none;
+}
+
+.ventanaChat .footerChat button {
+  border: 0;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  flex: 15%;
+  height: 100%;
+  background: transparent;
+  outline: none;
+  font-size: 25px;
+  font-family: "Open Sans", sans-serif;
+  color: lightgray;
+}
+
+.ventanaChat .footerChat button:hover {
+  color: #43a047;
+  font-family: "Open Sans", sans-serif;
+}
+.hide {
+  opacity: 0 !important;
+}
+
+
+.color {
+  display: inline;
+} 
+
+
+.persona:hover{
+border-radius:50%;
+-webkit-border-radius:50%;
+scale:1.1;
+text-shadow: 0px 0px 40px rgb(227, 152, 183);
+box-shadow: 0px 0px 40px rgb(227, 152, 183)}
+
+
+input[type="checkbox"] {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+}
+
+

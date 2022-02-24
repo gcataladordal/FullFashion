@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button, Row, Container, Col  } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {motion } from "framer-motion"
+import {motion } from "framer-motion";
+
+
 
 class Home extends Component {
     constructor(props) {
@@ -83,4 +85,4 @@ class Home extends Component {
         );
     }
 }
-export default Home; //antes se llamaba mainHome
+export default Home;

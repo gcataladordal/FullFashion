@@ -10,5 +10,23 @@
     "nodemon": "^2.0.15",
     "puppeteer": "^13.3.2",
     "socket.io": "^4.4.1"
-  }
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "name": "fullfashion",
+  "description": "counter: 30253",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gcataladordal/FullFashion.git"
+  },
+  "author": "fullstack 11.21",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gcataladordal/FullFashion/issues"
+  },
+  "homepage": "https://github.com/gcataladordal/FullFashion#readme"
 }
