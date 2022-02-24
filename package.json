@@ -1,12 +1,32 @@
 {
   "dependencies": {
     "antd": "^4.18.8",
+    "cors": "^2.8.5",
     "express": "^4.17.3",
     "inspector": "^0.5.0",
     "mongodb": "^4.4.0",
     "mongoose": "^6.2.2",
     "mongoose-sequence": "^5.3.1",
     "nodemon": "^2.0.15",
-    "puppeteer": "^13.3.2"
-  }
+    "puppeteer": "^13.3.2",
+    "socket.io": "^4.4.1"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "name": "fullfashion",
+  "description": "counter: 30253",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gcataladordal/FullFashion.git"
+  },
+  "author": "fullstack 11.21",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gcataladordal/FullFashion/issues"
+  },
+  "homepage": "https://github.com/gcataladordal/FullFashion#readme"
 }

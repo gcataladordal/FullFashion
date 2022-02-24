@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button, Row, Container, Col  } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Link} from "react-router-dom"
-import {motion } from "framer-motion"
+import {motion } from "framer-motion";
 
 class Home extends Component {
     constructor(props) {
