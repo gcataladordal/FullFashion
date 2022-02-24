@@ -1,5 +1,5 @@
 
-import React, { Component, useState  } from "react";
+import React, {  useState  } from "react";
 import useFetch from "../hooks/useFetch";
 
 const RecogidaLook = () => {
@@ -56,7 +56,7 @@ const RecogidaLook = () => {
     
 
       <button onClick={searchData}>Enviar</button>
-      {data != "" ?  <div> Ha agregado {data.tipo}
+      {data !== "" ?  <div> Ha agregado {data.tipo}
           correctamente a la bbdd  </div> :  ""}
     </div>
   );
