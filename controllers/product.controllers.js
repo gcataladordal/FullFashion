@@ -18,6 +18,7 @@ const products = {
     }
 }
 
+
 // busca las partes de arriba según recoge del body
 async function busquedaArriba(req) {
     var resultadoArriba = await Producto.find({
