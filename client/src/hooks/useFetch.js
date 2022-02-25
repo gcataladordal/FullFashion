@@ -6,7 +6,7 @@ const useFetch = (props) => {
 
 
   useEffect(() => {
-    if (data != "") {
+    if (data !== "") {
       searchData(props);
     }
   }, [data]);

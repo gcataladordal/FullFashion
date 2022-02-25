@@ -10,10 +10,11 @@ import {motion} from "framer-motion"
 import RecogidaLook from "./RecogidaLook";
 import ResultadoLook from "../pages/ResultadoLook";
 
+
 class Main extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
   
   render() {
     return (

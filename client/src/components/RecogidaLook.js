@@ -1,10 +1,11 @@
-
-import React, { Component, useState  } from "react";
+import React, { useState } from "react";
 import useFetch from "../hooks/useFetch";
 import ResultadoLook from "../pages/ResultadoLook";
+import { motion } from "framer-motion";
+import { Checkbox, Row } from "antd";
+
 
 const RecogidaLook = () => {
-
   const [target, setTarget] = useState("");
   const [altura, setAltura] = useState("");
   const [peso, setPeso] = useState("");
@@ -13,8 +14,18 @@ const RecogidaLook = () => {
   const [estilo, setEstilo] = useState("");
 
   const [data, setData] = useFetch("busquedalook");
+ 
+  const onChangeCheck = (checkedValues) => {
+    setColor(checkedValues);
+  };
+
+const isDisabled = (id) => {
+  return color.length > 1 && color.indexOf(id) === -1;
+
+  };
 
   const searchData = () => {
+    
     let datos = {
       target,
       altura,
@@ -23,42 +34,183 @@ const RecogidaLook = () => {
       color,
       estilo,
     };
-
+    console.log(datos)
     setData(datos);
   };
 
   return (
     <div>
-      <h1>recoger datos Component</h1>
-      <label htmlFor="">Añadir Tipo persona</label>
-      <input type="text" onChange={(e) => setTarget(e.target.value)} />
-      <br />
+      {/* TIPO DE PERSONA */}
+      <motion.div
+      initial={{y:-250, x: -75}}
+      animate={{fontSize: 60, x:-75,y:0}}
+      transition={{type: "spring", stiffness: 200}}
+      >
+        <h2>Elige tu target</h2>
+        <input type="image" className="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/muher.jpg"
+          value="mujer"
+          onClick={(e) => setTarget(e.target.value)}>
+       </input>
+         &nbsp;&nbsp; &nbsp;&nbsp;
+        <input type="image" className="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/niño.jpg"
+          value="niño"
+          onClick={(e) => setTarget(e.target.value)}
+        />
+         &nbsp;&nbsp; &nbsp;&nbsp;
+        <input type="image" className="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/niña.jpg"
+          value="niña"
+          onClick={(e) => setTarget(e.target.value)}
+        />
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        <input type="image" className="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/hombre.jpg"
+          value="hombre"
+          onClick={(e) => console.log(e.target.value)}
+        />
+      </motion.div>
 
-      <label htmlFor="">Añadir Altura</label>
-      <br />
-      <input type="text" onChange={(e) => setAltura(e.target.value)} />
-      <br />
 
-      <label htmlFor="">Añadir Peso</label>
-      <input type="text" onChange={(e) => setPeso(e.target.value)} />
-      <br />
+      {/* ALTURA Y PESO */}
 
-      <label htmlFor="">Añadir Tipo Talla</label>
-      <input type="text" onChange={(e) => setTalla(e.target.value)} />
-      <br />
+      <motion.div
+        initial={{ x: "75vw" }}
+        animate={{ fontSize: 60, x: -50, y: 0 }}
+        transition={{ type: "spring", stiffness: 200, delay: 0.5 }}
+      >
+        <br />
+        <br />
+        <label className="textAlturaPeso">Peso: &nbsp;</label>
+        <motion.input
+          className="textAlturaPeso"
+          type="text"
+          placeholder="Ej: 70kg"
+          onChange={(e) => setAltura(e.target.value)}
+        />
+        <br />
+        <br />
+        <label className="textAlturaPeso">Altura: &nbsp;</label>
+        <motion.input
+          type="text"
+          className="textAlturaPeso"
+          placeholder="175 cm"
+          onChange={(e) => setPeso(e.target.value)}
+        />
+      </motion.div>
 
-      <label htmlFor="">Añadir color</label>
-      <input type="text" onChange={(e) => setColor(e.target.value)} />
-      <br />
+      {/* TALLA */}
 
-      <label htmlFor="">Añadir Estilo</label>
-      <input type="text" onChange={(e) => setEstilo(e.target.value)} />
-      <br />
+      <motion.div>
+        <motion.input
+          initial={{ x: "-100vw" }}
+          animate={{ fontSize: 60, x: -75, y: 0 }}
+          transition={{ type: "spring", stiffness: 200 }}
+          whileHover={{ scale: 1.1 }}
+          className="buttonFormLook"
+          type="button"
+          value="S"
+          onClick={(e) => setTalla(e.target.value)}
+        />
+
+        <motion.input
+          initial={{ x: "-100vw" }}
+          animate={{ fontSize: 60, x: -25, y: 0 }}
+          transition={{ type: "spring", stiffness: 200 }}
+          whileHover={{ scale: 1.1 }}
+          className="buttonFormLook"
+          type="button"
+          value="M"
+          onClick={(e) => setTalla(e.target.value)}
+        />
+
+        <motion.input
+          initial={{ x: "-100vw" }}
+          animate={{ fontSize: 60, x: 25, y: 0 }}
+          transition={{ type: "spring", stiffness: 200 }}
+          whileHover={{ scale: 1.1 }}
+          className="buttonFormLook"
+          type="button"
+          value="L"
+          onClick={(e) => setTalla(e.target.value)}
+        />
+
+        <motion.input
+          initial={{ x: "-100vw" }}
+          animate={{ fontSize: 60, x: 75, y: 0 }}
+          transition={{ type: "spring", stiffness: 200 }}
+          whileHover={{ scale: 1.1 }}
+          className="buttonFormLook"
+          type="button"
+          value="XL"
+          onClick={(e) => setTalla(e.target.value)}
+        />
+      </motion.div>
+
+      {/* COLORES */}
+      <motion.div
+      initial={{y:"75vw", x: 0}}
+      animate={{fontSize: 60, x:0,y:0}}
+      transition={{type: "spring", stiffness: 155, delay: 0.5}}
+      >
+        <h2>Elige uno o dos colores</h2>
+      <Checkbox.Group onChange={(e)=>onChangeCheck(e)}  >
     
 
+
+          <Checkbox className="color" value="negro" id="negro" disabled={isDisabled("negro")}>
+          <img width="10%" height="5%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/black.jpg"></img>
+          </Checkbox>
+          &nbsp;&nbsp; &nbsp;&nbsp;
+          <Checkbox className="color" value="azul" id="azul" disabled={isDisabled("azul")}>
+          <img width="10%" height="5%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/bluelight.jpg"></img>
+          </Checkbox>
+          &nbsp;&nbsp; &nbsp;&nbsp;
+          <Checkbox className="color" value="verde" id="verde" disabled={isDisabled("verde")}>
+          <img width="10%" height="5%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/green.jpg"></img>
+          </Checkbox>
+          &nbsp;&nbsp; &nbsp;&nbsp;
+          <Checkbox className="color" value="blanco" id="blanco" disabled={isDisabled("blanco")}>
+          <img width="10%" height="5%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/white.jpg"></img>
+          </Checkbox>
+          &nbsp;&nbsp; &nbsp;&nbsp;
+          <Checkbox className="color" value="marron" id="marron" disabled={isDisabled("marron")}>
+          <img width="10%" height="5%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/brown.jpg"></img>
+          </Checkbox>
+        
+      </Checkbox.Group>
+      </motion.div>
+     
+
+      {/* ESTILOS  */}
+      <motion.div
+        initial={{ y: "-80vw", x: 0 }}
+        animate={{ fontSize: 60, x: 0, y: 0 }}
+        transition={{ type: "spring", stiffness: 155, delay: 0.5 }}
+      >
+        <h2>Qué imagen define mejor tu estilo</h2>
+        <input type="image"  className="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/classic.jpg"
+          value="classic"
+          onClick={(e) => setEstilo(e.target.value)}
+        />
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        <input type="image"  className="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/sport.jpg"
+          value="sport"
+          onClick={(e) => setEstilo(e.target.value)}
+        />
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        <input type="image" className="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/fashion.jpg"
+          value="fashion"
+          onClick={(e) => setEstilo(e.target.value)}
+        />
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        <input type="image" className="persona" width="15%" height="30%" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/casual2.jpg"
+          value="casual"
+          onClick={(e) => setEstilo(e.target.value)}
+        />
+      </motion.div>
+
       <button onClick={searchData}>Enviar</button>
-      {data != "" ?  <div> Ha agregado {data.tipo}
-          correctamente a la bbdd  </div> :  ""}
+
+      {data !== "" ? <div> Se ha recogido los datos de la bbdd </div> : ""}
+
     </div>
   );
 };
