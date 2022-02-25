@@ -14,43 +14,35 @@ app.use("/", router)
 
 
 // ESTO ES LO DEL CHAT: 
-// const http = require("http");
-// const cors = require('cors');
-// const { Server } = require("socket.io");
+const http = require("http");
+const cors = require('cors');
+const { Server } = require("socket.io");
+app.use(cors());
+const server = http.createServer(app)
 
+const io = new Server(server, {
+    cors: {
+        origin: "http://localhost:3000/",
+        methods: ["GET", "POST"]
+    }
+})
 
-// app.use(cors());
+io.on("connection", socket => {
+    console.log(`Usuario conectado ${socket.id}`);
 
-// const server = http.createServer(app)
+    socket.on("entrarSala", (data) => {
+        socket.join(data)
+        console.log(`El usuario con ID: ${socket.id} se ha unido a la sala`)
+    })
 
-// const io = new Server(server, {
-//     cors: {
-//         origin: "http://localhost:3000/",
-//         methods: ["GET", "POST"]
-//     }
-// })
+    socket.on("enviarMensaje", (info) => {
+        socket.to(info.sala).emit("mensajeRecibido", data);
+    })
 
-// io.on("connect_error", (err) => {
-//         console.log(`connect_error due to ${err.message}`);
-//       });
-
-// io.on("connection", (socket) => {
-//     console.log(`Usuario conectado ${socket.id}`);
-
-
-//     socket.on("entrarSala", (data) => {
-//         socket.join(data)
-//         console.log(`El usuario con ID: ${socket.id} se ha unido a la sala`)
-//     })
-
-//     socket.on("enviarMensaje", (info) => {
-//         socket.to(info.sala).emit("mensajeRecibido", data);
-//     })
-
-//     socket.on("disconnected", () => {
-//         console.log("User Disconnected", socket.id);
-//     })
-// })
+    socket.on("disconnect", () => {
+        console.log("User Disconnected", socket.id);
+    })
+})
 
 
 //ESTO ES LO DE STATIC
@@ -64,4 +56,4 @@ app.use("/", router)
 
 // aquí metemos el puerto en una variable y le decimos que nos escuche
 const port = 5500
-app.listen(port, () => console.log(`Servidor en puerto: ${port}`))
+server.listen(port, () => console.log(`Servidor en puerto: ${port}`))

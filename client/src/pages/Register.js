@@ -10,12 +10,10 @@ class Register extends Component {
 
     submit(event) { //con esta función recibo el evento del formulario para poder llevarlo al back y almacenarlo
         event.preventDefault()
-        console.log("funciona correctamente");
-
-
         let nombre = event.target.nombre.value;
         let apellidos = event.target.apellidos.value;
         let email = event.target.email.value;
+        let dni = event.target.dni.value
         let poblacion = event.target.poblacion.value;
         let direccion = event.target.direccion.value;
         let cp = event.target.cp.value;
@@ -28,6 +26,7 @@ class Register extends Component {
             nombre,
             apellidos,
             email,
+            dni,
             poblacion,
             direccion,
             cp,
@@ -36,7 +35,12 @@ class Register extends Component {
             password,
             password2
         }
-        axios.post("/register", User).then((res) => console.log(res.data))
+        axios.post("/register", User).then((res) => {
+            // window.location.href = "http://localhost:3000/login"
+            
+            console.log(localStorage.getItem("infoUser"))
+            console.log(typeof(localStorage.getItem("infoUser")))
+        })
     }
 
     render() {
@@ -51,6 +55,9 @@ class Register extends Component {
                     <br></br>
                     <label >Email</label>
                     <input type="text" name="email" placeholder="Ej: felipe_VI@hotmail.com"></input>
+                    <br></br>
+                    <label >DNI</label>
+                    <input type="text" name="dni" placeholder="12345678X"></input>
                     <br></br>
                     <label >Población</label>
                     <input type="text" name="poblacion" placeholder="Ej: Madrid"></input>
