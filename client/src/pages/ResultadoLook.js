@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Checkbox, Row } from "antd";
-import { Button, Row, Container, Col  } from 'react-bootstrap';
+import { Checkbox } from "antd";
+// import { Button, Row, Container, Col  } from 'react-bootstrap';
 
 function ResultadoLook() {
 
@@ -25,7 +25,7 @@ function ResultadoLook() {
 
             for (let i = 0; i < resultado.todasPartesDeArriba.length; i++) {
 
-                if (cambios[0] == resultado.todasPartesDeArriba[i]._id) {
+                if (cambios[0] === resultado.todasPartesDeArriba[i]._id) {
                     console.log(resultado.todasPartesDeArriba[i]._id)
                     resultado.todasPartesDeArriba.splice(i, 1)
                     localStorage.setItem("resultado", JSON.stringify(resultado))
@@ -33,7 +33,7 @@ function ResultadoLook() {
 
                 }
 
-                if (cambios[1] == resultado.todasPartesDeArriba[i]._id) {
+                if (cambios[1] === resultado.todasPartesDeArriba[i]._id) {
                     console.log(resultado.todasPartesDeArriba[i]._id)
                     resultado.todasPartesDeArriba.splice(i, 1)
                     localStorage.setItem("resultado", JSON.stringify(resultado))
@@ -42,14 +42,14 @@ function ResultadoLook() {
             }
 
             for (let i = 0; i < resultado.todasPartesDeAbajo.length; i++) {
-                if (cambios[0] == resultado.todasPartesDeAbajo[i]._id) {
+                if (cambios[0] === resultado.todasPartesDeAbajo[i]._id) {
                     console.log(resultado.todasPartesDeAbajo[i]._id)
                     resultado.todasPartesDeAbajo.splice(i, 1)
                     localStorage.setItem("resultado", JSON.stringify(resultado))
                     console.log(JSON.parse(localStorage.getItem("resultado")))
                 }
 
-                if (cambios[1] == resultado.todasPartesDeAbajo[i]._id) {
+                if (cambios[1] === resultado.todasPartesDeAbajo[i]._id) {
                     console.log(resultado.todasPartesDeAbajo[i]._id)
                     resultado.todasPartesDeAbajo.splice(i, 1)
                     localStorage.setItem("resultado", JSON.stringify(resultado))
@@ -58,14 +58,14 @@ function ResultadoLook() {
             }
 
             for (let i = 0; i < resultado.todosZapatos.length; i++) {
-                if (cambios[0] == resultado.todosZapatos[i]._id) {
+                if (cambios[0] === resultado.todosZapatos[i]._id) {
                     console.log(resultado.todosZapatos[i]._id)
                     resultado.todosZapatos.splice(i, 1)
                     localStorage.setItem("resultado", JSON.stringify(resultado))
                     console.log(JSON.parse(localStorage.getItem("resultado")))
                 }
 
-                if (cambios[1] == resultado.todosZapatos[i]._id) {
+                if (cambios[1] === resultado.todosZapatos[i]._id) {
                     console.log(resultado.todosZapatos[i]._id)
                     resultado.todosZapatos.splice(i, 1)
                     localStorage.setItem("resultado", JSON.stringify(resultado))
@@ -74,6 +74,7 @@ function ResultadoLook() {
             }
 
             localStorage.setItem("contadorCambios",JSON.stringify(contador));
+            window.location.href = "http://localhost:3000/resultadolook"
         } else{
             alert("BANEADO");
         }
