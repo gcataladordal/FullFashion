@@ -56,4 +56,4 @@ app.use("/", router)
 
 // aquí metemos el puerto en una variable y le decimos que nos escuche
 const port = 5500
-server.listen(port, () => console.log(`Servidor en puerto: ${port}`))
+app.listen(port, () => console.log(`Servidor en puerto: ${port}`))
