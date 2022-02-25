@@ -4,7 +4,6 @@ const useFetch = (props) => {
 
   const [data, setData] = useState("");
 
-
   useEffect(() => {
     if (data !== "") {
       searchData(props);
@@ -12,14 +11,13 @@ const useFetch = (props) => {
   }, [data]);
 
   const searchData = (props) => {
-    console.log("Pulsa el boton buscar");
     console.log(data);
     axios.post(`${props}`, data).then((res) => {
       localStorage.setItem("resultado", JSON.stringify(res.data));
-      const saved = JSON.parse(localStorage.getItem("resultado"));
-      
-      // voy por aquí
-      console.log(saved.partesDeArriba[0])
+      // saved tiene toda la información ya capada y random (3 de arriba, 2 de abajo y 1 zapato)
+      const todoRandom = JSON.parse(localStorage.getItem("resultado"));
+      // console.log(todoRandom)
+
     });
   };
 

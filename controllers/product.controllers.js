@@ -4,17 +4,16 @@ const Producto = require("../models/productModel")
 // función que busca todos los productos
 const products = {
     buscarProductos: async (req, res) => {
-        console.log("pasa por funcion buscar productos")
         let resulBusqArriba = await busquedaArriba(req)
         let resulBusqAbajo = await busquedaAbajo(req)
         let resulBusqZapatos = await busquedaZapatos(req)
         let resultado = {
-            partesDeArriba : resulBusqArriba,
-            partesDeAbajo : resulBusqAbajo,
-            zapatos : resulBusqZapatos
+            todasPartesDeArriba: resulBusqArriba,
+            todasPartesDeAbajo: resulBusqAbajo,
+            todosZapatos: resulBusqZapatos
         }
         console.log("*****************************************************************************")
-        console.log(resultado)
+        // console.log(resultado)
         res.json(resultado)
     }
 }
@@ -27,14 +26,14 @@ async function busquedaArriba(req) {
         "color": req.body.color,
         "tipo_prenda": "arriba"
     })
-    // variable vacía para meter solo 3 resultados con el for que lo hace
-    const resultadoArriba3 = []
-    for (let i = 0; i <= 2; i++) {
-        resultadoArriba3.push(resultadoArriba[(random(0, resultadoArriba.length))])
-    }
-    console.log(resultadoArriba3);
-    return resultadoArriba3;
-    
+    // variable vacía para meter solo 3 resultados con el for que lo hace además de random
+    // const resultadoArriba3 = []
+    // for (let i = 0; i <= 2; i++) {
+    //     resultadoArriba3.push(resultadoArriba[(random(0, resultadoArriba.length))])
+    // }
+
+    // console.log(resultadoArriba);
+    return resultadoArriba;
 }
 
 // busca las partes de arriba según recoge del body
@@ -45,14 +44,15 @@ async function busquedaAbajo(req) {
         "color": req.body.color,
         "tipo_prenda": "abajo"
     })
-    console.log(resultadoAbajo);
-    // variable vacía para meter solo 3 resultados con el for que lo hace
-    const resultadoAbajo2 = []
-    for (let i = 0; i <= 1; i++) {
-        resultadoAbajo2.push(resultadoAbajo[(random(0, resultadoAbajo.length))])
-    }
-    console.log(resultadoAbajo2);
-    return resultadoAbajo2;
+
+    // variable vacía para meter solo 3 resultados con el for que lo hace además de random
+    // const resultadoAbajo2 = []
+    // for (let i = 0; i <= 1; i++) {
+    //     resultadoAbajo2.push(resultadoAbajo[(random(0, resultadoAbajo.length))])
+    // }
+
+    // console.log(resultadoAbajo);
+    return resultadoAbajo;
 }
 
 // busca los zapatos según recoge del body
@@ -64,11 +64,12 @@ async function busquedaZapatos(req) {
         "tipo_prenda": "zapatos"
     })
     // variable vacía para meter solo 1 resultado
-    const resultadoZapato1 = []
+    // const resultadoZapato1 = []
     // para pusear el resultado solo 1, con el random
-    resultadoZapato1.push(resultadoZapato[(random(0, resultadoZapato.length))])
-    console.log(resultadoZapato1);
-    return resultadoZapato1;
+    // resultadoZapato1.push(resultadoZapato[(random(0, resultadoZapato.length))])
+
+    // console.log(resultadoZapato);
+    return resultadoZapato;
 }
 
 // generar números aleatorios con mínimo y máximo
