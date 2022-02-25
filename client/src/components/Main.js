@@ -13,6 +13,7 @@ import DatosCompraMio from "../pages/DatosCompraMio";
 import DatosCompraRegalo from "../pages/DatosCompraRegalo"; 
 import MostrarFactura from "../pages/MostrarFactura";
 import Payment from "./stripe";
+import DatosEnvio from "../pages/DatosEnvio";
 
 
 class Main extends Component {
@@ -35,6 +36,7 @@ class Main extends Component {
           <Route path="/datoscompraregalo" element={<DatosCompraRegalo/>} />
           <Route path="/datoscompramio" element={<DatosCompraMio/>} />
           <Route path="/mostrarfactura" element={<MostrarFactura />} />
+          <Route path="/datosenvio" element={<DatosEnvio />} />
             
         </Routes>
       </div>
