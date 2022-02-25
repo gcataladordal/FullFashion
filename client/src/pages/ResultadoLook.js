@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Checkbox, Row } from "antd";
+import { Button, Row, Container, Col  } from 'react-bootstrap';
 
 function ResultadoLook() {
 

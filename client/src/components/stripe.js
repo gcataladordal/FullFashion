@@ -16,35 +16,58 @@ const ChekoutForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
-            type: 'card',
-            card: elements.getElement(CardElement),
+        // let id_usuario = JSON.parse(localStorage.getItem("id_usuario"))
+        // let productos = JSON.parse(localStorage.getItem("productos"))
+        // let estado = JSON.parse(localStorage.getItem("estado"))
+        // let fecha_creacion = JSON.parse(localStorage.getItem("fecha_creacion"))
+        // let  modo_entrega = JSON.parse(localStorage.getItem("modo_entrega"))
+        // let direccion = JSON.parse(localStorage.getItem("direccion"))
+        // let cp = JSON.parse(localStorage.getItem("cp"))
+        // let poblacion = JSON.parse(localStorage.getItem("poblacion"))
+        // let devolucion = JSON.parse(localStorage.getItem("devolucion"))
+        // let metodo_pago = JSON.parse(localStorage.getItem("resultado"))
+    
+
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+        type: 'card',
+        card: elements.getElement(CardElement),
+    })
+    if (!error) {
+        const { id } = paymentMethod;
+        const { data } = await axios.post('/checkout', {
+            id,
+            amount: 30000,
+            id_usuario: 5555,
+            productos: ["pantalon azul", "camiseta azul", "zapatos azul"],
+            estado: "En tránsito",
+            fecha_creacion: new Date(),
+            modo_entrega: "correo",
+            direccion: "Calle falsa 123",
+            cp: "28008",
+            poblacion: "Madrid",
+            devolucion: true,
+
         })
-        if (!error) {
-            const {id} = paymentMethod;
-          const {data} = await axios.post('/checkout', {
-                id,
-                amount: 30000
-            })
-            console.log(data);
-            elements.getElement(CardElement).clear()
+        console.log(data);
+        elements.getElement(CardElement).clear();
         }
         window.location.href = "http://localhost:3000/mostrarfactura"
     }
+}
 
 
-    return (
-        <form onSubmit={handleSubmit} className="card card-body">
-            <img src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/imagenpago.jpg" alt="Checkout" className="img-fluid" />
-            <div className="form-group">
-                <h3 className="text-center">Total: 300€</h3>
+return (
+    <form onSubmit={handleSubmit} className="card card-body">
+        <img src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/imagenpago.jpg" alt="Checkout" className="img-fluid" />
+        <div className="form-group">
+            <h3 className="text-center">Total: 300€</h3>
             <CardElement className="form-control" />
-            </div>
-            <button className="ButtonHome btn btn-primary btn-lg">
-                PAGAR
-            </button>
-        </form>
-    )
+        </div>
+        <button className="ButtonHome btn btn-primary btn-lg">
+            PAGAR
+        </button>
+    </form>
+)
 }
 
 function Payment() {
