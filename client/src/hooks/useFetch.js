@@ -17,9 +17,10 @@ const useFetch = (props) => {
     axios.post(`${props}`, data).then((res) => {
       localStorage.setItem("resultado", JSON.stringify(res.data));
       const saved = JSON.parse(localStorage.getItem("resultado"));
-      
+
       // voy por aquí
       console.log(saved.partesDeArriba[0])
+      console.log(saved.partesDeArriba[0].color)
     });
   };
 
