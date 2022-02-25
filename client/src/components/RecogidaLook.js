@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import useFetch from "../hooks/useFetch";
-import ResultadoLook from "../pages/ResultadoLook";
 import { motion } from "framer-motion";
 import { Checkbox, Row } from "antd";
 
@@ -12,6 +11,18 @@ const RecogidaLook = () => {
   const [color, setColor] = useState("");
   const [estilo, setEstilo] = useState("");
   const [quien, setQuien] = useState("");
+  const [email, setEmail] = useState("");
+
+  const [viewTarget, setViewTarget] = useState(false);
+  const [viewAlturaPeso, setViewAlturaPeso] = useState(false);
+  const [viewTalla, setViewTalla] = useState(false);
+  const [viewColor, setViewColor] = useState(false);
+  const [viewEstilo, setViewEstilo] = useState(false);
+  const [viewQuien, setViewQuien] = useState(true);
+  const [viewEmail, setViewEmail] = useState(false);
+  const [viewAlertaEmail, setViewAlertaEmail] = useState(false)
+  const [viewAlertaAltura, setViewAlertaAltura] = useState(false)
+  const [viewAlertaPeso, setViewAlertaPeso] = useState(false)
 
   const [data, setData] = useFetch("busquedalook");
 
@@ -38,107 +49,198 @@ const RecogidaLook = () => {
 
   return (
     <div>
-       <br /> <br />
+      <br /> <br />
+
       {/* ELEGIR DSTINATARIO DE LA COLLECIÓN */}
-      <div>
+      {viewQuien == true ? (<motion.div
+        initial={{ y: -1050, }}
+        animate={{ fontSize: 60, y: 0 }}
+        transition={{ type: "spring", stiffness: 200, delay: 0.2 }}>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <input
           type="button"
           className="buttonFormLook"
-          value="PARA MI"
+          value="Es para mi"
           onClick={() => {
             setQuien("myself");
             console.log("Click para mi");
+            setViewQuien(false);
+            setViewTarget(true)
           }}
         />
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp;
         <input
           type="button"
           className="buttonFormLook"
-          value="PARA REGALO"
+          value="Es un regalo"
           onClick={() => {
             setQuien("regalo");
             console.log("Click Regalo");
+            setViewQuien(false);
+            setViewEmail(true);
           }}
         />
         <br />
-      </div>
-      <br />
-      <div>
-        <label>Correo del amigo/a del Regalo</label> &nbsp;&nbsp;
+        <br />
+      </motion.div>) : ""}
+      {viewEmail == true ? (<motion.div
+        initial={{ y: -2550, }}
+        animate={{ fontSize: 60, y: 0 }}
+        transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+      >
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h2>Correo del amigo/a del Regalo</h2> &nbsp;&nbsp;
+       
+        <br />
+        <br />
         <input
           type="text"
           className=""
+          id="inputEmail"
           placeHolder="correo@xmail.com"
-          onClick={() => {
-            console.log(quien);
-          }}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <br />
+         {viewAlertaEmail === true ? (<div>
+          <motion.p
+          initial={{ x: -1000, color: "#e30b2c"}}
+          animate={{ fontSize: 20, x: 0 }}
+          transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+          >Por favor, introduce un correo electronico válido</motion.p>
+        </div>) : ""}
         <br />
         <input
           type="button"
           className="buttonFormLook"
           value="Siguiente"
           onClick={() => {
-            console.log(quien);
+            if (email === "") {
+              setViewAlertaEmail(true);
+            } else {
+            setViewEmail(false);
+            setViewTarget(true);
+            setViewAlertaEmail(false);
+          }
           }}
         />
-      </div>
-
-      {/* TIPO DE PERSONA */}
-      <motion.div
-        initial={{ y: -250, x: -75 }}
-        animate={{ fontSize: 60, x: -75, y: 0 }}
-        transition={{ type: "spring", stiffness: 200 }}
+      </motion.div>) : ""}
+      {/* TIPO DE PERSONA (TARGET) */}
+      {viewTarget == true ? (<motion.div
+        initial={{ y: -1000, }}
+        animate={{ fontSize: 60, y: 0 }}
+        transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
       >
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <h2>Tu Perfil</h2>
-        <input
+        <br />
+        <br />
+        <br />
+        <motion.input
+          whileHover={{ scale: 1.1 }}
           type="image"
           className="persona"
           width="15%"
           height="30%"
           src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/muher.jpg"
           value="mujer"
-          onClick={(e) => setTarget(e.target.value)}
-        ></input>
+          onClick={
+            (e) => {
+              setTarget(e.target.value);
+              setViewAlturaPeso(true);
+              setViewTarget(false);
+            }
+          }
+        />
         &nbsp;&nbsp; &nbsp;&nbsp;
-        <input
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        <motion.input
+          whileHover={{ scale: 1.1 }}
           type="image"
           className="persona"
           width="15%"
           height="30%"
           src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/niño.jpg"
           value="niño"
-          onClick={(e) => setTarget(e.target.value)}
+          onClick={
+            (e) => {
+              setTarget(e.target.value);
+              setViewAlturaPeso(true);
+              setViewTarget(false);
+            }
+          }
         />
         &nbsp;&nbsp; &nbsp;&nbsp;
-        <input
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        <motion.input
+          whileHover={{ scale: 1.1 }}
           type="image"
           className="persona"
           width="15%"
           height="30%"
           src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/niña.jpg"
           value="niña"
-          onClick={(e) => setTarget(e.target.value)}
+          onClick={
+            (e) => {
+              setTarget(e.target.value);
+              setViewAlturaPeso(true);
+              setViewTarget(false);
+            }
+          }
         />
         &nbsp;&nbsp; &nbsp;&nbsp;
-        <input
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        <motion.input
+          whileHover={{ scale: 1.1 }}
           type="image"
           className="persona"
           width="15%"
           height="30%"
           src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/hombre.jpg"
           value="hombre"
-          onClick={(e) => console.log(e.target.value)}
+          onClick={
+            (e) => {
+              setTarget(e.target.value);
+              setViewAlturaPeso(true);
+              setViewTarget(false);
+            }
+          }
         />
-      </motion.div>
-      <br />
-      {/* ALTURA Y PESO */}
 
-      <motion.div
+        <br />
+
+      </motion.div>) : ""}
+      {/* ALTURA Y PESO */}
+      {viewAlturaPeso == true ? (<motion.div
         initial={{ x: "75vw" }}
         animate={{ fontSize: 60, x: -50, y: 0 }}
-        transition={{ type: "spring", stiffness: 200, delay: 0.5 }}
+        transition={{ type: "spring", stiffness: 200, delay: 0.3 }}
       >
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <br />
         <br />
         <label className="textAlturaPeso">Peso: &nbsp;</label>
@@ -149,6 +251,14 @@ const RecogidaLook = () => {
           onChange={(e) => setAltura(e.target.value)}
         />
         <br />
+        {viewAlertaPeso === true ? (
+        <div><motion.p
+          initial={{ x: -1000, color: "#e30b2c"}}
+          animate={{ fontSize: 20, x: 0 }}
+          transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+          >Por favor, introduce tu peso</motion.p></div>
+          ) : ""}
+        
         <br />
         <label className="textAlturaPeso">Altura: &nbsp;</label>
         <motion.input
@@ -157,63 +267,139 @@ const RecogidaLook = () => {
           placeholder="175 cm"
           onChange={(e) => setPeso(e.target.value)}
         />
-      </motion.div>
-      <br /><br />
-      {/* TALLA */}
+        
+         {viewAlertaAltura === true ? (
+        <motion.p
+          initial={{ x: -1000, color: "#e30b2c"}}
+          animate={{ fontSize: 20, x: 0 }}
+          transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+          >Por favor, introduce tu altura</motion.p>) : ""}
+        <br />
+        <br />
+        <input
+          type="button"
+          className="buttonFormLook"
+          value="Siguiente"
+          onClick={() => {
+            if (peso === "" && altura !== "") {
+              setViewAlertaAltura(true)
+            } else if (peso !== "" && altura === "") {
+              setViewAlertaPeso(true)
+            } else if (peso === "" && altura === "") {
+              setViewAlertaAltura(true)
+              setViewAlertaPeso(true)
+            } else if (peso !== "" && altura !== "") {
+              setViewAlertaAltura(false)
+              setViewAlertaPeso(false)
+              setViewAlturaPeso(false);
+              setViewTalla(true);
+            }
+          }} />
 
-      <motion.div>
+      </motion.div>) : ""}
+      {/* TALLA */}
+      {viewTalla == true ? (<motion.div
+        initial={{ x: -2500 }}
+        animate={{ fontSize: 60, x: 0, y: 0 }}
+        transition={{ type: "spring", stiffness: 200, delay: 0.3 }}>
+          <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <br />
+        <br />
         <motion.input
-          initial={{ x: "-100vw" }}
-          animate={{ fontSize: 60, x: -75, y: 0 }}
-          transition={{ type: "spring", stiffness: 200 }}
+          animate={{ fontSize: 60}}
           whileHover={{ scale: 1.1 }}
           className="buttonFormLook"
           type="button"
           value="S"
-          onClick={(e) => setTalla(e.target.value)}
-        />
+          onClick={
+            (e) => {
+              setTalla(e.target.value);
+              setViewTalla(false);
+              setViewColor(true);
+            }
+          }
 
+        />
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp;
         <motion.input
-          initial={{ x: "-100vw" }}
-          animate={{ fontSize: 60, x: -25, y: 0 }}
-          transition={{ type: "spring", stiffness: 200 }}
+
+          animate={{ fontSize: 60 }}
+
           whileHover={{ scale: 1.1 }}
           className="buttonFormLook"
           type="button"
           value="M"
-          onClick={(e) => setTalla(e.target.value)}
+          onClick={
+            (e) => {
+              setTalla(e.target.value);
+              setViewTalla(false);
+              setViewColor(true);
+            }
+          }
         />
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        
 
         <motion.input
-          initial={{ x: "-100vw" }}
-          animate={{ fontSize: 60, x: 25, y: 0 }}
-          transition={{ type: "spring", stiffness: 200 }}
+
+          animate={{ fontSize: 60}}
+
           whileHover={{ scale: 1.1 }}
           className="buttonFormLook"
           type="button"
           value="L"
-          onClick={(e) => setTalla(e.target.value)}
+          onClick={
+            (e) => {
+              setTalla(e.target.value);
+              setViewTalla(false);
+              setViewColor(true);
+            }
+          }
         />
-
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp;
         <motion.input
-          initial={{ x: "-100vw" }}
-          animate={{ fontSize: 60, x: 75, y: 0 }}
-          transition={{ type: "spring", stiffness: 200 }}
           whileHover={{ scale: 1.1 }}
+          animate={{ fontSize: 60 }}
+
+
           className="buttonFormLook"
           type="button"
           value="XL"
-          onClick={(e) => setTalla(e.target.value)}
+          onClick={
+            (e) => {
+              setTalla(e.target.value);
+              setViewTalla(false);
+              setViewColor(true);
+            }
+          }
         />
-      </motion.div>
-      <br /> <br />
+      </motion.div>) : ""}
       {/* COLORES */}
-      <motion.div
+      {viewColor == true ? (<motion.div
         initial={{ y: "75vw", x: 0 }}
         animate={{ fontSize: 60, x: 0, y: 0 }}
-        transition={{ type: "spring", stiffness: 155, delay: 0.5 }}
+        transition={{ type: "spring", stiffness: 155, delay: 0.3 }}
       >
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <h2>Elige uno o dos colores</h2>
+        <br />
+        <br />
         <Checkbox.Group onChange={(e) => onChangeCheck(e)}>
           <Checkbox
             className="color"
@@ -280,16 +466,33 @@ const RecogidaLook = () => {
             ></img>
           </Checkbox>
         </Checkbox.Group>
-      </motion.div>
-      <br /> <br />
+        <br /> <br />
+        <input
+          type="button"
+          className="buttonFormLook"
+          value="Siguiente"
+          onClick={() => {
+            console.log(quien);
+            setViewColor(false);
+            setViewEstilo(true);
+          }}
+        />
+
+      </motion.div>) : ""}
       {/* ESTILOS  */}
-      <motion.div
+      {viewEstilo == true ? (<motion.div
         initial={{ y: "-80vw", x: 0 }}
         animate={{ fontSize: 60, x: 0, y: 0 }}
         transition={{ type: "spring", stiffness: 155, delay: 0.5 }}
       >
+        <br />
+        <br />
+        <br />
         <h2>Qué imagen define mejor tu estilo</h2>
-        <input
+        <br />
+        <br />
+        <motion.input
+          whileHover={{ scale: 1.1 }}
           type="image"
           className="persona"
           width="15%"
@@ -299,7 +502,10 @@ const RecogidaLook = () => {
           onClick={(e) => setEstilo(e.target.value)}
         />
         &nbsp;&nbsp; &nbsp;&nbsp;
-        <input
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        <motion.input
+          whileHover={{ scale: 1.1 }}
           type="image"
           className="persona"
           width="15%"
@@ -309,7 +515,10 @@ const RecogidaLook = () => {
           onClick={(e) => setEstilo(e.target.value)}
         />
         &nbsp;&nbsp; &nbsp;&nbsp;
-        <input
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        <motion.input
+          whileHover={{ scale: 1.1 }}
           type="image"
           className="persona"
           width="15%"
@@ -319,7 +528,10 @@ const RecogidaLook = () => {
           onClick={(e) => setEstilo(e.target.value)}
         />
         &nbsp;&nbsp; &nbsp;&nbsp;
-        <input
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        <motion.input
+          whileHover={{ scale: 1.1 }}
           type="image"
           className="persona"
           width="15%"
@@ -328,11 +540,14 @@ const RecogidaLook = () => {
           value="casual"
           onClick={(e) => setEstilo(e.target.value)}
         />
-      </motion.div>
-      <br />
-      <button className="buttonFormLook" onClick={searchData}>Enviar</button>
+        <br />
+        <br />
+        <br />  
+        <br />
+        <button className="buttonFormLook" onClick={searchData}>¡Quiero ver mi resultado!</button>
 
-      {data !== "" ? <div> Se ha recogido los datos de la bbdd </div> : ""}
+        {data !== "" ? <div> Se ha recogido los datos de la bbdd </div> : ""}
+      </motion.div>) : ""}
     </div>
   );
 };

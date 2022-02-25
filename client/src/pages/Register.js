@@ -36,10 +36,7 @@ class Register extends Component {
             password2
         }
         axios.post("/register", User).then((res) => {
-            // window.location.href = "http://localhost:3000/login"
-            
-            console.log(localStorage.getItem("infoUser"))
-            console.log(typeof(localStorage.getItem("infoUser")))
+            window.location.href = "http://localhost:3000/login"
         })
     }
 
