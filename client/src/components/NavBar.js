@@ -10,15 +10,26 @@ function NavBar () {
     const [showRegister, setShowRegister] = useState(true);
     const [showIniciarSesion, setshowIniciarSesion] = useState(true);
 
-
-    const logout = () => {
-        localStorage.removeItem("infoUser")
-        window.location.href = "http://localhost:3000/"
+    
+    function logout (){
+        localStorage.removeItem("infoUser");
+        window.location.href = "http://localhost:3000/";
     }
 
+    
+    
+    window.onload = () => {
+        let i = 0;   
+        if (i === 0) {
+          getInfo();
+          i++;  
+        }
+    } 
+    
     function getInfo() {
-        let infoUser = localStorage.getItem("infoUser");
-        if (infoUser !== null) {
+    let infoUser = localStorage.getItem("infoUser");    
+    console.log(infoUser)
+        if (infoUser!== null) {
             setShowRegister(false);
             setshowIniciarSesion(false);
             setshowCerrarSesion(true);
@@ -30,18 +41,15 @@ function NavBar () {
     }
     
     
-    
     return (
         <div className="Nav-bar container-fluid">
             <Navbar collapseOnSelect expand="lg">
-
             <Navbar.Brand href="/"><img width="100" height="50" className="img-fluid mx-auto rounded float-start" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesHome/Logo2.png"/></Navbar.Brand>
-
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        {showRegister == true ? (<Nav.Link href="/register">Registro</Nav.Link>) : ""}
-                        {showIniciarSesion == true ? (<Nav.Link href="/login">Iniciar sesión</Nav.Link>) : ""}
+                        {showRegister == true ? (<Nav.Link href="/register" >Registro</Nav.Link>) : ""}
+                        {showIniciarSesion == true ? (<Nav.Link href="/login" >Iniciar sesión</Nav.Link>) : ""}
                         <Nav.Link href="/mapa">Mapa</Nav.Link>
                         {showCerrarSesion == true ? (<Nav.Link onClick={logout}>Cerrar sesión</Nav.Link>) : ""}
                     </Nav>

@@ -50,8 +50,8 @@ const ChekoutForm = () => {
         })
         console.log(data);
         elements.getElement(CardElement).clear();
-
-    
+        }
+        window.location.href = "http://localhost:3000/mostrarfactura"
     }
 }
 
