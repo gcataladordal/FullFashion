@@ -11,6 +11,8 @@ import ResultadoLook from "../pages/ResultadoLook";
 import DatosCompraLogueado from "../pages/DatosCompraLogueado"; 
 import DatosCompraMio from "../pages/DatosCompraMio"; 
 import DatosCompraRegalo from "../pages/DatosCompraRegalo"; 
+import Payment from "./stripe";
+
 
 class Main extends Component {
   constructor(props) {
@@ -22,14 +24,16 @@ class Main extends Component {
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Register" element={<Register />} />
-          <Route path="/Mapa" element={<Mapa />} />
-          <Route path="/RecogidaLook" element={<RecogidaLook />} />
-          <Route path="/ResultadoLook" element={<ResultadoLook />} />
-          <Route path="/DatosCompraLogueado" element={<DatosCompraLogueado/>} />
-          <Route path="/DatosCompraRegalo" element={<DatosCompraRegalo/>} />
-          <Route path="/DatosCompraMio" element={<DatosCompraMio/>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/mapa" element={<Mapa />} />
+          <Route path="/recogidaLook" element={<RecogidaLook />} />
+          <Route path="/resultadoLook" element={<ResultadoLook />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/datoscompralogueado" element={<DatosCompraLogueado/>} />
+          <Route path="/datoscompraregalo" element={<DatosCompraRegalo/>} />
+          <Route path="/datoscompramio" element={<DatosCompraMio/>} />
+            
         </Routes>
       </div>
     );

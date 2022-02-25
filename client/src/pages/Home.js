@@ -25,7 +25,8 @@ class Home extends Component {
                     <li>Realiza hasta 10 cambios antes de confirmar tu nuevo look.</li>
                     <li>Envío y devolución gratuita.</li>
                     <br/>
-                    <Link to="/RecogidaLook"><motion.button 
+                    <Link to="/recogidalook"><motion.button 
+
                     whileHover={{scale:1.1}} className="ButtonHome btn btn-primary btn-lg" variant="primary" type="submit">Comienza tu look</motion.button></Link>
 
                 </ul>
@@ -76,7 +77,7 @@ class Home extends Component {
                 <p>Solo te cobramos la ropa, el servicio de personal shopper es un regalo de Full Fashion.</p>
                 </Col>
             </Row>
-            <Link to="/RecogidaLook"><Button className="ButtonHome btn btn-primary btn-lg" variant="primary" type="submit">Consigue tu look</Button></Link>
+            <Link to="/recogidaLook"><Button className="ButtonHome btn btn-primary btn-lg" variant="primary" type="submit">Consigue tu look</Button></Link>
             </div>
             <Row><img with="100%" height="50%" className="img-fluid rounded mx-auto d-block" alt="Foto de home 8 Full Fashion" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesHome/foto footer.png"/>
             </Row>

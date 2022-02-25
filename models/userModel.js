@@ -6,6 +6,7 @@ const objetoUserSchema = {
     nombre: String,
     apellidos: String,
     email: String,
+    dni: String,
     password: String,
     direccion: String,
     cp: String,
