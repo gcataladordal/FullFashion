@@ -13,26 +13,70 @@ function ResultadoLook() {
         // console.log(checkedValues);
     };
 
-console.log(resultado)
+    console.log(cambios)
+
+
 
     const recogerCambios = () => {
-        console.log(resultado.todasPartesDeArriba);
-        for (let i = 0; i < resultado.todasPartesDeArriba.length; i++) {
-            if(cambios[0] == resultado.todasPartesDeArriba[i]._id) {
-                console.log(resultado.todasPartesDeArriba[i]._id)
-            } 
 
-            if(cambios[1] == resultado.todasPartesDeArriba[i]._id) {
-                console.log(resultado.todasPartesDeArriba[i]._id)
-            } 
+        var contador = JSON.parse(localStorage.getItem("contadorCambios"));
+        contador++;
+        if (contador < 6) {
 
+            for (let i = 0; i < resultado.todasPartesDeArriba.length; i++) {
+
+                if (cambios[0] == resultado.todasPartesDeArriba[i]._id) {
+                    console.log(resultado.todasPartesDeArriba[i]._id)
+                    resultado.todasPartesDeArriba.splice(i, 1)
+                    localStorage.setItem("resultado", JSON.stringify(resultado))
+                    console.log(JSON.parse(localStorage.getItem("resultado")))
+
+                }
+
+                if (cambios[1] == resultado.todasPartesDeArriba[i]._id) {
+                    console.log(resultado.todasPartesDeArriba[i]._id)
+                    resultado.todasPartesDeArriba.splice(i, 1)
+                    localStorage.setItem("resultado", JSON.stringify(resultado))
+                    console.log(JSON.parse(localStorage.getItem("resultado")))
+                }
+            }
+
+            for (let i = 0; i < resultado.todasPartesDeAbajo.length; i++) {
+                if (cambios[0] == resultado.todasPartesDeAbajo[i]._id) {
+                    console.log(resultado.todasPartesDeAbajo[i]._id)
+                    resultado.todasPartesDeAbajo.splice(i, 1)
+                    localStorage.setItem("resultado", JSON.stringify(resultado))
+                    console.log(JSON.parse(localStorage.getItem("resultado")))
+                }
+
+                if (cambios[1] == resultado.todasPartesDeAbajo[i]._id) {
+                    console.log(resultado.todasPartesDeAbajo[i]._id)
+                    resultado.todasPartesDeAbajo.splice(i, 1)
+                    localStorage.setItem("resultado", JSON.stringify(resultado))
+                    console.log(JSON.parse(localStorage.getItem("resultado")))
+                }
+            }
+
+            for (let i = 0; i < resultado.todosZapatos.length; i++) {
+                if (cambios[0] == resultado.todosZapatos[i]._id) {
+                    console.log(resultado.todosZapatos[i]._id)
+                    resultado.todosZapatos.splice(i, 1)
+                    localStorage.setItem("resultado", JSON.stringify(resultado))
+                    console.log(JSON.parse(localStorage.getItem("resultado")))
+                }
+
+                if (cambios[1] == resultado.todosZapatos[i]._id) {
+                    console.log(resultado.todosZapatos[i]._id)
+                    resultado.todosZapatos.splice(i, 1)
+                    localStorage.setItem("resultado", JSON.stringify(resultado))
+                    console.log(JSON.parse(localStorage.getItem("resultado")))
+                }
+            }
+
+            localStorage.setItem("contadorCambios",JSON.stringify(contador));
+        } else{
+            alert("BANEADO");
         }
-
-        // console.log(cambios)
-        // console.log(resultado.todasPartesDeArriba.splice(0,1))
-        // console.log(resultado.todasPartesDeArriba.splice(2,1))
-        // console.log(resultado)
-
     }
 
     const isDisabled = (id) => {
@@ -125,7 +169,7 @@ console.log(resultado)
                 <div>
                     <button onClick={recogerCambios}>Cambiar las seleccionadas</button>
 
-                    <p>*Recuerda que solo tienes 10 cambios de 2 prendas máximo cada vez</p>
+                    <p>*Recuerda que solo tienes 5 cambios de 2 prendas máximo cada vez</p>
                     <button>Seguir para finalizar compra</button>
                 </div>
             </Checkbox.Group>
