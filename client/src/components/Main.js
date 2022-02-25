@@ -9,7 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {motion} from "framer-motion"
 import RecogidaLook from "./RecogidaLook";
 import ResultadoLook from "../pages/ResultadoLook";
-
+import Payment from "./stripe";
 
 class Main extends Component {
   // constructor(props) {
@@ -27,6 +27,8 @@ class Main extends Component {
           <Route path="/form" element={<Form />} />
           <Route path="/recogidaLook" element={<RecogidaLook />} />
           <Route path="/resultadoLook" element={<ResultadoLook />} />
+          <Route path="/payment" element={<Payment />} />
+
         </Routes>
       </div>
     );

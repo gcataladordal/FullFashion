@@ -26,6 +26,7 @@ class Home extends Component {
                     <li>Envío y devolución gratuita.</li>
                     <br/>
                     <Link to="/recogidalook"><motion.button 
+
                     whileHover={{scale:1.1}} className="ButtonHome btn btn-primary btn-lg" variant="primary" type="submit">Comienza tu look</motion.button></Link>
 
                 </ul>
