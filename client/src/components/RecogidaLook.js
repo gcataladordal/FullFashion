@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { motion } from "framer-motion";
 import { Checkbox, Row } from "antd";
+import { triggerFocus } from "antd/lib/input/Input";
 
 const RecogidaLook = () => {
   const [target, setTarget] = useState("");
@@ -34,7 +35,19 @@ const RecogidaLook = () => {
     return color.length > 1 && color.indexOf(id) === -1;
   };
 
+
+  const estaLogueado = () => {
+    let logueado = localStorage.getItem("infoUser")
+    if (logueado !== null) {
+      return true 
+    } else {
+      return false
+    }
+  }
+
+
   const searchData = () => {
+    localStorage.setItem("quien", quien)
     let datos = {
       target,
       altura,
@@ -70,8 +83,15 @@ const RecogidaLook = () => {
           onClick={() => {
             setQuien("myself");
             console.log("Click para mi");
-            setViewQuien(false);
-            setViewTarget(true)
+            let log = estaLogueado()
+            if (log) {
+              setViewQuien(false);
+              setViewTarget(true)
+            } else {
+              setViewQuien(false);
+              setViewEmail(true);
+            }
+            
           }}
         />
         &nbsp;&nbsp; &nbsp;&nbsp;
@@ -82,10 +102,16 @@ const RecogidaLook = () => {
           className="buttonFormLook"
           value="Es un regalo"
           onClick={() => {
+            let log = estaLogueado()
+            if (log) {
             setQuien("regalo");
-            console.log("Click Regalo");
             setViewQuien(false);
-            setViewEmail(true);
+            setViewTarget(true);
+            } else {
+              setQuien("regalo");
+              setViewQuien(false);
+              setViewEmail(true);
+            }
           }}
         />
         <br />
@@ -103,7 +129,7 @@ const RecogidaLook = () => {
         <br />
         <br />
         <br />
-        <h2>Correo del amigo/a del Regalo</h2> &nbsp;&nbsp;
+        <h2>Introduce tu email</h2> &nbsp;&nbsp;
        
         <br />
         <br />

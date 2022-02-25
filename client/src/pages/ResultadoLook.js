@@ -16,6 +16,20 @@ function ResultadoLook() {
     console.log(cambios)
 
 
+    function confirmarCompra(producto1, producto2, producto3, producto4, producto5, producto6) {
+        let quien = localStorage.getItem("quien")
+        let compra = [producto1, producto2, producto3, producto4, producto5, producto6]
+        localStorage.setItem("Compra", JSON.stringify(compra))
+        let infoUser = localStorage.getItem("infoUser")
+        if (infoUser === null) {
+            window.location.href = "http://localhost:3000/datoscompramio"
+        } else if (infoUser !== null && quien === "regalo" ) {
+            window.location.href = "http://localhost:3000/datoscompraregalo"
+        } else if (infoUser !== null && quien === "myself") {
+            window.location.href = "http://localhost:3000/datoscompralogueado"
+        }
+    }
+
 
     const recogerCambios = () => {
 
@@ -167,14 +181,15 @@ function ResultadoLook() {
 
                 </div>
                 <br></br>
+                
+            </Checkbox.Group>
                 <div>
                     <button onClick={recogerCambios}>Cambiar las seleccionadas</button>
 
                     <p>*Recuerda que solo tienes 5 cambios de 2 prendas máximo cada vez</p>
-                    <button>Seguir para finalizar compra</button>
-                </div>
-            </Checkbox.Group>
 
+                    <button onClick={() => confirmarCompra(resultado.todasPartesDeArriba[0], resultado.todasPartesDeArriba[1], resultado.todasPartesDeArriba[2], resultado.todasPartesDeAbajo[0],resultado.todasPartesDeAbajo[1], resultado.todosZapatos[0])}>Seguir para finalizar compra</button>
+                </div>
         </div>
     );
 }
