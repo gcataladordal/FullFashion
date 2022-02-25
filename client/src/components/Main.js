@@ -9,7 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {motion} from "framer-motion"
 import RecogidaLook from "./RecogidaLook";
 import ResultadoLook from "../pages/ResultadoLook";
-
+import Payment from "./stripe";
 
 class Main extends Component {
   // constructor(props) {
@@ -21,12 +21,13 @@ class Main extends Component {
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Register" element={<Register />} />
-          <Route path="/Mapa" element={<Mapa />} />
-          <Route path="/Form" element={<Form />} />
-          <Route path="/RecogidaLook" element={<RecogidaLook />} />
-          <Route path="/ResultadoLook" element={<ResultadoLook />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/mapa" element={<Mapa />} />
+          <Route path="/form" element={<Form />} />
+          <Route path="/recogidaLook" element={<RecogidaLook />} />
+          <Route path="/resultadoLook" element={<ResultadoLook />} />
+          <Route path="/payment" element={<Payment />} />
         </Routes>
       </div>
     );
