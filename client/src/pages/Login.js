@@ -11,16 +11,18 @@ class Login extends Component {
         event.preventDefault()
 
         let email = event.target.email.value;
-        let contrasena = event.target.contrasena.value;
+        let password = event.target.password.value;
 
 
-        let UserName = {
+        let usuarioLogin = {
             email,
-            contrasena
+            password
         }
 
-        axios.post("/login", UserName).then((res) => console.log(res.data))
-
+        axios.post("/login", usuarioLogin).then((res) => {
+            localStorage.setItem("infoUser", JSON.stringify(res.data));
+            window.location.href = "http://localhost:3000/"
+        })
     }
 
 
@@ -32,7 +34,7 @@ class Login extends Component {
                     <input type="text" name="email" placeholder="Ej: felipe_VI@hotmail.com"></input>
                     <br></br>
                     <label>Contraseña</label>
-                    <input type="password" name="contrasena" placeholder="password"></input>
+                    <input type="password" name="password" placeholder="password"></input>
                     <br></br>
                     <button>Enviar</button>
                 </form>

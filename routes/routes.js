@@ -8,13 +8,8 @@ const Stripe = require("stripe")
 
 const stripe = new Stripe("sk_test_51KWzYqAT2Dvvoq4FP3inAGTdnEcI6cQ0lepOWuW8ExJUbOGkvCVqzNx2Cc82Q4xOTw0hUaGeb0algovVt3gI6fSB00NfBV2hGR")
 
-router.post("/register", user.addUser)
-// router.post("/register", (req,res)=>{
-//     console.log(req.body)
-//     res.json(req.body)
-//     // console.log("entra en el endpoint");
-
-// });
+router.post("/register", user.registro)
+router.post("/login", user.loguear)
 
 router.post("/checkout", async (req, res)  => {
     

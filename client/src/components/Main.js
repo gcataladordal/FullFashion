@@ -28,6 +28,7 @@ class Main extends Component {
           <Route path="/recogidaLook" element={<RecogidaLook />} />
           <Route path="/resultadoLook" element={<ResultadoLook />} />
           <Route path="/payment" element={<Payment />} />
+
         </Routes>
       </div>
     );
