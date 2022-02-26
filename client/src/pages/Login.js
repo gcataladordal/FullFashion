@@ -20,7 +20,7 @@ class Login extends Component {
         }
 
         axios.post("/login", usuarioLogin).then((res) => {
-            localStorage.setItem("infoUser", JSON.stringify(res.data));
+            sessionStorage.setItem("infoUser", JSON.stringify(res.data));
             window.location.href = "http://localhost:3000/"
         })
     }

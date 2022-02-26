@@ -23,9 +23,11 @@ const RecogidaLook = () => {
   const [viewEstilo, setViewEstilo] = useState(false);
   const [viewQuien, setViewQuien] = useState(true);
   const [viewEmail, setViewEmail] = useState(false);
-  const [viewAlertaEmail, setViewAlertaEmail] = useState(false)
-  const [viewAlertaAltura, setViewAlertaAltura] = useState(false)
-  const [viewAlertaPeso, setViewAlertaPeso] = useState(false)
+  const [viewAlertaEmail, setViewAlertaEmail] = useState(false);
+  const [viewAlertaAltura, setViewAlertaAltura] = useState(false);
+  const [viewAlertaPeso, setViewAlertaPeso] = useState(false);
+  const [viewAlertaColor, setViewAlertaColor] = useState(false);
+  const [viewSubmit, setViewSubmit] = useState(false);
 
   const [data, setData] = useFetch("busquedalook");
 
@@ -37,9 +39,19 @@ const RecogidaLook = () => {
     return color.length > 1 && color.indexOf(id) === -1;
   };
 
+  const pesoAlturaOk = (valor) => {
+    var regExpPesoAltura = new RegExp(/^\d{2,3}$/);
+    return regExpPesoAltura.test(valor)
+  }
+
+
+  function correoOk(email) {
+    var regExpEmail = new RegExp(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/);
+    return regExpEmail.test(email)
+  }
 
   const estaLogueado = () => {
-    let logueado = localStorage.getItem("infoUser")
+    let logueado = sessionStorage.getItem("infoUser")
     if (logueado !== null) {
       return true
     } else {
@@ -136,7 +148,7 @@ const RecogidaLook = () => {
         <br />
         <br />
         <input
-          type="text"
+          type="email"
           className=""
           id="inputEmail"
           placeHolder="correo@xmail.com"
@@ -159,10 +171,16 @@ const RecogidaLook = () => {
             if (email === "") {
               setViewAlertaEmail(true);
             } else {
-              setViewEmail(false);
-              setViewTarget(true);
-              setViewAlertaEmail(false);
-            }
+              let emailOk = correoOk(email);
+              if(emailOk) {
+                setViewEmail(false);
+                setViewTarget(true);
+                setViewAlertaEmail(false);
+              } else {
+                setViewAlertaEmail(true);
+              }
+            
+          }
           }}
         />
       </motion.div>) : ""}
@@ -272,36 +290,36 @@ const RecogidaLook = () => {
         <h2>Introduce peso y altura</h2>
         <br />
         <br />
-        <label className="textAlturaPeso">Peso: &nbsp;</label>
+        <label className="textAlturaPeso">Peso (kg): &nbsp;</label>
         <motion.input
           className="textAlturaPeso"
           type="text"
-          placeholder="Ej: 70kg"
+          placeholder="Ej: 70"
           onChange={(e) => setAltura(e.target.value)}
         />
         <br />
-        {viewAlertaPeso === true ? (
-          <div><motion.p
-            initial={{ x: -1000, color: "#e30b2c" }}
-            animate={{ fontSize: 20, x: 0 }}
-            transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+
+        {viewAlertaPeso ? (
+        <div><motion.p
+          initial={{ x: -1000, color: "#e30b2c"}}
+          animate={{ fontSize: 20, x: 0 }}
+          transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
           >Por favor, introduce tu peso</motion.p></div>
         ) : ""}
 
         <br />
-        <label className="textAlturaPeso">Altura: &nbsp;</label>
+        <label className="textAlturaPeso">Altura (cm): &nbsp;</label>
         <motion.input
           type="text"
           className="textAlturaPeso"
-          placeholder="175 cm"
+          placeholder="175"
           onChange={(e) => setPeso(e.target.value)}
-        />
-
-        {viewAlertaAltura === true ? (
-          <motion.p
-            initial={{ x: -1000, color: "#e30b2c" }}
-            animate={{ fontSize: 20, x: 0 }}
-            transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+        />   
+         {viewAlertaAltura ? (
+        <motion.p
+          initial={{ x: -1000, color: "#e30b2c"}}
+          animate={{ fontSize: 20, x: 0 }}
+          transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
           >Por favor, introduce tu altura</motion.p>) : ""}
         <br />
         <br />
@@ -318,10 +336,17 @@ const RecogidaLook = () => {
               setViewAlertaAltura(true)
               setViewAlertaPeso(true)
             } else if (peso !== "" && altura !== "") {
-              setViewAlertaAltura(false)
-              setViewAlertaPeso(false)
-              setViewAlturaPeso(false);
-              setViewTalla(true);
+              let pesoAlturaBien = (pesoAlturaOk(peso) && pesoAlturaOk(altura))
+              if (pesoAlturaBien) {
+                setViewAlertaAltura(false)
+                setViewAlertaPeso(false)
+                setViewAlturaPeso(false);
+                setViewTalla(true);
+              } else {
+                setViewAlertaAltura(true)
+                setViewAlertaPeso(true)
+              }
+              
             }
           }} />
 
@@ -495,15 +520,25 @@ const RecogidaLook = () => {
             ></img>
           </Checkbox>
         </Checkbox.Group>
-        <br /> <br />
+        <br />
+        {viewAlertaColor ? (<motion.p
+          initial={{ x: -1000, color: "#e30b2c"}}
+          animate={{ fontSize: 20, x: 0 }}
+          transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+          >Por favor, selecciona entre 1 o 2 colores</motion.p>) : ""}
+          <br /> 
         <input
           type="button"
           className="buttonFormLook"
           value="Siguiente"
           onClick={() => {
-            console.log(quien);
-            setViewColor(false);
-            setViewEstilo(true);
+            if (color === "") {
+              setViewAlertaColor(true)
+            } else {
+              setViewAlertaColor(false)
+              setViewColor(false);
+              setViewEstilo(true);
+            }
           }}
         />
 
@@ -530,7 +565,7 @@ const RecogidaLook = () => {
           height="90%"
           src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/clas.jpg"
           value="classic"
-          onClick={(e) => setEstilo(e.target.value)}
+          onClick={(e) => {setEstilo(e.target.value); setViewSubmit(true)}}
         />
         </Col>
           <Col xs={6} md={3}>
@@ -542,7 +577,7 @@ const RecogidaLook = () => {
           height="90%"
           src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/spor.jpg"
           value="sport"
-          onClick={(e) => setEstilo(e.target.value)}
+          onClick={(e) => {setEstilo(e.target.value); setViewSubmit(true)}}
         />
         </Col>
         <Col xs={6} md={3}>
@@ -554,7 +589,7 @@ const RecogidaLook = () => {
           height="90%"
           src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/fas2.jpg"
           value="fashion"
-          onClick={(e) => setEstilo(e.target.value)}
+          onClick={(e) => {setEstilo(e.target.value); setViewSubmit(true)}}
         />
         </Col>
         <Col xs={6} md={3}>
@@ -566,18 +601,22 @@ const RecogidaLook = () => {
           height="90%"
           src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/cas.jpg"
           value="casual"
-          onClick={(e) => setEstilo(e.target.value)}
+          onClick={(e) => {setEstilo(e.target.value); setViewSubmit(true)}}
         />
         </Col>
         </Row>
-        <br />
+        </motion.div>) : ""}
+        {viewSubmit ? (<motion.div
+        initial={{ y: "-80vw", x: 0 }}
+        animate={{ fontSize: 60, x: 0, y: 0 }}
+        transition={{ type: "spring", stiffness: 155, delay: 0.2 }}>
         <br />
         <br />
         <br />
         <button className="buttonFormLook" onClick={searchData}>¡Quiero ver mi resultado!</button>
-
-        {data !== "" ? <div> Se ha recogido los datos de la bbdd </div> : ""}
-      </motion.div>) : ""}
+        </motion.div>) : ""}
+      
+      
     </div>
   );
 };

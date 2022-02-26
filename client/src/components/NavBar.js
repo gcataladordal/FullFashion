@@ -12,7 +12,7 @@ function NavBar () {
 
     
     function logout (){
-        localStorage.removeItem("infoUser");
+        sessionStorage.removeItem("infoUser");
         window.location.href = "http://localhost:3000/";
     }
 
@@ -27,7 +27,10 @@ function NavBar () {
     } 
     
     function getInfo() {
-    let infoUser = localStorage.getItem("infoUser");    
+
+    let infoUser = sessionStorage.getItem("infoUser");    
+    console.log(infoUser)
+
         if (infoUser!== null) {
             setShowRegister(false);
             setshowIniciarSesion(false);

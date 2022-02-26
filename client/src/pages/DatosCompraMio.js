@@ -3,36 +3,37 @@ import { useState } from "react"
 
 function DatosCompraMio() {
 
-    const [name, setName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [direction, setDirection] = useState("");
+    const [nombre, setNombre] = useState("");
+    const [apellidos, setApellidos] = useState("");
+    const [direccion, setDireccion] = useState("");
     const [cp, setCp] = useState("");
-    const [tlf, setTlf] = useState("");
+    const [telefono, setTelefono] = useState("");
 
     const saveDatoDireccion = () => {
         let datosDireccion = {
-          name,
-          lastName,
-          direction,
+          nombre,
+          apellidos,
+          direccion,
           cp,
-          tlf,
+          telefono,
         };
         console.log(datosDireccion);
+        window.location.href = "http://localhost:3000/datosenvio"
       
       };
   return (
     <div>
         <h3>Datos de su dirección</h3>
-        <label>Dirección</label>
+        <label>Nombre</label>
         <input type="text" name="nombre" placeholder="Ej: Juan"  onChange={(e) => {
-            setName(e.target.value);
+            setNombre(e.target.value);
            
           }}></input>
         <br></br>
 
         <label>Apellidos</label>
-        <input type="text" name="nombre" placeholder="Ej: Juan"  onChange={(e) => {
-            setLastName(e.target.value);
+        <input type="text" name="apellidos" placeholder="Ej: Sanchez Martinez"  onChange={(e) => {
+            setApellidos(e.target.value);
            
           }}></input>
         <br></br>
@@ -43,7 +44,7 @@ function DatosCompraMio() {
           name="direccion"
           placeholder="Ej: C/ del Sol 5"
           onChange={(e) => {
-            setDirection(e.target.value);
+            setDireccion(e.target.value);
            
           }}></input>
         <br></br>
@@ -62,10 +63,10 @@ function DatosCompraMio() {
         <label>Teléfono</label>
         <input
           type="text"
-          name="cp"
+          name="telefono"
           placeholder="Ej: 625845298"
           onChange={(e) => {
-            setTlf(e.target.value);
+            setTelefono(e.target.value);
           }}></input>
         <br></br>
         <button onClick={saveDatoDireccion}>Enviar</button>
