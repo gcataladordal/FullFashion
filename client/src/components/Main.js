@@ -29,8 +29,8 @@ class Main extends Component {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/mapa" element={<Mapa />} />
-          <Route path="/recogidaLook" element={<RecogidaLook />} />
-          <Route path="/resultadoLook" element={<ResultadoLook />} />
+          <Route path="/recogidalook" element={<RecogidaLook />} />
+          <Route path="/resultadolook" element={<ResultadoLook />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/datoscompralogueado" element={<DatosCompraLogueado/>} />
           <Route path="/datoscompraregalo" element={<DatosCompraRegalo/>} />

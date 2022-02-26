@@ -20,7 +20,7 @@ function ResultadoLook() {
         let quien = localStorage.getItem("quien")
         let compra = [producto1, producto2, producto3, producto4, producto5, producto6]
         localStorage.setItem("Compra", JSON.stringify(compra))
-        let infoUser = localStorage.getItem("infoUser")
+        let infoUser = sessionStorage.getItem("infoUser")
         if (infoUser === null) {
             window.location.href = "http://localhost:3000/datoscompramio"
         } else if (infoUser !== null && quien === "regalo" ) {

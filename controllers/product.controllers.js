@@ -12,7 +12,6 @@ const products = {
             todasPartesDeAbajo: resulBusqAbajo,
             todosZapatos: resulBusqZapatos
         }
-        console.log("*****************************************************************************")
         // console.log(resultado)
         res.json(resultado)
     }
