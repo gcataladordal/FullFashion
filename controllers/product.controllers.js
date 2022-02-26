@@ -18,6 +18,7 @@ const products = {
 }
 
 
+
 // busca las partes de arriba según recoge del body
 async function busquedaArriba(req) {
     var resultadoArriba = await Producto.find({
@@ -29,11 +30,11 @@ async function busquedaArriba(req) {
     // variable vacía para meter solo 3 resultados con el for que lo hace además de random
     const resultadoArribaRandom = []
     for (let i = 0; i < resultadoArriba.length; i++) {
-        let random = (random(0, resultadoArriba.length))
-        resultadoArribaRandom.push(resultadoArriba[random])
-        resultadoArriba.splice(random, 1)
+        let randomNumber = random(0, resultadoArriba.length - 1)
+        console.log(randomNumber)
+        resultadoArribaRandom.push(resultadoArriba[randomNumber])
+        resultadoArriba.splice(randomNumber, 1)
     }
-
     // console.log(resultadoArriba);
     return resultadoArribaRandom;
 }
@@ -73,6 +74,7 @@ async function busquedaZapatos(req) {
     // console.log(resultadoZapato);
     return resultadoZapato;
 }
+
 
 // generar números aleatorios con mínimo y máximo
 function random(min, max) {

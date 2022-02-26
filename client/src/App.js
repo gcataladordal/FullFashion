@@ -7,36 +7,38 @@ import NavBar from "./components/NavBar";
 import { motion } from "framer-motion";
 import Footer from "./components/Footer";
 
-// import Chat from "./components/Chat";
-// import io from "socket.io-client";
-// import { useState } from "react";
+import Chat from "./components/Chat";
+import io from "socket.io-client";
+import { useState } from "react";
 
-// const socket = io.connect("http://localhost:5500");
+const socket = io.connect("http://localhost:3001");
 
 function App() {
 
-    // const [userName, setUsername] = useState("")
-    // const [showChat, setShowChat] = useState(false)
-    // const [sala] = useState("1");
+    const [userName, setUsername] = useState("")
+    const [showChat, setShowChat] = useState(false)
+    const [sala] = useState("1");
 
-    // const unirseSala = () => {
-    //     if (userName !== "") {
-    //         socket.emit("entrarSala", sala);
-    //         setShowChat(true)
-    //     }
-    // }
+    const unirseSala = () => {
+        if (userName !== "") {
+            socket.emit("entrarSala", sala);
+            setShowChat(true)
+        }
+    }
 
     return (
         <BrowserRouter>
                 <NavBar />
                 <div className="App">
                     <Main />
-                {/* {!showChat ? (
+                {!showChat ? (
+                    <div className="containerExtChat">
                     <div className="containerUnirseChat">
                         <input type="text" placeholder="Introducir nombre" onChange={(event) => { setUsername(event.target.value) }}></input>
                         <button onClick={unirseSala}>Unirse al Chat</button>
+                    </div>
                     </div>)
-                    : (<Chat socket={socket} userName={userName} sala={sala} />)} */}
+                    : (<Chat socket={socket} userName={userName} sala={sala} />)}
             </div>
         </BrowserRouter>
     );

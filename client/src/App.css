@@ -120,6 +120,12 @@ h3 {
 
  /* ESTILOS CHAT */
 
+.containerExtChat {
+  display:flex;
+  justify-content: right;
+  margin-right: 2%;
+}
+
  .containerUnirseChat {
   display: flex;
   flex-direction: column;
