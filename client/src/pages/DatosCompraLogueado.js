@@ -47,10 +47,11 @@ function DatosCompraLogueado() {
       cp: cpEnvio,
     }
 
+    localStorage.setItem("direccionEnvio", JSON.stringify(entrega))
     console.log(direccionEnvio)
     console.log(poblacionEnvio);
     console.log(cpEnvio)
-    // window.location.href = "http://localhost:3000/datosenvio"
+    window.location.href = "http://localhost:3000/payment"
   };
 
   function addDirectionRecog() {
