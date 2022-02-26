@@ -45,17 +45,22 @@ function DatosCompraLogueado() {
       direccion: direccionEnvio,
       poblacion: poblacionEnvio,
       cp: cpEnvio,
+      modoEnvio: modoEnvio[0],
     }
-
     localStorage.setItem("direccionEnvio", JSON.stringify(entrega))
-    console.log(direccionEnvio)
-    console.log(poblacionEnvio);
-    console.log(cpEnvio)
+    
     window.location.href = "http://localhost:3000/payment"
   };
 
   function addDirectionRecog() {
-
+    let entrega = {
+      nombre: cpEnvio,
+      direccion: direccionEnvio,
+      poblacion: poblacionEnvio,
+      modoEnvio: modoEnvio[0]
+    }
+    localStorage.setItem("direccionEnvio", JSON.stringify(entrega))
+    window.location.href = "http://localhost:3000/payment"
   }
 
   const onChangeCheckEnvio = (checkedValues) => {
@@ -103,8 +108,8 @@ function DatosCompraLogueado() {
           <img src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/imagenes%20envio/Correos-Symbol.png"  alt="Correos"></img>
           <Checkbox
             className="checkEnvio"
-            value="ordinario"
-            id="ordinario"
+            value="correos"
+            id="correos"
             name="modoEnvio"
             disabled={isDisabledEnvio("ordinario")}
             onChange={(e) => {
@@ -225,8 +230,8 @@ function DatosCompraLogueado() {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <Checkbox
             className="checkEnvio"
-            value="preferente"
-            id="preferente"
+            value="mrw"
+            id="mrw"
             name="modoEnvio"
             disabled={isDisabledEnvio("preferente")}
             onChange={(e) => {
@@ -373,7 +378,7 @@ function DatosCompraLogueado() {
               <label>Nombre:</label>
               <br />
               <input type="text"
-                onChange={(e) => setDireccionEnvio(e.target.value)}
+                onChange={(e) => setCpEnvio(e.target.value)}
               />
               {viewAlertaIntroducirNombreRecog ? (<div>
                 <motion.p
@@ -388,7 +393,7 @@ function DatosCompraLogueado() {
               <label>Dirección:</label>
               <br />
               <input type="text"
-                onChange={(e) => setPoblacionEnvio(e.target.value)}
+                onChange={(e) => setDireccionEnvio(e.target.value)}
               />
               {viewAlertaIntroducirDireccionRecog ? (<div>
             <motion.p
@@ -403,7 +408,7 @@ function DatosCompraLogueado() {
               <label>Población:</label>
               <br />
               <input type="text"
-                onChange={(e) => setCpEnvio(e.target.value)}
+                onChange={(e) => setPoblacionEnvio(e.target.value)}
               />
               {viewAlertaIntroducirPoblacionRecog ? (<div>
             <motion.p
