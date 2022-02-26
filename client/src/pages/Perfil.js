@@ -9,10 +9,8 @@ function Perfil() {
         idUsuario: idUserLogueado.id_usuario
     }
     console.log(idUser);
-    axios.post("/historial", idUser)
-        .then((res) => {
+    axios.post("/historial", idUser).then((res) => {
             localStorage.setItem("pedidos", JSON.stringify(res.data));
-
         })
     var allCompras = JSON.parse(localStorage.getItem("pedidos"));
     console.log(allCompras)

@@ -12,7 +12,6 @@ const products = {
             todasPartesDeAbajo: resulBusqAbajo,
             todosZapatos: resulBusqZapatos
         }
-        // console.log(resultado)
         res.json(resultado)
     }
 }
@@ -27,15 +26,14 @@ async function busquedaArriba(req) {
         "color": req.body.color,
         "tipo_prenda": "arriba"
     })
-    // variable vacía para meter solo 3 resultados con el for que lo hace además de random
+    // variable vacía que lo puseha directamente random
     const resultadoArribaRandom = []
     for (let i = 0; i < resultadoArriba.length; i++) {
-        let randomNumber = random(0, resultadoArriba.length - 1)
-        console.log(randomNumber)
+        let randomNumber = (random(0, resultadoArriba.length -1))
         resultadoArribaRandom.push(resultadoArriba[randomNumber])
         resultadoArriba.splice(randomNumber, 1)
     }
-    // console.log(resultadoArriba);
+
     return resultadoArribaRandom;
 }
 
@@ -48,14 +46,15 @@ async function busquedaAbajo(req) {
         "tipo_prenda": "abajo"
     })
 
-    // variable vacía para meter solo 3 resultados con el for que lo hace además de random
-    // const resultadoAbajo2 = []
-    // for (let i = 0; i <= 1; i++) {
-    //     resultadoAbajo2.push(resultadoAbajo[(random(0, resultadoAbajo.length))])
-    // }
+    // variable vacía que lo puseha directamente random
+    const resultadoAbajoRandom = []
+    for (let i = 0; i < resultadoAbajo.length; i++) {
+        let randomNumber = (random(0, resultadoAbajo.length -1))
+        resultadoAbajoRandom.push(resultadoAbajo[randomNumber])
+        resultadoAbajo.splice(randomNumber, 1)
+    }
 
-    // console.log(resultadoAbajo);
-    return resultadoAbajo;
+    return resultadoAbajoRandom;
 }
 
 // busca los zapatos según recoge del body
@@ -66,15 +65,16 @@ async function busquedaZapatos(req) {
         "color": req.body.color,
         "tipo_prenda": "zapatos"
     })
-    // variable vacía para meter solo 1 resultado
-    // const resultadoZapato1 = []
-    // para pusear el resultado solo 1, con el random
-    // resultadoZapato1.push(resultadoZapato[(random(0, resultadoZapato.length))])
+    // variable vacía que lo puseha directamente random
+    const resultadoZapatoRandom = []
+    for (let i = 0; i < resultadoZapato.length; i++) {
+        let randomNumber = (random(0, resultadoZapato.length -1))
+        resultadoZapatoRandom.push(resultadoZapato[randomNumber])
+        resultadoZapato.splice(randomNumber, 1)
+    }
 
-    // console.log(resultadoZapato);
-    return resultadoZapato;
+    return resultadoZapatoRandom;
 }
-
 
 // generar números aleatorios con mínimo y máximo
 function random(min, max) {
