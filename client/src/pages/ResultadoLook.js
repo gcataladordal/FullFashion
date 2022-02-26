@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Checkbox } from "antd";
-// import { Button, Row, Container, Col  } from 'react-bootstrap';
+import { Button, Row, Container, Col  } from 'react-bootstrap';
 
 function ResultadoLook() {
 
@@ -13,85 +13,26 @@ function ResultadoLook() {
         // console.log(checkedValues);
     };
 
-    console.log(cambios)
-
-
-    function confirmarCompra(producto1, producto2, producto3, producto4, producto5, producto6) {
-        let quien = localStorage.getItem("quien")
-        let compra = [producto1, producto2, producto3, producto4, producto5, producto6]
-        localStorage.setItem("Compra", JSON.stringify(compra))
-        let infoUser = localStorage.getItem("infoUser")
-        if (infoUser === null) {
-            window.location.href = "http://localhost:3000/datoscompramio"
-        } else if (infoUser !== null && quien === "regalo" ) {
-            window.location.href = "http://localhost:3000/datoscompraregalo"
-        } else if (infoUser !== null && quien === "myself") {
-            window.location.href = "http://localhost:3000/datoscompralogueado"
-        }
-    }
-
+console.log(resultado)
 
     const recogerCambios = () => {
+        console.log(resultado.todasPartesDeArriba);
+        for (let i = 0; i < resultado.todasPartesDeArriba.length; i++) {
+            if(cambios[0] == resultado.todasPartesDeArriba[i]._id) {
+                console.log(resultado.todasPartesDeArriba[i]._id)
+            } 
 
-        var contador = JSON.parse(localStorage.getItem("contadorCambios"));
-        contador++;
-        if (contador < 6) {
+            if(cambios[1] == resultado.todasPartesDeArriba[i]._id) {
+                console.log(resultado.todasPartesDeArriba[i]._id)
+            } 
 
-            for (let i = 0; i < resultado.todasPartesDeArriba.length; i++) {
-
-                if (cambios[0] === resultado.todasPartesDeArriba[i]._id) {
-                    console.log(resultado.todasPartesDeArriba[i]._id)
-                    resultado.todasPartesDeArriba.splice(i, 1)
-                    localStorage.setItem("resultado", JSON.stringify(resultado))
-                    console.log(JSON.parse(localStorage.getItem("resultado")))
-
-                }
-
-                if (cambios[1] === resultado.todasPartesDeArriba[i]._id) {
-                    console.log(resultado.todasPartesDeArriba[i]._id)
-                    resultado.todasPartesDeArriba.splice(i, 1)
-                    localStorage.setItem("resultado", JSON.stringify(resultado))
-                    console.log(JSON.parse(localStorage.getItem("resultado")))
-                }
-            }
-
-            for (let i = 0; i < resultado.todasPartesDeAbajo.length; i++) {
-                if (cambios[0] === resultado.todasPartesDeAbajo[i]._id) {
-                    console.log(resultado.todasPartesDeAbajo[i]._id)
-                    resultado.todasPartesDeAbajo.splice(i, 1)
-                    localStorage.setItem("resultado", JSON.stringify(resultado))
-                    console.log(JSON.parse(localStorage.getItem("resultado")))
-                }
-
-                if (cambios[1] === resultado.todasPartesDeAbajo[i]._id) {
-                    console.log(resultado.todasPartesDeAbajo[i]._id)
-                    resultado.todasPartesDeAbajo.splice(i, 1)
-                    localStorage.setItem("resultado", JSON.stringify(resultado))
-                    console.log(JSON.parse(localStorage.getItem("resultado")))
-                }
-            }
-
-            for (let i = 0; i < resultado.todosZapatos.length; i++) {
-                if (cambios[0] === resultado.todosZapatos[i]._id) {
-                    console.log(resultado.todosZapatos[i]._id)
-                    resultado.todosZapatos.splice(i, 1)
-                    localStorage.setItem("resultado", JSON.stringify(resultado))
-                    console.log(JSON.parse(localStorage.getItem("resultado")))
-                }
-
-                if (cambios[1] === resultado.todosZapatos[i]._id) {
-                    console.log(resultado.todosZapatos[i]._id)
-                    resultado.todosZapatos.splice(i, 1)
-                    localStorage.setItem("resultado", JSON.stringify(resultado))
-                    console.log(JSON.parse(localStorage.getItem("resultado")))
-                }
-            }
-
-            localStorage.setItem("contadorCambios",JSON.stringify(contador));
-            window.location.href = "http://localhost:3000/resultadolook"
-        } else{
-            alert("BANEADO");
         }
+
+        // console.log(cambios)
+        // console.log(resultado.todasPartesDeArriba.splice(0,1))
+        // console.log(resultado.todasPartesDeArriba.splice(2,1))
+        // console.log(resultado)
+
     }
 
     const isDisabled = (id) => {
@@ -140,56 +81,57 @@ function ResultadoLook() {
 
     return (
         <div>
-            <Checkbox.Group onChange={(e) => onChangeCheck(e)}  >
-
-                <div>
+            <Checkbox.Group className="resultadolook" onChange={(e) => onChangeCheck(e)}  >
+            <Row>
+                <Col md={4} xs={12}>
                     <Checkbox className="color" value={idArriba0} disabled={isDisabled("0")}>
                         <img alt="Foto de arriba Full Fashion" src={imagenArriba0} width={350} />
                         <label>{tituloArriba0}</label>
                     </Checkbox>
                     <br></br>
-                </div>
-                <div>
+                </Col>
+                <Col md={4} xs={12}>
                     <Checkbox className="color" value={idArriba1} disabled={isDisabled("1")}>
                         <img alt="Foto de arriba Full Fashion" src={imagenArriba1} width={350} />
                         <label>{tituloArriba1}</label>
                     </Checkbox>
-                </div>
-                <div>
+                </Col>
+                <Col md={4} xs={12}>
                     <Checkbox className="color" value={idArriba2} disabled={isDisabled("2")}>
                         <img alt="Foto de arriba Full Fashion" src={imagenArriba2} width={350} />
                         <label>{tituloArriba2}</label>
                     </Checkbox>
-                </div>
-                <div>
+                </Col>
+                </Row>
+                <Row>
+                <Col md={4} xs={12}>
                     <Checkbox className="color" value={idAbajo0} disabled={isDisabled("3")}>
                         <img alt="Foto de abajo Full Fashion" src={imagenAbajo0} width={350} />
                         <label>{tituloAbajo0}</label>
                     </Checkbox>
-                </div>
-                <div>
+                </Col>
+                <Col md={4} xs={12}>
                     <Checkbox className="color" value={idAbajo1} disabled={isDisabled("4")}>
                         <img alt="Foto de abajo Full Fashion" src={imagenAbajo1} width={350} />
                         <label>{tituloAbajo1}</label>
                     </Checkbox>
-                </div>
-                <div>
+                </Col>
+                <Col md={4} xs={12}>
                     <Checkbox className="color" value={idZapatos0} id={tituloZapatos0} disabled={isDisabled("5")}>
                         <img alt="Foto de abajo Full Fashion" src={imagenZapatos0} width={350} />
                         <label>{tituloZapatos0}</label>
                     </Checkbox>
-
-                </div>
+                </Col >
+                </Row>
                 <br></br>
-                
-            </Checkbox.Group>
                 <div>
-                    <button onClick={recogerCambios}>Cambiar las seleccionadas</button>
+                    <button className="ButtonHome btn btn-primary btn-lg" variant="primary" onClick={recogerCambios}>Cambiar las seleccionadas</button>
 
-                    <p>*Recuerda que solo tienes 5 cambios de 2 prendas máximo cada vez</p>
-
-                    <button onClick={() => confirmarCompra(resultado.todasPartesDeArriba[0], resultado.todasPartesDeArriba[1], resultado.todasPartesDeArriba[2], resultado.todasPartesDeAbajo[0],resultado.todasPartesDeAbajo[1], resultado.todosZapatos[0])}>Seguir para finalizar compra</button>
+                    <p>*Recuerda que solo tienes 10 cambios de 2 prendas máximo cada vez</p>
+                    <button className="ButtonHome btn btn-primary btn-lg" variant="primary" >Seguir para finalizar compra</button>
                 </div>
+            </Checkbox.Group>
+
         </div>
     );
 }

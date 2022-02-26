@@ -14,6 +14,7 @@ import DatosCompraRegalo from "../pages/DatosCompraRegalo";
 import MostrarFactura from "../pages/MostrarFactura";
 import Payment from "./stripe";
 import DatosEnvio from "../pages/DatosEnvio";
+import Admin from "./Admin";
 
 
 class Main extends Component {
@@ -37,6 +38,7 @@ class Main extends Component {
           <Route path="/datoscompramio" element={<DatosCompraMio/>} />
           <Route path="/mostrarfactura" element={<MostrarFactura />} />
           <Route path="/datosenvio" element={<DatosEnvio />} />
+          <Route path="/admin" element={<Admin/>} />
             
         </Routes>
       </div>

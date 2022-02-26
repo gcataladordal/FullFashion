@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import axios from "axios"
+import axios from "axios";
+import { Button, Row, Container, Col  } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -43,29 +45,39 @@ class Register extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={(event) => this.submit(event)}>
+                <h1>Regístrate</h1>
+                <form onSubmit={(event) => this.submit(event)} className="card card-body">
+                    <div className="form-control">
                     <label>Nombre</label>
+                    <br></br>
                     <input type="text" name="nombre" placeholder="Ej: Felipe"></input>
                     <br></br>
                     <label>Apellidos</label>
+                    <br></br>
                     <input type="text" name="apellidos" placeholder="Ej: Gómez González"></input>
                     <br></br>
                     <label >Email</label>
+                    <br></br>
                     <input type="text" name="email" placeholder="Ej: felipe_VI@hotmail.com"></input>
                     <br></br>
                     <label >DNI</label>
+                    <br></br>
                     <input type="text" name="dni" placeholder="12345678X"></input>
                     <br></br>
                     <label >Población</label>
+                    <br></br>
                     <input type="text" name="poblacion" placeholder="Ej: Madrid"></input>
                     <br></br>
                     <label >Dirección</label>
+                    <br></br>
                     <input type="text" name="direccion" placeholder="Ej: C/ Paco de Lucia nº5"></input>
                     <br></br>
                     <label >CP</label>
+                    <br></br>
                     <input type="text" name="cp" placeholder="Ej: 28033"></input>
                     <br></br>
                     <label >Talla</label>
+                    <br></br>
                     <select name="talla">
                         <option>S</option>
                         <option>M</option>
@@ -74,6 +86,7 @@ class Register extends Component {
                     </select>
                     <br></br>
                     <label >Target</label>
+                    <br></br>
                     <select name="target">
                         <option>Hombre</option>
                         <option>Mujer</option>
@@ -82,13 +95,16 @@ class Register extends Component {
                     </select>
                     <br></br>
                     <label>Contraseña</label>
+                    <br></br>
                     <input type="password" name="contrasena" placeholder="password"></input>
                     <br></br>
                     <label>Confirmar Contraseña</label>
+                    <br></br>
                     <input type="password" name="contrasena2" placeholder="Confirmar password"></input>
                     <br></br>
-                    <button>Enviar</button>
-
+                    <br></br>
+                    <button className="ButtonHome btn btn-primary btn-lg" variant="primary">Enviar</button>
+                    </div>
                 </form>
 
             </div>

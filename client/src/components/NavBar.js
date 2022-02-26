@@ -28,7 +28,6 @@ function NavBar () {
     
     function getInfo() {
     let infoUser = localStorage.getItem("infoUser");    
-    console.log(infoUser)
         if (infoUser!== null) {
             setShowRegister(false);
             setshowIniciarSesion(false);

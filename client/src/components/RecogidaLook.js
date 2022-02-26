@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { motion } from "framer-motion";
-import { Checkbox, Row } from "antd";
+import { Checkbox } from "antd";
+import { Row, Col  } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { triggerFocus } from "antd/lib/input/Input";
 
 const RecogidaLook = () => {
@@ -39,7 +41,7 @@ const RecogidaLook = () => {
   const estaLogueado = () => {
     let logueado = localStorage.getItem("infoUser")
     if (logueado !== null) {
-      return true 
+      return true
     } else {
       return false
     }
@@ -91,7 +93,7 @@ const RecogidaLook = () => {
               setViewQuien(false);
               setViewEmail(true);
             }
-            
+
           }}
         />
         &nbsp;&nbsp; &nbsp;&nbsp;
@@ -104,9 +106,9 @@ const RecogidaLook = () => {
           onClick={() => {
             let log = estaLogueado()
             if (log) {
-            setQuien("regalo");
-            setViewQuien(false);
-            setViewTarget(true);
+              setQuien("regalo");
+              setViewQuien(false);
+              setViewTarget(true);
             } else {
               setQuien("regalo");
               setViewQuien(false);
@@ -130,7 +132,7 @@ const RecogidaLook = () => {
         <br />
         <br />
         <h2>Introduce tu email</h2> &nbsp;&nbsp;
-       
+
         <br />
         <br />
         <input
@@ -141,11 +143,11 @@ const RecogidaLook = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <br />
-         {viewAlertaEmail === true ? (<div>
+        {viewAlertaEmail === true ? (<div>
           <motion.p
-          initial={{ x: -1000, color: "#e30b2c"}}
-          animate={{ fontSize: 20, x: 0 }}
-          transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+            initial={{ x: -1000, color: "#e30b2c" }}
+            animate={{ fontSize: 20, x: 0 }}
+            transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
           >Por favor, introduce un correo electronico válido</motion.p>
         </div>) : ""}
         <br />
@@ -157,10 +159,10 @@ const RecogidaLook = () => {
             if (email === "") {
               setViewAlertaEmail(true);
             } else {
-            setViewEmail(false);
-            setViewTarget(true);
-            setViewAlertaEmail(false);
-          }
+              setViewEmail(false);
+              setViewTarget(true);
+              setViewAlertaEmail(false);
+            }
           }}
         />
       </motion.div>) : ""}
@@ -175,84 +177,84 @@ const RecogidaLook = () => {
         <br />
         <br />
         <br />
-        <h2>Tu Perfil</h2>
+        <h1>Tu Perfil</h1>
         <br />
         <br />
-        <br />
-        <motion.input
-          whileHover={{ scale: 1.1 }}
-          type="image"
-          className="persona"
-          width="15%"
-          height="30%"
-          src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/muher.jpg"
-          value="mujer"
-          onClick={
-            (e) => {
-              setTarget(e.target.value);
-              setViewAlturaPeso(true);
-              setViewTarget(false);
+        <h2>Selecciona sexo y rango de edad</h2>
+        <Row>
+          <Col xs={6} md={3}>
+          <motion.input
+            whileHover={{ scale: 1.2 }}
+            type="image"
+            width="90%"
+            height="90%"
+            className="persona"
+            src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/muher.jpg"
+            value="mujer"
+            onClick={
+              (e) => {
+                setTarget(e.target.value);
+                setViewAlturaPeso(true);
+                setViewTarget(false);
+              }
             }
-          }
-        />
-        &nbsp;&nbsp; &nbsp;&nbsp;
-        &nbsp;&nbsp; &nbsp;&nbsp;
-        &nbsp;&nbsp; &nbsp;&nbsp;
-        <motion.input
-          whileHover={{ scale: 1.1 }}
-          type="image"
-          className="persona"
-          width="15%"
-          height="30%"
-          src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/niño.jpg"
-          value="niño"
-          onClick={
-            (e) => {
-              setTarget(e.target.value);
-              setViewAlturaPeso(true);
-              setViewTarget(false);
+          />
+          </Col>
+          <Col xs={6} md={3}>
+          <motion.input
+            whileHover={{ scale: 1.2 }}
+            type="image"
+            width="90%"
+            height="90%"
+            className="persona"
+            src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/niño.jpg"
+            value="niño"
+            onClick={
+              (e) => {
+                setTarget(e.target.value);
+                setViewAlturaPeso(true);
+                setViewTarget(false);
+              }
             }
-          }
-        />
-        &nbsp;&nbsp; &nbsp;&nbsp;
-        &nbsp;&nbsp; &nbsp;&nbsp;
-        &nbsp;&nbsp; &nbsp;&nbsp;
-        <motion.input
-          whileHover={{ scale: 1.1 }}
-          type="image"
-          className="persona"
-          width="15%"
-          height="30%"
-          src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/niña.jpg"
-          value="niña"
-          onClick={
-            (e) => {
-              setTarget(e.target.value);
-              setViewAlturaPeso(true);
-              setViewTarget(false);
+          />
+          </Col>
+          <Col xs={6} md={3}>
+          <motion.input
+            whileHover={{ scale: 1.2 }}
+            type="image"
+            width="90%"
+            height="90%"
+            className="persona"
+            src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/niña.jpg"
+            value="niña"
+            onClick={
+              (e) => {
+                setTarget(e.target.value);
+                setViewAlturaPeso(true);
+                setViewTarget(false);
+              }
             }
-          }
-        />
-        &nbsp;&nbsp; &nbsp;&nbsp;
-        &nbsp;&nbsp; &nbsp;&nbsp;
-        &nbsp;&nbsp; &nbsp;&nbsp;
-        <motion.input
-          whileHover={{ scale: 1.1 }}
-          type="image"
-          className="persona"
-          width="15%"
-          height="30%"
-          src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/hombre.jpg"
-          value="hombre"
-          onClick={
-            (e) => {
-              setTarget(e.target.value);
-              setViewAlturaPeso(true);
-              setViewTarget(false);
+          />
+          </Col>
+          <Col xs={6} md={3}>
+          <motion.input
+            whileHover={{ scale: 1.2 }}
+            type="image"
+            width="90%"
+            height="90%"
+            className="persona"
+            src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/hombre.jpg"
+            value="hombre"
+            onClick={
+              (e) => {
+                setTarget(e.target.value);
+                setViewAlturaPeso(true);
+                setViewTarget(false);
+              }
             }
-          }
-        />
-
+          />
+          </Col>
+        </Row>
         <br />
 
       </motion.div>) : ""}
@@ -267,6 +269,7 @@ const RecogidaLook = () => {
         <br />
         <br />
         <br />
+        <h2>Introduce peso y altura</h2>
         <br />
         <br />
         <label className="textAlturaPeso">Peso: &nbsp;</label>
@@ -278,13 +281,13 @@ const RecogidaLook = () => {
         />
         <br />
         {viewAlertaPeso === true ? (
-        <div><motion.p
-          initial={{ x: -1000, color: "#e30b2c"}}
-          animate={{ fontSize: 20, x: 0 }}
-          transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+          <div><motion.p
+            initial={{ x: -1000, color: "#e30b2c" }}
+            animate={{ fontSize: 20, x: 0 }}
+            transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
           >Por favor, introduce tu peso</motion.p></div>
-          ) : ""}
-        
+        ) : ""}
+
         <br />
         <label className="textAlturaPeso">Altura: &nbsp;</label>
         <motion.input
@@ -293,12 +296,12 @@ const RecogidaLook = () => {
           placeholder="175 cm"
           onChange={(e) => setPeso(e.target.value)}
         />
-        
-         {viewAlertaAltura === true ? (
-        <motion.p
-          initial={{ x: -1000, color: "#e30b2c"}}
-          animate={{ fontSize: 20, x: 0 }}
-          transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+
+        {viewAlertaAltura === true ? (
+          <motion.p
+            initial={{ x: -1000, color: "#e30b2c" }}
+            animate={{ fontSize: 20, x: 0 }}
+            transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
           >Por favor, introduce tu altura</motion.p>) : ""}
         <br />
         <br />
@@ -328,7 +331,7 @@ const RecogidaLook = () => {
         initial={{ x: -2500 }}
         animate={{ fontSize: 60, x: 0, y: 0 }}
         transition={{ type: "spring", stiffness: 200, delay: 0.3 }}>
-          <br />
+        <br />
         <br />
         <br />
         <br />
@@ -336,9 +339,10 @@ const RecogidaLook = () => {
         <br />
 
         <br />
+        <h2>Elige tu talla</h2>
         <br />
         <motion.input
-          animate={{ fontSize: 60}}
+          animate={{ fontSize: 60 }}
           whileHover={{ scale: 1.1 }}
           className="buttonFormLook"
           type="button"
@@ -374,11 +378,10 @@ const RecogidaLook = () => {
         &nbsp;&nbsp; &nbsp;&nbsp;
         &nbsp;&nbsp; &nbsp;&nbsp;
         &nbsp;&nbsp; &nbsp;&nbsp;
-        
 
         <motion.input
 
-          animate={{ fontSize: 60}}
+          animate={{ fontSize: 60 }}
 
           whileHover={{ scale: 1.1 }}
           className="buttonFormLook"
@@ -434,12 +437,12 @@ const RecogidaLook = () => {
             disabled={isDisabled("negro")}
           >
             <img
-              width="10%"
-              height="5%"
+              width="18%"
+              height="10%"
               src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/black.jpg"
             ></img>
           </Checkbox>
-          &nbsp;&nbsp; &nbsp;&nbsp;
+          &nbsp;&nbsp;
           <Checkbox
             className="color"
             value="azul"
@@ -447,12 +450,12 @@ const RecogidaLook = () => {
             disabled={isDisabled("azul")}
           >
             <img
-              width="10%"
-              height="5%"
+              width="18%"
+              height="10%"
               src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/bluelight.jpg"
             ></img>
           </Checkbox>
-          &nbsp;&nbsp; &nbsp;&nbsp;
+          &nbsp;&nbsp; 
           <Checkbox
             className="color"
             value="verde"
@@ -460,12 +463,12 @@ const RecogidaLook = () => {
             disabled={isDisabled("verde")}
           >
             <img
-              width="10%"
-              height="5%"
+              width="18%"
+              height="10%"
               src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/green.jpg"
             ></img>
           </Checkbox>
-          &nbsp;&nbsp; &nbsp;&nbsp;
+          &nbsp;&nbsp;
           <Checkbox
             className="color"
             value="blanco"
@@ -473,12 +476,12 @@ const RecogidaLook = () => {
             disabled={isDisabled("blanco")}
           >
             <img
-              width="10%"
-              height="5%"
+              width="18%"
+              height="10%"
               src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/white.jpg"
             ></img>
           </Checkbox>
-          &nbsp;&nbsp; &nbsp;&nbsp;
+          &nbsp;&nbsp; 
           <Checkbox
             className="color"
             value="marron"
@@ -486,8 +489,8 @@ const RecogidaLook = () => {
             disabled={isDisabled("marron")}
           >
             <img
-              width="10%"
-              height="5%"
+              width="18%"
+              height="10%"
               src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/brown.jpg"
             ></img>
           </Checkbox>
@@ -517,58 +520,59 @@ const RecogidaLook = () => {
         <h2>Qué imagen define mejor tu estilo</h2>
         <br />
         <br />
+        <Row>
+        <Col xs={6} md={3}>
         <motion.input
           whileHover={{ scale: 1.1 }}
           type="image"
           className="persona"
-          width="15%"
-          height="30%"
-          src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/classic.jpg"
+          width="90%"
+          height="90%"
+          src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/clas.jpg"
           value="classic"
           onClick={(e) => setEstilo(e.target.value)}
         />
-        &nbsp;&nbsp; &nbsp;&nbsp;
-        &nbsp;&nbsp; &nbsp;&nbsp;
-        &nbsp;&nbsp; &nbsp;&nbsp;
+        </Col>
+          <Col xs={6} md={3}>
         <motion.input
           whileHover={{ scale: 1.1 }}
           type="image"
           className="persona"
-          width="15%"
-          height="30%"
-          src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/sport.jpg"
+          width="90%"
+          height="90%"
+          src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/spor.jpg"
           value="sport"
           onClick={(e) => setEstilo(e.target.value)}
         />
-        &nbsp;&nbsp; &nbsp;&nbsp;
-        &nbsp;&nbsp; &nbsp;&nbsp;
-        &nbsp;&nbsp; &nbsp;&nbsp;
+        </Col>
+        <Col xs={6} md={3}>
         <motion.input
           whileHover={{ scale: 1.1 }}
           type="image"
           className="persona"
-          width="15%"
-          height="30%"
-          src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/fashion.jpg"
+          width="90%"
+          height="90%"
+          src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/fas2.jpg"
           value="fashion"
           onClick={(e) => setEstilo(e.target.value)}
         />
-        &nbsp;&nbsp; &nbsp;&nbsp;
-        &nbsp;&nbsp; &nbsp;&nbsp;
-        &nbsp;&nbsp; &nbsp;&nbsp;
+        </Col>
+        <Col xs={6} md={3}>
         <motion.input
           whileHover={{ scale: 1.1 }}
           type="image"
           className="persona"
-          width="15%"
-          height="30%"
-          src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/casual2.jpg"
+          width="90%"
+          height="90%"
+          src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/cas.jpg"
           value="casual"
           onClick={(e) => setEstilo(e.target.value)}
         />
+        </Col>
+        </Row>
         <br />
         <br />
-        <br />  
+        <br />
         <br />
         <button className="buttonFormLook" onClick={searchData}>¡Quiero ver mi resultado!</button>
 
