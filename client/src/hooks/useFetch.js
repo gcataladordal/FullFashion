@@ -18,8 +18,8 @@ const useFetch = (props) => {
       localStorage.setItem("contadorCambios", JSON.stringify(0))
       // saved tiene toda la información ya capada y random (3 de arriba, 2 de abajo y 1 zapato)
       const todoRandom = JSON.parse(localStorage.getItem("resultado"));
+      console.log(todoRandom)
       window.location.href = "http://localhost:3000/resultadolook"
-      // console.log(todoRandom)
 
     });
   };

@@ -13,7 +13,7 @@ function ResultadoLook() {
         // console.log(checkedValues);
     };
 
-    console.log(cambios)
+    // console.log(cambios)
 
 
     function confirmarCompra(producto1, producto2, producto3, producto4, producto5, producto6) {
