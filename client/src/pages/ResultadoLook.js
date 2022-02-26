@@ -23,9 +23,7 @@ function ResultadoLook() {
         let infoUser = sessionStorage.getItem("infoUser")
         if (infoUser === null) {
             window.location.href = "http://localhost:3000/datoscompramio"
-        } else if (infoUser !== null && quien === "regalo" ) {
-            window.location.href = "http://localhost:3000/datoscompraregalo"
-        } else if (infoUser !== null && quien === "myself") {
+        } else {
             window.location.href = "http://localhost:3000/datoscompralogueado"
         }
     }
