@@ -27,13 +27,15 @@ async function busquedaArriba(req) {
         "tipo_prenda": "arriba"
     })
     // variable vacía para meter solo 3 resultados con el for que lo hace además de random
-    // const resultadoArriba3 = []
-    // for (let i = 0; i <= 2; i++) {
-    //     resultadoArriba3.push(resultadoArriba[(random(0, resultadoArriba.length))])
-    // }
+    const resultadoArribaRandom = []
+    for (let i = 0; i < resultadoArriba.length; i++) {
+        let random = (random(0, resultadoArriba.length))
+        resultadoArribaRandom.push(resultadoArriba[random])
+        resultadoArriba.splice(random, 1)
+    }
 
     // console.log(resultadoArriba);
-    return resultadoArriba;
+    return resultadoArribaRandom;
 }
 
 // busca las partes de arriba según recoge del body
