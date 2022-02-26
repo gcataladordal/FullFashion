@@ -3,24 +3,6 @@ import { useState } from "react";
 import { motion } from "framer-motion"
 import Mapa from "../components/Mapa";
 
-// let user = {
-//   id_usuario: "1",
-//   nombre: "Jorge",
-//   apellidos: "Sánchez Cuesta",
-//   email: "coke_vader@hotmail.com",
-//   dni: "51083782T",
-//   direccion: "C/ Sol 5",
-//   cp: "28055",
-//   poblacion: "Madrid",
-//   talla: "L",
-//   target: "Hombre",
-//   color: ["Negro", "Azul"],
-//   estilo: "Casual",
-//   admin: false,
-// };
-// localStorage.setItem("user", JSON.stringify(user));
-
-
 
 function DatosCompraLogueado() {
   const [direccionEnvio, setDireccionesEnvio] = useState("");
