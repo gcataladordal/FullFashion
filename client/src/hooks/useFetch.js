@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+
 const useFetch = (props) => {
 
   const [data, setData] = useState("");
@@ -8,11 +9,12 @@ const useFetch = (props) => {
     if (data !== "") {
       searchData(props);
     }
+   
   }, [data]);
 
 
   const searchData = (props) => {
-    console.log(data);
+    // console.log(data);
     axios.post(`${props}`, data).then((res) => {
       localStorage.setItem("resultado", JSON.stringify(res.data));
       localStorage.setItem("contadorCambios", JSON.stringify(0))

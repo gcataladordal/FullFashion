@@ -7,10 +7,7 @@ import {motion } from "framer-motion";
 
 
 class Home extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
-
+   
     render() {
         return (
             <Container fluid>
