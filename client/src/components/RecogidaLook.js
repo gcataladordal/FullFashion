@@ -151,7 +151,7 @@ const RecogidaLook = () => {
           type="email"
           className=""
           id="inputEmail"
-          placeHolder="correo@xmail.com"
+          placeholder="correo@dominio.com"
           onChange={(e) => setEmail(e.target.value)}
         />
         <br />
@@ -336,17 +336,26 @@ const RecogidaLook = () => {
               setViewAlertaAltura(true)
               setViewAlertaPeso(true)
             } else if (peso !== "" && altura !== "") {
-              let pesoAlturaBien = (pesoAlturaOk(peso) && pesoAlturaOk(altura))
-              if (pesoAlturaBien) {
+              let pesoBien = pesoAlturaOk(peso)
+              let alturaBien = pesoAlturaOk(altura)
+              if (pesoBien && alturaBien) {
                 setViewAlertaAltura(false)
                 setViewAlertaPeso(false)
                 setViewAlturaPeso(false);
                 setViewTalla(true);
-              } else {
+              } 
+              if (pesoBien && alturaBien === false) {
+                setViewAlertaAltura(false)
+                setViewAlertaPeso(true)
+              }
+              if (pesoBien  === false && alturaBien) {
+                setViewAlertaAltura(true)
+                setViewAlertaPeso(false)
+              }
+              if (pesoBien === false && alturaBien === false) {
                 setViewAlertaAltura(true)
                 setViewAlertaPeso(true)
               }
-              
             }
           }} />
 
