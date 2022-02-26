@@ -35,7 +35,7 @@ function DatosCompraLogueado() {
   const [viewOpcionesPuntoRecog, setViewOpcionesPuntoRecog] = useState(false);
 
 
-  var datosUser = JSON.parse(localStorage.getItem("infoUser"));
+  var datosUser = JSON.parse(sessionStorage.getItem("infoUser"));
   var direccionUser = datosUser.direccion;
   var poblacionUser = datosUser.poblacion;
   var cpUser = datosUser.cp
