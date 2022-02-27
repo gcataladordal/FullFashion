@@ -85,7 +85,8 @@ function Devolucion() {
             <div>
                 {/* <button className="ButtonHome btn btn-primary btn-lg" variant="primary" onClick={recogerCambios}>Cambiar las seleccionadas</button> */}
 
-                <p>*Recuerda que solo tienes 5 cambios de 2 prendas máximo cada vez</p>
+                <p>*Se permite devolver una vez hasta 3 artículos</p>
+                <p>*SE DEVOLVERÁ TODA LA COLECCIÓN Y HABRÁ REEMBOLSO</p>
                 {/* <button onClick={() => confirmarDevolucion(resultado.todasPartesDeArriba[0], resultado.todasPartesDeArriba[1], resultado.todasPartesDeArriba[2], resultado.todasPartesDeAbajo[0], resultado.todasPartesDeAbajo[1], resultado.todosZapatos[0])}>Seguir para finalizar compra</button> */}
             </div>
 
