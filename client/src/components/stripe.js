@@ -42,9 +42,9 @@ const ChekoutForm = () => {
                 estado: "En tránsito",
                 fecha_creacion: new Date(),
                 modo_entrega: "correo",
-                direccion: "Calle falsa 123",
-                cp: "28008",
-                poblacion: "Madrid",
+                direccion: "Calle cierta 123",
+                cp: "99999",
+                poblacion: "Barcelona",
                 devolucion: true,
 
             })
