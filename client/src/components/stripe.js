@@ -16,45 +16,82 @@ const ChekoutForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        let infoUser = JSON.parse(sessionStorage.getItem("infoUser"))
-        let idUser = infoUser.id_usuario;
-        let comprado = JSON.parse(localStorage.getItem("Compra"))
-        let direccionEnvio = JSON.parse(localStorage.getItem("direccionEnvio"))
-        console.log(direccionEnvio.direccion)
-        console.log(direccionEnvio.cp)
-        console.log(direccionEnvio.poblacion)
-        console.log(direccionEnvio.modo_entrega)
+        let infoUser = JSON.parse(sessionStorage.getItem("infoUser"));
+        let comprado = JSON.parse(localStorage.getItem("Compra"));
+        let direccionEnvio = JSON.parse(localStorage.getItem("direccionEnvio"));
+        let infoUserNoLog = JSON.parse(localStorage.getItem("datosNoLog"));
+        let filtrosCompra = JSON.parse(localStorage.getItem("filtrosCompra"));
 
-
-        // let estado = JSON.parse(localStorage.getItem("estado"))
-        // let fecha_creacion = JSON.parse(localStorage.getItem("fecha_creacion"))
-        // let  modo_entrega = JSON.parse(localStorage.getItem("modo_entrega"))
-        // let cp = JSON.parse(localStorage.getItem("cp"))
-        // let poblacion = JSON.parse(localStorage.getItem("poblacion"))
-        // let devolucion = JSON.parse(localStorage.getItem("devolucion"))
-
-        console.log(comprado)
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
             card: elements.getElement(CardElement),
         })
-        if (!error) {
+
+        // SI ESTA LOGUEADO:
+        if (!error && infoUser !== null && infoUserNoLog === null) {
             const { id } = paymentMethod;
+
+            // GUARDA EL PEDIDO: 
             const { data } = await axios.post('/checkout', {
                 id,
                 amount: 30000,
-                id_usuario: idUser,
+                id_usuario: infoUser.id_usuario,
                 productos: comprado,
-                estado: "En tránsito",
+                estado: "En preparación",
                 fecha_creacion: new Date(),
-                modo_entrega: direccionEnvio.modo_entrega,
+                modo_entrega: direccionEnvio.modoEnvio,
                 direccion: direccionEnvio.direccion,
                 cp: direccionEnvio.cp,
                 poblacion: direccionEnvio.poblacion,
                 devolucion: false,
+                filtros: filtrosCompra
+
             })
-            console.log(data);
+
+            // GUARDA ESTILOS FAVORITOS
+            const { estilosFav } = await axios.post("/estilosfavoritos", {
+                id_usuario: infoUser.id_usuario,
+                color: filtrosCompra.color,
+                estilo: filtrosCompra.estilo,
+            })
+            
+
+            // GUARDA SEGUNDA DIRECCION USUARIO
+            if (!direccionEnvio.mismaDireccion) {
+                const { segundaDireccion } = await axios.post("/direcciondos", {
+                    id_usuario: infoUser.id_usuario,
+                    direccion2: direccionEnvio.direccion,
+                    poblacion2: direccionEnvio.poblacion,
+                    cp2: direccionEnvio.cp,
+
+                })
+                
+            }
+            
+
             elements.getElement(CardElement).clear();
+
+        }
+
+        // SI NO ESTÁ LOGUEADO:
+        if (!error && infoUserNoLog !== null && infoUser === null) {
+            const { id } = paymentMethod;
+            const { data } = await axios.post('/checkout', {
+                id,
+                amount: 30000,
+                id_usuario: infoUserNoLog.dni,
+                productos: comprado,
+                estado: "En preparación",
+                fecha_creacion: new Date(),
+                modo_entrega: infoUserNoLog.modoEnvio,
+                direccion: infoUserNoLog.direccion,
+                nombreLeroy: infoUserNoLog.nombreLeroy,
+                cp: infoUserNoLog.cp,
+                poblacion: infoUserNoLog.poblacion,
+                devolucion: false,
+            })
+            elements.getElement(CardElement).clear();
+
         }
         window.location.href = "http://localhost:3000/mostrarfactura"
 

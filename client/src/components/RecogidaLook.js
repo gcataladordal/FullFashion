@@ -62,6 +62,14 @@ const RecogidaLook = () => {
 
   const searchData = () => {
     localStorage.setItem("quien", quien)
+
+    let colorEstilo = {
+      color,
+      estilo,
+      target
+    }
+    localStorage.setItem("filtrosCompra", JSON.stringify(colorEstilo))
+
     let datos = {
       target,
       altura,
@@ -716,7 +724,21 @@ const RecogidaLook = () => {
         <button className="buttonFormLook" onClick={searchData}>¡Quiero ver mi resultado!</button>
         </motion.div>) : ""}
       
-      
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
   );
 };

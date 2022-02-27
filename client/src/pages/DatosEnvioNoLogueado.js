@@ -10,16 +10,13 @@ function DatosEnvioNoLogueado() {
   const [poblacionEnvio, setPoblacionEnvio] = useState("");
   const [cpEnvio, setCpEnvio] = useState("");
   const [modoEnvio, setModoEnvio] = useState("");
-  const [tipoDireccion, setTipoDireccion] = useState("");
 
   const [viewOpcionesCorreoOrdinario, setViewOpcionesCorreoOrdinario] = useState(false);
-  const [viewInputOtraDireccionOrdinario, setViewInputOtraDireccionOrdinario] = useState(false);
   const [viewAlertaIntroducirDireccionOrdinario, setViewAlertaIntroducirDireccionOrdinario] = useState(false);
   const [viewAlertaIntroducirPoblacionOrdinario, setViewAlertaIntroducirPoblacionOrdinario] = useState(false);
   const [viewAlertaIntroducirCpOrdinario, setViewAlertaIntroducirCpOrdinario] = useState(false);
 
   const [viewOpcionesCorreoPref, setViewOpcionesCorreoPref] = useState(false);
-  const [viewInputOtraDireccionPref, setViewInputOtraDireccionPref] = useState(false);
   const [viewAlertaIntroducirDireccionPref, setViewAlertaIntroducirDireccionPref] = useState(false);
   const [viewAlertaIntroducirPoblacionPref, setViewAlertaIntroducirPoblacionPref] = useState(false);
   const [viewAlertaIntroducirCpPref, setViewAlertaIntroducirCpPref] = useState(false);
@@ -50,7 +47,7 @@ function DatosEnvioNoLogueado() {
     }
     localStorage.setItem("datosNoLog", JSON.stringify(entrega))
 
-    window.location.href = "http://localhost:3000/payment"
+    // window.location.href = "http://localhost:3000/payment"
   };
 
   function addDirectionRecog() {
@@ -59,7 +56,7 @@ function DatosEnvioNoLogueado() {
       apellidos: apellidosUser,
       dni: dniUser,
       telefono: telfUser,
-      nombreLeroy: cpEnvio,
+      cp: cpEnvio,
       direccion: direccionEnvio,
       poblacion: poblacionEnvio,
       modoEnvio: modoEnvio[0]
@@ -72,39 +69,12 @@ function DatosEnvioNoLogueado() {
     setModoEnvio(checkedValues);
   };
 
-  const onChangeCheckDireccion = (checkedValues) => {
-    setTipoDireccion(checkedValues)
-    // Cuando desclicas nueva direccion 
-    if (tipoDireccion[0] === "nuevaDireccion") {
-      setViewInputOtraDireccionOrdinario(false)
-      setViewInputOtraDireccionPref(false)
-
-    }
-
-  }
-
-  const isDisabledPref = (id) => {
-    return tipoDireccion.length > 0 && tipoDireccion.indexOf(id) === -1;
-  };
-
-
-  const isDisabledOrdinario = (id) => {
-    return tipoDireccion.length > 0 && tipoDireccion.indexOf(id) === -1;
-  };
-
-  const isDisabled = (id) => {
-    return tipoDireccion.length > 0 && tipoDireccion.indexOf(id) === -1;
-  };
-
   const isDisabledEnvio = (id) => {
     return modoEnvio.length > 0 && modoEnvio.indexOf(id) === -1;
   }
 
-
   return (
     <div>
-
-
       <Checkbox.Group onChange={(e) => onChangeCheckEnvio(e)}>
         <div>
           {/* CORREO ORDINARIO */}
@@ -348,7 +318,7 @@ function DatosEnvioNoLogueado() {
 
     {/* BOTON */ }
     < button onClick = {() => {
-    if (modoEnvio[0] === "correos" && tipoDireccion[0] === "nuevaDireccion") {
+    if (modoEnvio[0] === "correos") {
       if (direccionEnvio === "") {
         setViewAlertaIntroducirDireccionOrdinario(true)
       }
@@ -362,7 +332,7 @@ function DatosEnvioNoLogueado() {
         addDirection();
       }
     }
-    if (modoEnvio[0] === "mrw" && tipoDireccion[0] === "nuevaDireccion") {
+    if (modoEnvio[0] === "mrw") {
       if (direccionEnvio === "") {
         setViewAlertaIntroducirDireccionPref(true)
       }
@@ -382,10 +352,10 @@ function DatosEnvioNoLogueado() {
         setViewAlertaIntroducirDireccionRecog(true)
       }
       if (poblacionEnvio === "") {
-        setViewAlertaIntroducirNombreRecog(true)
+        setViewAlertaIntroducirPoblacionRecog(true)
       }
       if (cpEnvio === "") {
-        setViewAlertaIntroducirPoblacionRecog(true)
+         setViewAlertaIntroducirNombreRecog(true)
       }
       if (direccionEnvio !== "" && poblacionEnvio !== "" && cpEnvio !== "") {
         addDirectionRecog();
