@@ -3,7 +3,6 @@ import { useState } from "react";
 import { motion } from "framer-motion"
 import Mapa from "../components/Mapa";
 import { Checkbox } from "antd";
-import { Radio } from "react";
 
 function DatosCompraLogueado() {
   const [direccionEnvio, setDireccionEnvio] = useState("");
@@ -111,7 +110,7 @@ function DatosCompraLogueado() {
             value="correos"
             id="correos"
             name="modoEnvio"
-            disabled={isDisabledEnvio("ordinario")}
+            disabled={isDisabledEnvio("correos")}
             onChange={(e) => {
               if (!viewOpcionesCorreoOrdinario) {
                 setViewOpcionesCorreoOrdinario(true)
@@ -233,7 +232,7 @@ function DatosCompraLogueado() {
             value="mrw"
             id="mrw"
             name="modoEnvio"
-            disabled={isDisabledEnvio("preferente")}
+            disabled={isDisabledEnvio("mrw")}
             onChange={(e) => {
               if (!viewOpcionesCorreoPref) {
                 setViewOpcionesCorreoPref(true)
@@ -440,7 +439,7 @@ function DatosCompraLogueado() {
 
       {/* BOTON */}
       <button onClick={() => {
-        if (modoEnvio[0] === "ordinario" && tipoDireccion[0] === "nuevaDireccion") {
+        if (modoEnvio[0] === "correos" && tipoDireccion[0] === "nuevaDireccion") {
             if (direccionEnvio === "") {
               setViewAlertaIntroducirDireccionOrdinario(true)
             } 
@@ -454,7 +453,7 @@ function DatosCompraLogueado() {
               addDirection();
             }
         } 
-        if (modoEnvio[0] === "preferente" && tipoDireccion[0] === "nuevaDireccion") {
+        if (modoEnvio[0] === "mrw" && tipoDireccion[0] === "nuevaDireccion") {
           if (direccionEnvio === "") {
             setViewAlertaIntroducirDireccionPref(true)
           } 

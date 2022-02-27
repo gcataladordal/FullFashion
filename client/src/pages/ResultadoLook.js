@@ -21,7 +21,7 @@ function ResultadoLook() {
         localStorage.setItem("Compra", JSON.stringify(compra))
         let infoUser = sessionStorage.getItem("infoUser")
         if (infoUser === null) {
-            window.location.href = "http://localhost:3000/datoscompramio"
+            window.location.href = "http://localhost:3000/datoscompranologueado"
         } else {
             window.location.href = "http://localhost:3000/datoscompralogueado"
         }

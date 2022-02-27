@@ -1,66 +1,61 @@
 import React from "react";
 import { useState } from "react"
 
-function DatosCompraMio() {
+function DatosCompraNoLogueado() {
 
     const [nombre, setNombre] = useState("");
     const [apellidos, setApellidos] = useState("");
-    const [direccion, setDireccion] = useState("");
-    const [cp, setCp] = useState("");
+    const [dni, setDni] = useState("");
     const [telefono, setTelefono] = useState("");
 
-    const saveDatoDireccion = () => {
-        let datosDireccion = {
+    function saveDatoUsuarioNoLog() {
+
+        let datosUsuarioNoLog = {
           nombre,
           apellidos,
-          direccion,
-          cp,
+          dni,
           telefono,
         };
-        console.log(datosDireccion);
-        window.location.href = "http://localhost:3000/datosenvio"
+        localStorage.setItem("datosNoLog", JSON.stringify(datosUsuarioNoLog))
+        window.location.href = "http://localhost:3000/datosenvionologueado"
       
       };
+
   return (
     <div>
+      <br />
         <h3>Datos de su dirección</h3>
-        <label>Nombre</label>
+        
+        <br />
+        <label>Nombre:&nbsp;</label>
         <input type="text" name="nombre" placeholder="Ej: Juan"  onChange={(e) => {
             setNombre(e.target.value);
            
           }}></input>
-        <br></br>
+        <br />
+        <br />
 
-        <label>Apellidos</label>
+        <label>Apellidos:&nbsp;</label>
         <input type="text" name="apellidos" placeholder="Ej: Sanchez Martinez"  onChange={(e) => {
             setApellidos(e.target.value);
            
           }}></input>
-        <br></br>
+        <br />
+        <br />
 
-        <label>Dirección</label>
+        <label>DNI:&nbsp;</label>
         <input
           type="text"
-          name="direccion"
-          placeholder="Ej: C/ del Sol 5"
+          name="dni"
+          placeholder="Ej: 12345678X"
           onChange={(e) => {
-            setDireccion(e.target.value);
+            setDni(e.target.value);
            
           }}></input>
-        <br></br>
+        <br />
+        <br />
 
-        <label>Código Postal</label>
-        <input
-          type="text"
-          name="cp"
-          placeholder="Ej: 28032"
-          onChange={(e) => {
-            setCp(e.target.value);
-           
-          }}></input>
-        <br></br>
-
-        <label>Teléfono</label>
+        <label>Teléfono:&nbsp;</label>
         <input
           type="text"
           name="telefono"
@@ -68,9 +63,10 @@ function DatosCompraMio() {
           onChange={(e) => {
             setTelefono(e.target.value);
           }}></input>
-        <br></br>
-        <button onClick={saveDatoDireccion}>Enviar</button>
+        <br />
+        <br />
+        <button onClick={() => saveDatoUsuarioNoLog()}>Enviar</button>
     </div>
   );
 }
-export default DatosCompraMio;
+export default DatosCompraNoLogueado;
