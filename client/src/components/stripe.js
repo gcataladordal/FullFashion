@@ -52,7 +52,6 @@ const ChekoutForm = () => {
                 cp: direccionEnvio.cp,
                 poblacion: direccionEnvio.poblacion,
                 devolucion: false,
-
             })
             console.log(data);
             elements.getElement(CardElement).clear();

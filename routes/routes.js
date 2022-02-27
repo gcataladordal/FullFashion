@@ -14,6 +14,8 @@ router.post("/login", user.loguear)
 router.post("/checkout", actionCompras.pago) 
 
 router.post("/addproduct", admin.addProduct)
+router.post("/deleteproduct", admin.eraseProduct)
+router.post("/modifyproduct", admin.modifyProduct)
 
 router.post("/historial", actionCompras.buscarCompras);
 
