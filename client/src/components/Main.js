@@ -10,10 +10,10 @@ import Perfil from "../pages/Perfil";
 import RecogidaLook from "./RecogidaLook";
 import ResultadoLook from "../pages/ResultadoLook";
 import DatosCompraLogueado from "../pages/DatosCompraLogueado"; 
-import DatosCompraMio from "../pages/DatosCompraMio"; 
+import DatosCompraNoLogueado from "../pages/DatosCompraNoLogueado"; 
 import MostrarFactura from "../pages/MostrarFactura";
 import Payment from "./stripe";
-import DatosEnvio from "../pages/DatosEnvio";
+import DatosEnvioNoLogueado from "../pages/DatosEnvioNoLogueado";
 import Admin from "./Admin";
 
 
@@ -34,9 +34,9 @@ class Main extends Component {
           <Route path="/resultadolook" element={<ResultadoLook />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/datoscompralogueado" element={<DatosCompraLogueado/>} />
-          <Route path="/datoscompramio" element={<DatosCompraMio/>} />
+          <Route path="/datoscompranologueado" element={<DatosCompraNoLogueado/>} />
           <Route path="/mostrarfactura" element={<MostrarFactura />} />
-          <Route path="/datosenvio" element={<DatosEnvio />} />
+          <Route path="/datosenvionologueado" element={<DatosEnvioNoLogueado />} />
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/admin" element={<Admin/>} />
         </Routes>

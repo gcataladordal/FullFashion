@@ -166,6 +166,15 @@ const RecogidaLook = () => {
         <input
           type="button"
           className="buttonFormLook"
+          value="Anterior"
+          onClick={() => {
+            setViewQuien(true);
+            setViewEmail(false)
+          }} />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input
+          type="button"
+          className="buttonFormLook"
           value="Siguiente"
           onClick={() => {
             if (email === "") {
@@ -184,6 +193,7 @@ const RecogidaLook = () => {
           }}
         />
       </motion.div>) : ""}
+
       {/* TIPO DE PERSONA (TARGET) */}
       {viewTarget == true ? (<motion.div
         initial={{ y: -1000, }}
@@ -199,6 +209,10 @@ const RecogidaLook = () => {
         <br />
         <br />
         <h2>Selecciona sexo y rango de edad</h2>
+        <br />
+        <br />
+        <br />
+
         <Row>
           <Col xs={6} md={3}>
           <motion.input
@@ -273,9 +287,26 @@ const RecogidaLook = () => {
           />
           </Col>
         </Row>
+        <input
+          type="button"
+          className="buttonFormLook"
+          value="Anterior"
+          onClick={() => {
+            let log = estaLogueado()
+            if (log) {
+              setViewTarget(false);
+              setViewQuien(true);
+            } else {
+              setViewTarget(false);
+              setViewEmail(true);
+            }
+          }} />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <br />
 
       </motion.div>) : ""}
+
+
       {/* ALTURA Y PESO */}
       {viewAlturaPeso == true ? (<motion.div
         initial={{ x: "75vw" }}
@@ -326,6 +357,15 @@ const RecogidaLook = () => {
         <input
           type="button"
           className="buttonFormLook"
+          value="Anterior"
+          onClick={() => {
+            setViewTarget(true);
+            setViewAlturaPeso(false)
+          }} />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input
+          type="button"
+          className="buttonFormLook"
           value="Siguiente"
           onClick={() => {
             if (peso === "" && altura !== "") {
@@ -360,8 +400,11 @@ const RecogidaLook = () => {
           }} />
 
       </motion.div>) : ""}
+
+
       {/* TALLA */}
-      {viewTalla == true ? (<motion.div
+      {viewTalla == true ? (<div>
+        <motion.div
         initial={{ x: -2500 }}
         animate={{ fontSize: 60, x: 0, y: 0 }}
         transition={{ type: "spring", stiffness: 200, delay: 0.3 }}>
@@ -448,7 +491,27 @@ const RecogidaLook = () => {
             }
           }
         />
-      </motion.div>) : ""}
+        
+      </motion.div>
+      <br />
+      <br />
+      <motion.div
+        initial={{ x: -2500 }}
+        animate={{ fontSize: 60, x: 0, y: 0 }}
+        transition={{ type: "spring", stiffness: 200, delay: 0.3 }}>
+        <input
+          type="button"
+          className="buttonFormLook"
+          value="Anterior"
+          onClick={() => {
+            setViewTalla(false);
+            setViewAlturaPeso(true)
+          }} />
+        
+      </motion.div>
+      </div>
+      
+      ) : ""}
       {/* COLORES */}
       {viewColor == true ? (<motion.div
         initial={{ y: "75vw", x: 0 }}
@@ -536,6 +599,15 @@ const RecogidaLook = () => {
           transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
           >Por favor, selecciona entre 1 o 2 colores</motion.p>) : ""}
           <br /> 
+          <input
+          type="button"
+          className="buttonFormLook"
+          value="Anterior"
+          onClick={() => {
+            setViewColor(false);
+            setViewTalla(true)
+          }} />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input
           type="button"
           className="buttonFormLook"
@@ -553,7 +625,7 @@ const RecogidaLook = () => {
 
       </motion.div>) : ""}
       {/* ESTILOS  */}
-      {viewEstilo == true ? (<motion.div
+      {viewEstilo == true ? (<div><motion.div
         initial={{ y: "-80vw", x: 0 }}
         animate={{ fontSize: 60, x: 0, y: 0 }}
         transition={{ type: "spring", stiffness: 155, delay: 0.5 }}
@@ -614,7 +686,26 @@ const RecogidaLook = () => {
         />
         </Col>
         </Row>
-        </motion.div>) : ""}
+        </motion.div>
+        <motion.div
+        initial={{ y: "-80vw", x: 0 }}
+        animate={{ fontSize: 60, x: 0, y: 0 }}
+        transition={{ type: "spring", stiffness: 155, delay: 0.5 }}
+      >
+        <input
+        type="button"
+        className="buttonFormLook"
+        value="Anterior"
+        onClick={() => {
+          setViewEstilo(false);
+          setViewColor(true)
+        }} />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        </motion.div>
+        </div>
+        
+        ) : ""}
         {viewSubmit ? (<motion.div
         initial={{ y: "-80vw", x: 0 }}
         animate={{ fontSize: 60, x: 0, y: 0 }}
