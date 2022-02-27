@@ -6,7 +6,7 @@ const AutoIncrement = require('mongoose-sequence')(mongoose);
 // devolucion true, es el primer devolucion
 const objetoPedidoSchema = {
     id_usuario: String,
-    productos: Array,
+    productos: Object,
     estado: String,
     fecha_creacion: Date,
     modo_entrega: String,

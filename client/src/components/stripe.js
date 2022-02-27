@@ -16,18 +16,24 @@ const ChekoutForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // let id_usuario = JSON.parse(localStorage.getItem("id_usuario"))
-        // let productos = JSON.parse(localStorage.getItem("productos"))
+        let infoUser = JSON.parse(sessionStorage.getItem("infoUser"))
+        let idUser = infoUser.id_usuario;
+        let comprado = JSON.parse(localStorage.getItem("Compra"))
+        let direccionEnvio = JSON.parse(localStorage.getItem("direccionEnvio"))
+        console.log(direccionEnvio.direccion)
+        console.log(direccionEnvio.cp)
+        console.log(direccionEnvio.poblacion)
+        console.log(direccionEnvio.modo_entrega)
+
+
         // let estado = JSON.parse(localStorage.getItem("estado"))
         // let fecha_creacion = JSON.parse(localStorage.getItem("fecha_creacion"))
         // let  modo_entrega = JSON.parse(localStorage.getItem("modo_entrega"))
-        // let direccion = JSON.parse(localStorage.getItem("direccion"))
         // let cp = JSON.parse(localStorage.getItem("cp"))
         // let poblacion = JSON.parse(localStorage.getItem("poblacion"))
         // let devolucion = JSON.parse(localStorage.getItem("devolucion"))
-        // let metodo_pago = JSON.parse(localStorage.getItem("resultado"))
 
-
+        console.log(comprado)
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
             card: elements.getElement(CardElement),
@@ -37,16 +43,15 @@ const ChekoutForm = () => {
             const { data } = await axios.post('/checkout', {
                 id,
                 amount: 30000,
-                id_usuario: 5555,
-                productos: ["pantalon azul", "camiseta azul", "zapatos azul"],
+                id_usuario: idUser,
+                productos: comprado,
                 estado: "En tránsito",
                 fecha_creacion: new Date(),
-                modo_entrega: "correo",
-                direccion: "Calle cierta 123",
-                cp: "99999",
-                poblacion: "Barcelona",
-                devolucion: true,
-
+                modo_entrega: direccionEnvio.modo_entrega,
+                direccion: direccionEnvio.direccion,
+                cp: direccionEnvio.cp,
+                poblacion: direccionEnvio.poblacion,
+                devolucion: false,
             })
             console.log(data);
             elements.getElement(CardElement).clear();

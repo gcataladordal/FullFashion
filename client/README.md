@@ -1,6 +1,6 @@
 
 
-npm i socket.io-client react-scroll-to-bottom leaflet react-bootstrap react-leaflet react-router-dom framer-motion bootstrap axios antd
+npm i socket.io-client react-scroll-to-bottom leaflet react-bootstrap react-leaflet react-router-dom framer-motion bootstrap axios antd @react-pdf/renderer
 
 
 # Getting Started with Create React App
