@@ -19,8 +19,6 @@ const admin = {
            imagen
         })
         await productToSave.save();
-        console.log(req.body);
-        console.log("Esta es el producto" + productToSave)
         res.send({ message: "Procuto insertado correctamente" })
 
     }

@@ -13,7 +13,8 @@ const objetoPedidoSchema = {
     direccion: String,
     cp: String,
     poblacion: String,
-    devolucion: Boolean
+    devolucion: Boolean,
+    filtros: Object,
 };
 
 const pedidoSchema = mongoose.Schema(objetoPedidoSchema, { versionKey: false })

@@ -32,12 +32,11 @@ function App() {
                 <div className="App">
                     <Main />
                 {!showChat ? (
-                    <div className="containerExtChat">
                     <div className="containerUnirseChat">
                         <input type="text" placeholder="Introducir nombre" onChange={(event) => { setUsername(event.target.value) }}></input>
                         <button onClick={unirseSala}>Unirse al Chat</button>
                     </div>
-                    </div>)
+                    )
                     : (<Chat socket={socket} userName={userName} sala={sala} />)}
             </div>
         </BrowserRouter>

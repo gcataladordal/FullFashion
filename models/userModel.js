@@ -16,7 +16,7 @@ const objetoUserSchema = {
     cp2: String,
     talla: String,
     target: String,
-    color: String,
+    color: Array,
     estilo: String,
     compras: Array,
     baneado: Boolean,

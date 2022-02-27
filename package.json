@@ -312,7 +312,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js | nodemon serverChat.js"
+    "start": "nodemon serverChat.js | nodemon server.js"
   },
   "repository": {
     "type": "git",

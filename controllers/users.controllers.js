@@ -11,6 +11,18 @@ const actionUsers = {
     },
     loguear: (req, res) => {
         login(req, res)
+    },
+    addEstilosFav: async (req, res) => {
+        let filter = {id_usuario: req.body.id_usuario};
+        let update = {color: req.body.color, estilo: req.body.estilo}
+        let actualizacion = await Usuario.findOneAndUpdate(filter, update)
+        res.send({ message: "Compra realizada correctamente" })
+    },
+    addSegundaDireccion: async (req, res) => {
+        let filtro = {id_usuario: req.body.id_usuario};
+        let cambio = { direccion2: req.body.direccion2, poblacion2: req.body.poblacion2, cp2: req.body.cp2 }
+        let actu = await Usuario.findOneAndUpdate(filtro, cambio);
+        res.send({ message: "Compra realizada correctamente" })
     }
 }
 
