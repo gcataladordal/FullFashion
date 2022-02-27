@@ -1,11 +1,20 @@
-import React, { State } from "react";
+import React, { State, useState } from "react";
 import axios from "axios";
 import { Button, Row, Container, Col } from 'react-bootstrap';
 import { motion } from "framer-motion";
 
 function Perfil() {
 
-
+    const [nombre, setNombre] = useState("");
+    const [target, setTarget] = useState("");
+    const [apellidos, setApellidos] = useState("");
+    const [email, setEmail] = useState("");
+    const [dni, setDni] = useState("");
+    const [password, setPassword] = useState("");
+    const [direccion, setDireccion] = useState("");
+    const [codigo, setCodigo] = useState("");
+    const [poblacion, setPoblacion] = useState("");
+    const [talla, setTalla] = useState("");
 
     const selectCompra = (datos) => {
         localStorage.setItem('devolucion', datos);
@@ -33,9 +42,62 @@ function Perfil() {
     // allCompras[i].productos[i]    --> Articulo i de 6 (0 al 2 son arriba // 3 al 4 es abajo // 5 es zapatillas )
     // allCompras[i].productos[i].nombre --> nombre del articulo   
     // allCompras[i].productos[i].imgUrl --> imgUrl del articulo
+
+    function updateProfile() {
+        let logueado = JSON.parse(sessionStorage.getItem("infoUser"));
+        let id = logueado.id_usuario
+        console.log(logueado)
+        console.log(id)
+        let usuario = {
+            nombre,
+            apellidos,
+            email,
+            dni,
+            password,
+            direccion,
+            cp: codigo,
+            poblacion,
+            talla,
+            target,
+            id
+        }
+        axios.post('/modifyprofile', usuario);
+        console.log(usuario);
+
+    }
     return (
         <div>
             <h1>PERFIL</h1>
+
+            <form className="card card-body">
+            <h2>Modificar perfil</h2>
+                <div className="form-control">
+                    <label>Nombre</label><br></br>
+                    <input type="text" placeholder="Introduce nuevo nombre" onChange={(e) => setNombre(e.target.value)}></input><br></br>
+                    <label>Apellidos</label><br></br>
+                    <input type="text" placeholder="Introduce nuevos apellidos" onChange={(e) => setApellidos(e.target.value)}></input><br></br>
+                    <label>E-mail</label><br></br>
+                    <input type="text" placeholder="Introduce nuevo e-mail" onChange={(e) => setEmail(e.target.value)}></input><br></br>
+                    <label>Password</label><br></br>
+                    <input type="text" placeholder="Introduce nuevo password" onChange={(e) => setPassword(e.target.value)}></input><br></br>
+                    <label>DNI</label><br></br>
+                    <input type="text" placeholder="Introduce nuevo dni" onChange={(e) => setDni(e.target.value)}></input><br></br>
+                    <label>Dirección</label><br></br>
+                    <input type="text" placeholder="Introduce nueva dirección" onChange={(e) => setDireccion(e.target.value)}></input><br></br>
+                    <label>Código postal</label><br></br>
+                    <input type="text" placeholder="Introduce nuevo código postal" onChange={(e) => setCodigo(e.target.value)}></input><br></br>
+                    <label>Población</label><br></br>
+                    <input type="text" placeholder="Introduce nueva población" onChange={(e) => setPoblacion(e.target.value)}></input><br></br>
+                    <label>Talla</label><br></br>
+                    <input type="text" placeholder="Introduce nueva talla" onChange={(e) => setTalla(e.target.value)}></input><br></br>
+                    <label>Target</label><br></br>
+                    <input type="text" placeholder="Introduce nuevo target" onChange={(e) => setTarget(e.target.value)}></input><br></br>
+                    <Button className="ButtonHome btn btn-primary btn-sm" variant="primary" onClick={() => updateProfile()} >Modificar producto</Button>
+                </div>
+            </form>
+
+
+
 
             {allCompras.map(compra => {
                 let fecha = compra.fecha_creacion.split("T");

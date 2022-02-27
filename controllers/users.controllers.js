@@ -23,9 +23,10 @@ const actionUsers = {
         let cambio = { direccion2: req.body.direccion2, poblacion2: req.body.poblacion2, cp2: req.body.cp2 }
         let actu = await Usuario.findOneAndUpdate(filtro, cambio);
         res.send({ message: "Compra realizada correctamente" })
-    }
+    },
+    updateUser: (req, res) => {
+        updateUser(req, res)}
 }
-
 
 async function register(req, res) {
 
@@ -201,5 +202,34 @@ function saveSesion(datosUser) {
     }
     return user;
 }
+
+    async function updateUser(req, res) {
+        let {nombre, apellidos, email, dni, password, direccion, cp, poblacion, talla, target, id} = req.body
+        // let logueado = sessionStorage.getItem("infoUser")
+
+        let passEnc = "";
+        passEnc = await bcrypt.hash(password, saltRounds);
+
+        Usuario.find({ id_usuario: id }, function (err, user) {
+            if (err) throw err;
+            if (nombre != "") {user[0].nombre = nombre; }
+            if (apellidos != "") { user[0].apellidos = apellidos; }
+            if (email != "") { user[0].email = email; }
+            if (dni != "") { user[0].dni = dni; }
+            if (password != "") { user[0].password = passEnc; }
+            if (direccion != "") { user[0].direccion = direccion; }
+            if (cp != "") { user[0].cp = cp; }
+            if (poblacion != "") { user[0].poblacion = poblacion; }
+            if (talla != "") { user[0].talla = talla; }
+            if (target != "") { user[0].target = target; }
+            user[0].save(function (err) {
+                if (err) throw err;
+                console.log("Actualización correcta");
+            });
+            res.send("Usuario actualizado")
+        });
+
+    }
+
 
 module.exports = actionUsers //revisar el nombre para importarlo en las rutas
