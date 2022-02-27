@@ -54,7 +54,6 @@ function NavBar() {
                         {showRegister == true ? (<Nav.Link href="/register" >Registro</Nav.Link>) : ""}
                         {showIniciarSesion == true ? (<Nav.Link href="/login" >Iniciar sesión</Nav.Link>) : ""}
                         {showPerfil == true ? (<Nav.Link href="/perfil" >Perfil</Nav.Link>) : ""}
-                        <Nav.Link href="/mapa">Mapa</Nav.Link>
                         {showCerrarSesion == true ? (<Nav.Link onClick={logout}>Cerrar sesión</Nav.Link>) : ""}
                     </Nav>
                 </Navbar.Collapse>
