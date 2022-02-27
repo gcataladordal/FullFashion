@@ -93,7 +93,6 @@ function ResultadoLook() {
 
 
     const isDisabled = (id) => {
-
         return cambios.length > 1 && cambios.indexOf(id) === -1;
     };
 
@@ -134,7 +133,7 @@ function ResultadoLook() {
     var idAbajo1 = resultado.todasPartesDeAbajo[1]._id
 
     var idZapatos0 = resultado.todosZapatos[0]._id
-
+    var contador = JSON.parse(localStorage.getItem("contadorCambios"));
 
     return (
         <div>
@@ -185,7 +184,7 @@ function ResultadoLook() {
             <div>
                 <button className="ButtonHome btn btn-primary btn-lg" variant="primary" onClick={recogerCambios}>Cambiar las seleccionadas</button>
 
-                <p>*Recuerda que solo tienes 5 cambios de 2 prendas máximo cada vez</p>
+                <p>*Recuerda que solo tienes <b>{5-contador}</b> cambios de 2 prendas máximo cada vez</p>
                 <button onClick={() => confirmarCompra(resultado.todasPartesDeArriba[0], resultado.todasPartesDeArriba[1], resultado.todasPartesDeArriba[2], resultado.todasPartesDeAbajo[0], resultado.todasPartesDeAbajo[1], resultado.todosZapatos[0])}>Seguir para finalizar compra</button>
             </div>
 
