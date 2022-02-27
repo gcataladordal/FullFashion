@@ -41,20 +41,20 @@ function Devolucion() {
             <Checkbox.Group className="resultadolook" onChange={(e) => onChangeCheck(e)}  >
                 <Row>
                     <Col md={4} xs={12}>
-                        <Checkbox className="color" value={resultado[0]._id} disabled={isDisabled("0")}>
+                        <Checkbox className="color" value={resultado[0]._id} disabled={isDisabled(resultado[0]._id)}>
                             <img alt={resultado[0].nombre} src={resultado[0].imgUrl} width={350} />
                             <label>{resultado[0].nombre}</label>
                         </Checkbox>
                         <br></br>
                     </Col>
                     <Col md={4} xs={12}>
-                        <Checkbox className="color" value={resultado[1]._id} disabled={isDisabled("1")}>
+                        <Checkbox className="color" value={resultado[1]._id} disabled={isDisabled(resultado[1]._id)}>
                             <img alt={resultado[1].nombre} src={resultado[1].imgUrl} width={350} />
                             <label>{resultado[1].nombre}</label>
                         </Checkbox>
                     </Col>
                     <Col md={4} xs={12}>
-                        <Checkbox className="color" value={resultado[2]._id} disabled={isDisabled("2")}>
+                        <Checkbox className="color" value={resultado[2]._id} disabled={isDisabled(resultado[2]._id)}>
                             <img alt={resultado[2].nombre} src={resultado[2].imgUrl} width={350} />
                             <label>{resultado[2].nombre}</label>
                         </Checkbox>
@@ -62,19 +62,19 @@ function Devolucion() {
                 </Row>
                 <Row>
                     <Col md={4} xs={12}>
-                        <Checkbox className="color" value={resultado[3]._id} disabled={isDisabled("3")}>
+                        <Checkbox className="color" value={resultado[3]._id} disabled={isDisabled(resultado[3]._id)}>
                             <img alt={resultado[3].nombre} src={resultado[3].imgUrl} width={350} />
                             <label>{resultado[3].nombre}</label>
                         </Checkbox>
                     </Col>
                     <Col md={4} xs={12}>
-                        <Checkbox className="color" value={resultado[4]._id} disabled={isDisabled("4")}>
+                        <Checkbox className="color" value={resultado[4]._id} disabled={isDisabled(resultado[4]._id)}>
                             <img alt={resultado[4].nombre} src={resultado[4].imgUrl} width={350} />
                             <label>{resultado[4].nombre}</label>
                         </Checkbox>
                     </Col>
                     <Col md={4} xs={12}>
-                        <Checkbox className="color" value={resultado[5]._id} disabled={isDisabled("5")}>
+                        <Checkbox className="color" value={resultado[5]._id} disabled={isDisabled(resultado[5]._id)}>
                             <img alt={resultado[5].nombre} src={resultado[5].imgUrl} width={350} />
                             <label>{resultado[5].nombre}</label>
                         </Checkbox>
