@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Checkbox } from "antd";
 import { Button, Row, Container, Col } from 'react-bootstrap';
+import { motion } from "framer-motion";
 
 function ResultadoLook() {
 
     const [cambios, setCambios] = useState("");
-
+    const [viewAlertNoSeleccionado, setViewAlertNoSeleccionado] = useState(false);
     // el check 
     const onChangeCheck = (checkedValues) => {
         setCambios(checkedValues);
@@ -26,68 +27,72 @@ function ResultadoLook() {
             window.location.href = "http://localhost:3000/datoscompralogueado"
         }
     }
-    
+
 
     const recogerCambios = () => {
 
-        var contador = JSON.parse(localStorage.getItem("contadorCambios"));
-        contador++;
-        if (contador < 6) {
+        if (cambios !== "") {
+            var contador = JSON.parse(localStorage.getItem("contadorCambios"));
+            contador++;
+            if (contador < 6) {
 
-            for (let i = 0; i < resultado.todasPartesDeArriba.length; i++) {
+                for (let i = 0; i < resultado.todasPartesDeArriba.length; i++) {
 
-                if (cambios[0] === resultado.todasPartesDeArriba[i]._id) {
-                    console.log(resultado.todasPartesDeArriba[i]._id)
-                    resultado.todasPartesDeArriba.splice(i, 1)
-                    localStorage.setItem("resultado", JSON.stringify(resultado))
-                    console.log(JSON.parse(localStorage.getItem("resultado")))
+                    if (cambios[0] === resultado.todasPartesDeArriba[i]._id) {
+                        console.log(resultado.todasPartesDeArriba[i]._id)
+                        resultado.todasPartesDeArriba.splice(i, 1)
+                        localStorage.setItem("resultado", JSON.stringify(resultado))
+                        console.log(JSON.parse(localStorage.getItem("resultado")))
 
+                    }
+
+                    if (cambios[1] === resultado.todasPartesDeArriba[i]._id) {
+                        console.log(resultado.todasPartesDeArriba[i]._id)
+                        resultado.todasPartesDeArriba.splice(i, 1)
+                        localStorage.setItem("resultado", JSON.stringify(resultado))
+                        console.log(JSON.parse(localStorage.getItem("resultado")))
+                    }
                 }
 
-                if (cambios[1] === resultado.todasPartesDeArriba[i]._id) {
-                    console.log(resultado.todasPartesDeArriba[i]._id)
-                    resultado.todasPartesDeArriba.splice(i, 1)
-                    localStorage.setItem("resultado", JSON.stringify(resultado))
-                    console.log(JSON.parse(localStorage.getItem("resultado")))
+                for (let i = 0; i < resultado.todasPartesDeAbajo.length; i++) {
+                    if (cambios[0] === resultado.todasPartesDeAbajo[i]._id) {
+                        console.log(resultado.todasPartesDeAbajo[i]._id)
+                        resultado.todasPartesDeAbajo.splice(i, 1)
+                        localStorage.setItem("resultado", JSON.stringify(resultado))
+                        console.log(JSON.parse(localStorage.getItem("resultado")))
+                    }
+
+                    if (cambios[1] === resultado.todasPartesDeAbajo[i]._id) {
+                        console.log(resultado.todasPartesDeAbajo[i]._id)
+                        resultado.todasPartesDeAbajo.splice(i, 1)
+                        localStorage.setItem("resultado", JSON.stringify(resultado))
+                        console.log(JSON.parse(localStorage.getItem("resultado")))
+                    }
                 }
+
+                for (let i = 0; i < resultado.todosZapatos.length; i++) {
+                    if (cambios[0] === resultado.todosZapatos[i]._id) {
+                        console.log(resultado.todosZapatos[i]._id)
+                        resultado.todosZapatos.splice(i, 1)
+                        localStorage.setItem("resultado", JSON.stringify(resultado))
+                        console.log(JSON.parse(localStorage.getItem("resultado")))
+                    }
+
+                    if (cambios[1] === resultado.todosZapatos[i]._id) {
+                        console.log(resultado.todosZapatos[i]._id)
+                        resultado.todosZapatos.splice(i, 1)
+                        localStorage.setItem("resultado", JSON.stringify(resultado))
+                        console.log(JSON.parse(localStorage.getItem("resultado")))
+                    }
+                }
+
+                localStorage.setItem("contadorCambios", JSON.stringify(contador));
+                window.location.href = "http://localhost:3000/resultadolook"
+            } else {
+                alert("BANEADO");
             }
-
-            for (let i = 0; i < resultado.todasPartesDeAbajo.length; i++) {
-                if (cambios[0] === resultado.todasPartesDeAbajo[i]._id) {
-                    console.log(resultado.todasPartesDeAbajo[i]._id)
-                    resultado.todasPartesDeAbajo.splice(i, 1)
-                    localStorage.setItem("resultado", JSON.stringify(resultado))
-                    console.log(JSON.parse(localStorage.getItem("resultado")))
-                }
-
-                if (cambios[1] === resultado.todasPartesDeAbajo[i]._id) {
-                    console.log(resultado.todasPartesDeAbajo[i]._id)
-                    resultado.todasPartesDeAbajo.splice(i, 1)
-                    localStorage.setItem("resultado", JSON.stringify(resultado))
-                    console.log(JSON.parse(localStorage.getItem("resultado")))
-                }
-            }
-
-            for (let i = 0; i < resultado.todosZapatos.length; i++) {
-                if (cambios[0] === resultado.todosZapatos[i]._id) {
-                    console.log(resultado.todosZapatos[i]._id)
-                    resultado.todosZapatos.splice(i, 1)
-                    localStorage.setItem("resultado", JSON.stringify(resultado))
-                    console.log(JSON.parse(localStorage.getItem("resultado")))
-                }
-
-                if (cambios[1] === resultado.todosZapatos[i]._id) {
-                    console.log(resultado.todosZapatos[i]._id)
-                    resultado.todosZapatos.splice(i, 1)
-                    localStorage.setItem("resultado", JSON.stringify(resultado))
-                    console.log(JSON.parse(localStorage.getItem("resultado")))
-                }
-            }
-
-            localStorage.setItem("contadorCambios",JSON.stringify(contador));
-            window.location.href = "http://localhost:3000/resultadolook"
-        } else{
-            alert("BANEADO");
+        } else {
+            setViewAlertNoSeleccionado(true);
         }
     }
 
@@ -140,20 +145,20 @@ function ResultadoLook() {
             <Checkbox.Group className="resultadolook" onChange={(e) => onChangeCheck(e)}  >
                 <Row>
                     <Col md={4} xs={12}>
-                        <Checkbox className="color" value={idArriba0} disabled={isDisabled("0")}>
+                        <Checkbox className="color" id={idArriba0} value={idArriba0} disabled={isDisabled(idArriba0)}>
                             <img alt="Foto de arriba Full Fashion" src={imagenArriba0} width={350} />
                             <label>{tituloArriba0}</label>
                         </Checkbox>
                         <br></br>
                     </Col>
                     <Col md={4} xs={12}>
-                        <Checkbox className="color" value={idArriba1} disabled={isDisabled("1")}>
+                        <Checkbox className="color" id={idArriba1} value={idArriba1} disabled={isDisabled(idArriba1)}>
                             <img alt="Foto de arriba Full Fashion" src={imagenArriba1} width={350} />
                             <label>{tituloArriba1}</label>
                         </Checkbox>
                     </Col>
                     <Col md={4} xs={12}>
-                        <Checkbox className="color" value={idArriba2} disabled={isDisabled("2")}>
+                        <Checkbox className="color" id={idArriba2} value={idArriba2} disabled={isDisabled(idArriba2)}>
                             <img alt="Foto de arriba Full Fashion" src={imagenArriba2} width={350} />
                             <label>{tituloArriba2}</label>
                         </Checkbox>
@@ -161,19 +166,19 @@ function ResultadoLook() {
                 </Row>
                 <Row>
                     <Col md={4} xs={12}>
-                        <Checkbox className="color" value={idAbajo0} disabled={isDisabled("3")}>
+                        <Checkbox className="color" id={idAbajo0} value={idAbajo0} disabled={isDisabled(idAbajo0)}>
                             <img alt="Foto de abajo Full Fashion" src={imagenAbajo0} width={350} />
                             <label>{tituloAbajo0}</label>
                         </Checkbox>
                     </Col>
                     <Col md={4} xs={12}>
-                        <Checkbox className="color" value={idAbajo1} disabled={isDisabled("4")}>
+                        <Checkbox className="color" id={idAbajo1} value={idAbajo1} disabled={isDisabled(idAbajo1)}>
                             <img alt="Foto de abajo Full Fashion" src={imagenAbajo1} width={350} />
                             <label>{tituloAbajo1}</label>
                         </Checkbox>
                     </Col>
                     <Col md={4} xs={12}>
-                        <Checkbox className="color" value={idZapatos0} id={tituloZapatos0} disabled={isDisabled("5")}>
+                        <Checkbox className="color" value={idZapatos0} id={tituloZapatos0} disabled={isDisabled(idZapatos0)}>
                             <img alt="Foto de abajo Full Fashion" src={imagenZapatos0} width={350} />
                             <label>{tituloZapatos0}</label>
                         </Checkbox>
@@ -183,8 +188,11 @@ function ResultadoLook() {
             </Checkbox.Group>
             <div>
                 <button className="ButtonHome btn btn-primary btn-lg" variant="primary" onClick={recogerCambios}>Cambiar las seleccionadas</button>
-
-                <p>*Recuerda que solo tienes <b>{5-contador}</b> cambios de 2 prendas máximo cada vez</p>
+                {viewAlertNoSeleccionado ? (<div><motion.p
+              initial={{ x: -1000, color: "#e30b2c" }}
+              animate={{ fontSize: 20, x: 0 }}
+              transition={{ type: "spring", stiffness: 200, delay: 0.2 }}>Debes seleccionar algun artículo para realizar el cambio</motion.p> </div>) : ""}
+                <p>*Recuerda que solo tienes <b>{5 - contador}</b> cambios de 2 prendas máximo cada vez</p>
                 <button onClick={() => confirmarCompra(resultado.todasPartesDeArriba[0], resultado.todasPartesDeArriba[1], resultado.todasPartesDeArriba[2], resultado.todasPartesDeAbajo[0], resultado.todasPartesDeAbajo[1], resultado.todosZapatos[0])}>Seguir para finalizar compra</button>
             </div>
 
