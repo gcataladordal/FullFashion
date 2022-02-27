@@ -89,7 +89,6 @@ const ChekoutForm = () => {
                 cp: infoUserNoLog.cp,
                 poblacion: infoUserNoLog.poblacion,
                 devolucion: false,
-
             })
             elements.getElement(CardElement).clear();
 
