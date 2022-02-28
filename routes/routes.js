@@ -36,5 +36,7 @@ router.get("/resultadolook/", (req,res) => {
 
 })
 
+router.post("/enviarmail",actionCompras.enviarMail); //prueba test para mail
+
 
 module.exports = router
