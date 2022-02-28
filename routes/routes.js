@@ -19,6 +19,11 @@ router.post("/modifyproduct", admin.modifyProduct)
 
 router.post("/historial", actionCompras.buscarCompras);
 
+router.post("/allproductofiltro", products.buscarProductos);
+
+router.post("/buscararticulo", products.buscarProducto);
+router.post("/actualizarpedido", actionCompras.actualizarPedido);
+
 router.post("/busquedalook", products.buscarProductos);
 // router.get("/resultadolook/:altura/:color/:estilo/:peso/:talla/:target", function (req,res) {
 

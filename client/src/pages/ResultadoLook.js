@@ -19,7 +19,7 @@ function ResultadoLook() {
     function confirmarCompra(producto1, producto2, producto3, producto4, producto5, producto6) {
         let quien = localStorage.getItem("quien")
         let compra = [producto1, producto2, producto3, producto4, producto5, producto6]
-        localStorage.setItem("Compra", JSON.stringify(compra))
+        localStorage.setItem("compra", JSON.stringify(compra))
         let infoUser = sessionStorage.getItem("infoUser")
         if (infoUser === null) {
             window.location.href = "http://localhost:3000/datoscompranologueado"

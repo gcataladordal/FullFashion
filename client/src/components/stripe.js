@@ -1,7 +1,7 @@
 import React from "react";
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 const stripePromise = loadStripe("pk_test_51KWzYqAT2Dvvoq4F6fndpOuyBZxYQajiWG0oTQJhietLyWxRuPtKzkPpoSh9B4yr2lyymteUUIH91QWLN5GsTfIP006FEL6O2E")
@@ -17,7 +17,7 @@ const ChekoutForm = () => {
         e.preventDefault();
 
         let infoUser = JSON.parse(sessionStorage.getItem("infoUser"));
-        let comprado = JSON.parse(localStorage.getItem("Compra"));
+        let comprado = JSON.parse(localStorage.getItem("compra"));
         let direccionEnvio = JSON.parse(localStorage.getItem("direccionEnvio"));
         let infoUserNoLog = JSON.parse(localStorage.getItem("datosNoLog"));
         let filtrosCompra = JSON.parse(localStorage.getItem("filtrosCompra"));
@@ -54,7 +54,7 @@ const ChekoutForm = () => {
                 color: filtrosCompra.color,
                 estilo: filtrosCompra.estilo,
             })
-            
+
 
             // GUARDA SEGUNDA DIRECCION USUARIO
             if (!direccionEnvio.mismaDireccion) {
@@ -65,9 +65,9 @@ const ChekoutForm = () => {
                     cp2: direccionEnvio.cp,
 
                 })
-                
+
             }
-            
+
 
             elements.getElement(CardElement).clear();
 
@@ -97,10 +97,32 @@ const ChekoutForm = () => {
 
 
     }
-
+    let compra = JSON.parse(localStorage.getItem("compra"));
     return (
         <form onSubmit={handleSubmit} className="card card-body">
-            <img src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/imagenpago.jpg" alt="Checkout" className="img-fluid" />
+            <Row>
+                <Col>
+                    <img src={compra[0].imgUrl} alt="Checkout" className="img-fluid" />
+                </Col>
+                <Col>
+                    <img src={compra[1].imgUrl} alt="Checkout" className="img-fluid" />
+                </Col>
+                <Col>
+                    <img src={compra[2].imgUrl} alt="Checkout" className="img-fluid" />
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <img src={compra[3].imgUrl} alt="Checkout" className="img-fluid" />
+                </Col>
+                <Col>
+                    <img src={compra[4].imgUrl} alt="Checkout" className="img-fluid" />
+                </Col>
+                <Col>
+                    <img src={compra[5].imgUrl} alt="Checkout" className="img-fluid" />
+                </Col>
+            </Row>
+
             <div className="form-group">
                 <h3 className="text-center">Total: 300€</h3>
                 <CardElement className="form-control" />
