@@ -25,7 +25,14 @@ const actionUsers = {
         res.send({ message: "Compra realizada correctamente" })
     },
     updateUser: (req, res) => {
-        updateUser(req, res)}
+        updateUser(req, res)
+    },
+    banearUser: async (req, res) => {
+       console.log(req.body.id_usuario)
+       console.log(req.body.baneado)
+       let actu = await Usuario.findOneAndUpdate({id_usuario:req.body.id_usuario}, {baneado:true});
+
+    }
 }
 
 async function register(req, res) {
@@ -198,7 +205,8 @@ function saveSesion(datosUser) {
         target: datosUser.target,
         color: datosUser.color,
         estilo: datosUser.estilo,
-        admin: datosUser.admin
+        admin: datosUser.admin,
+        baneado: datosUser.baneado
     }
     return user;
 }

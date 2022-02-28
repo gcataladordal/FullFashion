@@ -16,6 +16,7 @@ import Payment from "./stripe";
 import DatosEnvioNoLogueado from "../pages/DatosEnvioNoLogueado";
 import Admin from "./Admin";
 import Devolucion from "../pages/Devolucion";
+import Baneado from "../pages/Baneado";
 
 
 class Main extends Component {
@@ -41,6 +42,8 @@ class Main extends Component {
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/admin" element={<Admin/>} />
           <Route path="/devolucion" element={<Devolucion/>} />
+          <Route path="/baneado" element={<Baneado/>} />
+
         </Routes>
       </div>
     );
