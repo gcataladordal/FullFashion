@@ -46,25 +46,25 @@ function Perfil() {
 
     // //! BOTON Seleciona el pedido que se va hace la devolucion (El boton tiene la info en JSON de todo el pedido)
     const selectCompra = (datos) => {
-        console.log(datos)
+        // console.log(datos)
         //Se mete TODA la info del pedido a devolver Storage
         localStorage.setItem('devolucion', datos);
         window.location.href = "http://localhost:3000/devolucion";
-                // Se va a recoger info con los datos del pedido con su filtro
-                // let infoFiltro = JSON.parse(localStorage.getItem("pedidos"));
-                //  Se pondra en storage una collecion con filtro para la devolucion como en look
-                // let filtro = {
-                //     target: infoFiltro[0].filtros.target,
-                //     estilo: infoFiltro[0].filtros.estilo,
-                //     color: infoFiltro[0].filtros.color,
-                // }
-                // console.log(filtro)
+        // Se va a recoger info con los datos del pedido con su filtro
+        // let infoFiltro = JSON.parse(localStorage.getItem("pedidos"));
+        //  Se pondra en storage una collecion con filtro para la devolucion como en look
+        // let filtro = {
+        //     target: infoFiltro[0].filtros.target,
+        //     estilo: infoFiltro[0].filtros.estilo,
+        //     color: infoFiltro[0].filtros.color,
+        // }
+        // console.log(filtro)
 
-                // axios.post("/allproductofiltro", filtro).then((res) => {
-                //     console.log(res.data)
-                //     let colleccionPedidos = res.data;
-                //     localStorage.setItem("resultDevo", JSON.stringify(colleccionPedidos));
-                // }).then(() => { window.location.href = "http://localhost:3000/devolucion" })
+        // axios.post("/allproductofiltro", filtro).then((res) => {
+        //     console.log(res.data)
+        //     let colleccionPedidos = res.data;
+        //     localStorage.setItem("resultDevo", JSON.stringify(colleccionPedidos));
+        // }).then(() => { window.location.href = "http://localhost:3000/devolucion" })
     }
 
     var allCompras = JSON.parse(localStorage.getItem("pedidos"));
@@ -106,6 +106,8 @@ function Perfil() {
                     <button onClick={() => { if (!viewModificarPerfil) { setViewModificarPerfil(true); setViewHistorial(false) } }}>MODIFICAR PERFIL</button>
                 </Row>
             </div>
+
+            {/* Vemos el historial de compras */}
             {viewHistorial ? (<div>
 
                 {allCompras.map(compra => {
@@ -116,55 +118,62 @@ function Perfil() {
                     for (let i = 0; i < compra.productos.length; i++) {
                         compra.productos[i].id_pedido = compra.id_pedido;
                     }
-
+                    //Si compra estado ==="devuelto" --> no se pinta
                     return (<div>
+                        {compra.estado !== "devuelto" ? (
 
-                        <h5><p>Compra fecha: {fecha[0]} {hora[0]}</p></h5>
-                        <Row md={2}>
-                            <Col>
-                                <Row md={2} >
-                                    <Col md={2} xs={6}>
-                                        <img src={compra.productos[0].imgUrl} width="100px"></img>
+                            <div>
+
+                                <h5><p>Compra fecha: {fecha[0]} {hora[0]}</p></h5>
+                                <Row md={2}>
+                                    <Col>
+                                        <Row md={2} >
+                                            <Col md={2} xs={6}>
+                                                <img src={compra.productos[0].imgUrl} width="100px"></img>
+                                            </Col>
+                                            <Col md={2} xs={6}>
+                                                <img src={compra.productos[1].imgUrl} width="100px"></img>
+                                            </Col>
+                                            <Col md={2} xs={6}>
+                                                <img src={compra.productos[2].imgUrl} width="100px"></img>
+                                            </Col>
+                                        </Row >
+                                        <Row>
+                                            <Col md={2} xs={6}>
+                                                <img src={compra.productos[3].imgUrl} width="100px"></img>
+                                            </Col>
+                                            <Col md={2} xs={6}>
+                                                <img src={compra.productos[4].imgUrl} width="100px"></img>
+                                            </Col>
+                                            <Col md={2} xs={6}>
+                                                <img src={compra.productos[5].imgUrl} width="100px"></img>
+                                            </Col>
+                                        </Row>
                                     </Col>
-                                    <Col md={2} xs={6}>
-                                        <img src={compra.productos[1].imgUrl} width="100px"></img>
+
+                                    <Col>
+                                        <ol>
+                                            <li><p>{compra.productos[0].nombre}</p></li>
+                                            <li> <p>{compra.productos[1].nombre}</p></li>
+                                            <li> <p>{compra.productos[2].nombre}</p></li>
+                                            <li><p>{compra.productos[3].nombre}</p></li>
+                                            <li><p>{compra.productos[4].nombre}</p></li>
+                                            <li><p>{compra.productos[5].nombre}</p></li>
+                                        </ol>
                                     </Col>
-                                    <Col md={2} xs={6}>
-                                        <img src={compra.productos[2].imgUrl} width="100px"></img>
-                                    </Col>
-                                </Row >
+
+
+                                </Row>
                                 <Row>
-                                    <Col md={2} xs={6}>
-                                        <img src={compra.productos[3].imgUrl} width="100px"></img>
-                                    </Col>
-                                    <Col md={2} xs={6}>
-                                        <img src={compra.productos[4].imgUrl} width="100px"></img>
-                                    </Col>
-                                    <Col md={2} xs={6}>
-                                        <img src={compra.productos[5].imgUrl} width="100px"></img>
+                                    <Col md={12} xs={12}>
+                                        <button value={JSON.stringify(compra.productos)} onClick={(e) => selectCompra(e.target.value)}>Devolver</button>
                                     </Col>
                                 </Row>
-                            </Col>
+                            </div >
 
-                            <Col>
-                                <ol>
-                                    <li><p>{compra.productos[0].nombre}</p></li>
-                                    <li> <p>{compra.productos[1].nombre}</p></li>
-                                    <li> <p>{compra.productos[2].nombre}</p></li>
-                                    <li><p>{compra.productos[3].nombre}</p></li>
-                                    <li><p>{compra.productos[4].nombre}</p></li>
-                                    <li><p>{compra.productos[5].nombre}</p></li>
-                                </ol>
-                            </Col>
+                        ) : ""}
+                    </div>
 
-
-                        </Row>
-                        <Row>
-                            <Col md={12} xs={12}>
-                                <button value={JSON.stringify(compra.productos)} onClick={(e) => selectCompra(e.target.value)}>Devolver</button>
-                            </Col>
-                        </Row>
-                    </div >
                     )
                 })
                 }
@@ -201,15 +210,6 @@ function Perfil() {
                         </div>
                     </form>
                 </div>) : ""}
-
-
-
-
-
-
-
-
-            
         </div >
 
     )
