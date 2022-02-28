@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Checkbox } from "antd";
 import { Row, Col  } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { triggerFocus } from "antd/lib/input/Input";
 
 const RecogidaLook = () => {
   const [target, setTarget] = useState("");
@@ -49,7 +48,7 @@ const RecogidaLook = () => {
     var regExpEmail = new RegExp(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/);
     return regExpEmail.test(email)
   }
-
+ 
   const estaLogueado = () => {
     let logueado = sessionStorage.getItem("infoUser")
     if (logueado !== null) {
@@ -59,6 +58,10 @@ const RecogidaLook = () => {
     }
   }
 
+  function obtenerTarget() {
+    let logueado = JSON.parse(sessionStorage.getItem("infoUser"))
+    return logueado.target
+  }
 
   const searchData = () => {
     localStorage.setItem("quien", quien)
@@ -87,7 +90,7 @@ const RecogidaLook = () => {
       <br /> <br />
 
       {/* ELEGIR DSTINATARIO DE LA COLLECIÓN */}
-      {viewQuien == true ? (<motion.div
+      {viewQuien? (<motion.div
         initial={{ y: -1050, }}
         animate={{ fontSize: 60, y: 0 }}
         transition={{ type: "spring", stiffness: 200, delay: 0.2 }}>
@@ -104,11 +107,12 @@ const RecogidaLook = () => {
           value="Es para mi"
           onClick={() => {
             setQuien("myself");
-            console.log("Click para mi");
             let log = estaLogueado()
             if (log) {
+              let targetLog = obtenerTarget();
+              setTarget(targetLog)
               setViewQuien(false);
-              setViewTarget(true)
+              setViewColor(true)
             } else {
               setViewQuien(false);
               setViewEmail(true);
@@ -139,7 +143,7 @@ const RecogidaLook = () => {
         <br />
         <br />
       </motion.div>) : ""}
-      {viewEmail == true ? (<motion.div
+      {viewEmail? (<motion.div
         initial={{ y: -2550, }}
         animate={{ fontSize: 60, y: 0 }}
         transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
@@ -203,7 +207,7 @@ const RecogidaLook = () => {
       </motion.div>) : ""}
 
       {/* TIPO DE PERSONA (TARGET) */}
-      {viewTarget == true ? (<motion.div
+      {viewTarget? (<motion.div
         initial={{ y: -1000, }}
         animate={{ fontSize: 60, y: 0 }}
         transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
@@ -257,6 +261,7 @@ const RecogidaLook = () => {
               }
             }
           />
+          
           </Col>
           <Col xs={6} md={3}>
           <motion.input
@@ -316,10 +321,10 @@ const RecogidaLook = () => {
 
 
       {/* ALTURA Y PESO */}
-      {viewAlturaPeso == true ? (<motion.div
-        initial={{ x: "75vw" }}
-        animate={{ fontSize: 60, x: -50, y: 0 }}
-        transition={{ type: "spring", stiffness: 200, delay: 0.3 }}
+      {viewAlturaPeso? (<motion.div
+       initial={{ y: -1050, }}
+       animate={{ fontSize: 60, y: 0 }}
+       transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
       >
         <br />
         <br />
@@ -411,11 +416,11 @@ const RecogidaLook = () => {
 
 
       {/* TALLA */}
-      {viewTalla == true ? (<div>
+      {viewTalla? (<div>
         <motion.div
-        initial={{ x: -2500 }}
-        animate={{ fontSize: 60, x: 0, y: 0 }}
-        transition={{ type: "spring", stiffness: 200, delay: 0.3 }}>
+        initial={{ y: -1050, }}
+        animate={{ fontSize: 60, y: 0 }}
+        transition={{ type: "spring", stiffness: 200, delay: 0.2 }}>
         <br />
         <br />
         <br />
@@ -504,9 +509,9 @@ const RecogidaLook = () => {
       <br />
       <br />
       <motion.div
-        initial={{ x: -2500 }}
-        animate={{ fontSize: 60, x: 0, y: 0 }}
-        transition={{ type: "spring", stiffness: 200, delay: 0.3 }}>
+        initial={{ y: -1050, }}
+        animate={{ fontSize: 60, y: 0 }}
+        transition={{ type: "spring", stiffness: 200, delay: 0.2 }}>
         <input
           type="button"
           className="buttonFormLook"
@@ -521,10 +526,10 @@ const RecogidaLook = () => {
       
       ) : ""}
       {/* COLORES */}
-      {viewColor == true ? (<motion.div
-        initial={{ y: "75vw", x: 0 }}
-        animate={{ fontSize: 60, x: 0, y: 0 }}
-        transition={{ type: "spring", stiffness: 155, delay: 0.3 }}
+      {viewColor? (<motion.div
+        initial={{ y: -1050, }}
+        animate={{ fontSize: 60, y: 0 }}
+        transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
       >
         <br />
         <br />
@@ -602,8 +607,8 @@ const RecogidaLook = () => {
         </Checkbox.Group>
         <br />
         {viewAlertaColor ? (<motion.p
-          initial={{ x: -1000, color: "#e30b2c"}}
-          animate={{ fontSize: 20, x: 0 }}
+          initial={{ y: -1050, }}
+          animate={{ fontSize: 60, y: 0 }}
           transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
           >Por favor, selecciona entre 1 o 2 colores</motion.p>) : ""}
           <br /> 
@@ -612,8 +617,14 @@ const RecogidaLook = () => {
           className="buttonFormLook"
           value="Anterior"
           onClick={() => {
+            let log = estaLogueado()
+            if (log && quien === "myself") {
+              setViewColor(false);
+              setViewQuien(true);
+            } else {
             setViewColor(false);
-            setViewTalla(true)
+            setViewTalla(true);
+            }
           }} />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input
@@ -633,7 +644,7 @@ const RecogidaLook = () => {
 
       </motion.div>) : ""}
       {/* ESTILOS  */}
-      {viewEstilo == true ? (<div><motion.div
+      {viewEstilo ? (<div><motion.div
         initial={{ y: "-80vw", x: 0 }}
         animate={{ fontSize: 60, x: 0, y: 0 }}
         transition={{ type: "spring", stiffness: 155, delay: 0.5 }}
@@ -718,7 +729,6 @@ const RecogidaLook = () => {
         initial={{ y: "-80vw", x: 0 }}
         animate={{ fontSize: 60, x: 0, y: 0 }}
         transition={{ type: "spring", stiffness: 155, delay: 0.2 }}>
-        <br />
         <br />
         <br />
         <button className="buttonFormLook" onClick={searchData}>¡Quiero ver mi resultado!</button>

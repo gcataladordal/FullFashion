@@ -9,7 +9,6 @@ const useFetch = (props) => {
     if (data !== "") {
       searchData(props);
     }
-   
   }, [data]);
 
 
@@ -19,10 +18,7 @@ const useFetch = (props) => {
       localStorage.setItem("resultado", JSON.stringify(res.data));
       localStorage.setItem("contadorCambios", JSON.stringify(0))
       // saved tiene toda la información ya capada y random (3 de arriba, 2 de abajo y 1 zapato)
-      const todoRandom = JSON.parse(localStorage.getItem("resultado"));
       window.location.href = "http://localhost:3000/resultadolook"
-      // console.log(todoRandom)
-
     });
   };
 

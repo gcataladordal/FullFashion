@@ -51,10 +51,10 @@ function NavBar() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        {showRegister == true ? (<Nav.Link href="/register" >Registro</Nav.Link>) : ""}
-                        {showIniciarSesion == true ? (<Nav.Link href="/login" >Iniciar sesión</Nav.Link>) : ""}
-                        {showPerfil == true ? (<Nav.Link href="/perfil" >Perfil</Nav.Link>) : ""}
-                        {showCerrarSesion == true ? (<Nav.Link onClick={logout}>Cerrar sesión</Nav.Link>) : ""}
+                        {showRegister ? (<Nav.Link href="/register" >Registro</Nav.Link>) : ""}
+                        {showIniciarSesion ? (<Nav.Link href="/login" >Iniciar sesión</Nav.Link>) : ""}
+                        {showPerfil ? (<Nav.Link href="/perfil" >Perfil</Nav.Link>) : ""}
+                        {showCerrarSesion ? (<Nav.Link onClick={logout}>Cerrar sesión</Nav.Link>) : ""}
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

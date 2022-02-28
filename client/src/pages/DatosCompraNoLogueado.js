@@ -24,10 +24,11 @@ function DatosCompraNoLogueado() {
   return (
     <div>
       <br />
-        <h3>Datos de su dirección</h3>
-        
+        <h3>Datos personales</h3>
+        <form className="card card-body">
+        <div className="form-control">
         <br />
-        <label>Nombre:&nbsp;</label>
+        <label>Nombre:&nbsp;</label><br></br>
         <input type="text" name="nombre" placeholder="Ej: Juan"  onChange={(e) => {
             setNombre(e.target.value);
            
@@ -35,7 +36,7 @@ function DatosCompraNoLogueado() {
         <br />
         <br />
 
-        <label>Apellidos:&nbsp;</label>
+        <label>Apellidos:&nbsp;</label><br></br>
         <input type="text" name="apellidos" placeholder="Ej: Sanchez Martinez"  onChange={(e) => {
             setApellidos(e.target.value);
            
@@ -43,7 +44,7 @@ function DatosCompraNoLogueado() {
         <br />
         <br />
 
-        <label>DNI:&nbsp;</label>
+        <label>DNI:&nbsp;</label><br></br>
         <input
           type="text"
           name="dni"
@@ -55,7 +56,7 @@ function DatosCompraNoLogueado() {
         <br />
         <br />
 
-        <label>Teléfono:&nbsp;</label>
+        <label>Teléfono:&nbsp;</label><br></br>
         <input
           type="text"
           name="telefono"
@@ -65,7 +66,9 @@ function DatosCompraNoLogueado() {
           }}></input>
         <br />
         <br />
-        <button onClick={() => saveDatoUsuarioNoLog()}>Enviar</button>
+        <button type="button" className="ButtonHome btn btn-primary btn-md" onClick={() => saveDatoUsuarioNoLog()}>Enviar</button>
+        </div>
+        </form>
     </div>
   );
 }

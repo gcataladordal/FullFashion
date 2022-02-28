@@ -25,7 +25,14 @@ const actionUsers = {
         res.send({ message: "Compra realizada correctamente" })
     },
     updateUser: (req, res) => {
-        updateUser(req, res)}
+        updateUser(req, res)
+    },
+    banearUser: async (req, res) => {
+       console.log(req.body.id_usuario)
+       console.log(req.body.baneado)
+       let actu = await Usuario.findOneAndUpdate({id_usuario:req.body.id_usuario}, {baneado:true});
+
+    }
 }
 
 async function register(req, res) {
@@ -69,19 +76,33 @@ async function register(req, res) {
 
     // //! ---- SI TODAS VALIDACIONES TRUE --------
     if (ok) {
-        const existeDni = await busquedaUsuarioDni(dni);
+        const existeEmail = await busquedaUsuarioEmail(email);
 
-        if ((existeDni) == null) {
+        if ((existeEmail[0]) == null) {
             var passEnc = "";
             passEnc = await bcrypt.hash(password, saltRounds);
             let inserta = await insertarUsuario(nombre, apellidos, email, dni, passEnc, direccion, cp, poblacion, talla, target, res);
             console.log("registrado correctamente")
-            res.json("insertado correctamente")
+            res.json("insertOk")
         } else {
-            console.log("el usuario ya existe");
+            res.json("usuarioExiste");
         }
-    } else {;
-        console.log("algun campo no es correcto")
+    } else {
+        if (!mismoPassOk) {
+            res.json("errorPassIgual")
+        }
+        else if (!emailOk) {
+            res.json("errorEmail")
+        }
+        else if (!passOk) {
+            res.json("errorPassReq")
+        }
+        else if (!dniOk) {
+            res.json("errorDni")
+        }
+        else {
+            res.json("error")
+        }
     }
 }
 
@@ -157,8 +178,8 @@ async function login(req, res) {
     let existeEmailBD = await busquedaUsuarioEmail(email);
    
     if ((existeEmailBD[0]) == undefined) {
-        let registrate = "noExiste";
         console.log("usuario no existe en la BD");
+        res.json("userNoExiste")
     } else {
         var mismoPass = await bcrypt.compare(password, existeEmailBD[0].password)     // <-- COMPARA LAS 2 PASSWORDS
         if (mismoPass) {
@@ -173,6 +194,7 @@ async function login(req, res) {
             }
         } else {
             console.log("contraseña incorrecta")
+            res.json("passwordMal")
             
         }
     }
@@ -198,7 +220,8 @@ function saveSesion(datosUser) {
         target: datosUser.target,
         color: datosUser.color,
         estilo: datosUser.estilo,
-        admin: datosUser.admin
+        admin: datosUser.admin,
+        baneado: datosUser.baneado
     }
     return user;
 }
