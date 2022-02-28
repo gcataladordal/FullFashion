@@ -1,4 +1,6 @@
 import React from "react";
+import ExportPdfComponent from "../components/ExportPdfComponent";
+
 // import { useState } from "react"
 
 function MostrarFactura() {
@@ -10,7 +12,10 @@ function MostrarFactura() {
       <br />
       <br />
       <br />
-        <h2>Muchas gracias por tu compra!!!</h2>
+        <h2>¡Muchas gracias por tu compra!</h2>
+        <div>
+        <ExportPdfComponent/>
+      </div>
     </div>
   );
 }
