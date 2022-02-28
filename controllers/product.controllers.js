@@ -75,7 +75,10 @@ const products = {
     }
 }
 
-
+/**
+     * Busca los productos en base de datos del tipo parte de arriba con el filtrado del usuario
+     * @param {string} req - La informacion que recibe del proceso de recogida de información de look del usuario
+     */
 
 // busca las partes de arriba según recoge del body
 async function busquedaArriba(req) {
@@ -95,8 +98,12 @@ async function busquedaArriba(req) {
 
     return resultadoArribaRandom;
 }
+/**
+     * Busca los productos en base de datos del tipo parte de abajo con el filtrado del usuario
+     * @param {string} req - La informacion que recibe del proceso de recogida de información de look del usuario
+     */
 
-// busca las partes de arriba según recoge del body
+// busca las partes de abajo según recoge del body
 async function busquedaAbajo(req) {
     var resultadoAbajo = await Producto.find({
         "target": req.body.target,
@@ -115,6 +122,10 @@ async function busquedaAbajo(req) {
 
     return resultadoAbajoRandom;
 }
+/**
+     * Busca los productos en base de datos del tipo zapato con el filtrado del usuario
+     * @param {string} req - La informacion que recibe del proceso de recogida de información de look del usuario
+     */
 
 // busca los zapatos según recoge del body
 async function busquedaZapatos(req) {
@@ -134,6 +145,9 @@ async function busquedaZapatos(req) {
 
     return resultadoZapatoRandom;
 }
+/**
+     * Genera números aleatorios para randomizar los productos que se le muestran al usuario
+     */
 
 // generar números aleatorios con mínimo y máximo
 function random(min, max) {

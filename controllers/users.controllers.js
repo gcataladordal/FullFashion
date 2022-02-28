@@ -35,6 +35,11 @@ const actionUsers = {
     }
 }
 
+/**
+     * Genera un objeto que se utilizara para insertar un usuario en la base de datos, recogiendo los campos de un login y validando que están introducidos siguiendo los parametros que se piden
+     * @param {string} req - La informacion que recibe del formulario de registro
+     */
+
 async function register(req, res) {
 
     //! ---- Variables de la información del registro -----
@@ -105,7 +110,19 @@ async function register(req, res) {
         }
     }
 }
-
+/**
+     * Inserta el objeto que genera el login en la base de datos
+     * @param {string} nombre - La informacion que recibe del formulario de registro
+     * @param {string} apellidos - La informacion que recibe del formulario de registro
+     * @param {string} email - La informacion que recibe del formulario de registro
+     * @param {string} dni - La informacion que recibe del formulario de registro
+     * @param {string} password - La informacion que recibe del formulario de registro
+     * @param {string} direccion - La informacion que recibe del formulario de registro
+     * @param {string} cp - La informacion que recibe del formulario de registro
+     * @param {string} poblacion - La informacion que recibe del formulario de registro
+     * @param {string} talla - La informacion que recibe del formulario de registro
+     * @param {string} target - La informacion que recibe del formulario de registro
+     */
 async function insertarUsuario(nombre, apellidos, email, dni, password, direccion, cp, poblacion, talla, target) {
     dni = dni.replace("-", "");
     dni = dni.toUpperCase();
