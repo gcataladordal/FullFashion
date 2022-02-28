@@ -33,25 +33,30 @@ const actionCompras = {
         res.send({ message: "Compra realizada correctamente" })
     },
     buscarCompras: async (req, res) => {
-        var busquedaPedidos = await Pedido.find({id_usuario:req.body.idUsuario})
+        var busquedaPedidos = await Pedido.find({ id_usuario: req.body.idUsuario })
         res.json(busquedaPedidos)
 
     },
 
     actualizarPedido: async (req, res) => {
-        //? Falta actualizar los campos de los articulos
-        //Si pedido devolucion es false, hace una actualizacion
-        if(!req.body.devolucion){
-            var actualizarPedido = await Pedido.findOneAndUpdate({id_pedido: req.body.id_pedido}, {devolucion:true})
-            res.json(actualizarPedido)
+        console.log(req.body);
+        const datosCambio = { productos: req.body.productos };
+        var actualizarPedido = await Pedido.findOneAndUpdate({ id_pedido: req.body.id_pedido }, datosCambio)
+        // var actualizarPedido = await Pedido.findOneAndUpdate({id_pedido: req.body.id_pedido}, {devolucion:true})
+        res.json("actualizadoPedido");
 
-            //Si pedido devolucion es true, cambia el estado a devuelto: los pedidos en histroail devueltos no se veran.
-        }else{
-            var devueltaPedido = await Pedido.findOneAndUpdate({id_pedido: req.body.id_pedido}, {estado:"devuelto"})
-            res.json(devueltaPedido)
+    },
+    quitarPedido: async (req, res) => {
+        console.log(req.body);
+        //Si pedido devolucion es true, cambia el estado a devuelto: los pedidos en histroail devueltos no se veran.
+        var devueltaPedido = await Pedido.findOneAndUpdate({ id_pedido: req.body.id_pedido }, { estado: "devuelto" })
+        res.json("quitarPedido")
 
-        }
-        
+    },
+    devolucionPrimera:async (req, res) => {
+        console.log(req.body);
+        var actualizarPedido = await Pedido.findOneAndUpdate({id_pedido: req.body.id_pedido}, {devolucion:true})
+        res.json("devolucionPrimera");
 
     }
 

@@ -18,60 +18,75 @@ const products = {
     buscarProducto: async (req, res) => {
         //Me mira de que tipo es ese producto y me busca todos
         if (req.body.tipo_prenda === "zapatos") {
-            console.log("******")
-            console.log(req.body.id_producto)
-            console.log(req.body)
 
             let numPren = req.body.numero_prenda;
-            console.log(numPren)
             let zapatoOne;
             //Busca un zapato que no sea el mismo y lo devuelve
             do {
                 let resulBusqZapatos = await busquedaZapatos(req);
-                resulBusqZapatos["new"]="nuevo";
                 zapatoOne = resulBusqZapatos[0];
-                console.log("Tenemos" + req.body.id_producto)
-                console.log("Buscado" + zapatoOne.id_producto);
-                console.log(zapatoOne)
+               
             } while (req.body.id_producto === zapatoOne.id_producto);
-            console.log(zapatoOne);
 
-            res.json(zapatoOne);
+            let zapatoEntero = {
+                _id: zapatoOne._id,
+                nombre: zapatoOne.nombre,
+                target: zapatoOne.target,
+                tipo_prenda: zapatoOne.tipo_prenda,
+                estilo: zapatoOne.estilo,
+                color: zapatoOne.color,
+                imgUrl: zapatoOne.imgUrl,
+                id_producto: zapatoOne.id_producto,
+                numero_prenda: numPren,
+            }
+            
+            res.json(zapatoEntero);
 
         } else if (req.body.tipo_prenda === "arriba") {
-            console.log("******")
-            console.log(req.body.id_producto)
+            let numPren = req.body.numero_prenda;
             let arribaOne;
             do {
                 let resulBusqArriba = await busquedaArriba(req)
                 arribaOne = resulBusqArriba[0];
-                console.log("Tenemos" + req.body.id_producto)
-                console.log("Buscado" + arribaOne.id_producto);
             } while (req.body.id_producto === arribaOne.id_producto);
 
-            res.json(arribaOne);
+            let topEntero = {
+                _id: arribaOne._id,
+                nombre: arribaOne.nombre,
+                target: arribaOne.target,
+                tipo_prenda: arribaOne.tipo_prenda,
+                estilo: arribaOne.estilo,
+                color: arribaOne.color,
+                imgUrl: arribaOne.imgUrl,
+                id_producto: arribaOne.id_producto,
+                numero_prenda: numPren,
+            }
+            res.json(topEntero);
 
 
         } else if (req.body.tipo_prenda === "abajo") {
-            console.log("******")
-            console.log(req.body.id_producto)
-
+            let numPren = req.body.numero_prenda;
             let abajoOne;
             do {
                 let resulBusqAbajo = await busquedaAbajo(req)
                 abajoOne = resulBusqAbajo[0];
-                console.log("Tenemos" + req.body.id_producto)
-                console.log("Buscado" + abajoOne.id_producto);
             } while (req.body.id_producto === abajoOne.id_producto);
 
-            res.json(abajoOne);
+            let botEntero = {
+                _id: abajoOne._id,
+                nombre: abajoOne.nombre,
+                target: abajoOne.target,
+                tipo_prenda: abajoOne.tipo_prenda,
+                estilo: abajoOne.estilo,
+                color: abajoOne.color,
+                imgUrl: abajoOne.imgUrl,
+                id_producto: abajoOne.id_producto,
+                numero_prenda: numPren,
+            }
+            res.json(botEntero);
 
         }
-        // let resultado = {
-        //     todasPartesDeArriba: resulBusqArriba,
-        //     todasPartesDeAbajo: resulBusqAbajo,
-        //     todosZapatos: resulBusqZapatos
-        // }
+       
     }
 }
 

@@ -24,6 +24,9 @@ router.post("/allproductofiltro", products.buscarProductos);
 router.post("/buscararticulo", products.buscarProducto);
 
 router.post("/actualizarpedido", actionCompras.actualizarPedido);
+router.post("/quitarpedido", actionCompras.quitarPedido);
+router.post("/devolucionprimera", actionCompras.devolucionPrimera);
+
 
 router.post("/busquedalook", products.buscarProductos);
 // router.get("/resultadolook/:altura/:color/:estilo/:peso/:talla/:target", function (req,res) {
