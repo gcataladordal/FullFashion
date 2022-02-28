@@ -3,7 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion"
 import Mapa from "../components/Mapa";
 import { Checkbox } from "antd";
-import { Row, Col } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 function DatosCompraLogueado() {
   const [direccionEnvio, setDireccionEnvio] = useState("");
@@ -102,9 +102,6 @@ function DatosCompraLogueado() {
     return tipoDireccion.length > 0 && tipoDireccion.indexOf(id) === -1;
   };
 
-  const isDisabled = (id) => {
-    return tipoDireccion.length > 0 && tipoDireccion.indexOf(id) === -1;
-  };
 
   const isDisabledEnvio = (id) => {
     return modoEnvio.length > 0 && modoEnvio.indexOf(id) === -1;

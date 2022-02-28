@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import Main from "./components/Main";
 import "./App.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from "./components/NavBar";
-import { motion } from "framer-motion";
 import Footer from "./components/Footer";
 
 import Chat from "./components/Chat";

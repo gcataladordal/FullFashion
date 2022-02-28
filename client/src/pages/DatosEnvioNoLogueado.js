@@ -45,9 +45,9 @@ function DatosEnvioNoLogueado() {
       cp: cpEnvio,
       modoEnvio: modoEnvio[0],
     }
-    localStorage.setItem("datosNoLog", JSON.stringify(entrega))
+    localStorage.setItem("datosNoLog", JSON.stringify(entrega));
 
-    // window.location.href = "http://localhost:3000/payment"
+    window.location.href = "http://localhost:3000/payment"
   };
 
   function addDirectionRecog() {
@@ -61,8 +61,9 @@ function DatosEnvioNoLogueado() {
       poblacion: poblacionEnvio,
       modoEnvio: modoEnvio[0]
     }
-    localStorage.setItem("datosNoLog", JSON.stringify(entrega))
-    window.location.href = "http://localhost:3000/payment"
+    localStorage.setItem("datosNoLog", JSON.stringify(entrega));
+
+    window.location.href = "http://localhost:3000/payment";
   }
 
   const onChangeCheckEnvio = (checkedValues) => {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { Row, Col } from 'react-bootstrap';
@@ -10,8 +10,23 @@ const stripePromise = loadStripe("pk_test_51KWzYqAT2Dvvoq4F6fndpOuyBZxYQajiWG0oT
 
 const ChekoutForm = () => {
 
+    const [viewPrecioNiño, setViewPrecioNiño] = useState(false);
+    const [viewPrecioAdulto, setViewPrecioAdulto] = useState(false);
+
     const stripe = useStripe();
     const elements = useElements();
+
+    let filtrosCompra = JSON.parse(localStorage.getItem("filtrosCompra"));
+
+
+    useEffect(() => {
+        if (filtrosCompra.target === "niño" || filtrosCompra.target === "niña") {
+            setViewPrecioNiño(true)
+        } else if (filtrosCompra.target === "hombre" || filtrosCompra.target === "mujer") {
+            setViewPrecioAdulto(true)
+        }
+    })
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,23 +37,27 @@ const ChekoutForm = () => {
         let infoUserNoLog = JSON.parse(localStorage.getItem("datosNoLog"));
         let filtrosCompra = JSON.parse(localStorage.getItem("filtrosCompra"));
 
+
+
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
             card: elements.getElement(CardElement),
         })
+
+
 
         // SI ESTA LOGUEADO:
         if (!error && infoUser !== null && infoUserNoLog === null) {
             const { id } = paymentMethod;
 
             // GUARDA EL PEDIDO: 
-            const { data } = await axios.post('/checkout', {
+            await axios.post('/checkout', {
                 id,
                 amount: 30000,
                 id_usuario: infoUser.id_usuario,
                 productos: comprado,
                 estado: "En preparación",
-                fecha_creacion: new Date(),
+                fecha_creacion: new Date().toString(),
                 modo_entrega: direccionEnvio.modoEnvio,
                 direccion: direccionEnvio.direccion,
                 cp: direccionEnvio.cp,
@@ -49,7 +68,7 @@ const ChekoutForm = () => {
             })
 
             // GUARDA ESTILOS FAVORITOS
-            const { estilosFav } = await axios.post("/estilosfavoritos", {
+            await axios.post("/estilosfavoritos", {
                 id_usuario: infoUser.id_usuario,
                 color: filtrosCompra.color,
                 estilo: filtrosCompra.estilo,
@@ -58,7 +77,7 @@ const ChekoutForm = () => {
 
             // GUARDA SEGUNDA DIRECCION USUARIO
             if (!direccionEnvio.mismaDireccion) {
-                const { segundaDireccion } = await axios.post("/direcciondos", {
+                await axios.post("/direcciondos", {
                     id_usuario: infoUser.id_usuario,
                     direccion2: direccionEnvio.direccion,
                     poblacion2: direccionEnvio.poblacion,
@@ -66,6 +85,36 @@ const ChekoutForm = () => {
 
                 })
 
+            }
+
+            // DATOS PARA LA FACTURA:
+            //  datosFactura {nombre, modoEnvio, direccion, poblacion, cp,  fechaCompra, producto, precio}
+            // Si está logueado y es para niño/niña
+            if (filtrosCompra.target === "niño" || filtrosCompra.target === "niña") {
+                let datosFactura = {
+                    nombre: infoUser.nombre + " " + infoUser.apellidos,
+                    modoEnvio: direccionEnvio.modoEnvio,
+                    direccion: direccionEnvio.direccion,
+                    poblacion: direccionEnvio.poblacion,
+                    cp: direccionEnvio.cp,
+                    fechaCompra: new Date().toString(),
+                    producto: "Kit FullFashion Niñ@",
+                    precio: "250 €"
+                }
+                sessionStorage.setItem("datosFactura", JSON.stringify(datosFactura))
+            }
+            if (filtrosCompra.target === "hombre" || filtrosCompra.target === "mujer") {
+                let datosFactura = {
+                    nombre: infoUser.nombre + " " + infoUser.apellidos,
+                    modoEnvio: direccionEnvio.modoEnvio,
+                    direccion: direccionEnvio.direccion,
+                    poblacion: direccionEnvio.poblacion,
+                    cp: direccionEnvio.cp,
+                    fechaCompra: new Date().toString(),
+                    producto: "Kit FullFashion Adulto",
+                    precio: "300 €"
+                }
+                sessionStorage.setItem("datosFactura", JSON.stringify(datosFactura))
             }
 
 
@@ -76,7 +125,7 @@ const ChekoutForm = () => {
         // SI NO ESTÁ LOGUEADO:
         if (!error && infoUserNoLog !== null && infoUser === null) {
             const { id } = paymentMethod;
-            const { data } = await axios.post('/checkout', {
+            await axios.post('/checkout', {
                 id,
                 amount: 30000,
                 id_usuario: infoUserNoLog.dni,
@@ -92,12 +141,56 @@ const ChekoutForm = () => {
             })
             elements.getElement(CardElement).clear();
 
+            // DATOS FACTURA PARA COMPRA DE NIÑO NO LOGUEADO
+            if (filtrosCompra.target === "niño" || filtrosCompra.target === "niña") {
+                let datosFactura = {
+                    nombre: infoUserNoLog.nombre + " " + infoUserNoLog.apellidos,
+                    modoEnvio: infoUserNoLog.modoEnvio,
+                    direccion: infoUserNoLog.direccion,
+                    poblacion: infoUserNoLog.poblacion,
+                    cp: infoUserNoLog.cp,
+                    fechaCompra: new Date().toString(),
+                    producto: "Kit FullFashion Niñ@",
+                    precio: "250 €"
+                }
+                sessionStorage.setItem("datosFactura", JSON.stringify(datosFactura))
+            }
+
+            // DATOS FACTURA PARA COMPRA DE ADULTO NO LOGUEADO
+            if (filtrosCompra.target === "hombre" || filtrosCompra.target === "mujer") {
+                let datosFactura = {
+                    nombre: infoUserNoLog.nombre + " " + infoUserNoLog.apellidos,
+                    modoEnvio: infoUserNoLog.modoEnvio,
+                    direccion: infoUserNoLog.direccion,
+                    poblacion: infoUserNoLog.poblacion,
+                    cp: infoUserNoLog.cp,
+                    fechaCompra: new Date().toString(),
+                    producto: "Kit FullFashion Adulto",
+                    precio: "300 €"
+                }
+                sessionStorage.setItem("datosFactura", JSON.stringify(datosFactura))
+            }
+
+
         }
+
+
+        localStorage.removeItem("direccionEnvio")
+        localStorage.removeItem("quien")
+        localStorage.removeItem("compra")
+        localStorage.removeItem("datosNoLog")
+        localStorage.removeItem("resultado")
+        localStorage.removeItem("colorEstilo")
+        localStorage.removeItem("filtrosCompra")
+        localStorage.removeItem("contadorCambios")
+
         window.location.href = "http://localhost:3000/mostrarfactura"
 
 
     }
+
     let compra = JSON.parse(localStorage.getItem("compra"));
+
     return (
         <form onSubmit={handleSubmit} className="card card-body">
             <Row>
@@ -124,7 +217,8 @@ const ChekoutForm = () => {
             </Row>
 
             <div className="form-group">
-                <h3 className="text-center">Total: 300€</h3>
+                {viewPrecioAdulto ? (<h3 className="text-center">Total: 300€</h3>) : ""}
+                {viewPrecioNiño ? (<h3 className="text-center">Total: 250€</h3>) : ""}
                 <CardElement className="form-control" />
             </div>
             <button className="ButtonHome btn btn-primary btn-lg">

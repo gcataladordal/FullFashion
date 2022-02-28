@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Row, Col, Button } from 'react-bootstrap';
-import { motion } from "framer-motion";
+
 
 function Perfil() {
 
@@ -124,24 +124,24 @@ function Perfil() {
                             <Col>
                                 <Row md={2} >
                                     <Col md={2} xs={6}>
-                                        <img src={compra.productos[0].imgUrl} width="100px"></img>
+                                        <img src={compra.productos[0].imgUrl} alt="imagenProducto0" width="100px"></img>
                                     </Col>
                                     <Col md={2} xs={6}>
-                                        <img src={compra.productos[1].imgUrl} width="100px"></img>
+                                        <img src={compra.productos[1].imgUrl} alt="imagenProducto1" width="100px"></img>
                                     </Col>
                                     <Col md={2} xs={6}>
-                                        <img src={compra.productos[2].imgUrl} width="100px"></img>
+                                        <img src={compra.productos[2].imgUrl} alt="imagenProducto2" width="100px"></img>
                                     </Col>
                                 </Row >
                                 <Row>
                                     <Col md={2} xs={6}>
-                                        <img src={compra.productos[3].imgUrl} width="100px"></img>
+                                        <img src={compra.productos[3].imgUrl} alt="imagenProducto3"width="100px"></img>
                                     </Col>
                                     <Col md={2} xs={6}>
-                                        <img src={compra.productos[4].imgUrl} width="100px"></img>
+                                        <img src={compra.productos[4].imgUrl} alt="imagenProducto4" width="100px"></img>
                                     </Col>
                                     <Col md={2} xs={6}>
-                                        <img src={compra.productos[5].imgUrl} width="100px"></img>
+                                        <img src={compra.productos[5].imgUrl} alt="imagenProducto5"width="100px"></img>
                                     </Col>
                                 </Row>
                             </Col>

@@ -5,7 +5,6 @@ import Register from "../pages/Register";
 import Mapa from "./Mapa";
 import Home from "../pages/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {motion} from "framer-motion";
 import Perfil from "../pages/Perfil";
 import RecogidaLook from "./RecogidaLook";
 import ResultadoLook from "../pages/ResultadoLook";
@@ -19,9 +18,7 @@ import Devolucion from "../pages/Devolucion";
 
 
 class Main extends Component {
-  constructor(props) {
-    super(props);
-  }
+ 
   
   render() {
     return (

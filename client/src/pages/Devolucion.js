@@ -25,9 +25,9 @@ function Devolucion() {
         if (cambios.length > 0) {
 
             let datos = [];
-            if (cambios.length == 1) {
+            if (cambios.length === 1) {
                 datos.push(JSON.parse(cambios));
-            } else if (cambios.length == 2) {
+            } else if (cambios.length === 2) {
                 for (let i = 0; i < cambios.length; i++) {
                     datos.push(JSON.parse(cambios[i]));
                 }
