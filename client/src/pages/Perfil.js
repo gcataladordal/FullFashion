@@ -46,7 +46,7 @@ function Perfil() {
 
     // //! BOTON Seleciona el pedido que se va hace la devolucion (El boton tiene la info en JSON de todo el pedido)
     const selectCompra = (datos) => {
-        console.log(datos)
+        // console.log(datos)
         //Se mete TODA la info del pedido a devolver Storage
         localStorage.setItem('devolucion', datos);
         window.location.href = "http://localhost:3000/devolucion";
@@ -107,6 +107,8 @@ function Perfil() {
                 <h2>Modifica datos de tu perfil de usuario</h2>
                 <button className="ButtonHome btn btn-primary btn-md" onClick={() => { if (!viewModificarPerfil) { setViewModificarPerfil(true); setViewHistorial(false) } }}>Modificar perfil</button>
             </div>
+
+            {/* Vemos el historial de compras */}
             {viewHistorial ? (<div>
 
                 {allCompras.map(compra => {
@@ -127,9 +129,14 @@ function Perfil() {
                     for (let i = 0; i < compra.productos.length; i++) {
                         compra.productos[i].id_pedido = compra.id_pedido;
                     }
-
+                    //Si compra estado ==="devuelto" --> no se pinta
                     return (<div>
-                        <div className="card card-body">
+
+                        
+                    
+
+                        {compra.estado !== "devuelto" ? (
+<div className="card card-body">
                             <h5><p>Compra con numero de identificación: {id}</p></h5>
                             <Row >
                                 <Col className="card card-body" md={6} xs={12}>
@@ -196,7 +203,10 @@ function Perfil() {
                                 </Col>
                             </Row>
                         </div>
-                    </div >
+                            
+
+                        ) : ""}
+                    </div>
                     )
                 })
                 }
@@ -233,15 +243,6 @@ function Perfil() {
                         </div>
                     </form>
                 </div>) : ""}
-
-
-
-
-
-
-
-
-
         </div >
 
     )

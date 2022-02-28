@@ -39,10 +39,19 @@ const actionCompras = {
     },
 
     actualizarPedido: async (req, res) => {
-        let filtro = {id_pedido: req.body.id_usuario};
-        let cambio = { direccion2: req.body.direccion2, poblacion2: req.body.poblacion2, cp2: req.body.cp2 }
-        var actualizarPedido = await Pedido.findOneAndUpdate({})
-        res.json(actualizarPedido)
+        //? Falta actualizar los campos de los articulos
+        //Si pedido devolucion es false, hace una actualizacion
+        if(!req.body.devolucion){
+            var actualizarPedido = await Pedido.findOneAndUpdate({id_pedido: req.body.id_pedido}, {devolucion:true})
+            res.json(actualizarPedido)
+
+            //Si pedido devolucion es true, cambia el estado a devuelto: los pedidos en histroail devueltos no se veran.
+        }else{
+            var devueltaPedido = await Pedido.findOneAndUpdate({id_pedido: req.body.id_pedido}, {estado:"devuelto"})
+            res.json(devueltaPedido)
+
+        }
+        
 
     }
 
