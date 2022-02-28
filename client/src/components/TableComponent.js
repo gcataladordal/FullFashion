@@ -6,7 +6,7 @@ class TableComponent extends React.Component {
 
     render() {
 
-        var datosFactura = JSON.parse(localStorage.getItem("datosFactura"));
+        var datosFactura = JSON.parse(sessionStorage.getItem("datosFactura"));
 
         return (
             <div>
@@ -24,7 +24,7 @@ class TableComponent extends React.Component {
                     </Col>
 
                     <Col md={6}>
-                        <h8>datosFactura.nombre</h8>
+                        <h8>{datosFactura.nombre}</h8>
                         <br />
                         <h8>datosFactura.direccion</h8>
                         <br />
@@ -34,7 +34,7 @@ class TableComponent extends React.Component {
                     </Col>
                 </Row>
                 
-                <div class="container">
+                <div className="container">
                     <h7 align="justify">Mon Feb 28 2022 12:47:05 GMT+0100 (Hora estàndard del Centre d’Europa)</h7>
                     <br/>
                     <h7 align="justify">Modo envío: correos</h7>

@@ -66,7 +66,7 @@ function DatosCompraNoLogueado() {
           }}></input>
         <br />
         <br />
-        <button className="ButtonHome btn btn-primary btn-md" onClick={() => saveDatoUsuarioNoLog()}>Enviar</button>
+        <button type="button" className="ButtonHome btn btn-primary btn-md" onClick={() => saveDatoUsuarioNoLog()}>Enviar</button>
         </div>
         </form>
     </div>

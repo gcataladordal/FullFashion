@@ -3,7 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion"
 import Mapa from "../components/Mapa";
 import { Checkbox } from "antd";
-import { Col } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 
 function DatosCompraLogueado() {
   const [direccionEnvio, setDireccionEnvio] = useState("");
