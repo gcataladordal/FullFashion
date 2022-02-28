@@ -6,7 +6,9 @@ import axios from "axios"
 function MostrarFactura() {
 
     const enviarMail = async ()=>{
-      const {email} = await axios.post("/enviarmail")
+      const {email} = await axios.post("/enviarmail").then((res)=>{
+        console.log(res.data);
+      })
     }
 
   return (
@@ -15,7 +17,7 @@ function MostrarFactura() {
       <br />
       <br />
         <h2>Muchas gracias por tu compra!!!</h2>
-        <button onClick={()=>enviarMail}>Enviar Mail</button>
+        <button type="button" onClick={enviarMail}>Enviar Mail</button>
     </div>
   
   );
