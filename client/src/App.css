@@ -62,11 +62,21 @@ font-size: 30px;
 }
 
 .ButtonHome {
-  background-color: #E398B7;
+  background-color: #EDA79F;
 }
 
 .botonTipoPersona{
   font-size: 1.75em;
+}
+
+.envio {
+  border-radius: 12px;
+  display: inline;
+}
+
+.bigcontainer {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .buttonFormLook {
@@ -154,7 +164,7 @@ h3 {
   border-radius: 5px;
   padding: 5px;
   font-size: 16px;
-  background: #43a047;
+  background: #EDA79F;
   color: #fff;
   cursor: pointer;
   font-family: "Open Sans", sans-serif;
