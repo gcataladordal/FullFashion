@@ -120,10 +120,8 @@ function Perfil() {
                     let codigo = compra.cp
                     let poblacion = compra.poblacion
                     let id = compra.id_pedido
-                    let color1 = compra.filtros.color[0]
-                    let color2 = compra.filtros.color[1]
-                    let estilo = compra.filtros.estilo
-                    let target = compra.filtros.target
+                    let estilo = compra.productos[0].estilo
+                    let target = compra.productos[0].target
 
                     //!    Meto el id_producto en cada producto (Importante)
                     for (let i = 0; i < compra.productos.length; i++) {
@@ -135,7 +133,7 @@ function Perfil() {
                     
 
                         {compra.estado !== "devuelto" ? (
-<div className="card card-body">
+                        <div className="card card-body">
                             <h5><p>Compra con numero de identificación: {id}</p></h5>
                             <Row >
                                 <Col className="card card-body" md={6} xs={12}>
@@ -184,10 +182,10 @@ function Perfil() {
                                     <p>{codigo}</p>
                                     <h4>Población</h4>
                                     <p>{poblacion}</p>
-                                    <h4>Filtro color primario</h4>
+                                    {/* <h4>Filtro color primario</h4>
                                     <p>{color1}</p>
                                     <h4>Filtro color secundario</h4>
-                                    <p>{color2}</p>
+                                    <p>{color2}</p> */}
                                     <h4>Filtro estilo</h4>
                                     <p>{estilo}</p>
                                     <h4>Filtro target</h4>
