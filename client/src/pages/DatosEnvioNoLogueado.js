@@ -29,6 +29,7 @@ function DatosEnvioNoLogueado() {
   const [viewOpcionesPuntoRecog, setViewOpcionesPuntoRecog] = useState(false);
 
   var datosUser = JSON.parse(localStorage.getItem("datosNoLog"));
+  var emailUser = datosUser.email;
   var nombreUser = datosUser.nombre;
   var apellidosUser = datosUser.apellidos;
   var dniUser = datosUser.dni;
@@ -39,6 +40,7 @@ function DatosEnvioNoLogueado() {
       nombre: nombreUser,
       apellidos: apellidosUser,
       dni: dniUser,
+      email: emailUser,
       telefono: telfUser,
       direccion: direccionEnvio,
       poblacion: poblacionEnvio,
@@ -55,6 +57,7 @@ function DatosEnvioNoLogueado() {
       nombre: nombreUser,
       apellidos: apellidosUser,
       dni: dniUser,
+      email: emailUser,
       telefono: telfUser,
       cp: cpEnvio,
       direccion: direccionEnvio,

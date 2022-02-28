@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Row, Col, Button } from 'react-bootstrap';
 import { motion } from "framer-motion";
@@ -86,7 +86,6 @@ function Perfil() {
             apellidos,
             email,
             dni,
-            password,
             direccion,
             cp: codigo,
             poblacion,
@@ -98,9 +97,36 @@ function Perfil() {
         console.log(usuario);
 
     }
+
+
+    useEffect(async () => {
+        /*let data = JSON.parse(localStorage.getItem("user"));
+        if (fetch.data !== "") {
+    
+        } */
+
+    }, []);
+
+    const sendEmailConfirmation = async () => {
+
+
+        let logueado = JSON.parse(sessionStorage.getItem("infoUser"));
+
+        localStorage.setItem(
+            "user",
+            JSON.stringify({
+                email: logueado.email,
+                idUsuario: logueado.id_usuario
+            }));
+
+
+        let data = JSON.parse(localStorage.getItem("user"));
+        console.log("user: ", data);
+        axios.post("/cambiarpass", data).then((res) => console.log("link enviado por email"));
+    };
+
     return (
         <div className="perfil">
-
             <div>
                 <h2>Consulta tu historial de compra</h2>
                 <button className="ButtonHome btn btn-primary btn-md" onClick={() => {{allCompras == [] ? (<motion.p
@@ -134,78 +160,78 @@ function Perfil() {
                     }
                     //Si compra estado ==="devuelto" --> no se pinta
                     return (<div>
-                     
-                    
+
+
 
                         {compra.estado !== "devuelto" ? (
-                        <div className="card card-body">
-                            <h5><p>Compra con numero de identificación: {id}</p></h5>
-                            <Row >
-                                <Col className="card card-body" md={6} xs={12}>
-                                <h2>Tus productos</h2>
-                                    <Row >
-                                        <Col md={6} xs={12}>
-                                            <img src={compra.productos[0].imgUrl} width="40%"></img>
-                                            <p>1. {compra.productos[0].nombre}</p>
-                                        </Col>
-                                        <Col md={6} xs={12}>
-                                            <img src={compra.productos[1].imgUrl} width="40%"></img>
-                                            <p>2. {compra.productos[1].nombre}</p>
-                                        </Col>
-                                        <Col md={6} xs={12}>
-                                            <img src={compra.productos[2].imgUrl} width="40%"></img>
-                                            <p>3. {compra.productos[2].nombre}</p>
-                                        </Col>
-                                        <Col md={6} xs={12}>
-                                            <img src={compra.productos[3].imgUrl} width="40%"></img>
-                                            <p>4. {compra.productos[3].nombre}</p>
-                                        </Col>
-                                    </Row >
-                                    <Row>
-                                        <Col md={6} xs={12}>
-                                            <img src={compra.productos[4].imgUrl} width="40%"></img>
-                                            <p>5. {compra.productos[4].nombre}</p>
-                                        </Col>
-                                        <Col md={6} xs={12}>
-                                            <img src={compra.productos[5].imgUrl} width="40%"></img>
-                                            <p>6. {compra.productos[5].nombre}</p>
-                                        </Col>
-                                    </Row>
-                                </Col>
+                            <div className="card card-body">
+                                <h5><p>Compra con numero de identificación: {id}</p></h5>
+                                <Row >
+                                    <Col className="card card-body" md={6} xs={12}>
+                                        <h2>Tus productos</h2>
+                                        <Row >
+                                            <Col md={6} xs={12}>
+                                                <img src={compra.productos[0].imgUrl} width="40%"></img>
+                                                <p>1. {compra.productos[0].nombre}</p>
+                                            </Col>
+                                            <Col md={6} xs={12}>
+                                                <img src={compra.productos[1].imgUrl} width="40%"></img>
+                                                <p>2. {compra.productos[1].nombre}</p>
+                                            </Col>
+                                            <Col md={6} xs={12}>
+                                                <img src={compra.productos[2].imgUrl} width="40%"></img>
+                                                <p>3. {compra.productos[2].nombre}</p>
+                                            </Col>
+                                            <Col md={6} xs={12}>
+                                                <img src={compra.productos[3].imgUrl} width="40%"></img>
+                                                <p>4. {compra.productos[3].nombre}</p>
+                                            </Col>
+                                        </Row >
+                                        <Row>
+                                            <Col md={6} xs={12}>
+                                                <img src={compra.productos[4].imgUrl} width="40%"></img>
+                                                <p>5. {compra.productos[4].nombre}</p>
+                                            </Col>
+                                            <Col md={6} xs={12}>
+                                                <img src={compra.productos[5].imgUrl} width="40%"></img>
+                                                <p>6. {compra.productos[5].nombre}</p>
+                                            </Col>
+                                        </Row>
+                                    </Col>
 
-                                <Col className="card card-body" md={6} xs={12}>
-                                    <h2>Los detalles de tu pedido</h2>
-                                    <h4>Fecha de compra</h4>
-                                    <p>{fecha}</p>
-                                    <h4>Estado del envío</h4>
-                                    <p>{estado}</p>
-                                    <h4>Modo de entrega</h4>
-                                    <p>{entrega}</p>
-                                    <h4>Dirección de entrega</h4>
-                                    <p>{direccion}</p>
-                                    <h4>Código postal</h4>
-                                    <p>{codigo}</p>
-                                    <h4>Población</h4>
-                                    <p>{poblacion}</p>
-                                    {/* <h4>Filtro color primario</h4>
+                                    <Col className="card card-body" md={6} xs={12}>
+                                        <h2>Los detalles de tu pedido</h2>
+                                        <h4>Fecha de compra</h4>
+                                        <p>{fecha}</p>
+                                        <h4>Estado del envío</h4>
+                                        <p>{estado}</p>
+                                        <h4>Modo de entrega</h4>
+                                        <p>{entrega}</p>
+                                        <h4>Dirección de entrega</h4>
+                                        <p>{direccion}</p>
+                                        <h4>Código postal</h4>
+                                        <p>{codigo}</p>
+                                        <h4>Población</h4>
+                                        <p>{poblacion}</p>
+                                        {/* <h4>Filtro color primario</h4>
                                     <p>{color1}</p>
                                     <h4>Filtro color secundario</h4>
                                     <p>{color2}</p> */}
-                                    <h4>Filtro estilo</h4>
-                                    <p>{estilo}</p>
-                                    <h4>Filtro target</h4>
-                                    <p>{target}</p>
-                                </Col>
+                                        <h4>Filtro estilo</h4>
+                                        <p>{estilo}</p>
+                                        <h4>Filtro target</h4>
+                                        <p>{target}</p>
+                                    </Col>
 
 
-                            </Row>
-                            <Row>
-                                <Col md={12} xs={12}>
-                                    <button className="ButtonHome btn btn-primary btn-md" value={JSON.stringify(compra.productos)} onClick={(e) => selectCompra(e.target.value)}>Devolver</button>
-                                </Col>
-                            </Row>
-                        </div>
-                            
+                                </Row>
+                                <Row>
+                                    <Col md={12} xs={12}>
+                                        <button className="ButtonHome btn btn-primary btn-md" value={JSON.stringify(compra.productos)} onClick={(e) => selectCompra(e.target.value)}>Devolver</button>
+                                    </Col>
+                                </Row>
+                            </div>
+
 
                         ) : ""}
                     </div>
@@ -227,8 +253,6 @@ function Perfil() {
                             <input type="text" placeholder="Introduce nuevos apellidos" onChange={(e) => setApellidos(e.target.value)}></input><br></br>
                             <label>E-mail</label><br></br>
                             <input type="text" placeholder="Introduce nuevo e-mail" onChange={(e) => setEmail(e.target.value)}></input><br></br>
-                            <label>Password</label><br></br>
-                            <input type="text" placeholder="Introduce nuevo password" onChange={(e) => setPassword(e.target.value)}></input><br></br>
                             <label>DNI</label><br></br>
                             <input type="text" placeholder="Introduce nuevo dni" onChange={(e) => setDni(e.target.value)}></input><br></br>
                             <label>Dirección</label><br></br>
@@ -245,7 +269,13 @@ function Perfil() {
                             <Button className="ButtonHome btn btn-primary btn-sm" variant="primary" onClick={() => updateProfile()} >Modificar perfil</Button>
                         </div>
                     </form>
-                </div>) : ""}
+                    <form action="">
+                        <button type="button"  className="ButtonHome btn btn-primary btn-lg" onClick={sendEmailConfirmation}>Cambiar Contraseña</button>
+                    </form>
+                   
+                
+                </div>) : ""
+}
         </div >
 
     )

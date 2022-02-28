@@ -73,18 +73,8 @@ const actionCompras = {
 
     },
     enviarMail: async (req, res) => {
-        // let email = req.body.email
-        // let pass = req.body.password
-        console.log("hola");
+     
         const transporter = nodemailer.createTransport({
-
-            // host: 'smtp-relay.sendinblue.com',
-            // port: 587,
-            // auth: {
-            //     user: 'fullfashion211@gmail.com',
-            //     pass: 'gcsrl1234'
-            // }
-
             host: 'smtp.gmail.com',
             port: 465,
             secure: true, //true para el puerto 465, false para otros puertos
@@ -97,26 +87,21 @@ const actionCompras = {
             }
         });
         var mailOptions = {
-            from: '<fullfashion211@gmail.com>',
-            to: "foogy12@gmail.com",
+            from: 'Full Fashion <fullfashion211@gmail.com>',
+            to: `${req.body.email}`,
             subject: "Factura de Full Fashion",
-            // text: "¡Hola! Gracias por comprar en Full Fashion. Aquí tienes la factura que nos has pedido de tu compra. Gracias por confiar en nosotros.",
-            html: '<h1>¡Hola!<h2><br/><h2>Gracias por comprar en Full Fashion. Aquí tienes la factura que nos has pedido de tu compra. Gracias por confiar en nosotros.</h2>',
-            // attachments:[{
-            //     filename:"factura_Full Fashion.pdf",
-            //     path:"./public/factura_Full Fashion.pdf",
-            //     contentType: 'application/pdf'
-            // }]
+            text: "¡Hola! Gracias por comprar en Full Fashion. Aquí tienes la factura que nos has pedido de tu compra. Gracias por confiar en nosotros.",
+
+            html: `<div><img src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesHome/Logo2.png" width=100px height=100px /><br /><p>Full Fashion S.A</p><p>Calle Mongo, Madrid, 95959</p><p>fullfashion211@gmail.com</p><hr size="10" width="300%" align="left" color="grey"></hr>    <p><b>Nombre del cliente:</b> ${req.body.nombre}</p><p><b>Direccion de envío:</b> ${req.body.direccion}</p><p><b>Población de envío:</b> ${req.body.poblacion}</p><p>${req.body.cp}</p><div className="container"><p align="justify"><b>Fecha y hora de la compra: </b>${req.body.fechaCompra}</p><p align="justify"><b>Modo de envío:</b> ${req.body.modoEnvio}</p></div><table className="table"><thead><tr><th>Productos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>Cantidad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>Precio&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th></tr></thead><tbody><tr><td>${req.body.producto}</td><td>1</td><td>${req.body.precio}</td></tr></tbody></table><div><div><p align="justify">Gracias por tu compra, estamos felices de ser partícipes de tu nuevo look. El envío puede demorarse entre 3 y 5 días laborables si has elegido correo ordinario y punto de recogida; y 24h si has elegido correo certificado. Según nuestras políticas de devoluciones* dispones de 2 cambios después de realizar la compra, el primero puedes elegir hasta un máximo de 3 prendas y si todavía no te convence no te preocupes, puedes devolvernos todo el pack completo, los gastos de envío y devoluciones va incluido en el precio final de compra. Dispones de 30 días para realizar dicho cambio.</p><br /><p align="justify">*Políticas de devoluciones de Full Fashion: Si deseas realizar la devolución de un artículo comprado en FullFashion.com, dispones de 30 días desde la fecha de envío de tu pedido.Los artículos deben conservar todas las etiquetas y estar en perfecto estado. Puedes encontrar más información acerca de la Política de Cambios y Devoluciones o del derecho de desistimiento en la Ley 7/1996, de 15 de enero de 1996, de Ordenación del Comercio Minorista (Boletín Oficial del Estado nº 15, de 17 de enero de 1996).</p></div></div></div >`,
         };
-        let info = await transporter.sendMail({
-            from: '"FullFashion" <fullfashion211@gmail.com>', // sender address
-            to: "foogy12@gmail.com", // list of receivers
-            subject: "Hello ✔", // Subject line
-            text: "Hello world?", // plain text body
-            html: "<b>Hello world?</b>", // html body
-        });
-        console.log("Message sent: %s", info.messageId);
-        // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log("Email enviado.")
+            }
+        })
+        
 
     },
 

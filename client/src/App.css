@@ -1,7 +1,34 @@
 .App {
   text-align: center;
   font-family: Garamond;
+  height: 100%;
+  min-height: 100%;
+  padding-bottom: 20%;
 }
+
+#contenedorFooter {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  align-content: center;
+}
+
+#footerFooter { 
+  display: flex;
+  position: static;
+  bottom: 0;
+  width: 100%;
+  align-content: center;
+  justify-content: space-evenly;
+  background-color: #EDCB9F;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  flex-wrap: wrap;
+
+}
+
 
 .navbar-nav a { color: white;}
 
@@ -37,6 +64,8 @@ color: white;
   color: #61dafb;
 }
 
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -70,6 +99,11 @@ font-size: 30px;
   background-color: #EDA79F;
 }
 
+.ButtonHome:hover {
+  background-color:  #E398B7;
+  transform: scale(1.1);
+}
+
 .botonTipoPersona{
   font-size: 1.75em;
 }
@@ -86,10 +120,10 @@ font-size: 30px;
 
 .buttonFormLook {
   font-size: 1.75em;
-  background-color: #edcb9f;
+  background-color: #EDA79F;
   border-radius: 12px;
   padding: 10px;
-  color: white
+  color: black
 }
 
 .textAlturaPeso {
@@ -140,7 +174,22 @@ h3 {
   font-size: 20px;
 }
 
+.ButtonComienzo {
+  font-size: xx-large;
+  background-color: #EDA79F;
+}
+
+.ButtonComienzo:hover {
+  background-color: #E398B7;
+  transform: scale(1.1);
+}
+
  /* ESTILOS CHAT */
+
+.containerFueraChat {
+  position: fixed;
+  bottom: 7%
+}
 
  .containerUnirseChat {
   display: flex;
@@ -158,7 +207,7 @@ h3 {
   width: 210px;
   height: 40px;
   margin: 7px;
-  border: 2px solid #43a047;
+  border: 2px solid #EDA79F;
   border-radius: 5px;
   padding: 5px;
   font-size: 16px;
@@ -180,7 +229,7 @@ h3 {
 }
 
 .containerUnirseChat button:hover {
-  background: #2e7d32;
+  background:  #E398B7;
   font-family: "Open Sans", sans-serif;
 }
 
@@ -347,13 +396,19 @@ h3 {
   display: inline;
 } 
 
+@media screen and (min-device-width: 320px) and (max-width: 767px) {
+  .App {
+      
+      padding-bottom: 50%;
+  }
+}
 
 .persona:hover{
+  border: 1px solid #E398B7;
 border-radius:50%;
 -webkit-border-radius:50%;
 scale:1.1;
-text-shadow: 0px 0px 40px rgb(227, 152, 183);
-box-shadow: 0px 0px 40px rgb(227, 152, 183)}
+}
 
 
 input[type="checkbox"] {

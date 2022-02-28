@@ -7,12 +7,16 @@ import axios from "axios"
 function MostrarFactura() {
 
 
-    const enviarMail = async ()=>{
-      const {email} = await axios.post("/enviarmail").then((res)=>{
-        console.log(res.data);
-      })
-    }
+  let datosFactura = JSON.parse(sessionStorage.getItem("datosFactura"))
+  console.log(datosFactura)
 
+
+
+  const enviarMail = async () => {
+    const {email} = await axios.post("/enviarmail", datosFactura).then((res)=>{
+      console.log(res.data);
+    })
+  }
 
   return (
     <div>
@@ -20,11 +24,14 @@ function MostrarFactura() {
       <br />
       <br />
 
-        <button type="button" onClick={enviarMail}>Enviar Mail</button>
+        
 
         <h2>¡Muchas gracias por tu compra!</h2>
         <div>
         <ExportPdfComponent/>
+        <br />
+        <br />
+        <button type="button" className="ButtonHome btn btn-primary btn-lg" onClick={enviarMail}>Enviar Mail</button>
       </div>
     </div>
   
