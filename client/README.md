@@ -1,6 +1,32 @@
 
+# Paquetes de isntalacion
 
 npm i socket.io-client react-scroll-to-bottom leaflet react-bootstrap react-leaflet react-router-dom framer-motion bootstrap axios antd @react-pdf/renderer
+
+# Nombres Clave del Storage
+
+[compra] :          <Toda la info de la compra realizada>
+
+[contadorCambios] : <Contador de las veces que realiza el cambio en la coleccion>
+
+[devolucion] :      <Manda la info del pedido que se va a devolver>
+                    <JSON (Las seis partes, con sus filtros y atributos)>
+
+[direccionEnvio] :  <Para insertar la info en la compra \ pedido.>
+                     <JSON (cp:  direccion:  mismaDireccion:  modoEnvio:  poblacion: )>
+
+[filtrosCompra] :   <La info de los filtros para futuras recomendaciones>
+
+[pedido] :          <Tiene la información completa de todas las compras hechas por el usuario.>
+                    <JSON completo(pedido.producto)> 
+
+[quien] :            <Manda la info para quien es la collecion -- Para nosotros : myself || Regalo : regalo >
+
+[resultado] :        <Toda la info de la busqueda de la coleccion.>
+                     <JSON (parteArriba(15) parteAbajo(15)zapatos(15))>
+
+[resultDevo] :       <Toda la info de una coleccion de un pedido>
+                    <JSON (parteArriba(15) parteAbajo(15)zapatos(15))>
 
 
 # Getting Started with Create React App

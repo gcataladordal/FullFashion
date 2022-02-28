@@ -36,6 +36,14 @@ const actionCompras = {
         var busquedaPedidos = await Pedido.find({id_usuario:req.body.idUsuario})
         res.json(busquedaPedidos)
 
+    },
+
+    actualizarPedido: async (req, res) => {
+        let filtro = {id_pedido: req.body.id_usuario};
+        let cambio = { direccion2: req.body.direccion2, poblacion2: req.body.poblacion2, cp2: req.body.cp2 }
+        var actualizarPedido = await Pedido.findOneAndUpdate({})
+        res.json(actualizarPedido)
+
     }
 
 }
