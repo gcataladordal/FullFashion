@@ -16,6 +16,7 @@ import DatosEnvioNoLogueado from "../pages/DatosEnvioNoLogueado";
 import Admin from "./Admin";
 import Devolucion from "../pages/Devolucion";
 import Baneado from "../pages/Baneado";
+import Privacy from "./Privacy";
 
 
 class Main extends Component {
@@ -40,6 +41,7 @@ class Main extends Component {
           <Route path="/admin" element={<Admin/>} />
           <Route path="/devolucion" element={<Devolucion/>} />
           <Route path="/baneado" element={<Baneado/>} />
+          <Route path="/privacy" element={<Privacy/>} />
 
         </Routes>
       </div>

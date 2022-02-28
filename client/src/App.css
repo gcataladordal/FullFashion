@@ -50,6 +50,11 @@ color: white;
   background-color: #EDCB9F;
 }
 
+.Nav-bar a {
+  color: black;
+  text-decoration: none;
+}
+
 .navbar-light .navbar-nav .nav-link {
   color: white;
   font-weight: bold;}
