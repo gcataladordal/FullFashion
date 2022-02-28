@@ -26,18 +26,18 @@ class TableComponent extends React.Component {
                     <Col md={6}>
                         <h8>{datosFactura.nombre}</h8>
                         <br />
-                        <h8>datosFactura.direccion</h8>
+                        <h8>{datosFactura.direccion}</h8>
                         <br />
-                        <h8>datosFactura.poblacion</h8>
+                        <h8>{datosFactura.poblacion}</h8>
                         <br />
-                        <h8>datosFactura.cp</h8>
+                        <h8>{datosFactura.cp}</h8>
                     </Col>
                 </Row>
                 
                 <div className="container">
-                    <h7 align="justify">Mon Feb 28 2022 12:47:05 GMT+0100 (Hora estàndard del Centre d’Europa)</h7>
+                    <h7 align="justify">{datosFactura.fechaCompra}</h7>
                     <br/>
-                    <h7 align="justify">Modo envío: correos</h7>
+                    <h7 align="justify">{datosFactura.modoEnvio}</h7>
                 </div>
 
                 <table className="table">
@@ -50,9 +50,9 @@ class TableComponent extends React.Component {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Mujer/Hombre</td>
+                            <td>{datosFactura.producto}</td>
                             <td>1</td>
-                            <td>300€</td>
+                            <td>{datosFactura.precio}</td>
                         </tr>
                     </tbody>
                 </table>
