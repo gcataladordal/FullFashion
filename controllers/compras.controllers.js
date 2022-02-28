@@ -6,6 +6,13 @@ const nodemailer = require("nodemailer")
 
 
 const actionCompras = {
+
+/**
+     * Procesa un pago y guarda la información de la compra tanto en la base de stripe como en la de mongo
+     * @constructor
+     * @param {string} req - La informacion la recibe parte del formulario de pago, parte del storage donde se encuentra alojada la información del pedido
+     */
+
     pago: async (req, res) => {
 
         const { id, amount, id_usuario, productos, estado, fecha_creacion, modo_entrega, direccion, cp, poblacion, devolucion, filtros } = req.body
@@ -33,11 +40,22 @@ const actionCompras = {
         compraToSave.save()
         res.send({ message: "Compra realizada correctamente" })
     },
+    /**
+     * Busca los pedidos de un usuario
+     * @constructor
+     * @param {string} req - Recibe un id de usuario con el que realiza la búsqueda de todas las compras
+     */
     buscarCompras: async (req, res) => {
         var busquedaPedidos = await Pedido.find({ id_usuario: req.body.idUsuario })
         res.json(busquedaPedidos)
 
     },
+
+/**
+     * Actualiza un pedido cuando se pide una devolución
+     * @constructor
+     * @param {string} req - La informacion que recibe el id del pedido en el que se ha pedido devolución desde el perfil para modificarlo y actualizarlo
+     */
 
     actualizarPedido: async (req, res) => {
         //? Falta actualizar los campos de los articulos

@@ -12,6 +12,11 @@ const admin = {
 
 }
 
+/**
+     * Añade prendas en la base de datos "productos"
+     * @constructor
+     * @param {string} req - La informacion que recibe del formulario de admin añadir producto
+     */
 async function addProduct(req, res) {
     const { nombre, target, tipo, estilo, color, imagen } = req.body;
     console.log(req.body)
@@ -29,6 +34,12 @@ async function addProduct(req, res) {
     res.send({ message: "Procuto insertado correctamente" })
 
 }
+
+/**
+     * Modifica uno o varios campos de un producto en la base de datos
+     * @constructor
+     * @param {string} req - La informacion que recibe del formulario de admin modificar producto
+     */
 
 function modifyProduct(req, res) {
     
@@ -48,6 +59,12 @@ function modifyProduct(req, res) {
         });
     });}
 
+/**
+     * Borrar un producto de la base de datos
+     * @constructor
+     * @param {string} req - La informacion que recibe del formulario de admin borrar producto
+     */
+
 function eraseProduct(req, res) {
 
 const {id} = req.body
@@ -56,14 +73,7 @@ Producto.deleteOne({ id_producto: id }).then(function(){
 }).catch(function(error){
     console.log(error); // Failure
 });
-     
-    // Producto.findById('621b847730c9f49187b264db', function(err, user){
-    //     if (err) throw err;
-    //     user.remove(function(err){
-    //         if (err) throw err;
-    //         console.log("Borrado correcto");
-    //     }); 
-    // });
+    
 }
 
 
