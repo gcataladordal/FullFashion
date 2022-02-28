@@ -65,7 +65,7 @@ const RecogidaLook = () => {
 
   const searchData = () => {
     localStorage.setItem("quien", quien)
-
+    localStorage.setItem("emailNoLog", email)
     let colorEstilo = {
       color,
       estilo,
@@ -86,7 +86,8 @@ const RecogidaLook = () => {
   };
 
   return (
-    <div>
+    <div className="divFormLook">
+      
       <br /> <br />
 
       {/* ELEGIR DSTINATARIO DE LA COLLECIÓN */}
@@ -167,7 +168,7 @@ const RecogidaLook = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <br />
-        {viewAlertaEmail === true ? (<div>
+        {viewAlertaEmail ? (<div>
           <motion.p
             initial={{ x: -1000, color: "#e30b2c" }}
             animate={{ fontSize: 20, x: 0 }}
@@ -212,11 +213,7 @@ const RecogidaLook = () => {
         animate={{ fontSize: 60, y: 0 }}
         transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
       >
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+      
         <h1>Tu Perfil</h1>
         <br />
         <br />
@@ -734,21 +731,7 @@ const RecogidaLook = () => {
         <button className="buttonFormLook" onClick={searchData}>¡Quiero ver mi resultado!</button>
         </motion.div>) : ""}
       
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+   
     </div>
   );
 };

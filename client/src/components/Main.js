@@ -19,7 +19,7 @@ import Baneado from "../pages/Baneado";
 import Privacy from "./Privacy";
 import DevueltoP from "../pages/DevueltoP";
 import DevueltoTodo from "../pages/DevueltoTodo";
-
+import CambioPass from "../pages/CambioPass";
 
 class Main extends Component {
 
@@ -46,6 +46,7 @@ class Main extends Component {
           <Route path="/privacy" element={<Privacy/>} />
           <Route path="/devueltop" element={<DevueltoP />} />
           <Route path="/devueltotodo" element={<DevueltoTodo />} />
+          <Route path="/cambiarpass/:id/:token" element={<CambioPass />} />
 
 
         </Routes>
