@@ -141,7 +141,7 @@ function ResultadoLook() {
     var contador = JSON.parse(localStorage.getItem("contadorCambios"));
 
     return (
-        <div>
+        <div className="card card-body">
             <Checkbox.Group className="resultadolook" onChange={(e) => onChangeCheck(e)}  >
                 <Row>
                     <Col md={4} xs={12}>
@@ -193,7 +193,7 @@ function ResultadoLook() {
               animate={{ fontSize: 20, x: 0 }}
               transition={{ type: "spring", stiffness: 200, delay: 0.2 }}>Debes seleccionar algun artículo para realizar el cambio</motion.p> </div>) : ""}
                 <p>*Recuerda que solo tienes <b>{5 - contador}</b> cambios de 2 prendas máximo cada vez</p>
-                <button onClick={() => confirmarCompra(resultado.todasPartesDeArriba[0], resultado.todasPartesDeArriba[1], resultado.todasPartesDeArriba[2], resultado.todasPartesDeAbajo[0], resultado.todasPartesDeAbajo[1], resultado.todosZapatos[0])}>Seguir para finalizar compra</button>
+                <button className="ButtonHome btn btn-primary btn-lg" onClick={() => confirmarCompra(resultado.todasPartesDeArriba[0], resultado.todasPartesDeArriba[1], resultado.todasPartesDeArriba[2], resultado.todasPartesDeAbajo[0], resultado.todasPartesDeAbajo[1], resultado.todosZapatos[0])}>Seguir para finalizar compra</button>
             </div>
 
 

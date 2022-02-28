@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion"
 import Mapa from "../components/Mapa";
 import { Checkbox } from "antd";
+import { Row, Col } from 'react-bootstrap';
 
 function DatosCompraLogueado() {
   const [direccionEnvio, setDireccionEnvio] = useState("");
@@ -112,14 +113,14 @@ function DatosCompraLogueado() {
 
   return (
     <div>
-      <Checkbox.Group onChange={(e) => onChangeCheckEnvio(e)}>
-        <div>
-
+    
+      <Checkbox.Group className="bigcontainer" onChange={(e) => onChangeCheckEnvio(e)}>
           {/* CORREO ORDINARIO */}
           <br />
           <br />
           <br />
-          <img src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/imagenes%20envio/Correos-Symbol.png" alt="Correos"></img>
+          <Col className="envio" md={3} xs={12}>
+          <img  src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/imagenes%20envio/Correos-Symbol.png" alt="Correos"></img>
           <Checkbox
             className="checkEnvio"
             value="correos"
@@ -220,25 +221,19 @@ function DatosCompraLogueado() {
                         initial={{ x: -1000, color: "#e30b2c" }}
                         animate={{ fontSize: 20, x: 0 }}
                         transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-                      >Introduce un código postal válido</motion.p>
+                        >Introduce un código postal válido</motion.p>
 
                     </div>) : ""}
                   </div>) : ""}
               </div>
             </Checkbox.Group>
 
-          ) : ""}
-
-          <br></br>
-
-          <br></br>
-
-
-        </div>
+) : ""}
+</Col>
 
         {/* // CORREO PREFERENTE */}
 
-        <div>
+        <Col md={3} xs={12} className="envio">
 
           <img src="https://raw.githubusercontent.com/moramraul/imagenesFashion/3659924410e59d2d3f420f6acaa543d559cee971/imagenes%20envio/MRW_logo.svg" alt="Correos"></img>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -356,14 +351,14 @@ function DatosCompraLogueado() {
           <br></br>
 
 
-        </div>
+        </Col>
 
 
         {/* PUNTO DE RECOGIDA */}
 
 
-        <div>
-          <img src="https://1000marcas.net/wp-content/uploads/2020/01/logo-Leroy-Merlin-1-500x300.png" height={100} width={166} alt="Correos"></img>
+        <Col className="envio" md={3} xs={12}>
+          <img  src="https://1000marcas.net/wp-content/uploads/2020/01/logo-Leroy-Merlin-1-500x300.png" height={100} width={166} alt="Correos"></img>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <Checkbox
             className="checkEnvio"
@@ -447,7 +442,7 @@ function DatosCompraLogueado() {
           </div>) : ""}
 
           <br />
-        </div>
+        </Col>
       </Checkbox.Group>
 
 
