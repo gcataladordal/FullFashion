@@ -54,7 +54,7 @@ function Devolucion() {
                 axios.post("/buscararticulo", info).then((res) => {
                     //Cambiar el  true el pedido
                     console.log(resultado[0].id_pedido);
-                   
+
                     //Se necesita el valor de devolucion del pedido para hacer un condicional en la actualizacion
                     let infoPedidos = JSON.parse(localStorage.getItem("pedidos"));
                     //Se busca en todas las compras su estado devolucion por su id_pedido
@@ -74,9 +74,12 @@ function Devolucion() {
                     //Se redirige al checkpoint
                     axios.post("/actualizarpedido", info).then((res) => {
                         console.log(res.data)
+                        if(res.data==="actualizarPedido"){
+                            window.location.href = "http://localhost:3000/devueltop";
+                        }else{
+                            window.location.href = "http://localhost:3000/devueltotodo";
+                        }
                     })
-
-                    window.location.href = "http://localhost:3000/perfil";
 
                 })
 
@@ -209,6 +212,8 @@ function Devolucion() {
                 <p>*SE DEVOLVERÁ TODA LA COLECCIÓN Y HABRÁ REEMBOLSO</p>
 
             </div>
+            
+            
 
 
         </div>
