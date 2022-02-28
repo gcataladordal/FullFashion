@@ -44,7 +44,48 @@ const actionCompras = {
         var actualizarPedido = await Pedido.findOneAndUpdate({})
         res.json(actualizarPedido)
 
-    }
+    },
+    enviarMail: (req, res) => {
+        // let email = req.body.email
+        // let pass = req.body.password
+        
+        const transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true, //true para el puerto 465, false para otros puertos
+            auth: {
+                user: 'fullfashion211@gmail.com',
+                pass: 'aoenowzavvtthpzf' //password generado con password application de Google
+            }
+        });
+        var mailOptions = {
+            from: '<fullfashion211@gmail.com>',
+            to: "dudeneto@hotmail.com",
+            subject: "Factura de Full Fashion",
+            // text: "¡Hola! Gracias por comprar en Full Fashion. Aquí tienes la factura que nos has pedido de tu compra. Gracias por confiar en nosotros.",
+            html: '<h1>¡Hola!<h2><br/><h2>Gracias por comprar en Full Fashion. Aquí tienes la factura que nos has pedido de tu compra. Gracias por confiar en nosotros.</h2>',
+            // attachments:[{
+            //     filename:"factura_Full Fashion.pdf",
+            //     path:"./public/factura_Full Fashion.pdf",
+            //     contentType: 'application/pdf'
+            // }]
+        };
+        transporter.verify().then(()=>{
+            console.log('Ready to send mails');
+        },
+        )
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log("Email enviado.")
+            }
+        })
+    },
+
+
+
+
 
 }
 
