@@ -13,7 +13,7 @@ function DevueltoP() {
             <h2><p> Le pedimos que le entregue los productos al repartidor</p> </h2>
             <h2><p> ¡Muchas Gracias!</p> </h2>
 
-            <button onClick={()=>{window.location.href = "http://localhost:3000/perfil"}}>Volver</button>
+            <button className="ButtonHome btn btn-primary btn-lg" onClick={()=>{window.location.href = "http://localhost:3000/perfil"}}>Volver</button>
         </div>
 
     );
