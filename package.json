@@ -132,6 +132,7 @@
     "is-path-inside": "^3.0.3",
     "is-typedarray": "^1.0.0",
     "is-yarn-global": "^0.3.0",
+    "jest": "^27.5.1",
     "js-tokens": "^4.0.0",
     "json-buffer": "^3.0.0",
     "json2mq": "^0.2.0",
