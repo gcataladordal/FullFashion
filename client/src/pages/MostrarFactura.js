@@ -26,7 +26,7 @@ function MostrarFactura() {
         <div>
         <ExportPdfComponent/>
       </div>
-
+    </div>
   
   );
 }
