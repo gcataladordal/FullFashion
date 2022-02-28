@@ -3,11 +3,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Checkbox } from "antd";
 import {  Row,  Col } from 'react-bootstrap';
 import { motion } from "framer-motion";
+import axios from "axios";
 
 function ResultadoLook() {
 
     const [cambios, setCambios] = useState("");
     const [viewAlertNoSeleccionado, setViewAlertNoSeleccionado] = useState(false);
+
+
     // el check 
     const onChangeCheck = (checkedValues) => {
         setCambios(checkedValues);
@@ -88,7 +91,11 @@ function ResultadoLook() {
                 localStorage.setItem("contadorCambios", JSON.stringify(contador));
                 window.location.href = "http://localhost:3000/resultadolook"
             } else {
-                alert("BANEADO");
+                //Se le pone venta de baneado y se actualiza su estado de baneado a true
+                let informaUser = JSON.parse(sessionStorage.getItem("infoUser"));
+                axios.post("/banearuser", informaUser);
+                window.location.href = "http://localhost:3000/baneado";
+
             }
         } else {
             setViewAlertNoSeleccionado(true);
@@ -140,6 +147,7 @@ function ResultadoLook() {
     var contador = JSON.parse(localStorage.getItem("contadorCambios"));
 
     return (
+
         <div className="card card-body">
             <Checkbox.Group className="resultadolook" onChange={(e) => onChangeCheck(e)}  >
                 <Row>
@@ -188,13 +196,12 @@ function ResultadoLook() {
             <div>
                 <button className="ButtonHome btn btn-primary btn-lg" variant="primary" onClick={recogerCambios}>Cambiar las seleccionadas</button>
                 {viewAlertNoSeleccionado ? (<div><motion.p
-              initial={{ x: -1000, color: "#e30b2c" }}
-              animate={{ fontSize: 20, x: 0 }}
-              transition={{ type: "spring", stiffness: 200, delay: 0.2 }}>Debes seleccionar algun artículo para realizar el cambio</motion.p> </div>) : ""}
+                    initial={{ x: -1000, color: "#e30b2c" }}
+                    animate={{ fontSize: 20, x: 0 }}
+                    transition={{ type: "spring", stiffness: 200, delay: 0.2 }}>Debes seleccionar algun artículo para realizar el cambio</motion.p> </div>) : ""}
                 <p>*Recuerda que solo tienes <b>{5 - contador}</b> cambios de 2 prendas máximo cada vez</p>
                 <button className="ButtonHome btn btn-primary btn-lg" onClick={() => confirmarCompra(resultado.todasPartesDeArriba[0], resultado.todasPartesDeArriba[1], resultado.todasPartesDeArriba[2], resultado.todasPartesDeAbajo[0], resultado.todasPartesDeAbajo[1], resultado.todosZapatos[0])}>Seguir para finalizar compra</button>
             </div>
-
 
         </div>
     );

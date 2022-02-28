@@ -38,6 +38,7 @@ function App() {
                     )
                     : (<Chat socket={socket} userName={userName} sala={sala} />)}
             </div>
+            <Footer />
         </BrowserRouter>
     );
 }

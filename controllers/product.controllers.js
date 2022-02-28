@@ -18,29 +18,60 @@ const products = {
     buscarProducto: async (req, res) => {
         //Me mira de que tipo es ese producto y me busca todos
         if (req.body.tipo_prenda === "zapatos") {
-            // console.log("******")
-            // console.log(req.body.id_producto)
+            console.log("******")
+            console.log(req.body.id_producto)
+            console.log(req.body)
+
+            let numPren = req.body.numero_prenda;
+            console.log(numPren)
             let zapatoOne;
+            //Busca un zapato que no sea el mismo y lo devuelve
             do {
                 let resulBusqZapatos = await busquedaZapatos(req);
+                resulBusqZapatos["new"]="nuevo";
                 zapatoOne = resulBusqZapatos[0];
                 console.log("Tenemos" + req.body.id_producto)
-                console.log("Buscado" +zapatoOne.id_producto);
+                console.log("Buscado" + zapatoOne.id_producto);
+                console.log(zapatoOne)
             } while (req.body.id_producto === zapatoOne.id_producto);
+            console.log(zapatoOne);
 
             res.json(zapatoOne);
 
         } else if (req.body.tipo_prenda === "arriba") {
-            let resulBusqArriba = await busquedaArriba(req)
-        } else {
-            let resulBusqAbajo = await busquedaAbajo(req)
+            console.log("******")
+            console.log(req.body.id_producto)
+            let arribaOne;
+            do {
+                let resulBusqArriba = await busquedaArriba(req)
+                arribaOne = resulBusqArriba[0];
+                console.log("Tenemos" + req.body.id_producto)
+                console.log("Buscado" + arribaOne.id_producto);
+            } while (req.body.id_producto === arribaOne.id_producto);
+
+            res.json(arribaOne);
+
+
+        } else if (req.body.tipo_prenda === "abajo") {
+            console.log("******")
+            console.log(req.body.id_producto)
+
+            let abajoOne;
+            do {
+                let resulBusqAbajo = await busquedaAbajo(req)
+                abajoOne = resulBusqAbajo[0];
+                console.log("Tenemos" + req.body.id_producto)
+                console.log("Buscado" + abajoOne.id_producto);
+            } while (req.body.id_producto === abajoOne.id_producto);
+
+            res.json(abajoOne);
+
         }
         // let resultado = {
         //     todasPartesDeArriba: resulBusqArriba,
         //     todasPartesDeAbajo: resulBusqAbajo,
         //     todosZapatos: resulBusqZapatos
         // }
-        res.json(req.body);
     }
 }
 
