@@ -48,7 +48,7 @@ const RecogidaLook = () => {
     var regExpEmail = new RegExp(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/);
     return regExpEmail.test(email)
   }
-
+ 
   const estaLogueado = () => {
     let logueado = sessionStorage.getItem("infoUser")
     if (logueado !== null) {
@@ -58,6 +58,10 @@ const RecogidaLook = () => {
     }
   }
 
+  function obtenerTarget() {
+    let logueado = JSON.parse(sessionStorage.getItem("infoUser"))
+    return logueado.target
+  }
 
   const searchData = () => {
     localStorage.setItem("quien", quien)
@@ -103,11 +107,12 @@ const RecogidaLook = () => {
           value="Es para mi"
           onClick={() => {
             setQuien("myself");
-            console.log("Click para mi");
             let log = estaLogueado()
             if (log) {
+              let targetLog = obtenerTarget();
+              setTarget(targetLog)
               setViewQuien(false);
-              setViewTarget(true)
+              setViewColor(true)
             } else {
               setViewQuien(false);
               setViewEmail(true);
@@ -612,8 +617,14 @@ const RecogidaLook = () => {
           className="buttonFormLook"
           value="Anterior"
           onClick={() => {
+            let log = estaLogueado()
+            if (log && quien === "myself") {
+              setViewColor(false);
+              setViewQuien(true);
+            } else {
             setViewColor(false);
-            setViewTalla(true)
+            setViewTalla(true);
+            }
           }} />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input

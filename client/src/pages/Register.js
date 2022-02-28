@@ -30,6 +30,7 @@ function Register() {
     };
 
     const onChangeTarget = (selectedValues) => {
+        console.log(selectedValues)
         setTarget(selectedValues);
     };
 
