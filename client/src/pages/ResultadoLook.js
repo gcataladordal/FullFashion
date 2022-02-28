@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Checkbox } from "antd";
-import { Button, Row, Container, Col } from 'react-bootstrap';
+import {  Row,  Col } from 'react-bootstrap';
 import { motion } from "framer-motion";
 import axios from "axios";
 
@@ -20,7 +20,6 @@ function ResultadoLook() {
     // console.log(resultado)
 
     function confirmarCompra(producto1, producto2, producto3, producto4, producto5, producto6) {
-        let quien = localStorage.getItem("quien")
         let compra = [producto1, producto2, producto3, producto4, producto5, producto6]
         localStorage.setItem("compra", JSON.stringify(compra))
         let infoUser = sessionStorage.getItem("infoUser")

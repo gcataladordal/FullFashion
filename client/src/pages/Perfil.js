@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Row, Col, Button } from 'react-bootstrap';
-import { motion } from "framer-motion";
+
 
 function Perfil() {
 
@@ -131,8 +131,7 @@ function Perfil() {
                     }
                     //Si compra estado ==="devuelto" --> no se pinta
                     return (<div>
-
-                        
+                     
                     
 
                         {compra.estado !== "devuelto" ? (
@@ -207,6 +206,7 @@ function Perfil() {
 
                         ) : ""}
                     </div>
+
                     )
                 })
                 }

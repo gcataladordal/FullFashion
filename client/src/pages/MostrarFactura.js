@@ -5,7 +5,6 @@ import ExportPdfComponent from "../components/ExportPdfComponent";
 
 function MostrarFactura() {
 
-    
 
   return (
     <div>
