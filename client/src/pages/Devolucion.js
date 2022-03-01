@@ -100,9 +100,9 @@ function Devolucion() {
                         })
                     })
                 }
-                window.location.href = "http://localhost:3000/devueltop";
+                // window.location.href = "http://localhost:3000/devueltop";
             } else {
-                alert("Seleciona Alguna")
+                alert("Seleciona Alguna");
             }
 
             //Si es true devuelve todos los articulos y se pone estado ="devuelto"
@@ -114,7 +114,7 @@ function Devolucion() {
             }
             axios.post("/quitarpedido", filtro).then((res) => {
                 console.log(res.data)
-                window.location.href = "http://localhost:3000/devueltotodo";
+                // window.location.href = "http://localhost:3000/devueltotodo";
             })
         }
     }

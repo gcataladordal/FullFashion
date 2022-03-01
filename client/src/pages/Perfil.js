@@ -9,6 +9,8 @@ function Perfil() {
 
     const [viewHistorial, setViewHistorial] = useState(false);
     const [viewModificarPerfil, setViewModificarPerfil] = useState(false);
+    const [viewHistorialVacio, setViewHistorialVacio] = useState(false);
+    const [pedidoVacio, setPedidoVacio] = useState("")
 
     //!Proceso para pintar los pedidos
     const [nombre, setNombre] = useState("");
@@ -16,11 +18,11 @@ function Perfil() {
     const [apellidos, setApellidos] = useState("");
     const [email, setEmail] = useState("");
     const [dni, setDni] = useState("");
-    const [password, setPassword] = useState("");
     const [direccion, setDireccion] = useState("");
     const [codigo, setCodigo] = useState("");
     const [poblacion, setPoblacion] = useState("");
     const [talla, setTalla] = useState("");
+
 
     // const selectCompra = (datos) => {
     //     localStorage.setItem('devolucion', datos);
@@ -42,8 +44,25 @@ function Perfil() {
     // Recoge todos los pedidos del usuario y lo mete en Storage para pintarlos mas abajo
 
     axios.post("/historial", idUser).then((res) => {
-        localStorage.setItem("pedidos", JSON.stringify(res.data));
+        if (res.data === "sinPedidos") {
+            setPedidoVacio("vacio")
+        } else {
+            localStorage.setItem("pedidos", JSON.stringify(res.data));
+            setPedidoVacio("")
+        }
+
     })
+
+    const verHistorial = () => {
+        if (pedidoVacio === "vacio") {
+            setViewHistorialVacio(true);
+            setViewModificarPerfil(false)
+        } else {
+            setViewHistorial(true);
+            setViewModificarPerfil(false);
+        }
+    }
+
 
     // //! BOTON Seleciona el pedido que se va hace la devolucion (El boton tiene la info en JSON de todo el pedido)
     const selectCompra = (datos) => {
@@ -79,8 +98,6 @@ function Perfil() {
     function updateProfile() {
         let logueado = JSON.parse(sessionStorage.getItem("infoUser"));
         let id = logueado.id_usuario
-        console.log(logueado)
-        console.log(id)
         let usuario = {
             nombre,
             apellidos,
@@ -94,21 +111,10 @@ function Perfil() {
             id
         }
         axios.post('/modifyprofile', usuario);
-        console.log(usuario);
-
     }
 
 
-    useEffect(async () => {
-        /*let data = JSON.parse(localStorage.getItem("user"));
-        if (fetch.data !== "") {
-    
-        } */
-
-    }, []);
-
     const sendEmailConfirmation = async () => {
-
 
         let logueado = JSON.parse(sessionStorage.getItem("infoUser"));
 
@@ -119,9 +125,8 @@ function Perfil() {
                 idUsuario: logueado.id_usuario
             }));
 
-
         let data = JSON.parse(localStorage.getItem("user"));
-        console.log("user: ", data);
+
         axios.post("/cambiarpass", data).then((res) => console.log("link enviado por email"));
     };
 
@@ -129,16 +134,20 @@ function Perfil() {
         <div className="perfil">
             <div>
                 <h2>Consulta tu historial de compra</h2>
-                <button className="ButtonHome btn btn-primary btn-md" onClick={() => {{allCompras == [] ? (<motion.p
-                        initial={{ x: -1000, color: "#e30b2c" }}
-                        animate={{ fontSize: 20, x: 0 }}
-                        transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-                      >No tienes historial de compra que mostrar</motion.p>): ""} if (!viewHistorial) { setViewHistorial(true); setViewModificarPerfil(false) } }}>Historial</button>
+                <button className="ButtonHome btn btn-primary btn-lg" onClick={verHistorial}>Historial</button>
                 <br></br>
+                {viewHistorialVacio ? (<motion.p
+                    initial={{ x: -1000, color: "#e30b2c" }}
+                    animate={{ fontSize: 20, x: 0 }}
+                    transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+                >No tienes pedidos que mostrar</motion.p>) : ""}
                 <h2>Modifica datos de tu perfil de usuario</h2>
-                <button className="ButtonHome btn btn-primary btn-md" onClick={() => { if (!viewModificarPerfil) { setViewModificarPerfil(true); setViewHistorial(false) } }}>Modificar perfil</button>
-            </div>
+                
+                <button className="ButtonHome btn btn-primary btn-lg" onClick={() => { setViewModificarPerfil(true); setViewHistorial(false) }}>Modificar perfil</button>
+                <br />
 
+            </div>
+            <br />    
             {/* Vemos el historial de compras */}
             {viewHistorial ? (<div>
 
@@ -227,7 +236,7 @@ function Perfil() {
                                 </Row>
                                 <Row>
                                     <Col md={12} xs={12}>
-                                        <button className="ButtonHome btn btn-primary btn-md" value={JSON.stringify(compra.productos)} onClick={(e) => selectCompra(e.target.value)}>Devolver</button>
+                                        <button className="ButtonHome btn btn-primary btn-lg" value={JSON.stringify(compra.productos)} onClick={(e) => selectCompra(e.target.value)}>Devolver</button>
                                     </Col>
                                 </Row>
                             </div>
@@ -266,16 +275,16 @@ function Perfil() {
                             <label>Target</label><br></br>
                             <input type="text" placeholder="Introduce nuevo target" onChange={(e) => setTarget(e.target.value)}></input><br></br>
                             <br></br>
-                            <Button className="ButtonHome btn btn-primary btn-sm" variant="primary" onClick={() => updateProfile()} >Modificar perfil</Button>
+                            <Button className="ButtonHome btn btn-primary btn-md" variant="primary" onClick={() => updateProfile()} >Modificar perfil</Button>
                         </div>
                     </form>
                     <form action="">
-                        <button type="button"  className="ButtonHome btn btn-primary btn-lg" onClick={sendEmailConfirmation}>Cambiar Contraseña</button>
+                        <button type="button" className="ButtonHome btn btn-primary btn-lg" onClick={sendEmailConfirmation}>Cambiar Contraseña</button>
                     </form>
-                   
-                
+
+
                 </div>) : ""
-}
+            }
         </div >
 
     )

@@ -15,7 +15,7 @@ const extractData = async (url, browser) => {
         productData.target = "hombre";
         productData.tipo_prenda = "abajo";
         productData.estilo = "classic";
-        productData.color = "marron";
+        productData.color = "verde";
         productData.imgUrl = await page.$eval(".swiper-slide-active > img", imgUrl => imgUrl.src);
         return productData
     }
@@ -27,7 +27,7 @@ const extractData = async (url, browser) => {
 //! CAMBIAR LA URL DE LA PRENDA CON LOS FILTROS
 const buscarPrendas = async (num) => {
   
-    let url = "https://es.shein.com/pdsearch/elegante%20hombre/?attr_values=Brown&ici=s1%60EditSearch%60elegante%20hombre%60_fb%60d0%60PageSearchResult&scici=Search~~EditSearch~~1~~elegante_20hombre~~~~0&child_cat_id=3179&exc_attr_id=27&attr_ids=27_140-27_1000119-27_1000121-27_1000130-27_1000131"
+    let url = "https://es.shein.com/pdsearch/elegante%20hombre/?attr_values=Green&ici=s1%60EditSearch%60elegante%20hombre%60_fb%60d0%60PageSearchResult&scici=Search~~EditSearch~~1~~elegante_20hombre~~~~0&child_cat_id=3179&exc_attr_id=27&attr_ids=27_81-27_334-27_2436-27_2566"
     const scrapedData = []
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();

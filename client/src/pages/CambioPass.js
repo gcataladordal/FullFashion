@@ -11,7 +11,7 @@ function CambioPass() {
 
     const [viewAlertViejaPassMal, setViewAlertViejaPassMal] = useState(false);
     const [viewAlertaNuevasPassMal, setViewAlertaNuevasPassMal] = useState(false);
-
+    
 
     const cambiarPass = () => {
 
@@ -23,12 +23,8 @@ function CambioPass() {
                 idUsuario: infoUsuario.idUsuario
             };
 
-            localStorage.setItem(
-                "auth",
-                JSON.stringify({
-                    status: true,
-                })
-            );
+            localStorage.removeItem("user");
+        
             axios.post("/insertarpasscambiada", data).then((res) => {
                 if (res.data === "passCambiada") {
                     alert("La contraseña ha sido actualizada")
@@ -62,7 +58,7 @@ function CambioPass() {
                 <input type="password" name="password" id="password" onChange={(e) => setNuevaPassword(e.target.value)} />
                 <br /><br />
                 <label htmlFor="NuevaPass">Repetir nueva contraseña: &nbsp;</label>
-                <input type="password" name="password" id="password" onChange={(e) => setNuevaPassword2(e.target.value)} />
+                <input type="password" name="password2" id="password2" onChange={(e) => setNuevaPassword2(e.target.value)} />
                 <br /><br />
                 {viewAlertaNuevasPassMal ? (
                     <motion.p
