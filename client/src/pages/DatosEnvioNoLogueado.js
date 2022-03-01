@@ -321,7 +321,7 @@ function DatosEnvioNoLogueado() {
       <br />
 
     {/* BOTON */ }
-    < button onClick = {() => {
+    < button className="ButtonHome btn btn-primary btn-lg" onClick = {() => {
     if (modoEnvio[0] === "correos") {
       if (direccionEnvio === "") {
         setViewAlertaIntroducirDireccionOrdinario(true)

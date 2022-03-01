@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 
 function Perfil() {
 
-
     const [viewHistorial, setViewHistorial] = useState(false);
     const [viewModificarPerfil, setViewModificarPerfil] = useState(false);
     const [viewHistorialVacio, setViewHistorialVacio] = useState(false);
@@ -24,18 +23,6 @@ function Perfil() {
     const [talla, setTalla] = useState("");
 
 
-    // const selectCompra = (datos) => {
-    //     localStorage.setItem('devolucion', datos);
-    //     let infoColeccion = JSON.parse(datos);
-    //     console.log(infoColeccion[0].target);
-    //     console.log(infoColeccion[0].color);
-    //     console.log(infoColeccion[0].estilo);
-
-    //     // localStorage.setItem('coleccionDevolucion' )
-
-    //     window.location.href = "http://localhost:3000/devolucion"
-    // }
-
     let idUserLogueado = JSON.parse(sessionStorage.getItem("infoUser"));
     let idUser = {
         idUsuario: idUserLogueado.id_usuario
@@ -50,7 +37,6 @@ function Perfil() {
             localStorage.setItem("pedidos", JSON.stringify(res.data));
             setPedidoVacio("")
         }
-
     })
 
     const verHistorial = () => {
@@ -66,34 +52,14 @@ function Perfil() {
 
     // //! BOTON Seleciona el pedido que se va hace la devolucion (El boton tiene la info en JSON de todo el pedido)
     const selectCompra = (datos) => {
-        // console.log(datos)
+    
         //Se mete TODA la info del pedido a devolver Storage
         localStorage.setItem('devolucion', datos);
         window.location.href = "http://localhost:3000/devolucion";
-        // Se va a recoger info con los datos del pedido con su filtro
-        // let infoFiltro = JSON.parse(localStorage.getItem("pedidos"));
-        //  Se pondra en storage una collecion con filtro para la devolucion como en look
-        // let filtro = {
-        //     target: infoFiltro[0].filtros.target,
-        //     estilo: infoFiltro[0].filtros.estilo,
-        //     color: infoFiltro[0].filtros.color,
-        // }
-        // console.log(filtro)
-
-        // axios.post("/allproductofiltro", filtro).then((res) => {
-        //     console.log(res.data)
-        //     let colleccionPedidos = res.data;
-        //     localStorage.setItem("resultDevo", JSON.stringify(colleccionPedidos));
-        // }).then(() => { window.location.href = "http://localhost:3000/devolucion" })
+      
     }
 
     var allCompras = JSON.parse(localStorage.getItem("pedidos"));
-
-    // allCompras[i]                 --> Array de Productos de cada pedido 
-    // allCompras[i].productos       --> Todos los articulos 
-    // allCompras[i].productos[i]    --> Articulo i de 6 (0 al 2 son arriba // 3 al 4 es abajo // 5 es zapatillas )
-    // allCompras[i].productos[i].nombre --> nombre del articulo   
-    // allCompras[i].productos[i].imgUrl --> imgUrl del articulo
 
     function updateProfile() {
         let logueado = JSON.parse(sessionStorage.getItem("infoUser"));
@@ -222,10 +188,6 @@ function Perfil() {
                                         <p>{codigo}</p>
                                         <h4>Población</h4>
                                         <p>{poblacion}</p>
-                                        {/* <h4>Filtro color primario</h4>
-                                    <p>{color1}</p>
-                                    <h4>Filtro color secundario</h4>
-                                    <p>{color2}</p> */}
                                         <h4>Filtro estilo</h4>
                                         <p>{estilo}</p>
                                         <h4>Filtro target</h4>
@@ -281,8 +243,6 @@ function Perfil() {
                     <form action="">
                         <button type="button" className="ButtonHome btn btn-primary btn-lg" onClick={sendEmailConfirmation}>Cambiar Contraseña</button>
                     </form>
-
-
                 </div>) : ""
             }
         </div >

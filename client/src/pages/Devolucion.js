@@ -84,23 +84,34 @@ function Devolucion() {
                         //Cambiar el  true del pedido
                         //(resultado[0].id_pedido); es menos uno por que el array comienza en cero
                         let compras = JSON.parse(localStorage.getItem("pedidos"));
-                        compras[(resultado[0].id_pedido) - 1].productos[productoCambiar.numero_prenda] = productoCambiar;
+                        // console.log(compras)
+                        console.log((resultado))
+                        // console.log((resultado[0].id_pedido))
+                        // console.log(compras[i])
+                        // console.log(compras[0].productos)
+                        // console.log([productoCambiar.numero_prenda])
+                        
+                        resultado[productoCambiar.numero_prenda] = productoCambiar;
+                        // console.log(productoCambiar)
+                        
+                        
                         // console.log(compras);
                         //Guarda el cambio en compras en el Storage
-                        let actualizarProductoStorage = localStorage.setItem("pedidos", JSON.stringify(compras));
+                        let actualizarProductoStorage = localStorage.setItem("devolucion", JSON.stringify(resultado));
                         //! Aqui se actualiza los productos, despues de gusrdar todos los productos cambiados en el Storage
                         let infoDevolu = JSON.parse(localStorage.getItem("devolucion"));
+                        console.log(infoDevolu)
                         // let compras = JSON.parse(localStorage.getItem("pedidos"));
-                        let actualizarPedido = compras[(infoDevolu[0].id_pedido) - 1];
-                        axios.post("/actualizarpedido", actualizarPedido).then((res) => {
+                        
+                        axios.post("/actualizarpedido", infoDevolu).then((res) => {
                             console.log(res.data)
                         })
-                        axios.post("/devolucionprimera", actualizarPedido).then((res) => {
+                        axios.post("/devolucionprimera", infoDevolu).then((res) => {
                             console.log(res.data)
                         })
                     })
                 }
-                // window.location.href = "http://localhost:3000/devueltop";
+                window.location.href = "http://localhost:3000/devueltop";
             } else {
                 alert("Seleciona Alguna");
             }
@@ -114,7 +125,7 @@ function Devolucion() {
             }
             axios.post("/quitarpedido", filtro).then((res) => {
                 console.log(res.data)
-                // window.location.href = "http://localhost:3000/devueltotodo";
+                window.location.href = "http://localhost:3000/devueltotodo";
             })
         }
     }
