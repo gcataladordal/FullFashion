@@ -134,6 +134,7 @@
     "is-yarn-global": "^0.3.0",
     "jest": "^27.5.1",
     "js-tokens": "^4.0.0",
+    "jsdoc": "^3.6.10",
     "json-buffer": "^3.0.0",
     "json2mq": "^0.2.0",
     "jsonwebtoken": "^8.5.1",

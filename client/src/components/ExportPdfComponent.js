@@ -16,7 +16,7 @@ class ExportPdfComponent extends React.Component {
           
           <ReactToPrint
             content={() => this.componentRef}
-            trigger={() => <button className="btn btn-primary">Descarga o imprime el PDF</button>}
+            trigger={() => <button className="ButtonHome btn btn-primary btn-lg">Descarga o imprime el PDF</button>}
           />
         </div>
       );

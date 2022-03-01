@@ -17,73 +17,105 @@ function Devolucion() {
         return cambios.length > 2 && cambios.indexOf(id) === -1;
     };
 
+    function recogerEstadoDevolucion() {
+        //Si el pedido esta en true se hace los cambios:
+
+        // [infoDevolu] --> tiene el id_pedido que aparece en pantalla
+        let infoDevolu = JSON.parse(localStorage.getItem("devolucion"));
+        //[infoPedidos] --> tiene el dato de devolucion (true/false)
+        let infoPedidos = JSON.parse(localStorage.getItem("pedidos"));
+        console.log("pedido sin modificar")
+        console.log(infoPedidos[0])
+
+        //Se busca en todas las compras su estado devolucion por su id_pedido
+        for (let i = 0; i < infoPedidos.length; i++) {
+            // console.log(infoPedidos[i].devolucion);
+            //(id.pedido = resultado[0].id_pedido)
+            if (infoPedidos[i].id_pedido === infoDevolu[0].id_pedido) {
+                var infoDevolucion = infoPedidos[i].devolucion;
+
+            }
+        }
+        return infoDevolucion;
+    }
 
     const recogerCambiosDevolucion = () => {
-        var datos = JSON.parse(localStorage.getItem("resultDevo"));
 
-        //Si ha seleccinado algun producto
-        if (cambios.length > 0) {
 
-            let datos = [];
-            if (cambios.length === 1) {
-                datos.push(JSON.parse(cambios));
-            } else if (cambios.length === 2) {
-                for (let i = 0; i < cambios.length; i++) {
-                    datos.push(JSON.parse(cambios[i]));
-                }
-            } else {
-                for (let i = 0; i < cambios.length; i++) {
-                    datos.push(JSON.parse(cambios[i]));
-                }
-            }
-            console.log(datos)
-            //Va buscando por cantidad de articulos selecionados [1,2,3]
-            for (let i = 0; i < datos.length; i++) {
-                console.log(datos[i])
-                //Se recoge la info par la busqueda del articulo
-                let info = {
-                    id_producto: datos[i].id_producto,
-                    id_pedido: datos[i].id_pedido,
-                    target: datos[i].target,
-                    estilo: datos[i].estilo,
-                    color: datos[i].color,
-                    tipo_prenda: datos[i].tipo_prenda,
-                    numero_prenda: datos[i].numero_prenda
-                }
-                //Se manda para que busque uno distinto al que se tiene
-                axios.post("/buscararticulo", info).then((res) => {
-                    //Cambiar el  true el pedido
-                    console.log(resultado[0].id_pedido);
-                   
-                    //Se necesita el valor de devolucion del pedido para hacer un condicional en la actualizacion
-                    let infoPedidos = JSON.parse(localStorage.getItem("pedidos"));
-                    //Se busca en todas las compras su estado devolucion por su id_pedido
-                    for (let i = 0; i < infoPedidos.length; i++) {
-                        // console.log(infoPedidos[i].devolucion);
-                        //id.pedido = resultado[0].id_pedido
-                        if (infoPedidos[i].id_pedido === resultado[0].id_pedido) {
-                            var infoDevolucion = infoPedidos[i].devolucion;
-                        }
+        //Si es falso Realiza los cambios de los productos
+        if (!recogerEstadoDevolucion()) {
 
+            //!Si ha seleccinado algun producto
+            if (cambios.length > 0) {
+
+                let datos = [];
+                if (cambios.length === 1) {
+                    datos.push(JSON.parse(cambios));
+                } else if (cambios.length === 2) {
+                    for (let i = 0; i < cambios.length; i++) {
+                        datos.push(JSON.parse(cambios[i]));
                     }
-                    //Se prepara la info para la busqueda en mongoose
+                } else {
+                    for (let i = 0; i < cambios.length; i++) {
+                        datos.push(JSON.parse(cambios[i]));
+                    }
+                }
+
+                //Va buscando por cantidad de articulos selecionados [1,2,3] //(datos) son todos los datos del aticulo para la busqueda
+                for (let i = 0; i < datos.length; i++) {
+                    // console.log(datos[i])
+                    //Se recoge la info par la busqueda del articulo
                     let info = {
-                        id_pedido: resultado[0].id_pedido,
-                        devolucion: infoDevolucion
+                        id_producto: datos[i].id_producto,
+                        id_pedido: datos[i].id_pedido,
+                        target: datos[i].target,
+                        estilo: datos[i].estilo,
+                        color: datos[i].color,
+                        tipo_prenda: datos[i].tipo_prenda,
+                        numero_prenda: datos[i].numero_prenda
                     }
-                    //Se redirige al checkpoint
-                    axios.post("/actualizarpedido", info).then((res) => {
-                        console.log(res.data)
+
+                    //Se manda para que busque uno distinto al que se tiene
+                    axios.post("/buscararticulo", info).then((res) => {
+                        //! Se va guardando en el localStorage odos los articulos
+                        let productoCambiar = res.data;
+                        console.log("producto cambiado")
+                        console.log(productoCambiar);
+                        //Cambiar el  true del pedido
+                        //(resultado[0].id_pedido); es menos uno por que el array comienza en cero
+                        let compras = JSON.parse(localStorage.getItem("pedidos"));
+                        compras[(resultado[0].id_pedido) - 1].productos[productoCambiar.numero_prenda] = productoCambiar;
+                        // console.log(compras);
+                        //Guarda el cambio en compras en el Storage
+                        let actualizarProductoStorage = localStorage.setItem("pedidos", JSON.stringify(compras));
+                        //! Aqui se actualiza los productos, despues de gusrdar todos los productos cambiados en el Storage
+                        let infoDevolu = JSON.parse(localStorage.getItem("devolucion"));
+                        // let compras = JSON.parse(localStorage.getItem("pedidos"));
+                        let actualizarPedido = compras[(infoDevolu[0].id_pedido) - 1];
+                        axios.post("/actualizarpedido", actualizarPedido).then((res) => {
+                            console.log(res.data)
+                        })
+                        axios.post("/devolucionprimera", actualizarPedido).then((res) => {
+                            console.log(res.data)
+                        })
                     })
-
-                    window.location.href = "http://localhost:3000/perfil";
-
-                })
-
+                }
+                // window.location.href = "http://localhost:3000/devueltop";
+            } else {
+                alert("Seleciona Alguna");
             }
 
+            //Si es true devuelve todos los articulos y se pone estado ="devuelto"
         } else {
-            alert("Seleciona Alguna")
+            // [infoDevolu] --> tiene el id_pedido que aparece en pantalla
+            let infoDevolu = JSON.parse(localStorage.getItem("devolucion"));
+            let filtro = {
+                id_pedido: infoDevolu[0].id_pedido
+            }
+            axios.post("/quitarpedido", filtro).then((res) => {
+                console.log(res.data)
+                // window.location.href = "http://localhost:3000/devueltotodo";
+            })
         }
     }
 
@@ -209,6 +241,8 @@ function Devolucion() {
                 <p>*SE DEVOLVERÁ TODA LA COLECCIÓN Y HABRÁ REEMBOLSO</p>
 
             </div>
+
+
 
 
         </div>

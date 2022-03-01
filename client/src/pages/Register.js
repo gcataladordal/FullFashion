@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { motion } from "framer-motion"
 
 
-
 function Register() {
 
     const [nombre, setNombre] = useState("");
@@ -24,6 +23,7 @@ function Register() {
     const [viewErrDni, setViewErrDni] = useState(false);
     const [viewErrUserExist, setViewErrUserExist] = useState(false);
     const [viewErrRequisitosPass, setViewErrRequisitosPass] = useState(false);
+    const [viewAlertFaltanCampos, setViewAlertFaltanCampos] = useState(false);
 
     const onChangeTalla = (selectedValues) => {
         setTalla(selectedValues);
@@ -34,41 +34,50 @@ function Register() {
     };
 
     const sendData = () => {
-        
-        let User = {
-            nombre,
-            apellidos,
-            email,
-            dni,
-            poblacion,
-            direccion,
-            cp,
-            talla,
-            target,
-            password,
-            password2
-        }
 
-        axios.post("/register", User).then((res) => {
-            if (res.data === "errorPassIgual") {
-                setViewErrPassNoIgual(true);
+        if (nombre === "" || apellidos === "" || email === "" || dni === "" || poblacion === "" || direccion === "" || cp === "" || talla === "" || target === "" || password === "" || password2 === "") {
+            setViewAlertFaltanCampos(true)
+        } else {
+            setViewAlertFaltanCampos(false)
+
+
+            let User = {
+                nombre,
+                apellidos,
+                email,
+                dni,
+                poblacion,
+                direccion,
+                cp,
+                talla,
+                target,
+                password,
+                password2
             }
-            else if (res.data === "errorEmail") {
-                setViewErrEmail(true);
-            }
-            else if (res.data === "errorPassReq") {
-                setViewErrRequisitosPass(true);
-            }
-            else if (res.data === "errorDni") {
-                setViewErrDni(true);
-            }
-            else if (res.data === "usuarioExiste") {
-                setViewErrUserExist(true);
-            }
-            else if (res.data === "insertOk") {
-                window.location.href = "http://localhost:3000/login"
-            }
-        })
+
+
+
+            axios.post("/register", User).then((res) => {
+                if (res.data === "errorPassIgual") {
+                    setViewErrPassNoIgual(true);
+                }
+                else if (res.data === "errorEmail") {
+                    setViewErrEmail(true);
+                }
+                else if (res.data === "errorPassReq") {
+                    setViewErrRequisitosPass(true);
+                }
+                else if (res.data === "errorDni") {
+                    setViewErrDni(true);
+                }
+                else if (res.data === "usuarioExiste") {
+                    setViewErrUserExist(true);
+                }
+                else if (res.data === "insertOk") {
+                    window.location.href = "http://localhost:3000/login"
+                }
+            })
+        }
     }
 
 
@@ -77,11 +86,11 @@ function Register() {
             <h1>Regístrate</h1>
             <form className="card card-body">
                 {viewErrUserExist ? (<motion.p
-                        initial={{ x: -1000, color: "#e30b2c" }}
-                        animate={{ fontSize: 20, x: 0 }}
-                        transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-                      >Este email ya está registrado. Por favor, inicia sesión</motion.p>) : ""}
-                
+                    initial={{ x: -1000, color: "#e30b2c" }}
+                    animate={{ fontSize: 20, x: 0 }}
+                    transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+                >Este email ya está registrado. Por favor, inicia sesión</motion.p>) : ""}
+
                 <div className="form-control">
                     <label>Nombre</label>
                     <br></br>
@@ -98,7 +107,7 @@ function Register() {
                         initial={{ x: -1000, color: "#e30b2c" }}
                         animate={{ fontSize: 20, x: 0 }}
                         transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-                      >Formato de correo incorrecto, inténtalo de nuevo (Ej: usuario@email.com)</motion.p>) : ""}
+                    >Formato de correo incorrecto, inténtalo de nuevo (Ej: usuario@email.com)</motion.p>) : ""}
                     <br></br>
                     <label >DNI</label>
                     <br></br>
@@ -107,7 +116,7 @@ function Register() {
                         initial={{ x: -1000, color: "#e30b2c" }}
                         animate={{ fontSize: 20, x: 0 }}
                         transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-                      >Formato de DNI incorrecto, inténtalo de nuevo (Ej: 12345678X)</motion.p>) : ""}
+                    >Formato de DNI incorrecto, inténtalo de nuevo (Ej: 12345678X)</motion.p>) : ""}
                     <br></br>
                     <label >Población</label>
                     <br></br>
@@ -124,6 +133,7 @@ function Register() {
                     <label >Talla</label>
                     <br></br>
                     <select name="talla" onChange={(e) => onChangeTalla(e.target.value)}>
+                        <option></option>
                         <option value="S">S</option>
                         <option value="M">M</option>
                         <option value="L">L</option>
@@ -133,6 +143,7 @@ function Register() {
                     <label >Target</label>
                     <br></br>
                     <select name="target" onChange={(e) => onChangeTarget(e.target.value)}>
+                        <option></option>
                         <option value="hombre">Hombre</option>
                         <option value="mujer">Mujer</option>
                         <option value="niño">Niño</option>
@@ -150,21 +161,25 @@ function Register() {
                         initial={{ x: -1000, color: "#e30b2c" }}
                         animate={{ fontSize: 20, x: 0 }}
                         transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-                      >La contraseña no cumple con los requisitos mínimos de seguridad</motion.p>) : ""}
+                    >La contraseña no cumple con los requisitos mínimos de seguridad</motion.p>) : ""}
                     {viewErrPassNoIgual ? (<motion.p
                         initial={{ x: -1000, color: "#e30b2c" }}
                         animate={{ fontSize: 20, x: 0 }}
                         transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-                      >Las contraseñas no coinciden, inténtalo de nuevo</motion.p>) : ""}
+                    >Las contraseñas no coinciden, inténtalo de nuevo</motion.p>) : ""}
                     <br></br>
+                    {viewAlertFaltanCampos ? (<motion.p
+                        initial={{ x: -1000, color: "#e30b2c" }}
+                        animate={{ fontSize: 20, x: 0 }}
+                        transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+                    >Todos los campos son obligatorios. Por favor, inténtalo de nuevo</motion.p>) : ""}
                     <br></br>
                     <button type="button" className="ButtonHome btn btn-primary btn-lg" variant="primary" onClick={sendData}>Enviar</button>
                 </div>
             </form>
 
         </div>
-
     );
-
 }
+
 export default Register;

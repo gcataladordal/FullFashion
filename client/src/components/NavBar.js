@@ -13,6 +13,7 @@ function NavBar() {
 
     function logout() {
         sessionStorage.removeItem("infoUser");
+        localStorage.removeItem("pedidos")
         window.location.href = "http://localhost:3000/";
     }
 

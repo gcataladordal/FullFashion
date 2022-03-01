@@ -1,6 +1,13 @@
 const mongoose = require("mongoose")
 const Producto = require("../models/productModel")
 
+/**
+     * Función que aglutina todos los productos de las tres búsquedas (arriba, abajo y zapatos) que se ha realizadpo con el proceso de compra de un usuario en un solo objeto
+     * @constructor
+     * @param {object} req - La informacion que recibe son tres objetos, uno por cada una de las búsquedas.
+     * @return {object} Devuelve un objeto con toda la ropa que sale del filtro de los usuarios.
+     */
+
 // función que busca todos los productos
 const products = {
     buscarProductos: async (req, res) => {
@@ -15,63 +22,86 @@ const products = {
         res.json(resultado)
     },
 
+/**
+     * Función que realiza una nueva búsqueda en uno de los tres tipos de prenda cuando en el resultado del filtro, el usuario quiere hacer algún cambio
+     * @constructor
+     * @param {string} req - La informacion que recibe es el tipo de prenda que el usuario ha seleccionado para cambiar
+     * @return {object} Devuelve un objeto con la información de los nuevos productos a insertar en el proceso de compra tras el cambio del usuario.
+     */
+
+
     buscarProducto: async (req, res) => {
         //Me mira de que tipo es ese producto y me busca todos
         if (req.body.tipo_prenda === "zapatos") {
-            console.log("******")
-            console.log(req.body.id_producto)
-            console.log(req.body)
 
             let numPren = req.body.numero_prenda;
-            console.log(numPren)
             let zapatoOne;
             //Busca un zapato que no sea el mismo y lo devuelve
             do {
                 let resulBusqZapatos = await busquedaZapatos(req);
-                resulBusqZapatos["new"]="nuevo";
                 zapatoOne = resulBusqZapatos[0];
-                console.log("Tenemos" + req.body.id_producto)
-                console.log("Buscado" + zapatoOne.id_producto);
-                console.log(zapatoOne)
+               
             } while (req.body.id_producto === zapatoOne.id_producto);
-            console.log(zapatoOne);
 
-            res.json(zapatoOne);
+            let zapatoEntero = {
+                _id: zapatoOne._id,
+                nombre: zapatoOne.nombre,
+                target: zapatoOne.target,
+                tipo_prenda: zapatoOne.tipo_prenda,
+                estilo: zapatoOne.estilo,
+                color: zapatoOne.color,
+                imgUrl: zapatoOne.imgUrl,
+                id_producto: zapatoOne.id_producto,
+                numero_prenda: numPren,
+            }
+            
+            res.json(zapatoEntero);
 
         } else if (req.body.tipo_prenda === "arriba") {
-            console.log("******")
-            console.log(req.body.id_producto)
+            let numPren = req.body.numero_prenda;
             let arribaOne;
             do {
                 let resulBusqArriba = await busquedaArriba(req)
                 arribaOne = resulBusqArriba[0];
-                console.log("Tenemos" + req.body.id_producto)
-                console.log("Buscado" + arribaOne.id_producto);
             } while (req.body.id_producto === arribaOne.id_producto);
 
-            res.json(arribaOne);
+            let topEntero = {
+                _id: arribaOne._id,
+                nombre: arribaOne.nombre,
+                target: arribaOne.target,
+                tipo_prenda: arribaOne.tipo_prenda,
+                estilo: arribaOne.estilo,
+                color: arribaOne.color,
+                imgUrl: arribaOne.imgUrl,
+                id_producto: arribaOne.id_producto,
+                numero_prenda: numPren,
+            }
+            res.json(topEntero);
 
 
         } else if (req.body.tipo_prenda === "abajo") {
-            console.log("******")
-            console.log(req.body.id_producto)
-
+            let numPren = req.body.numero_prenda;
             let abajoOne;
             do {
                 let resulBusqAbajo = await busquedaAbajo(req)
                 abajoOne = resulBusqAbajo[0];
-                console.log("Tenemos" + req.body.id_producto)
-                console.log("Buscado" + abajoOne.id_producto);
             } while (req.body.id_producto === abajoOne.id_producto);
 
-            res.json(abajoOne);
+            let botEntero = {
+                _id: abajoOne._id,
+                nombre: abajoOne.nombre,
+                target: abajoOne.target,
+                tipo_prenda: abajoOne.tipo_prenda,
+                estilo: abajoOne.estilo,
+                color: abajoOne.color,
+                imgUrl: abajoOne.imgUrl,
+                id_producto: abajoOne.id_producto,
+                numero_prenda: numPren,
+            }
+            res.json(botEntero);
 
         }
-        // let resultado = {
-        //     todasPartesDeArriba: resulBusqArriba,
-        //     todasPartesDeAbajo: resulBusqAbajo,
-        //     todosZapatos: resulBusqZapatos
-        // }
+       
     }
 }
 
@@ -147,6 +177,7 @@ async function busquedaZapatos(req) {
 }
 /**
      * Genera números aleatorios para randomizar los productos que se le muestran al usuario
+     * @return {number} Devuelve un número entero aleatorio 
      */
 
 // generar números aleatorios con mínimo y máximo
