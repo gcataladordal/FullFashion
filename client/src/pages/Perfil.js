@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Row, Col, Button } from 'react-bootstrap';
-import { motion } from "framer-motion";
 
 
 function Perfil() {
@@ -103,11 +102,7 @@ function Perfil() {
 
             <div>
                 <h2>Consulta tu historial de compra</h2>
-                <button className="ButtonHome btn btn-primary btn-md" onClick={() => {{allCompras == [] ? (<motion.p
-                        initial={{ x: -1000, color: "#e30b2c" }}
-                        animate={{ fontSize: 20, x: 0 }}
-                        transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-                      >No tienes historial de compra que mostrar</motion.p>): ""} if (!viewHistorial) { setViewHistorial(true); setViewModificarPerfil(false) } }}>Historial</button>
+                <button className="ButtonHome btn btn-primary btn-md" onClick={() => { if (!viewHistorial) { setViewHistorial(true); setViewModificarPerfil(false); } }}>Historial</button>
                 <br></br>
                 <h2>Modifica datos de tu perfil de usuario</h2>
                 <button className="ButtonHome btn btn-primary btn-md" onClick={() => { if (!viewModificarPerfil) { setViewModificarPerfil(true); setViewHistorial(false) } }}>Modificar perfil</button>
