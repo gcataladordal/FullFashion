@@ -93,6 +93,7 @@ const ChekoutForm = () => {
             if (filtrosCompra.target === "niño" || filtrosCompra.target === "niña") {
                 let datosFactura = {
                     nombre: infoUser.nombre + " " + infoUser.apellidos,
+                    email: infoUser.email,
                     modoEnvio: direccionEnvio.modoEnvio,
                     direccion: direccionEnvio.direccion,
                     poblacion: direccionEnvio.poblacion,
@@ -106,6 +107,7 @@ const ChekoutForm = () => {
             if (filtrosCompra.target === "hombre" || filtrosCompra.target === "mujer") {
                 let datosFactura = {
                     nombre: infoUser.nombre + " " + infoUser.apellidos,
+                    email: infoUser.email,
                     modoEnvio: direccionEnvio.modoEnvio,
                     direccion: direccionEnvio.direccion,
                     poblacion: direccionEnvio.poblacion,
@@ -145,6 +147,7 @@ const ChekoutForm = () => {
             if (filtrosCompra.target === "niño" || filtrosCompra.target === "niña") {
                 let datosFactura = {
                     nombre: infoUserNoLog.nombre + " " + infoUserNoLog.apellidos,
+                    email: infoUserNoLog.email,
                     modoEnvio: infoUserNoLog.modoEnvio,
                     direccion: infoUserNoLog.direccion,
                     poblacion: infoUserNoLog.poblacion,
@@ -160,6 +163,7 @@ const ChekoutForm = () => {
             if (filtrosCompra.target === "hombre" || filtrosCompra.target === "mujer") {
                 let datosFactura = {
                     nombre: infoUserNoLog.nombre + " " + infoUserNoLog.apellidos,
+                    email: infoUserNoLog.email,
                     modoEnvio: infoUserNoLog.modoEnvio,
                     direccion: infoUserNoLog.direccion,
                     poblacion: infoUserNoLog.poblacion,

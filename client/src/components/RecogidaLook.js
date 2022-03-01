@@ -48,7 +48,7 @@ const RecogidaLook = () => {
     var regExpEmail = new RegExp(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/);
     return regExpEmail.test(email)
   }
-
+ 
   const estaLogueado = () => {
     let logueado = sessionStorage.getItem("infoUser")
     if (logueado !== null) {
@@ -58,10 +58,14 @@ const RecogidaLook = () => {
     }
   }
 
+  function obtenerTarget() {
+    let logueado = JSON.parse(sessionStorage.getItem("infoUser"))
+    return logueado.target
+  }
 
   const searchData = () => {
     localStorage.setItem("quien", quien)
-
+    localStorage.setItem("emailNoLog", email)
     let colorEstilo = {
       color,
       estilo,
@@ -82,7 +86,8 @@ const RecogidaLook = () => {
   };
 
   return (
-    <div>
+    <div className="divFormLook">
+      
       <br /> <br />
 
       {/* ELEGIR DSTINATARIO DE LA COLLECIÓN */}
@@ -103,11 +108,12 @@ const RecogidaLook = () => {
           value="Es para mi"
           onClick={() => {
             setQuien("myself");
-            console.log("Click para mi");
             let log = estaLogueado()
             if (log) {
+              let targetLog = obtenerTarget();
+              setTarget(targetLog)
               setViewQuien(false);
-              setViewTarget(true)
+              setViewColor(true)
             } else {
               setViewQuien(false);
               setViewEmail(true);
@@ -162,7 +168,7 @@ const RecogidaLook = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <br />
-        {viewAlertaEmail === true ? (<div>
+        {viewAlertaEmail ? (<div>
           <motion.p
             initial={{ x: -1000, color: "#e30b2c" }}
             animate={{ fontSize: 20, x: 0 }}
@@ -207,11 +213,7 @@ const RecogidaLook = () => {
         animate={{ fontSize: 60, y: 0 }}
         transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
       >
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+      
         <h1>Tu Perfil</h1>
         <br />
         <br />
@@ -612,8 +614,14 @@ const RecogidaLook = () => {
           className="buttonFormLook"
           value="Anterior"
           onClick={() => {
+            let log = estaLogueado()
+            if (log && quien === "myself") {
+              setViewColor(false);
+              setViewQuien(true);
+            } else {
             setViewColor(false);
-            setViewTalla(true)
+            setViewTalla(true);
+            }
           }} />
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input
@@ -723,21 +731,7 @@ const RecogidaLook = () => {
         <button className="buttonFormLook" onClick={searchData}>¡Quiero ver mi resultado!</button>
         </motion.div>) : ""}
       
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+   
     </div>
   );
 };

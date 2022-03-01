@@ -2,6 +2,9 @@ const mongoose = require("mongoose")
 const Usuario = require("../models/userModel");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer")
+const SECRET = "FULLFASION1$6&&"
 
 const actionUsers = {
 
@@ -13,13 +16,13 @@ const actionUsers = {
         login(req, res)
     },
     addEstilosFav: async (req, res) => {
-        let filter = {id_usuario: req.body.id_usuario};
-        let update = {color: req.body.color, estilo: req.body.estilo}
+        let filter = { id_usuario: req.body.id_usuario };
+        let update = { color: req.body.color, estilo: req.body.estilo }
         let actualizacion = await Usuario.findOneAndUpdate(filter, update)
         res.send({ message: "Compra realizada correctamente" })
     },
     addSegundaDireccion: async (req, res) => {
-        let filtro = {id_usuario: req.body.id_usuario};
+        let filtro = { id_usuario: req.body.id_usuario };
         let cambio = { direccion2: req.body.direccion2, poblacion2: req.body.poblacion2, cp2: req.body.cp2 }
         let actu = await Usuario.findOneAndUpdate(filtro, cambio);
         res.send({ message: "Compra realizada correctamente" })
@@ -28,12 +31,83 @@ const actionUsers = {
         updateUser(req, res)
     },
     banearUser: async (req, res) => {
-       console.log(req.body.id_usuario)
-       console.log(req.body.baneado)
-       let actu = await Usuario.findOneAndUpdate({id_usuario:req.body.id_usuario}, {baneado:true});
+        console.log(req.body.id_usuario)
+        console.log(req.body.baneado)
+        let actu = await Usuario.findOneAndUpdate({ id_usuario: req.body.id_usuario }, { baneado: true });
 
+    },
+    cambiarPass: async (req, res) => {
+        //let objectToSave = { status: false, email: "" };
+
+        let idUsuario = req.body.idUsuario; //Pillarlo de la BD
+
+        const payload = {
+            user: req.body.email,
+            id: idUsuario,
+        };
+
+        const token = jwt.sign(payload, SECRET, { expiresIn: "15m" });
+
+
+        const link = `http://localhost:3000/cambiarpass/${idUsuario}/${token}`;
+
+        const transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true, //true para el puerto 465, false para otros puertos
+            auth: {
+                user: 'fullfashion211@gmail.com',
+                pass: 'aoenowzavvtthpzf' //password generado con password application de Google
+            },
+            tls: {
+                rejectUnauthorized: false
+            }
+        });
+        var mailOptions = {
+            from: 'Full Fashion <fullfashion211@gmail.com>',
+            to: `${req.body.email}`,
+            subject: "Cambio de contraseña usuario Full Fashion",
+            text: `Se ha solicitado un cambio de contraseña. Pulse en el link para continuar: ${link}`,
+        };
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log("Email enviado.")
+            }
+        })
+
+    },
+    confirmUserGet: async (req, res) => {
+        const { token } = req.params;
+
+        try {
+            jwt.verify(token, SECRET);
+            console.log("Token Verificado")
+        } catch (error) {
+            console.log("Token ya no es válido")
+        }
+    },
+    insertarPassCambiada: async (req, res) => {
+
+        let infoUsuario = await busquedaUsuarioIdUsuario(req.body.idUsuario);
+        var mismoPass = await bcrypt.compare(req.body.antPassword, infoUsuario[0].password)
+        if (mismoPass) {
+            let passEnc = await bcrypt.hash(req.body.password, saltRounds);
+            let usuario = await Usuario.findOneAndUpdate({ id_usuario: req.body.idUsuario }, { password: passEnc })
+            console.log("contraseña actualizada")
+            res.json("passCambiada")
+        } else {
+            res.json("errorPass")
+        }
     }
+
 }
+
+/**
+     * Genera un objeto que se utilizara para insertar un usuario en la base de datos, recogiendo los campos de un login y validando que están introducidos siguiendo los parametros que se piden
+     * @param {string} req - La informacion que recibe del formulario de registro
+     */
 
 async function register(req, res) {
 
@@ -105,7 +179,19 @@ async function register(req, res) {
         }
     }
 }
-
+/**
+     * Inserta el objeto que genera el login en la base de datos
+     * @param {string} nombre - La informacion que recibe del formulario de registro
+     * @param {string} apellidos - La informacion que recibe del formulario de registro
+     * @param {string} email - La informacion que recibe del formulario de registro
+     * @param {string} dni - La informacion que recibe del formulario de registro
+     * @param {string} password - La informacion que recibe del formulario de registro
+     * @param {string} direccion - La informacion que recibe del formulario de registro
+     * @param {string} cp - La informacion que recibe del formulario de registro
+     * @param {string} poblacion - La informacion que recibe del formulario de registro
+     * @param {string} talla - La informacion que recibe del formulario de registro
+     * @param {string} target - La informacion que recibe del formulario de registro
+     */
 async function insertarUsuario(nombre, apellidos, email, dni, password, direccion, cp, poblacion, talla, target) {
     dni = dni.replace("-", "");
     dni = dni.toUpperCase();
@@ -139,12 +225,7 @@ async function insertarUsuario(nombre, apellidos, email, dni, password, direccio
     });
 }
 
-async function busquedaUsuarioDni(dni) {
-    dni = dni.replace("-", "");
-    dni = dni.toUpperCase();
-    let datos = await Usuario.findOne({ dni: dni });
-    return datos;
-}
+
 
 function validationFormat(dni) {
     dni = dni.toUpperCase();
@@ -176,7 +257,7 @@ async function login(req, res) {
     let email = req.body.email;
     let password = req.body.password;
     let existeEmailBD = await busquedaUsuarioEmail(email);
-   
+
     if ((existeEmailBD[0]) == undefined) {
         console.log("usuario no existe en la BD");
         res.json("userNoExiste")
@@ -195,10 +276,15 @@ async function login(req, res) {
         } else {
             console.log("contraseña incorrecta")
             res.json("passwordMal")
-            
+
         }
     }
-   
+
+}
+
+async function busquedaUsuarioIdUsuario(idUsuario) {
+    let datos = await Usuario.find({ id_usuario: idUsuario });
+    return datos;
 }
 
 async function busquedaUsuarioEmail(email) {
@@ -226,33 +312,33 @@ function saveSesion(datosUser) {
     return user;
 }
 
-    async function updateUser(req, res) {
-        let {nombre, apellidos, email, dni, password, direccion, cp, poblacion, talla, target, id} = req.body
-        // let logueado = sessionStorage.getItem("infoUser")
+async function updateUser(req, res) {
+    let { nombre, apellidos, email, dni, password, direccion, cp, poblacion, talla, target, id } = req.body
+    // let logueado = sessionStorage.getItem("infoUser")
 
-        let passEnc = "";
-        passEnc = await bcrypt.hash(password, saltRounds);
+    let passEnc = "";
+    passEnc = await bcrypt.hash(password, saltRounds);
 
-        Usuario.find({ id_usuario: id }, function (err, user) {
+    Usuario.find({ id_usuario: id }, function (err, user) {
+        if (err) throw err;
+        if (nombre != "") { user[0].nombre = nombre; }
+        if (apellidos != "") { user[0].apellidos = apellidos; }
+        if (email != "") { user[0].email = email; }
+        if (dni != "") { user[0].dni = dni; }
+        if (password != "") { user[0].password = passEnc; }
+        if (direccion != "") { user[0].direccion = direccion; }
+        if (cp != "") { user[0].cp = cp; }
+        if (poblacion != "") { user[0].poblacion = poblacion; }
+        if (talla != "") { user[0].talla = talla; }
+        if (target != "") { user[0].target = target; }
+        user[0].save(function (err) {
             if (err) throw err;
-            if (nombre != "") {user[0].nombre = nombre; }
-            if (apellidos != "") { user[0].apellidos = apellidos; }
-            if (email != "") { user[0].email = email; }
-            if (dni != "") { user[0].dni = dni; }
-            if (password != "") { user[0].password = passEnc; }
-            if (direccion != "") { user[0].direccion = direccion; }
-            if (cp != "") { user[0].cp = cp; }
-            if (poblacion != "") { user[0].poblacion = poblacion; }
-            if (talla != "") { user[0].talla = talla; }
-            if (target != "") { user[0].target = target; }
-            user[0].save(function (err) {
-                if (err) throw err;
-                console.log("Actualización correcta");
-            });
-            res.send("Usuario actualizado")
+            console.log("Actualización correcta");
         });
+        res.send("Usuario actualizado")
+    });
 
-    }
+}
 
 
 module.exports = actionUsers //revisar el nombre para importarlo en las rutas

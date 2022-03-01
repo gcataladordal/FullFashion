@@ -39,5 +39,11 @@ router.get("/resultadolook/", (req,res) => {
 
 })
 
+router.post("/cambiarpass", user.cambiarPass);
 
+router.get("/cambiarpass/:id/:token", user.confirmUserGet);
+
+router.post("/enviarmail",actionCompras.enviarMail); //prueba test para mail
+
+router.post("/insertarpasscambiada", user.insertarPassCambiada);
 module.exports = router

@@ -3,6 +3,9 @@ import { useState } from "react"
 
 function DatosCompraNoLogueado() {
 
+
+    let email = localStorage.getItem("emailNoLog")
+
     const [nombre, setNombre] = useState("");
     const [apellidos, setApellidos] = useState("");
     const [dni, setDni] = useState("");
@@ -15,8 +18,10 @@ function DatosCompraNoLogueado() {
           apellidos,
           dni,
           telefono,
+          email
         };
         localStorage.setItem("datosNoLog", JSON.stringify(datosUsuarioNoLog))
+        localStorage.removeItem("emailNoLog")
         window.location.href = "http://localhost:3000/datosenvionologueado"
       
       };
