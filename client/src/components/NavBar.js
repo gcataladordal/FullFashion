@@ -48,7 +48,7 @@ function NavBar() {
     return (
         <div className="Nav-bar container-fluid">
             <Navbar collapseOnSelect expand="lg">
-                <Navbar.Brand href="/"><img width="100" height="50" className="img-fluid mx-auto rounded float-start" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesHome/Logo2.png" /></Navbar.Brand>
+                <Navbar.Brand href="/"><img width="100" height="50" alt="logo" className="img-fluid mx-auto rounded float-start" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesHome/Logo2.png" /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">

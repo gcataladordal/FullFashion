@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 
 
 function DevueltoP() {
 
+
+    const devolver = () => {
+        localStorage.removeItem("pedidos")
+        localStorage.removeItem("devolucion")
+        window.location.href = "http://localhost:3000/perfil"
+    }
 
 
     return (
@@ -13,7 +19,7 @@ function DevueltoP() {
                 En 24-48 horas recibirá los nuevos productos, por favor, entregue los productos al repartidor</p> </h2>
             <h2><p> ¡Muchas Gracias!</p> </h2>
 
-            <button className="ButtonHome btn btn-primary btn-lg" onClick={()=>{window.location.href = "http://localhost:3000/perfil"}}>Volver</button>
+            <button className="ButtonHome btn btn-primary btn-lg" onClick={devolver}>Volver</button>
         </div>
 
     );

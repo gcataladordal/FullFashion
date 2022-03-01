@@ -71,7 +71,15 @@ const actionUsers = {
             from: 'Full Fashion <fullfashion211@gmail.com>',
             to: `${req.body.email}`,
             subject: "Cambio de contraseña usuario Full Fashion",
-            text: `Se ha solicitado un cambio de contraseña. Pulse en el link para continuar: ${link}`,
+            text: `
+        Buenos días,
+        
+        Hemos recibido una solicitud de cambio de contraseña para su cuenta en FullFashion.
+        Pulse en el link para continuar con el proceso: 
+        ${link}.
+        
+        Atentamente, 
+        Equipo de seguridad de FullFashion`,
         };
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {

@@ -1,6 +1,6 @@
-import Column from "antd/lib/table/Column";
+
 import React from "react";
-import { Button, Row, Container, Col } from 'react-bootstrap';
+import {  Row,  Col } from 'react-bootstrap';
 
 class TableComponent extends React.Component {
 
@@ -13,14 +13,14 @@ class TableComponent extends React.Component {
                 <Row>
 
                     <Col md={6}>
-                        <img src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesHome/Logo2.png" width={100} />
+                        <img alt="logo" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesHome/Logo2.png" width={100} />
                         <br />
                         <h5>Full Fashion S.A</h5>
                         <br />
                         <h5>Calle Mongo, Madrid, 95959</h5>
                         <br />
                         <h5>fullfashion211@gmail.com</h5>
-                        <hr size="10" width="300%" align="left" color="green"></hr>
+                        <hr size="10" width="200%" align="left" color="grey"></hr>
                     </Col>
 
                     <Col md={6}>

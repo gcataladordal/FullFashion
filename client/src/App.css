@@ -117,8 +117,8 @@ font-size: 30px;
 }
 
 .bigcontainer {
-  display: flex;
-  justify-content: flex-start;
+  display: grid;
+  justify-content: center;
 }
 
 .buttonFormLook {
@@ -153,8 +153,8 @@ font-size: 30px;
 }
 
 .leaflet-container {
-  width: 700px; 
-  height: 800px;
+  width: 400px; 
+  height: 400px;
 }
 
 .coste {
@@ -241,6 +241,8 @@ h3 {
 }
 
 .ventanaChat {
+  position: fixed;
+  bottom: 7%;
   width: 300px;
   height: 420px;
   font-family: "Open Sans", sans-serif;
@@ -383,7 +385,7 @@ h3 {
   cursor: pointer;
   flex: 15%;
   height: 100%;
-  background: transparent;
+  background: white;
   outline: none;
   font-size: 25px;
   font-family: "Open Sans", sans-serif;

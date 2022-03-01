@@ -79,30 +79,12 @@ function Devolucion() {
                     axios.post("/buscararticulo", info).then((res) => {
                         //! Se va guardando en el localStorage odos los articulos
                         let productoCambiar = res.data;
-                        console.log("producto cambiado")
-                        console.log(productoCambiar);
-                        //Cambiar el  true del pedido
-                        //(resultado[0].id_pedido); es menos uno por que el array comienza en cero
-                        let compras = JSON.parse(localStorage.getItem("pedidos"));
-                        // console.log(compras)
-                        console.log((resultado))
-                        // console.log((resultado[0].id_pedido))
-                        // console.log(compras[i])
-                        // console.log(compras[0].productos)
-                        // console.log([productoCambiar.numero_prenda])
-                        
-                        resultado[productoCambiar.numero_prenda] = productoCambiar;
-                        // console.log(productoCambiar)
-                        
-                        
-                        // console.log(compras);
+                        //Cambiar el  true del pedido      
+                        resultado[productoCambiar.numero_prenda] = productoCambiar;     
                         //Guarda el cambio en compras en el Storage
-                        let actualizarProductoStorage = localStorage.setItem("devolucion", JSON.stringify(resultado));
+                        localStorage.setItem("devolucion", JSON.stringify(resultado));
                         //! Aqui se actualiza los productos, despues de gusrdar todos los productos cambiados en el Storage
-                        let infoDevolu = JSON.parse(localStorage.getItem("devolucion"));
-                        console.log(infoDevolu)
-                        // let compras = JSON.parse(localStorage.getItem("pedidos"));
-                        
+                        let infoDevolu = JSON.parse(localStorage.getItem("devolucion"));            
                         axios.post("/actualizarpedido", infoDevolu).then((res) => {
                             console.log(res.data)
                         })

@@ -25,7 +25,7 @@ const ChekoutForm = () => {
         } else if (filtrosCompra.target === "hombre" || filtrosCompra.target === "mujer") {
             setViewPrecioAdulto(true)
         }
-    })
+    }, [filtrosCompra.target])
 
 
     const handleSubmit = async (e) => {

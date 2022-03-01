@@ -3,7 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion"
 import Mapa from "../components/Mapa";
 import { Checkbox } from "antd";
-import { Col, Row } from 'react-bootstrap';
+
 
 function DatosCompraLogueado() {
   const [direccionEnvio, setDireccionEnvio] = useState("");
@@ -116,213 +116,119 @@ function DatosCompraLogueado() {
         <br />
         <br />
         <br />
-        <Row>
-          <div className="envio">
-            <img src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/imagenes%20envio/correostrans.png" alt="Correos"></img>
-            <Checkbox
-              className="checkEnvio"
-              value="correos"
-              id="correos"
-              name="modoEnvio"
-              disabled={isDisabledEnvio("correos")}
-              onChange={(e) => {
-                if (!viewOpcionesCorreoOrdinario) {
-                  setViewOpcionesCorreoOrdinario(true)
-                } else {
-                  setViewOpcionesCorreoOrdinario(false)
-                }
+
+        <div className="envio">
+          <img src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/imagenes%20envio/correostrans.png" alt="Correos"></img>
+          <Checkbox
+            className="checkEnvio"
+            value="correos"
+            id="correos"
+            name="modoEnvio"
+            disabled={isDisabledEnvio("correos")}
+            onChange={(e) => {
+              if (!viewOpcionesCorreoOrdinario) {
+                setViewOpcionesCorreoOrdinario(true)
+              } else {
+                setViewOpcionesCorreoOrdinario(false)
               }
-              }>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <label>Envío a través de Correos España</label>
-            </Checkbox>
-
-            {viewOpcionesCorreoOrdinario ? (
-              <Checkbox.Group onChange={(e) => onChangeCheckDireccion(e)}>
-                <div>
-
-                  {viewDireccion ? (
-                    <div>
-                      <br />
-                      <Checkbox
-                        id="mismaDireccion"
-                        value="mismaDireccion"
-                        name="tipoDireccion"
-                        disabled={isDisabledOrdinario("mismaDireccion")}
-                        onChange={(e) => {
-                          setDireccionEnvio(direccionUser);
-                          setPoblacionEnvio(poblacionUser);
-                          setCpEnvio(cpUser);
-                        }}>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label>Mi dirección:&nbsp;</label>
-                      </Checkbox>
-                    </div>) : ""}
-                  <br></br>
-                  {viewCheckOtraDireccionOrdinario ? (<div>
-                    <Checkbox
-                      value="nuevaDireccion"
-                      id="nuevaDireccion"
-                      name="tipoDireccion"
-                      disabled={isDisabledOrdinario("nuevaDireccion")}
-                      onChange={(e) => {
-                        setViewInputOtraDireccionOrdinario(true);
-                        setDireccionEnvio("");
-                        setPoblacionEnvio("");
-                        setCpEnvio("");
-                      }}
-                    >
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <label>Otra dirección: &nbsp;</label>
-                    </Checkbox></div>) : ""}
-                  <br />
-                  <br />
-                  {viewInputOtraDireccionOrdinario ? (
-                    <div>
-                      <label>Dirección:</label>
-                      <br />
-                      <input type="text"
-                        onChange={(e) => setDireccionEnvio(e.target.value)}
-                      />
-                      {viewAlertaIntroducirDireccionOrdinario ? (<div>
-                        <motion.p
-                          initial={{ x: -1000, color: "#e30b2c" }}
-                          animate={{ fontSize: 20, x: 0 }}
-                          transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-                        >Introduce una dirección válida</motion.p>
-
-                      </div>) : ""}
-                      <br />
-
-                      <label>Población:</label>
-                      <br />
-                      <input type="text"
-                        onChange={(e) => setPoblacionEnvio(e.target.value)}
-                      />
-                      {viewAlertaIntroducirPoblacionOrdinario ? (<div>
-                        <motion.p
-                          initial={{ x: -1000, color: "#e30b2c" }}
-                          animate={{ fontSize: 20, x: 0 }}
-                          transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-                        >Introduce una población válida</motion.p>
-
-                      </div>) : ""}
-                      <br />
-
-                      <label>Código Postal:</label>
-                      <br />
-                      <input type="text"
-                        onChange={(e) => setCpEnvio(e.target.value)}
-                      />
-                      {viewAlertaIntroducirCpOrdinario ? (<div>
-                        <motion.p
-                          initial={{ x: -1000, color: "#e30b2c" }}
-                          animate={{ fontSize: 20, x: 0 }}
-                          transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-                        >Introduce un código postal válido</motion.p>
-
-                      </div>) : ""}
-                    </div>) : ""}
-                </div>
-              </Checkbox.Group>
-
-            ) : ""}
-          </div>
-
-          {/* // CORREO PREFERENTE */}
-
-          <div className="envio">
-            <img height="120px" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/imagenes envio/leroytrans.png" alt="Correos"></img>
+            }
+            }>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <Checkbox
-              className="checkEnvio"
-              value="recogida"
-              name="modoEnvio"
-              id="recogida"
-              disabled={isDisabledEnvio("recogida")}
-              onChange={(e) => {
-                onChangeCheckEnvio(e.target.value);
-                if (!viewOpcionesPuntoRecog) {
-                  setViewOpcionesPuntoRecog(true)
-                  setDireccionEnvio("");
-                  setPoblacionEnvio("");
-                  setCpEnvio("");
-                } else {
-                  setViewOpcionesPuntoRecog(false)
-                }
-              }
-              }>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <label>Recoger en un punto de recogida oficial</label>
-            </Checkbox>
-            {viewOpcionesPuntoRecog ? (
+            <label>Envío a través de Correos España</label>
+          </Checkbox>
+
+          {viewOpcionesCorreoOrdinario ? (
+            <Checkbox.Group onChange={(e) => onChangeCheckDireccion(e)}>
               <div>
-                <br />
-                <label>Nombre:</label>
-                <br />
-                <input type="text"
-                  onChange={(e) => setCpEnvio(e.target.value)}
-                />
-                {viewAlertaIntroducirNombreRecog ? (<div>
-                  <motion.p
-                    initial={{ x: -1000, color: "#e30b2c" }}
-                    animate={{ fontSize: 20, x: 0 }}
-                    transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-                  >Introduce un punto de recogida válido</motion.p>
 
-                </div>) : ""}
+                {viewDireccion ? (
+                  <div>
+                    <br />
+                    <Checkbox
+                      id="mismaDireccion"
+                      value="mismaDireccion"
+                      name="tipoDireccion"
+                      disabled={isDisabledOrdinario("mismaDireccion")}
+                      onChange={(e) => {
+                        setDireccionEnvio(direccionUser);
+                        setPoblacionEnvio(poblacionUser);
+                        setCpEnvio(cpUser);
+                      }}>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <label>Mi dirección:&nbsp;</label>
+                    </Checkbox>
+                  </div>) : ""}
+                <br></br>
+                {viewCheckOtraDireccionOrdinario ? (<div>
+                  <Checkbox
+                    value="nuevaDireccion"
+                    id="nuevaDireccion"
+                    name="tipoDireccion"
+                    disabled={isDisabledOrdinario("nuevaDireccion")}
+                    onChange={(e) => {
+                      setViewInputOtraDireccionOrdinario(true);
+                      setDireccionEnvio("");
+                      setPoblacionEnvio("");
+                      setCpEnvio("");
+                    }}
+                  >
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>Otra dirección: &nbsp;</label>
+                  </Checkbox></div>) : ""}
                 <br />
                 <br />
-                <label>Dirección:</label>
-                <br />
-                <input type="text"
-                  onChange={(e) => setDireccionEnvio(e.target.value)}
-                />
-                {viewAlertaIntroducirDireccionRecog ? (<div>
-                  <motion.p
-                    initial={{ x: -1000, color: "#e30b2c" }}
-                    animate={{ fontSize: 20, x: 0 }}
-                    transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-                  >Introduce una dirección válida</motion.p>
+                {viewInputOtraDireccionOrdinario ? (
+                  <div>
+                    <label>Dirección:</label>
+                    <br />
+                    <input type="text"
+                      onChange={(e) => setDireccionEnvio(e.target.value)}
+                    />
+                    {viewAlertaIntroducirDireccionOrdinario ? (<div>
+                      <motion.p
+                        initial={{ x: -1000, color: "#e30b2c" }}
+                        animate={{ fontSize: 20, x: 0 }}
+                        transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+                      >Introduce una dirección válida</motion.p>
 
-                </div>) : ""}
-                <br />
-                <br />
-                <label>Población:</label>
-                <br />
-                <input type="text"
-                  onChange={(e) => setPoblacionEnvio(e.target.value)}
-                />
-                {viewAlertaIntroducirPoblacionRecog ? (<div>
-                  <motion.p
-                    initial={{ x: -1000, color: "#e30b2c" }}
-                    animate={{ fontSize: 20, x: 0 }}
-                    transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-                  >Introduce un código postal válido</motion.p>
-                </div>
-                ) : ""}
+                    </div>) : ""}
+                    <br />
 
-                <br />
-                <br />
-                <Row>
-                  <Mapa />
-                </Row>
-              </div>) : ""}
-            <br />
-            {viewAlertaIntroducirDireccion ? (<div>
-              <motion.p
-                initial={{ x: -1000, color: "#e30b2c" }}
-                animate={{ fontSize: 20, x: 0 }}
-                transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-              >Introduce una dirección válida</motion.p>
-            </div>) : ""}
-            <br />
-          </div>
+                    <label>Población:</label>
+                    <br />
+                    <input type="text"
+                      onChange={(e) => setPoblacionEnvio(e.target.value)}
+                    />
+                    {viewAlertaIntroducirPoblacionOrdinario ? (<div>
+                      <motion.p
+                        initial={{ x: -1000, color: "#e30b2c" }}
+                        animate={{ fontSize: 20, x: 0 }}
+                        transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+                      >Introduce una población válida</motion.p>
 
+                    </div>) : ""}
+                    <br />
 
-          {/* PUNTO DE RECOGIDA */}
+                    <label>Código Postal:</label>
+                    <br />
+                    <input type="text"
+                      onChange={(e) => setCpEnvio(e.target.value)}
+                    />
+                    {viewAlertaIntroducirCpOrdinario ? (<div>
+                      <motion.p
+                        initial={{ x: -1000, color: "#e30b2c" }}
+                        animate={{ fontSize: 20, x: 0 }}
+                        transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+                      >Introduce un código postal válido</motion.p>
 
-        </Row>
+                    </div>) : ""}
+                  </div>) : ""}
+              </div>
+            </Checkbox.Group>
+
+          ) : ""}
+        </div>
+
         {/* // CORREO PREFERENTE */}
 
         <div className="envio">
@@ -444,6 +350,102 @@ function DatosCompraLogueado() {
 
 
         </div>
+
+
+        {/* // PUNTO RECOGIDA */}
+
+        <div className="envio">
+          <img height="120px" src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/imagenes envio/leroytrans.png" alt="Correos"></img>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <Checkbox
+            className="checkEnvio"
+            value="recogida"
+            name="modoEnvio"
+            id="recogida"
+            disabled={isDisabledEnvio("recogida")}
+            onChange={(e) => {
+              onChangeCheckEnvio(e.target.value);
+              if (!viewOpcionesPuntoRecog) {
+                setViewOpcionesPuntoRecog(true)
+                setDireccionEnvio("");
+                setPoblacionEnvio("");
+                setCpEnvio("");
+              } else {
+                setViewOpcionesPuntoRecog(false)
+              }
+            }
+            }>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label>Recoger en un punto de recogida oficial</label>
+          </Checkbox>
+          {viewOpcionesPuntoRecog ? (
+            <div>
+              <br />
+              <label>Nombre:</label>
+              <br />
+              <input type="text"
+                onChange={(e) => setCpEnvio(e.target.value)}
+              />
+              {viewAlertaIntroducirNombreRecog ? (<div>
+                <motion.p
+                  initial={{ x: -1000, color: "#e30b2c" }}
+                  animate={{ fontSize: 20, x: 0 }}
+                  transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+                >Introduce un punto de recogida válido</motion.p>
+
+              </div>) : ""}
+              <br />
+              <br />
+              <label>Dirección:</label>
+              <br />
+              <input type="text"
+                onChange={(e) => setDireccionEnvio(e.target.value)}
+              />
+              {viewAlertaIntroducirDireccionRecog ? (<div>
+                <motion.p
+                  initial={{ x: -1000, color: "#e30b2c" }}
+                  animate={{ fontSize: 20, x: 0 }}
+                  transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+                >Introduce una dirección válida</motion.p>
+
+              </div>) : ""}
+              <br />
+              <br />
+              <label>Población:</label>
+              <br />
+              <input type="text"
+                onChange={(e) => setPoblacionEnvio(e.target.value)}
+              />
+              {viewAlertaIntroducirPoblacionRecog ? (<div>
+                <motion.p
+                  initial={{ x: -1000, color: "#e30b2c" }}
+                  animate={{ fontSize: 20, x: 0 }}
+                  transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+                >Introduce un código postal válido</motion.p>
+              </div>
+              ) : ""}
+
+              <br />
+              <br />
+              
+                <Mapa />
+              
+            </div>) : ""}
+          <br />
+          {viewAlertaIntroducirDireccion ? (<div>
+            <motion.p
+              initial={{ x: -1000, color: "#e30b2c" }}
+              animate={{ fontSize: 20, x: 0 }}
+              transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+            >Introduce una dirección válida</motion.p>
+          </div>) : ""}
+          <br />
+        </div>
+
+
+
+
+
 
       </Checkbox.Group>
 

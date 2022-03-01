@@ -544,6 +544,7 @@ const RecogidaLook = () => {
             disabled={isDisabled("negro")}
           >
             <img
+            alt="color Negro"
               width="18%"
               height="10%"
               src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/black.jpg"
@@ -559,6 +560,7 @@ const RecogidaLook = () => {
             <img
               width="18%"
               height="10%"
+              alt="color azul"
               src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/bluelight.jpg"
             ></img>
           </Checkbox>
@@ -572,6 +574,7 @@ const RecogidaLook = () => {
             <img
               width="18%"
               height="10%"
+              alt="color verde"
               src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/green.jpg"
             ></img>
           </Checkbox>
@@ -585,6 +588,7 @@ const RecogidaLook = () => {
             <img
               width="18%"
               height="10%"
+              alt="color blanco"
               src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/white.jpg"
             ></img>
           </Checkbox>
@@ -598,6 +602,7 @@ const RecogidaLook = () => {
             <img
               width="18%"
               height="10%"
+              alt="color marron"
               src="https://raw.githubusercontent.com/moramraul/imagenesFashion/main/ImagenesFormulario/brown.jpg"
             ></img>
           </Checkbox>

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Row, Col, Button } from 'react-bootstrap';
-import {motion} from "framer-motion"
+import { motion } from "framer-motion"
 
 function Perfil() {
 
@@ -22,6 +22,14 @@ function Perfil() {
     const [talla, setTalla] = useState("");
 
 
+    const onChangeTalla = (selectedValues) => {
+        setTalla(selectedValues);
+    };
+
+    const onChangeTarget = (selectedValues) => {
+        setTarget(selectedValues);
+    };
+
     let idUserLogueado = JSON.parse(sessionStorage.getItem("infoUser"));
     let idUser = {
         idUsuario: idUserLogueado.id_usuario
@@ -39,6 +47,7 @@ function Perfil() {
     })
 
     const verHistorial = () => {
+
         if (pedidoVacio === "vacio") {
             setViewHistorialVacio(true);
             setViewModificarPerfil(false)
@@ -51,11 +60,11 @@ function Perfil() {
 
     // //! BOTON Seleciona el pedido que se va hace la devolucion (El boton tiene la info en JSON de todo el pedido)
     const selectCompra = (datos) => {
-    
+
         //Se mete TODA la info del pedido a devolver Storage
         localStorage.setItem('devolucion', datos);
         window.location.href = "http://localhost:3000/devolucion";
-      
+
     }
 
     var allCompras = JSON.parse(localStorage.getItem("pedidos"));
@@ -97,6 +106,7 @@ function Perfil() {
 
     return (
         <div className="perfil">
+            <br />
             <div>
                 <h2>Consulta tu historial de compra</h2>
                 <button className="ButtonHome btn btn-primary btn-lg" onClick={verHistorial}>Historial</button>
@@ -106,19 +116,19 @@ function Perfil() {
                     animate={{ fontSize: 20, x: 0 }}
                     transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
                 >No tienes pedidos que mostrar</motion.p>) : ""}
+                <br />
                 <h2>Modifica datos de tu perfil de usuario</h2>
-                
+
                 <button className="ButtonHome btn btn-primary btn-lg" onClick={() => { setViewModificarPerfil(true); setViewHistorial(false) }}>Modificar perfil</button>
                 <br />
 
             </div>
-            <br />    
+            <br />
             {/* Vemos el historial de compras */}
             {viewHistorial ? (<div>
 
                 {allCompras.map(compra => {
                     let fecha = compra.fecha_creacion.split("T");
-                    let hora = fecha[1].split(".");
                     let estado = compra.estado
                     let entrega = compra.modo_entrega
                     let direccion = compra.direccion
@@ -145,29 +155,29 @@ function Perfil() {
                                         <h2>Tus productos</h2>
                                         <Row >
                                             <Col md={6} xs={12}>
-                                                <img src={compra.productos[0].imgUrl} width="40%"></img>
+                                                <img src={compra.productos[0].imgUrl} alt="producto1" width="40%"></img>
                                                 <p>1. {compra.productos[0].nombre}</p>
                                             </Col>
                                             <Col md={6} xs={12}>
-                                                <img src={compra.productos[1].imgUrl} width="40%"></img>
+                                                <img src={compra.productos[1].imgUrl} alt="producto1" width="40%"></img>
                                                 <p>2. {compra.productos[1].nombre}</p>
                                             </Col>
                                             <Col md={6} xs={12}>
-                                                <img src={compra.productos[2].imgUrl} width="40%"></img>
+                                                <img src={compra.productos[2].imgUrl} alt="producto1" width="40%"></img>
                                                 <p>3. {compra.productos[2].nombre}</p>
                                             </Col>
                                             <Col md={6} xs={12}>
-                                                <img src={compra.productos[3].imgUrl} width="40%"></img>
+                                                <img src={compra.productos[3].imgUrl} alt="producto1" width="40%"></img>
                                                 <p>4. {compra.productos[3].nombre}</p>
                                             </Col>
                                         </Row >
                                         <Row>
                                             <Col md={6} xs={12}>
-                                                <img src={compra.productos[4].imgUrl} width="40%"></img>
+                                                <img src={compra.productos[4].imgUrl} alt="producto1" width="40%"></img>
                                                 <p>5. {compra.productos[4].nombre}</p>
                                             </Col>
                                             <Col md={6} xs={12}>
-                                                <img src={compra.productos[5].imgUrl} width="40%"></img>
+                                                <img src={compra.productos[5].imgUrl} alt="producto1" width="40%"></img>
                                                 <p>6. {compra.productos[5].nombre}</p>
                                             </Col>
                                         </Row>
@@ -231,14 +241,32 @@ function Perfil() {
                             <input type="text" placeholder="Introduce nuevo código postal" onChange={(e) => setCodigo(e.target.value)}></input><br></br>
                             <label>Población</label><br></br>
                             <input type="text" placeholder="Introduce nueva población" onChange={(e) => setPoblacion(e.target.value)}></input><br></br>
-                            <label>Talla</label><br></br>
-                            <input type="text" placeholder="Introduce nueva talla" onChange={(e) => setTalla(e.target.value)}></input><br></br>
-                            <label>Target</label><br></br>
-                            <input type="text" placeholder="Introduce nuevo target" onChange={(e) => setTarget(e.target.value)}></input><br></br>
+                            <label >Talla</label>
+                            <br></br>
+                            <select name="talla" onChange={(e) => onChangeTalla(e.target.value)}>
+                                <option></option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
+                            <br></br>
+                            <label >Target</label>
+                            <br></br>
+                            <select name="target" onChange={(e) => onChangeTarget(e.target.value)}>
+                                <option></option>
+                                <option value="hombre">Hombre</option>
+                                <option value="mujer">Mujer</option>
+                                <option value="niño">Niño</option>
+                                <option value="niña">Niña</option>
+                            </select>
+                            <br></br>
                             <br></br>
                             <Button className="ButtonHome btn btn-primary btn-md" variant="primary" onClick={() => updateProfile()} >Modificar perfil</Button>
+                            <br />
                         </div>
                     </form>
+                    <br />
                     <form action="">
                         <button type="button" className="ButtonHome btn btn-primary btn-lg" onClick={sendEmailConfirmation}>Cambiar Contraseña</button>
                     </form>
