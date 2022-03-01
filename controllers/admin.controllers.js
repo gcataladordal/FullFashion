@@ -15,7 +15,7 @@ const admin = {
 /**
      * Añade prendas en la base de datos "productos"
      * @constructor
-     * @param {string} req - La informacion que recibe del formulario de admin añadir producto
+     * @param {object} req - La informacion que recibe del formulario de admin añadir producto
      */
 async function addProduct(req, res) {
     const { nombre, target, tipo, estilo, color, imagen } = req.body;
@@ -38,7 +38,7 @@ async function addProduct(req, res) {
 /**
      * Modifica uno o varios campos de un producto en la base de datos
      * @constructor
-     * @param {string} req - La informacion que recibe del formulario de admin modificar producto
+     * @param {object} req - La informacion que recibe del formulario de admin modificar producto
      */
 
 function modifyProduct(req, res) {
@@ -62,7 +62,7 @@ function modifyProduct(req, res) {
 /**
      * Borrar un producto de la base de datos
      * @constructor
-     * @param {string} req - La informacion que recibe del formulario de admin borrar producto
+     * @param {object} req - La informacion que recibe del formulario de admin borrar producto
      */
 
 function eraseProduct(req, res) {

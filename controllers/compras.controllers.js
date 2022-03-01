@@ -44,7 +44,7 @@ const actionCompras = {
     /**
      * Busca los pedidos de un usuario
      * @constructor
-     * @param {string} req - Recibe un id de usuario con el que realiza la búsqueda de todas las compras
+     * @param {object} req - Recibe un id de usuario con el que realiza la búsqueda de todas las compras
      */
     buscarCompras: async (req, res) => {
         var busquedaPedidos = await Pedido.find({ id_usuario: req.body.idUsuario })
@@ -61,7 +61,7 @@ const actionCompras = {
 /**
      * Actualiza un pedido cuando se pide una devolución
      * @constructor
-     * @param {string} req - La informacion que recibe el id del pedido en el que se ha pedido devolución desde el perfil para modificarlo y actualizarlo
+     * @param {object} req - La informacion que recibe el id del pedido en el que se ha pedido devolución desde el perfil para modificarlo y actualizarlo
      */
 
     actualizarPedido: async (req, res) => {
@@ -75,7 +75,7 @@ const actionCompras = {
     /**
      * Actualiza un pedido cambiando su estado a devuelto para que desaparezca del historial
      * @constructor
-     * @param {string} req - La informacion que recibe el id del pedido de la función anterior para cambiar su estado a devuelto
+     * @param {object} req - La informacion que recibe el id del pedido de la función anterior para cambiar su estado a devuelto
      */
     quitarPedido: async (req, res) => {
       
@@ -87,7 +87,7 @@ const actionCompras = {
     /**
      * Actualiza un pedido cambiando devolución a true para indicar que el nuevo pedido que se genera tras el cambio de la función quitarPedido es producto de una devolución.
      * @constructor
-     * @param {string} req - La informacion que recibe el id del pedido de la función anterior para cambiar su estado a devolución: true.
+     * @param {object} req - La informacion que recibe el id del pedido de la función anterior para cambiar su estado a devolución: true.
      */
     devolucionPrimera:async (req, res) => {
        
@@ -98,7 +98,7 @@ const actionCompras = {
  /**
      * Manda por mail la factura de la compra al usuario
      * @constructor
-     * @param {string} req - En el req.body recibe toda la información del cliente que ha finalizado una compra y que se guarda en el storage: mail, nombre, dirección, población, código postal, fecha de compra, modo de envío, producto, y precio.
+     * @param {object} req - En el req.body recibe toda la información del cliente que ha finalizado una compra y que se guarda en el storage: mail, nombre, dirección, población, código postal, fecha de compra, modo de envío, producto, y precio.
      */
 
     enviarMail: async (req, res) => {
