@@ -8,13 +8,14 @@ function MostrarFactura() {
 
 
   let datosFactura = JSON.parse(sessionStorage.getItem("datosFactura"))
-  console.log(datosFactura)
+  
 
 
 
   const enviarMail = async () => {
     const {email} = await axios.post("/enviarmail", datosFactura).then((res)=>{
-      console.log(res.data);
+      console.log("Email enviado");
+      localStorage.removeItem("datosFactura")
     })
   }
 

@@ -20,8 +20,9 @@ function DatosCompraNoLogueado() {
           telefono,
           email
         };
-        localStorage.setItem("datosNoLog", JSON.stringify(datosUsuarioNoLog))
-        localStorage.removeItem("emailNoLog")
+
+        localStorage.setItem("datosNoLog", JSON.stringify(datosUsuarioNoLog));
+        localStorage.removeItem("emailNoLog");
         window.location.href = "http://localhost:3000/datosenvionologueado"
       
       };

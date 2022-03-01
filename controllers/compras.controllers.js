@@ -3,6 +3,7 @@ const Pedido = require('../models/compraModel')
 const mongoose = require("mongoose")
 const stripe = new Stripe("sk_test_51KWzYqAT2Dvvoq4FP3inAGTdnEcI6cQ0lepOWuW8ExJUbOGkvCVqzNx2Cc82Q4xOTw0hUaGeb0algovVt3gI6fSB00NfBV2hGR")
 const nodemailer = require("nodemailer")
+const { ConsoleMessage } = require("puppeteer")
 
 
 const actionCompras = {
@@ -47,7 +48,13 @@ const actionCompras = {
      */
     buscarCompras: async (req, res) => {
         var busquedaPedidos = await Pedido.find({ id_usuario: req.body.idUsuario })
-        res.json(busquedaPedidos)
+        if (busquedaPedidos.length === 0) {
+            res.json("sinPedidos")
+        } else {
+            res.json(busquedaPedidos)
+        }
+        
+
 
     },
 
@@ -76,19 +83,6 @@ const actionCompras = {
         console.log(req.body);
         var actualizarPedido = await Pedido.findOneAndUpdate({id_pedido: req.body.id_pedido}, {devolucion:true})
         res.json("devolucionPrimera");
-
-        //? Falta actualizar los campos de los articulos
-        //Si pedido devolucion es false, hace una actualizacion
-        if(!req.body.devolucion){
-            var actualizarPedido = await Pedido.findOneAndUpdate({id_pedido: req.body.id_pedido}, {devolucion:true})
-            res.json(actualizarPedido)
-
-            //Si pedido devolucion es true, cambia el estado a devuelto: los pedidos en histroail devueltos no se veran.
-        }else{
-            var devueltaPedido = await Pedido.findOneAndUpdate({id_pedido: req.body.id_pedido}, {estado:"devuelto"})
-            res.json(devueltaPedido)
-        }
-
 
     },
     enviarMail: async (req, res) => {
