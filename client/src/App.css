@@ -64,7 +64,10 @@ color: white;
   color: #61dafb;
 }
 
-
+#map {
+  display:flex;
+  justify-content: center;
+}
 
 @keyframes App-logo-spin {
   from {
