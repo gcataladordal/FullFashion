@@ -36,6 +36,10 @@ const actionUsers = {
         let actu = await Usuario.findOneAndUpdate({ id_usuario: req.body.id_usuario }, { baneado: true });
 
     },
+    /**
+     * Recibe una petición de cambio de contraseña del usuario y le da un link para una página de actualizado
+     * @param {string} req Recibe un id de usuario del usuario que ha hecho la petición de cambio de contraseña, que está logueado
+     */
     cambiarPass: async (req, res) => {
         //let objectToSave = { status: false, email: "" };
 
@@ -78,6 +82,11 @@ const actionUsers = {
         })
 
     },
+
+    /**
+     * Verifica la identidad del usuario mediante el token que se le asigna cuando se registra para poder regenerarle la contraseña
+     * @param {object} req - Recibe el token del usuario.
+     */
     confirmUserGet: async (req, res) => {
         const { token } = req.params;
 
@@ -88,6 +97,10 @@ const actionUsers = {
             console.log("Token ya no es válido")
         }
     },
+/**
+     * Coge la nueva pass que le hemos generado al usuario a partir de su petición de nueva contraseña, la comprueba y si todo es correcto, la inserta en su perfil en base de datos sustituyendo la anterior.
+     * @param {object} req - Recibe el id del usuario.
+     */
     insertarPassCambiada: async (req, res) => {
 
         let infoUsuario = await busquedaUsuarioIdUsuario(req.body.idUsuario);
@@ -225,7 +238,11 @@ async function insertarUsuario(nombre, apellidos, email, dni, password, direccio
     });
 }
 
-
+/**
+     * Valida que el dni introducido por el usuario es real, utilizando el algoritmo de la policía
+     * @param {string} dni - La informacion que recibe del formulario de registro
+     * @return {string} letra - Devuelve la letra que correspondería según el algoritmo policial al número de dni introducido para comprobar si es correcto.
+     */
 
 function validationFormat(dni) {
     dni = dni.toUpperCase();
@@ -234,6 +251,11 @@ function validationFormat(dni) {
     var letra = letras[nums % letras.length]; // [nums % letras.length] = posicion de la letra del array de la policia
     return letra == dni[8];
 }
+/**
+     * Deja el dni con el formato que necesitamos para nuestra base de datos
+     * @param {string} dni - La informacion que recibe del formulario de registro
+     * @return {string} conGuion - Devuelve el dni que nos ha introducido el usuario sin el guion, si lo tuviera, para que tenga el formato que necesitamos.
+     */
 
 function quitarGuion(dni) {
     var conGuion = dni.split("-");
@@ -243,6 +265,11 @@ function quitarGuion(dni) {
         return conGuion[0] + conGuion[1];
     }
 }
+/**
+     * Recoge el dni sin guion que hemos generado en la funciónm quitar guion y da ese valor a la variable dni que utilizaremos para el registro.
+     * @param {string} dni - La informacion que recibe del dni sin guion de la función quitar guion
+     * @return {string} dhi - Devuelve la variable dni con el nuevo valor asignado
+     */
 
 function validation_dni(dni) {
     dni = quitarGuion(dni);
@@ -250,6 +277,10 @@ function validation_dni(dni) {
 }
 
 
+/**
+     * Comprueba que el mail y el password introducidos estén en la base de datos para loguear al usuario
+     * @param {string} req - Recibe el password y el mail que inserta el usuario en el registro.
+     */
 async function login(req, res) {
 
     //! ---- Variables de la información del registro -----
@@ -281,16 +312,30 @@ async function login(req, res) {
     }
 
 }
-
+/**
+     * Busca un usuario en la base de datos por id y nos devuelve su información de existir.
+     * @param {string} idUsuario - REcibe el id del usuario
+     * @return {object} datos - Devuelve su información completa en forma de objeto
+     */
 async function busquedaUsuarioIdUsuario(idUsuario) {
     let datos = await Usuario.find({ id_usuario: idUsuario });
     return datos;
 }
-
+/**
+     * Busca un usuario en la base de datos por mail y nos devuelve su información de existir.
+     * @param {string} idUsuario - REcibe el mail del usuario
+     * @return {object} datos - Devuelve su información completa en forma de objeto
+     */
 async function busquedaUsuarioEmail(email) {
     let datos = await Usuario.find({ email: email });
     return datos;
 }
+
+/**
+     * Genera un objeto para introducirlo en sesion storage cuando un usuario se loguea, para indicar que su sesión está en marcha
+     * @param {object} datosUser - Recibe todos los datos del usuario
+     * @return {object} user - Devuelve el objeto con todos los datos del usuario que se insertará en el session storage
+     */
 
 function saveSesion(datosUser) {
     let user = {
@@ -311,7 +356,10 @@ function saveSesion(datosUser) {
     }
     return user;
 }
-
+/**
+     * Actualiza la información del usuario en la base de datos tras rellenar este el formularioo de petición
+     * @param {object} req - Recibe un objeto con todos los cambios de su perfil que quiere hacer el usuario y que se actualizarán en la base de datos
+     */
 async function updateUser(req, res) {
     let { nombre, apellidos, email, dni, password, direccion, cp, poblacion, talla, target, id } = req.body
     // let logueado = sessionStorage.getItem("infoUser")

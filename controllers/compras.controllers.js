@@ -11,7 +11,7 @@ const actionCompras = {
 /**
      * Procesa un pago y guarda la información de la compra tanto en la base de stripe como en la de mongo
      * @constructor
-     * @param {string} req - La informacion la recibe parte del formulario de pago, parte del storage donde se encuentra alojada la información del pedido
+     * @param {object} req - La informacion la recibe parte del formulario de pago, parte del storage donde se encuentra alojada la información del pedido
      */
 
     pago: async (req, res) => {
@@ -72,6 +72,11 @@ const actionCompras = {
         res.json("actualizadoPedido");
 
     },
+    /**
+     * Actualiza un pedido cambiando su estado a devuelto para que desaparezca del historial
+     * @constructor
+     * @param {string} req - La informacion que recibe el id del pedido de la función anterior para cambiar su estado a devuelto
+     */
     quitarPedido: async (req, res) => {
       
         //Si pedido devolucion es true, cambia el estado a devuelto: los pedidos en histroail devueltos no se veran.
@@ -79,12 +84,23 @@ const actionCompras = {
         res.json("quitarPedido")
 
     },
+    /**
+     * Actualiza un pedido cambiando devolución a true para indicar que el nuevo pedido que se genera tras el cambio de la función quitarPedido es producto de una devolución.
+     * @constructor
+     * @param {string} req - La informacion que recibe el id del pedido de la función anterior para cambiar su estado a devolución: true.
+     */
     devolucionPrimera:async (req, res) => {
        
         var actualizarPedido = await Pedido.findOneAndUpdate({id_pedido: req.body[0].id_pedido}, {devolucion:true})
         res.json("devolucionPrimera");
 
     },
+ /**
+     * Manda por mail la factura de la compra al usuario
+     * @constructor
+     * @param {string} req - En el req.body recibe toda la información del cliente que ha finalizado una compra y que se guarda en el storage: mail, nombre, dirección, población, código postal, fecha de compra, modo de envío, producto, y precio.
+     */
+
     enviarMail: async (req, res) => {
      
         const transporter = nodemailer.createTransport({

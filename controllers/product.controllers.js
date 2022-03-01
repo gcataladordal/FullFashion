@@ -1,6 +1,13 @@
 const mongoose = require("mongoose")
 const Producto = require("../models/productModel")
 
+/**
+     * Función que aglutina todos los productos de las tres búsquedas (arriba, abajo y zapatos) que se ha realizadpo con el proceso de compra de un usuario en un solo objeto
+     * @constructor
+     * @param {object} req - La informacion que recibe son tres objetos, uno por cada una de las búsquedas.
+     * @return {object} Devuelve un objeto con toda la ropa que sale del filtro de los usuarios.
+     */
+
 // función que busca todos los productos
 const products = {
     buscarProductos: async (req, res) => {
@@ -14,6 +21,14 @@ const products = {
         }
         res.json(resultado)
     },
+
+/**
+     * Función que realiza una nueva búsqueda en uno de los tres tipos de prenda cuando en el resultado del filtro, el usuario quiere hacer algún cambio
+     * @constructor
+     * @param {string} req - La informacion que recibe es el tipo de prenda que el usuario ha seleccionado para cambiar
+     * @return {object} Devuelve un objeto con la información de los nuevos productos a insertar en el proceso de compra tras el cambio del usuario.
+     */
+
 
     buscarProducto: async (req, res) => {
         //Me mira de que tipo es ese producto y me busca todos
@@ -162,6 +177,7 @@ async function busquedaZapatos(req) {
 }
 /**
      * Genera números aleatorios para randomizar los productos que se le muestran al usuario
+     * @return {number} Devuelve un número entero aleatorio 
      */
 
 // generar números aleatorios con mínimo y máximo
