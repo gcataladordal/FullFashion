@@ -29,7 +29,7 @@ const buscarPrendas = async (num) => {
   
     let url = "https://es.shein.com/pdsearch/elegante%20hombre/?attr_values=Green&ici=s1%60EditSearch%60elegante%20hombre%60_fb%60d0%60PageSearchResult&scici=Search~~EditSearch~~1~~elegante_20hombre~~~~0&child_cat_id=3179&exc_attr_id=27&attr_ids=27_81-27_334-27_2436-27_2566"
     const scrapedData = []
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
     await page.goto(url);
     

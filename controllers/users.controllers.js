@@ -129,7 +129,6 @@ const actionUsers = {
      * Genera un objeto que se utilizara para insertar un usuario en la base de datos, recogiendo los campos de un login y validando que están introducidos siguiendo los parametros que se piden
      * @param {object} req - La informacion que recibe del formulario de registro
      */
-
 async function register(req, res) {
 
     //! ---- Variables de la información del registro -----

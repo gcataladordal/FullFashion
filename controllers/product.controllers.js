@@ -77,8 +77,6 @@ const products = {
                 numero_prenda: numPren,
             }
             res.json(topEntero);
-
-
         } else if (req.body.tipo_prenda === "abajo") {
             let numPren = req.body.numero_prenda;
             let abajoOne;

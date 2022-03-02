@@ -80,20 +80,27 @@ function Devolucion() {
                         //! Se va guardando en el localStorage odos los articulos
                         let productoCambiar = res.data;
                         //Cambiar el  true del pedido      
-                        resultado[productoCambiar.numero_prenda] = productoCambiar;     
+                        resultado[productoCambiar.numero_prenda] = productoCambiar; 
+                        console.log(resultado[productoCambiar.numero_prenda]);
+                        console.log(productoCambiar) 
+                        console.log([productoCambiar.numero_prenda])  
+                         
                         //Guarda el cambio en compras en el Storage
                         localStorage.setItem("devolucion", JSON.stringify(resultado));
                         //! Aqui se actualiza los productos, despues de gusrdar todos los productos cambiados en el Storage
-                        let infoDevolu = JSON.parse(localStorage.getItem("devolucion"));            
+                        let infoDevolu = JSON.parse(localStorage.getItem("devolucion"));    
+                        console.log(infoDevolu)        
                         axios.post("/actualizarpedido", infoDevolu).then((res) => {
                             console.log(res.data)
                         })
                         axios.post("/devolucionprimera", infoDevolu).then((res) => {
                             console.log(res.data)
+                            window.location.href = "http://localhost:3000/devueltop";
                         })
                     })
+
                 }
-                window.location.href = "http://localhost:3000/devueltop";
+                
             } else {
                 alert("Seleciona Alguna");
             }

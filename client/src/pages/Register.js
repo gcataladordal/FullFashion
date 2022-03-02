@@ -35,9 +35,7 @@ function Register() {
 
     const sendData = () => {
 
-        if (nombre === "" || apellidos === "" || email === "" || dni === "" || poblacion === "" || direccion === "" || cp === "" || talla === "" || target === "" || password === "" || password2 === "") {
-            setViewAlertFaltanCampos(true)
-        } else {
+      
             setViewAlertFaltanCampos(false)
 
 
@@ -77,7 +75,7 @@ function Register() {
                     window.location.href = "http://localhost:3000/login"
                 }
             })
-        }
+        
     }
 
 

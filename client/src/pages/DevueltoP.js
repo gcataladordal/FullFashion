@@ -5,8 +5,7 @@ function DevueltoP() {
 
 
     const devolver = () => {
-        localStorage.removeItem("pedidos")
-        localStorage.removeItem("devolucion")
+       
         window.location.href = "http://localhost:3000/perfil"
     }
 

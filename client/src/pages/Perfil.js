@@ -34,9 +34,10 @@ function Perfil() {
     let idUser = {
         idUsuario: idUserLogueado.id_usuario
     }
+
     //! Cuando carga Perfil
     // Recoge todos los pedidos del usuario y lo mete en Storage para pintarlos mas abajo
-
+    
     axios.post("/historial", idUser).then((res) => {
         if (res.data === "sinPedidos") {
             setPedidoVacio("vacio")
@@ -47,7 +48,6 @@ function Perfil() {
     })
 
     const verHistorial = () => {
-
         if (pedidoVacio === "vacio") {
             setViewHistorialVacio(true);
             setViewModificarPerfil(false)

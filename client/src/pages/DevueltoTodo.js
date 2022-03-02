@@ -4,8 +4,7 @@ import React from "react";
 function DevueltoTodo() {
 
     const devolverTodo = () => {
-        localStorage.removeItem("pedidos")
-        localStorage.removeItem("devolucion")
+        
         window.location.href = "http://localhost:3000/perfil"
     }
 
