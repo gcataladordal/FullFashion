@@ -165,9 +165,9 @@ async function register(req, res) {
     if (ok) {
         const existeEmail = await busquedaUsuarioEmail(email);
 
-        if ((existeEmail[0]) == null) {
-            var passEnc = "";
-            passEnc = await bcrypt.hash(password, saltRounds);
+        if ((existeEmail[0]) == null) {//posicion de 0 en un array sería algo, por eso se iguala a null, no existe y por eso se guarda en bbdd
+            var passEnc = ""; //vacio
+            passEnc = await bcrypt.hash(password, saltRounds); //le pasas el password acutal y le dices la seguridad que tendrá
             let inserta = await insertarUsuario(nombre, apellidos, email, dni, passEnc, direccion, cp, poblacion, talla, target, res);
             console.log("registrado correctamente")
             res.json("insertOk")
